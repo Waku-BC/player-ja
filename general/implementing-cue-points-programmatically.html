@@ -1,0 +1,1807 @@
+﻿<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  
+  <title>プログラムによるキューポイントの実装</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">  
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-ultra.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-ultra.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-super.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-super.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-black.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-black.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-bold.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-bold.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-medium.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-medium.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
+  <link rel="stylesheet" href="/assets/css/local.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+  <script src="/assets/js/sajari-head.js"></script>
+</head>
+
+<body class="body">
+
+<header>
+  <div class="div-header">
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Player_Logo.svg" alt="製品ロゴ" style="max-height: 100px;max-width: 232px;"/></a>
+<!-- GTranslate: https://gtranslate.io/ -->
+<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+
+<script>
+/* <![CDATA[ */
+function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
+/* ]]> */
+</script>
+
+    <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
+      <option value="">ブライトコーブのその他のドキュメント</option>
+      
+        
+          <option value="https://support.brightcove.com">ドキュメントホーム</option>
+        
+      
+        
+          <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
+        
+      
+        
+          <option value="https://beacon.support.brightcove.com">ブライトコーブビーコン</option>
+        
+      
+        
+          <option value="https://campaign.support.brightcove.com">ブライトコーブキャンペーン</option>
+        
+      
+        
+          <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
+        
+      
+        
+          <option value="https://live.support.brightcove.com">Brightcove Live</option>
+        
+      
+        
+          <option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
+        
+      
+        
+          <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
+        
+      
+        
+          <option value="https://social.support.brightcove.com">ブライトコーブソーシャル</option>
+        
+      
+        
+          <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
+        
+      
+        
+          <option value="https://player.support.brightcove.com">ブライトコーブのプレーヤー開発</option>
+        
+      
+        
+          <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
+        
+      
+        
+          <option value="https://sdks.support.brightcove.com">ビデオクラウドデバイス SDK</option>
+        
+      
+        
+          <option value="https://integrations.support.brightcove.com">統合および CMS コネクタ</option>
+        
+      
+        
+          <option value="https://general.support.brightcove.com">ビデオクラウドの一般情報</option>
+        
+      
+        
+          <option value="https://zencoder.support.brightcove.com">Zencoder</option>
+        
+      
+    </select>
+
+
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="サポート"/> サポートへのお問い合わせ</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="システムステータス"/> システムステータス</a></span> <br/>
+    
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb arr-right">
+      
+      <li class="breadcrumb-item"><a href="/">ホーム</a></li>
+      
+      
+      
+      <li class="breadcrumb-item"><a href="/general/">一般情報</a></li>
+      
+      <li class="breadcrumb-item active" aria-current="page">プログラムによるキューポイントの実装</li>
+    </ol>
+  </nav>
+</header>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-3 left-side-bar">
+        <nav class="sidenav" id="side_nav">
+          
+            
+            <h5><a href="/index.html">ホーム</a></h5>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/getting-started/index.html">はじめに<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/training/developer-basics-videos.html">開発者向け基本ビデオ</a></li>
+                  
+                
+                  
+                    <li><a href="/getting-started/what-brightcove-player.html">ブライトコーブプレーヤーとは何ですか？</a></li>
+                  
+                
+                  
+                    <li><a href="/getting-started/overview-brightcove-player.html">概要:ブライトコーブプレーヤー</a></li>
+                  
+                
+                  
+                    <li><a href="/getting-started/learning-guide-video-advertising.html">学習ガイド:動画広告</a></li>
+                  
+                
+                  
+                    <li><a href="/getting-started/overview-brightcove-player-plugins.html">概要:ブライトコーブプレーヤープラグイン</a></li>
+                  
+                
+                  
+                    <li><a href="/training/player-development-training-videos.html">プレーヤー開発トレーニングビデオ</a></li>
+                  
+                
+                  
+                    <li><a href="/getting-started/step-step-brightcove-player.html">ステップバイステップ:ブライトコーブプレーヤー</a></li>
+                  
+                
+                  
+                    <li><a href="/getting-started/step-step-player-customization.html">ステップバイステップ:プレーヤーのカスタマイズ</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-developing-brightcove-player.html">トレーニング:ブライトコーブプレーヤーで開発する</a></li>
+                  
+                
+                  
+                    <li><a href="/getting-started/learning-guide-using-rest-apis.html">学習ガイド:REST API を使用する</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/basics/index.html">基本を学びましょう<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/basics/developer-basics-advanced-player-code.html">アドバンスプレイヤーコード</a></li>
+                  
+                
+                  
+                    <li><a href="/basics/developer-basics-autoplaying-video.html">ビデオの自動再生</a></li>
+                  
+                
+                  
+                    <li><a href="/basics/developer-basics-custom-plugin-converting-code.html">カスタムプラグイン-コードの変換</a></li>
+                  
+                
+                  
+                    <li><a href="/basics/developer-basics-custom-plugin-passing-data.html">カスタムプラグイン-データの受け渡し</a></li>
+                  
+                
+                  
+                    <li><a href="/basics/developer-basics-custom-plugin-using-studio.html">カスタムプラグイン-Studioを使用する</a></li>
+                  
+                
+                  
+                    <li><a href="/basics/developer-basics-custom-plugin-why-and-how.html">カスタムプラグイン-理由と方法</a></li>
+                  
+                
+                  
+                    <li><a href="/training/developer-basics-videos.html">開発者向け基本ビデオ</a></li>
+                  
+                
+                  
+                    <li><a href="/basics/developer-basics-generating-player-code.html">プレイヤーコードを生成しています</a></li>
+                  
+                
+                  
+                    <li><a href="/basics/developer-basics-preparing-write-code.html">コードを書く準備をする</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/references/index.html">参考文献<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/references/brightcove-player-5-6-migration-guide.html">ブライトコーブプレーヤ 5 から 6 への移行ガイド</a></li>
+                  
+                
+                  
+                    <li><a href="https://docs.brightcove.com/brightcove-player/current-release/index.html">ブライトコーブプレーヤ API ドキュメント (外部サイト) </a></li>
+                  
+                
+                  
+                    <li><a href="/references/brightcove-player-cookies.html">ブライトコーブプレーヤーのクッキー</a></li>
+                  
+                
+                  
+                    <li><a href="/references/brightcove-player-error-reference.html">ブライトコーブプレーヤーのエラーリファレンス</a></li>
+                  
+                
+                  
+                    <li><a href="https://groups.google.com/forum/embed/?place=forum/bcplayerdev#!forum/bcplayerdev">ブライトコーブプレーヤー発表フォーラム</a></li>
+                  
+                
+                  
+                    <li><a href="/references/brightcove-player-system-requirements.html">ブライトコーブプレーヤーのシステム要件</a></li>
+                  
+                
+                  
+                    <li><a href="/references/catalog-search-architecture.html">カタログ検索アーキテクチャ</a></li>
+                  
+                
+                  
+                    <li><a href="https://general.support.brightcove.com/general/known-issues-studio-brightcove-player-and-apis.html">既知の問題</a></li>
+                  
+                
+                  
+                    <li><a href="/references/player-catalog.html">プレーヤーカタログ</a></li>
+                  
+                
+                  
+                    <li><a href="/references/player-feature-support-browser.html">ブラウザによるプレーヤー機能のサポート</a></li>
+                  
+                
+                  
+                    <li><a href="/references/player-metadata-bcinfo.html">bcinfo からのプレーヤーメタデータ</a></li>
+                  
+                
+                  
+                    <li><a href="https://docs.brightcove.com/brightcove-player/current-release/Player.html">プレイヤーメソッド/イベント API (外部サイト) </a></li>
+                  
+                
+                  
+                    <li><a href="/references/guide-playlist-api.html">プレイリスト API ガイド</a></li>
+                  
+                
+                  
+                    <li><a href="/references/video-metadata-mediainfo.html">mediainfo からの動画メタデータ</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/plugins/index.html">プラグイン<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/plugins/360degvr-video-plugin.html">360º ビデオ</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/ad-only-plugin.html">広告のみ</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/advertising-freewheel-plugin.html">FreeWheel プラグインでの広告</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/advertising-ima3-plugin.html">IMA3 プラグインでの広告</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/upgrading-ima3-plugin-version-3.html">IMA3 プラグインバージョン 3 へのアップグレード</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/implementing-server-side-ads-brightcove-player.html">SSAIとの広告</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/chromecast-plugin-brightcove-player.html">Chromecast </a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/custom-endscreen-plugin.html">カスタムエンドスクリーン</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/display-error-messages-plugin.html">エラーメッセージの表示</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/display-thumbnail-previews-plugin.html">サムネイルプレビューを表示</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/configuring-brightcove-player-drm.html">DRM </a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/google-tag-manager-plugin-brightcove-player.html">グーグルタグマネージャ</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/hls-plugin.html">HLS </a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/live-dvrux-plugin.html">ライブDVRUX </a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/display-overlay-plugin.html">オーバーレイ</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/overview-brightcove-player-plugins.html">概要:プレーヤープラグイン</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/picture-picture-plugin-aka-floating-or-pinned.html">ピクチャー・イン・ピクチャー</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/playerplugin-version-testing.html">プレーヤー/プラグインのバージョンテスト</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/playlist-ui-plugin.html">プレイリスト UI </a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/changelog/index.html">プラグインの更新履歴</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/plugin-registry.html">プラグインレジストリ</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/plugin-version-reference.html">プラグインバージョンリファレンス</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/quality-selection-plugin.html">品質選択</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/social-sharing-plugin.html">ソーシャルメディア</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/tealium-plugin-brightcove-player.html">Tealium タグマネージャ</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/video-seo-schema-generator-plugin.html">ビデオ SEO スキーマジェネレータ</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/advertising/index.html"><strong>広告+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/advertising/ad-events-and-ad-objects.html">広告イベントと広告オブジェクト</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/ad-only-plugin.html">広告専用プラグイン</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/advertising-freewheel-plugin.html">FreeWheel プラグインでの広告</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/advertising-ima3-plugin.html">IMA3 プラグインでの広告</a></li>
+                  
+                
+                  
+                    <li><a href="/advertising/client-side-preroll-with-live-ssai.html">ライブSSAIを使用したクライアント側のプリロール広告</a></li>
+                  
+                
+                  
+                    <li><a href="/advertising/displaying-ads-using-ad-cue-points.html">広告キューポイントを使用した広告の表示</a></li>
+                  
+                
+                  
+                    <li><a href="/advertising/flash-no-longer-valid-ima.html">フラッシュはもはやIMA では無効です</a></li>
+                  
+                
+                  
+                    <li><a href="/advertising/guide-ad-partner-integration.html">ガイド:広告パートナーの統合</a></li>
+                  
+                
+                  
+                    <li><a href="/advertising/guide-contrib-ads-migration.html">ガイド:contrib-ads の移行</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/implementing-server-side-ads-brightcove-player.html">ブライトコーブプレーヤーで SSAI を実装する</a></li>
+                  
+                
+                  
+                    <li><a href="/advertising/jump-start-header-bidding-ad.html">ジャンプ開始:ヘッダー入札広告</a></li>
+                  
+                
+                  
+                    <li><a href="/advertising/jump-start-outstream-ad.html">ジャンプ開始:アウトストリーム広告</a></li>
+                  
+                
+                  
+                    <li><a href="/advertising/jump-start-pre-roll-ad.html">ジャンプ開始:プレロール広告</a></li>
+                  
+                
+                  
+                    <li><a href="/advertising/known-issues-server-side-ad-insertion-ssai.html">既知の問題:サーバー側広告挿入 (SSAI) </a></li>
+                  
+                
+                  
+                    <li><a href="/getting-started/learning-guide-video-advertising.html">学習ガイド:動画広告</a></li>
+                  
+                
+                  
+                    <li><a href="/advertising/step-step-implementing-advertising.html">ステップバイステップ:広告の実装</a></li>
+                  
+                
+                  
+                    <li><a href="/advertising/testing-pre-release-advertising-plugins.html">プレリリース広告プラグインのテスト</a></li>
+                  
+                
+                  
+                    <li><a href="/advertising/using-dfp-premium-brightcove-player.html">ブライトコーブプレーヤーで DFP プレミアムを使用する</a></li>
+                  
+                
+                  
+                    <li><a href="/advertising/using-player-enhancements-live-ssai-brightcove-player.html">ライブSSAIとアドバンスト・プレイヤー・ツールキットの使用</a></li>
+                  
+                
+                  
+                    <li><a href="/advertising/video-cloud-ssai-ad-tag-validation.html">ビデオクラウド SSAI 広告タグの検証</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/publish/index.html">動画とプレーヤーの公開<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/publish/assigning-video-player-programmatically.html">プログラムによるプレーヤーへのビデオの割り当て</a></li>
+                  
+                
+                  
+                    <li><a href="/publish/available-options-advanced-page-embed-code.html">詳細設定 (ページ内) 埋め込みコードで使用可能なオプション</a></li>
+                  
+                
+                  
+                    <li><a href="/publish/available-options-standard-iframe-embed-code.html">標準 (iframe) 埋め込みコードで使用可能なオプション</a></li>
+                  
+                
+                  
+                    <li><a href="/publish/brightcove-player-loader.html">ブライトコーブのプレーヤーローダー</a></li>
+                  
+                
+                  
+                    <li><a href="/publish/bulk-updating-brightcove-default-player.html">ブライトコーブのデフォルトプレーヤーの一括更新</a></li>
+                  
+                
+                  
+                    <li><a href="https://studio.support.brightcove.com/publish/choosing-correct-embed-code.html">正しい埋め込みコードの選択</a></li>
+                  
+                
+                  
+                    <li><a href="/publish/delaying-player-instantiation.html">プレイヤーのインスタンス化の遅延</a></li>
+                  
+                
+                  
+                    <li><a href="/publish/pre-release-player.html">プレリリースプレーヤー</a></li>
+                  
+                
+                  
+                    <li><a href="/publish/syndication-strategies.html">シンジケーション戦略</a></li>
+                  
+                
+                  
+                    <li><a href="/publish/using-non-brightcove-player.html">ブライトコーブ以外のプレーヤーを使用する</a></li>
+                  
+                
+                  
+                    <li><a href="https://studio.support.brightcove.com/publish/using-multiple-players-one-page.html">1ページで複数のプレイヤーを使用する</a></li>
+                  
+                
+                  
+                    <li><a href="https://studio.support.brightcove.com/publish/using-reference-ids.html">参照 ID の使用</a></li>
+                  
+                
+                  
+                    <li><a href="">ビデオレンディションインスペクタ</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/troubleshooting/index.html">トラブルシューティング<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/troubleshooting/brightcove-playback-technology-app.html">ブライトコーブの再生テクノロジーアプリ</a></li>
+                  
+                
+                  
+                    <li><a href="/references/brightcove-player-error-reference.html">ブライトコーブプレーヤーのエラーリファレンス</a></li>
+                  
+                
+                  
+                    <li><a href="/troubleshooting/brightcove-player-information-modal.html">ブライトコーブのプレーヤー情報モーダル</a></li>
+                  
+                
+                  
+                    <li><a href="/troubleshooting/brightcove-player-troubleshooting-guide.html">ブライトコーブプレーヤーのトラブルシューティングガイド</a></li>
+                  
+                
+                  
+                    <li><a href="/troubleshooting/creating-charles-log.html">チャールズ・ログの作成</a></li>
+                  
+                
+                  
+                    <li><a href="/troubleshooting/creating-network-log.html">ネットワークログの作成</a></li>
+                  
+                
+                  
+                    <li><a href="/troubleshooting/domain-restrictions-messaging.html">ドメイン制限メッセージング</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/display-error-messages-plugin.html">エラーメッセージプラグインの表示</a></li>
+                  
+                
+                  
+                    <li><a href="/troubleshooting/manually-setting-player-version.html">プレーヤーのバージョンを手動で設定する</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/playerplugin-version-testing.html">プレーヤー/プラグインのバージョンテスト</a></li>
+                  
+                
+                  
+                    <li><a href="/troubleshooting/player-informational-properties.html">プレイヤー情報プロパティ</a></li>
+                  
+                
+                  
+                    <li><a href="/code-samples/brightcove-player-sample-live-custom-error-message.html">サンプル:ライブカスタムエラーメッセージ</a></li>
+                  
+                
+                  
+                    <li><a href="/troubleshooting/step-step-brightcove-player-debugger.html">ステップバイステップ:ブライトコーブプレーヤーデバッガ</a></li>
+                  
+                
+                  
+                    <li><a href="/troubleshooting/running-network-path-trace.html">ネットワークパストレースの実行</a></li>
+                  
+                
+                  
+                    <li><a href="/troubleshooting/using-player-reference.html">プレーヤーリファレンスの使用</a></li>
+                  
+                
+                  
+                    <li><a href="/troubleshooting/vetting-brightcove-player-releases.html">Vetting ブライトコーブプレーヤーリリース</a></li>
+                  
+                
+                  
+                    <li><a href="/troubleshooting/viewing-player-configuration.html">プレーヤ設定の表示</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/styling/index.html">スタイリング &amp; 外観<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/styling/customizing-player-appearance.html">プレーヤーの外観のカスタマイズ</a></li>
+                  
+                
+                  
+                    <li><a href="/styling/customizing-player-appearance-legacy-skin.html">プレイヤーの外観のカスタマイズ-レガシースキン</a></li>
+                  
+                
+                  
+                    <li><a href="/styling/brightcove-player-sample-player-styling-playground.html">プレイヤースタイリングプレイグラウンド</a></li>
+                  
+                
+                  
+                    <li><a href="/styling/quick-start-player-customization-legacy-skin.html">「クイックスタート:プレイヤーのカスタマイズ-レガシースキン</a></li>
+                  
+                
+                  
+                    <li><a href="/getting-started/step-step-player-customization.html">ステップバイステップ:プレーヤーのカスタマイズ</a></li>
+                  
+                
+                  
+                    <li><a href="/styling/responsive-sizing-brightcove-player.html">ブライトコーブプレーヤーのレスポンシブサイジング</a></li>
+                  
+                
+                  
+                    <li><a href="/styling/sizing-player.html">プレーヤーのサイズ変更</a></li>
+                  
+                
+                  
+                    <li><a href="/styling/skins-and-player-versions.html">スキンとプレーヤーのバージョン</a></li>
+                  
+                
+                  
+                    <li><a href="https://studio.support.brightcove.com/media/styling-captions.html">キャプションのスタイル設定</a></li>
+                  
+                
+                  
+                    <li><a href="/styling/styling-playlists.html">プレイリストのスタイリング</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/playback/index.html"><strong>再生+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/playback/autoplay-considerations.html">自動再生に関する考慮事項</a></li>
+                  
+                
+                  
+                    <li><a href="/troubleshooting/brightcove-playback-technology-app.html">ブライトコーブの再生テクノロジーアプリ</a></li>
+                  
+                
+                  
+                    <li><a href="/playback/xdr-with-bcplayer.html">ブライトコーブプレーヤーでのクロスデバイス再開</a></li>
+                  
+                
+                  
+                    <li><a href="https://studio.support.brightcove.com/publish/deep-linking.html">ディープリンク</a></li>
+                  
+                
+                  
+                    <li><a href="/playback/delivering-hls-video.html">HLS ビデオの配信</a></li>
+                  
+                
+                  
+                    <li><a href="/playback/determining-which-rendition-will-play.html">再生するレンディションを決定する</a></li>
+                  
+                
+                  
+                    <li><a href="/playback/guide-playback-technology.html">ガイド:再生技術</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/hls-plugin.html">HLS プラグイン</a></li>
+                  
+                
+                  
+                    <li><a href="/playback/ios-and-brightcove-player.html">iOS と Brightcove Player </a></li>
+                  
+                
+                  
+                    <li><a href="/playback/overview-https-support.html">概要:HTTPSサポート</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/quality-selection-plugin.html">品質選択プラグイン</a></li>
+                  
+                
+                  
+                    <li><a href="/playback/static-url-delivery.html">静的 URL 配信</a></li>
+                  
+                
+                  
+                    <li><a href="/playback/streaming-playready-protected-content-dynamic-delivery.html">PlayReady 保護されたコンテンツのストリーミング</a></li>
+                  
+                
+                  
+                    <li><a href="/playback/using-brightcove-player-tve.html">TVE でブライトコーブプレーヤーを使用する</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/content-protection/index.html">DRM &amp; コンテンツ保護<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="https://studio.support.brightcove.com/players/configuring-player-content-restrictions.html">プレーヤーコンテンツ制限の設定</a></li>
+                  
+                
+                  
+                    <li><a href="/content-protection/creating-dash-drm-manifest-brightcove-player.html">ブライトコーブプレーヤー用の DASH DRM マニフェストを作成する</a></li>
+                  
+                
+                  
+                    <li><a href="/troubleshooting/domain-restrictions-messaging.html">ドメイン制限メッセージング</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/configuring-brightcove-player-drm.html">DRMプラグイン</a></li>
+                  
+                
+                  
+                    <li><a href="/content-protection/overview-content-protection.html">概要:コンテンツ保護</a></li>
+                  
+                
+                  
+                    <li><a href="/content-protection/policy-keys.html">ポリシーキー</a></li>
+                  
+                
+                  
+                    <li><a href="/content-protection/restricting-video-playback-using-ip-address.html">IP アドレスを使用したビデオ再生の制限</a></li>
+                  
+                
+                  
+                    <li><a href="/content-protection/signed-urls-and-token-auth-live-stream.html">ライブストリームでの署名付き URL とトークン認証</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/coding-topics/index.html">コーディングトピック<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/publish/brightcove-player-loader.html">ブライトコーブのプレーヤーローダー</a></li>
+                  
+                
+                  
+                    <li><a href="/references/catalog-search-architecture.html">カタログ検索のアップグレード</a></li>
+                  
+                
+                  
+                    <li><a href="/code-samples/brightcove-player-sample-trigger-rewind-custom-event.html">カスタムイベント</a></li>
+                  
+                
+                  
+                    <li><a href="/playback/guide-playback-technology.html">ガイド:再生技術</a></li>
+                  
+                
+                  
+                    <li><a href="/coding-topics/programmatically-localizing-brightcove-player.html">ブライトコーブプレーヤーのローカライズ</a></li>
+                  
+                
+                  
+                    <li><a href="/coding-topics/localizing-plugins.html">プラグインのローカライズ</a></li>
+                  
+                
+                  
+                    <li><a href="/coding-topics/player-events.html">プレイヤーイベント</a></li>
+                  
+                
+                  
+                    <li><a href="/coding-topics/overview-components.html">概要:コンポーネント</a></li>
+                  
+                
+                  
+                    <li><a href="/playback/overview-https-support.html">概要:HTTPSサポート</a></li>
+                  
+                
+                  
+                    <li><a href="/coding-topics/overview-player-api.html">概要:プレーヤー API </a></li>
+                  
+                
+                  
+                    <li><a href="/coding-topics/pass-data-plugin.html">プラグインにデータを渡す</a></li>
+                  
+                
+                  
+                    <li><a href="/coding-topics/react-player-loader.html">プレイヤーローダーを反応させる</a></li>
+                  
+                
+                  
+                    <li><a href="/coding-topics/reporting-brightcove-player-configurations.html">ブライトコーブプレーヤーの設定に関するレポート</a></li>
+                  
+                
+                  
+                    <li><a href="/coding-topics/requirejs-and-brightcove-player.html">RequireJSとブライトコーブプレーヤー</a></li>
+                  
+                
+                  
+                    <li><a href="/coding-topics/step-step-plugin-development.html">ステップバイステップ:プラグイン開発</a></li>
+                  
+                
+                  
+                    <li><a href="/coding-topics/step-step-videojs-plugin-generator.html">ステップバイステップ:Video.js プラグインジェネレータ</a></li>
+                  
+                
+                  
+                    <li><a href="/coding-topics/using-bc-and-getplayer-methods.html">bc () と getPlayer () メソッドを使用する</a></li>
+                  
+                
+                  
+                    <li><a href="/troubleshooting/viewing-player-configuration.html">プレーヤ設定の表示</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/general/index.html">一般情報<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="https://studio.support.brightcove.com/publish/adding-application-id-player-embed-code.html">プレーヤーの埋め込みコードへのアプリケーション ID の追加</a></li>
+                  
+                
+                  
+                    <li><a href="/general/adding-captions-videos-programmatically.html">プログラムによる動画へのキャプションの追加</a></li>
+                  
+                
+                  
+                    <li><a href="https://studio.support.brightcove.com/media/adding-chapters-video.html">ビデオへのチャプターの追加</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-player-6-now-default-version.html">ブライトコーブ Player 6 がデフォルトバージョンになりました</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-player-accessibility.html">ブライトコーブプレーヤーのアクセシビリティ</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/custom-endscreen-plugin.html">カスタムエンドスクリーンプラグイン</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/display-overlay-plugin.html">オーバーレイプラグインを表示</a></li>
+                  
+                
+                  
+                    <li><a href="/references/guide-playlist-api.html">ガイド:プレイリスト API </a></li>
+                  
+                
+                  
+                    <li><a href="/general/identify-and-delete-low-performing-videos.html">パフォーマンスの低い動画の特定と削除</a></li>
+                  
+                
+                  
+                    <li><a href="/general/implementing-cue-points-programmatically.html">プログラムによるキューポイントの実装</a></li>
+                  
+                
+                  
+                    <li><a href="/general/implementing-playlists.html">プレイリストの実装</a></li>
+                  
+                
+                  
+                    <li><a href="/general/implementing-modaldialog.html">ModalDialogの実装</a></li>
+                  
+                
+                  
+                    <li><a href="/general/live-hls.html">ライブHLS </a></li>
+                  
+                
+                  
+                    <li><a href="/general/live-stream-configuration.html">ライブストリーム設定</a></li>
+                  
+                
+                  
+                    <li><a href="/general/multiple-audio-tracks.html">複数のオーディオトラック</a></li>
+                  
+                
+                  
+                    <li><a href="/general/player-configuration-guide.html">プレーヤー設定ガイド</a></li>
+                  
+                
+                  
+                    <li><a href="/general/playing-live-streams.html">ライブストリームを再生する</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/playlist-ui-plugin.html">プレイリスト UI プラグイン</a></li>
+                  
+                
+                  
+                    <li><a href="/content-protection/signed-urls-and-token-auth-live-stream.html">ライブストリームでの署名付き URL とトークン認証</a></li>
+                  
+                
+                  
+                    <li><a href="/plugins/social-sharing-plugin.html">ソーシャルメディアプラグイン</a></li>
+                  
+                
+                  
+                    <li><a href="https://apis.support.brightcove.com/player-management/getting-started/step-step-player-management.html">ステップバイステップ:プレーヤー管理</a></li>
+                  
+                
+                  
+                    <li><a href="/styling/styling-playlists.html">プレイリストのスタイリング</a></li>
+                  
+                
+                  
+                    <li><a href="/general/using-screen-reader-brightcove-player.html">ブライトコーブプレーヤーでスクリーンリーダーを使用する</a></li>
+                  
+                
+                  
+                    <li><a href="/general/versions-brightcove-player-documentation.html">ブライトコーブプレーヤーのドキュメントのバージョン</a></li>
+                  
+                
+                  
+                    <li><a href="/general/volume-control.html">ボリュームコントロール</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/code-samples/index.html">コードサンプル<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/code-samples/index-thumb.html">グループ別のコードサンプル</a></li>
+                  
+                
+                  
+                    <li><a href="/code-samples/index.html">コードサンプルインデックス</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/amp/index.html">AMP <strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/amp/amp-using-video-cloud-video.html">AMP ビデオクラウドビデオを使用する</a></li>
+                  
+                
+                  
+                    <li><a href="/amp/amp-using-external-video.html">AMP外部ビデオを使用する</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/training/index.html"><strong>トレーニング+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/training/online-training-courses.html">すべてのオンライントレーニングコース</a></li>
+                  
+                
+                  
+                    <li><a href="/training/developer-basics-videos.html">開発者向け基本ビデオ</a></li>
+                  
+                
+                  
+                    <li><a href="/training/player-development-training-videos.html">プレーヤー開発トレーニングビデオ</a></li>
+                  
+                
+                  
+                    <li><a href="/training/register-training.html">インストラクター主導トレーニングへの登録</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-developing-brightcove-player.html">トレーニング:ブライトコーブプレーヤーで開発する</a></li>
+                  
+                
+                  
+                    <li><a href="https://apis.support.brightcove.com/player-management/getting-started/training-demand-quick-start-player-management.html">トレーニング:プレーヤー管理へのクイックスタート</a></li>
+                  
+                
+                  
+                    <li><a href="/training/brightcove-university.html">Brightcove Universityトレーニングコース</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/release-notes/index.html">リリースノート<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/release-notes/brightcove-player-release-notes.html">ブライトコーブプレーヤーリリースノート</a></li>
+                  
+                
+                  
+                    <li><a href="/release-notes/brightcove-player-prerelease-notes.html">ブライトコーブプレーヤープレリリースノート</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/support/index.html"><strong>サポート+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/support/brightcove-answer.html">ブライトコーブの回答</a></li>
+                  
+                
+                  
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">ブライトコーブのシステムステータスページの表示</a></li>
+                  
+                
+                  
+                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
+                  
+                
+                  
+                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
+                  
+                
+              </ul>
+            
+          
+      </nav>
+    </div>
+    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
+  <!-- bootstrap layout -->
+
+<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="ナビゲーションメニュー"/></p>
+
+<!-- search bar -->
+<div id="nav-search-box" style="margin-top: 1rem;"></div>
+<!-- in-page navigation for narrow screens -->
+<details class="centered-inpage-nav" id="centered_inpage_nav">
+  <summary><h6 class="toc">ページコンテンツ</h6></summary>
+  <nav id="centered_toc"></nav>
+  <ul id="centered_in_page_toc" class="list-none"></ul>
+</details>
+<!-- open in new tab/window -->
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="新しいタブで開く" style="margin-top:4em;width: 1.5em;"/></a>
+
+
+
+  
+    
+
+
+<article class="bcls-article">
+  <h1>プログラムによるキューポイントの実装</h1>
+  <summary>このトピックでは、BrightcovePlayerを使用してキューポイントを理解します。次に、プログラムでキューポイントを作成し、キューポイントがディスパッチされたときに処理する方法を説明します。</summary>
+  <style type="text/css">
+.video-js {
+  		width: 640px;
+  		height: 360px;
+  	}
+</style>
+  <section class="bcls-section">
+    <h2 id="Overview">概要</h2>
+    <p>ビデオにキューポイントを設定できます。ビデオの再生中、各キューポイントに到達するとイベントがディスパッチされます。</p>
+    <div class="video-cloud-only">
+      <p>次のビデオを再生して、プレロール、ミッドロール（5秒、10秒、12秒）、およびポストロール時にプレーヤーがキューポイント情報を表示することを確認します。</p>
+      <video-js id="myPlayerID" data-video-id="4740963811001" data-account="1752604059001" data-player="VkIrj2aFx" data-embed="default" class="video-js" controls="">&nbsp;</video-js>
+      <p>******** Cue Point Information ********</p>
+      <p id="insertionPoint">&nbsp;</p>
+      <p>****** End Cue Point Information ******</p>
+      <aside class="bcls-aside bcls-aside--information">注：ザ・<strong>id</strong>変数はVideoCloudで割り当てられていないため、関連付けられた値はありません。</aside>
+    </div>
+    <div class="player-only">
+      <p>このビデオを再生すると、プレーヤーの下に表示される4つのキューポイントの情報が表示されます。</p>
+      <video-js id="myPlayerID3" data-account="3676484087001" data-player="4f14e962-a11f-441f-8c00-0c89b8edb0a6" data-embed="default" class="video-js" controls="">&nbsp;</video-js>
+      <p id="insertionPoint3">&nbsp;</p>
+    </div>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Key_concepts">重要な概念</h2>
+    <p><span class="video-cloud-only">Brightcove Playerでキューポイントを効果的に使用するには、いくつかの概念を理解する必要があります。これらの概念は、ドキュメントのこのセクションで説明されています。</span><span class="player-only"> Brightcove Playerでキューポイントを効果的に使用するには、次の概念を理解する必要があります。</span></p>
+    <div class="video-cloud-only">
+      <h3>ビデオクラウドカタログのキューポイント</h3>
+      <p>理解する最初の概念は、用語と関係があります。Brightcove Playerでは、キューポイントはHTML標準に従ってテキストトラック要素として保存されます。つまり、Video Cloudビデオを使用すると、「VideoCloudスタイル」のキューポイントがテキストトラックに変換されます。</p>
+      <p>これらの「ビデオクラウドスタイル」キューポイントは、ビデオクラウドカタログから読み取られるため、「カタログ」キューポイントと呼ばれることもあります（<a href="/references/player-catalog.html">プレイヤーカタログ</a>カタログの詳細については、ドキュメントを参照してください）。この変換が行われると、タイプやキューポイント時間など、カタログキューポイントの情報の一部がテキストトラックに変換されます。</p>
+      <h3>カタログキューポイント構造</h3>
+      <p>次に理解すべき概念は、カタログキューポイントとHTML標準の構造に大きな違いがあるということです。違いは、HTMLキューポイントに期間を設定できることです。つまり、すべてのキューポイントに対して、2つのキューポイント変更イベントがディスパッチされます。1つはキューポイントの開始時、もう1つはキューポイントの終了時です。</p>
+      <p>変換プロセスでは、すべてのカタログキューポイントが同じ開始時間と停止時間のキューポイントに変換されます。これは、すべてのカタログキューポイントに対して、2つのキューポイントイベントがディスパッチされ、コードで説明する必要があることを意味します。</p>
+    </div>
+    <h3><code translate="No">activecues</code> array</h3>
+    <p><span class="video-cloud-only">別の</span><span class="player-only">アン</span> HTMLキューポイントを扱うときに理解する重要な概念上のポイントは、<code translate="No">activeCues</code>アレイ。すべてのキューポイントは配列で定義されます。別の配列があります、<code translate="No">activeCues</code>、は「アクティブ」なキューポイントを保持します。つまり、再生時間はキューポイントの開始時間と停止時間の間にあります。</p>
+    <p>カタログキューポイントを使用する場合、開始時間と停止時間は同じであるため、定義された2番目の時間に対してのみアクティブになります。また、カタログキューポイントでは、2つのキューポイントが重ならないため、同時にアクティブになる可能性はほとんどありません。</p>
+    <aside class="bcls-aside bcls-aside--information">注：テキストトラックには複数のセットがあります。たとえば、1つはキューポイント用、もう1つはビデオキャプション用です。このドキュメントのサンプルコードでは、キューポイントのテキストトラックは、TextTracks配列の最初の要素と2番目の要素の両方にあります。これがコードに反映されていることがわかります。</aside>
+    <h3>キューポイントタイプ</h3>
+    <p>このドキュメントでは、キューポイントが<code translate="No">type</code>プロパティに値が割り当てられました。これらのタイプ値は、Studioユーザーインターフェイスでキューポイントを作成するときに割り当てられます。キューポイントには2つのタイプがありますが、どちらも文字列値を<code translate="No">type</code>プロパティ。適切な値は、キューポイント情報の処理中にカスタムJavaScriptで使用される場合にのみ役立ちます。タイプの詳細は次のとおりです。</p>
+    <ul>
+      <li><strong>広告</strong> -の文字列値を割り当てます<code translate="No">AD</code>に<code translate="No">type</code>プロパティ</li>
+      <li><strong>コード</strong> -の文字列値を割り当てます<code translate="No">CODE</code>に<code translate="No">type</code>プロパティ</li>
+    </ul>
+  </section>
+  <section class="bcls-section video-cloud-only">
+    <h2 id="Video_Cloud_cue_points">ビデオクラウドキューポイント</h2>
+    <p>ドキュメントのこのセクションでは、カタログキューポイントを設定し、カタログキューポイントイベントのディスパッチをリッスンする方法を学習します。</p>
+    <h3>ビデオクラウドキューポイントの設定</h3>
+    <p>Video Cloudキューポイントは、Video Cloud Studioを使用してビデオに関連付けることができます。また、このドキュメントで詳しく説明している他の多くの方法もあります。<a href="https://studio.support.brightcove.com/media/working-cue-points-media-module.html">メディアモジュールでのキューポイントの操作</a>。</p>
+    <h3>VideoCloudキューポイントに作用する-プレーヤーに静的にバインドされたビデオ</h3>
+    <p>ドキュメントのこのセクションでは、ビデオがプレーヤーに静的にバインドされている場合、つまり、ビデオがStudioのプレーヤーにロードされているか、Player Management APIを直接使用している場合に、カタログキューポイントを処理する方法を学習します。</p>
+    <p>ロードされる前にキューポイントを処理しようとする競合状態を防ぐには、を使用する必要があります。<code translate="No">loadedmetadata</code>キューポイントを処理する前にディスパッチされるイベント。適切なテキストトラックが読み取られたら、<code translate="No">oncuechange</code>ディスパッチされるキューポイントイベントをリッスンするイベント。</p>
+    <p>次のコードは、キューポイントをリッスンし、キューポイントからのデータを表示することを示しています。この例では、ビデオは静的にプレーヤーにバインドされていることに注意してください。</p>
+    <ul>
+      <li>24行目です:動的に作成された HTML を挿入する場所として、段落要素を作成します。</li>
+      <li>31、43行目：使用<code translate="No">one()</code>のイベントリスナーを追加するメソッド<code translate="No">loadedmetadata</code>イベントは一度だけ。イベントハンドラ関数は、ここでは匿名で定義されています。</li>
+      <li>32行目：<code translate="No">textTracks()</code>メソッドを使用して TextTracks 配列を取得し、キューポイントを保持する 0 番目の要素を変数に割り当てます<code translate="No">tt</code>。実装によっては、キューポイントが異なる配列要素にある可能性があることに注意してください。詳細については、以下の「<a href="#findtrack">正しいトラックを探す</a>」セクションを参照してください。</li>
+      <li>33、41行目：<code translate="No">oncuechange</code>イベントが送出されるときのイベントハンドラ関数を設定します。</li>
+      <li>34行目：最初の（ゼロ番目の配列要素）キューポイントディスパッチを取得していることを確認してください。この条件がないと、各キューポイントに2回作用することがわかります。デュレーションが重複するキューポイントを使用している場合、この条件は異なっていなければならないことに注意してください。</li>
+      <li>35〜39行目：キューポイントからの情報を使用して HTML を動的に作成し、HTML ページに注入します。</li>
+      <li>42行目:ビデオを再生します。</li>
+    </ul>
+    <pre class="line-numbers" data-start="17">
+<code class="language-html" translate="No">&lt;video-js id="myPlayerID"
+data-account="1507807800001"
+data-player="6aac508a-741e-41a2-bc7a-5805644cf089"
+data-embed="default"
+data-video-id="1507781667001"
+class="video-js" controls&gt;&lt;/video-js&gt;
+
+&lt;p id="insertionPoint"&gt;&lt;/p&gt;
+&lt;script src="https://players.brightcove.net/1507807800001/6aac508a-741e-41a2-bc7a-5805644cf089_default/index.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  videojs.getPlayer('myPlayerID').ready(function() {
+    var player = this;
+    player.one("loadedmetadata", function () {
+      var tt = player.textTracks()[0];
+      tt.oncuechange = function () {
+        if (tt.activeCues[0] !== undefined) {
+          var dynamicHTML = "id: " + tt.activeCues[0].id + ", ";
+          dynamicHTML += "text: " + tt.activeCues[0].text + ", ";
+          dynamicHTML += "startTime: " + tt.activeCues[0].startTime + ",  ";
+          dynamicHTML += "endTime: " + tt.activeCues[0].endTime;
+          document.getElementById("insertionPoint").innerHTML += dynamicHTML + "&lt;br/&gt;";
+        }
+      }
+      player.play();
+    });
+  });
+&lt;/script&gt;</code></pre>
+    <h3>VideoCloudキューポイントに作用する-プレーヤーにビデオを動的にロードする</h3>
+    <p>ドキュメントのこのセクションでは、ビデオがプレーヤーに動的にロードされるときにカタログキューポイントを処理する方法を学習します。<code translate="No">catalog.getVideo()</code>そして<code translate="No">catalog.load()</code>メソッド。</p>
+    <p>プレーヤーカタログを使用してビデオを取得およびロードする場合、静的にバインドされたビデオを使用する場合よりもキューポイントの処理が少し簡単になります。これは、を使用する必要がないためです。<code translate="No">loadedmetadata</code>イベント。</p>
+    <ul>
+      <li>76行目：動的に作成された HTML を挿入する場所として、段落要素を作成します。</li>
+      <li>83、97行目：使用<code translate="No">catalog.getVideo()</code>ビデオを取得する方法。コールバック関数はここで匿名で定義されています。</li>
+      <li>85行目線:使用<code translate="No">catalog.load()</code>ビデオをプレーヤーにロードする方法。</li>
+      <li>86行目：<code translate="No">textTracks()</code>メソッドを使用して TextTracks 配列を取得し、キューポイントを保持する 0 番目の要素を変数に割り当てます<code translate="No">tt</code>。実装によっては、キューポイントが異なる配列要素にある可能性があることに注意してください。詳細については、以下の「<a href="#findtrack">正しいトラックを探す</a>」セクションを参照してください。</li>
+      <li>87、95行目：<code translate="No">oncuechange</code>イベントが送出されるときのイベントハンドラ関数を設定します。</li>
+      <li>88行目：最初の（ゼロ番目の配列要素）キューポイントが定義されていることを確認してください。この条件がないと、各キューポイントが2回作用し、2回目は要素が定義されていないことがわかります。<code translate="No">activecues</code>配列（2番目のキューの変更はキューポイントの終了用であるため）。デュレーションが重複するキューポイントを使用している場合、この条件は異なっていなければならないことに注意してください。</li>
+      <li>89〜93行目：キューポイントからの情報を使用して HTML を動的に作成し、HTML ページに注入します。</li>
+      <li>96行目：ビデオを再生します。</li>
+    </ul>
+    <pre class="line-numbers" data-start="69">
+<code class="language-html" translate="No">&lt;video-js id="myPlayerID"
+  data-account="1507807800001"
+  data-player="3c59134e-89e8-4864-87e2-3cc871f8c361"
+  data-embed="default"
+  data-video-id=""
+  class="video-js" controls&gt;&lt;/video-js&gt;
+
+  &lt;p id="insertionPoint"&gt;&lt;/p&gt;
+
+  &lt;script src="https://players.brightcove.net/1507807800001/3c59134e-89e8-4864-87e2-3cc871f8c361_default/index.min.js"&gt;&lt;/script&gt;
+
+  &lt;script&gt;
+  videojs.getPlayer('myPlayerID').ready(function() {
+    var player = this;
+    player.catalog.getVideo('1507781667001', function (error, video) {
+      //deal with error
+      player.catalog.load(video);
+      player.one("loadedmetadata", function () {
+        var tt = player.textTracks()[0];
+        tt.oncuechange = function () {
+          if (tt.activeCues[0] !== undefined) {
+            var dynamicHTML = "id: " + tt.activeCues[0].id + ", ";
+            dynamicHTML += "text: " + tt.activeCues[0].text + ", ";
+            dynamicHTML += "startTime: " + tt.activeCues[0].startTime + ",  ";
+            dynamicHTML += "endTime: " + tt.activeCues[0].endTime;
+            document.getElementById("insertionPoint").innerHTML += dynamicHTML + "&lt;br/&gt;";
+          }
+        }
+      });
+      player.play();
+    });
+  });
+&lt;/script&gt;</code></pre>
+    <h3 id="allvcinfo">すべてのVideoCloudキューポイント情報を取得します</h3>
+    <p>お気づきかもしれませんが、すべてのVideoCloudキューポイント情報がから直接利用できるわけではありません。<code translate="No">activecues</code>アレイ。これは、から必要な情報を取得することで簡単に修正できます。<code translate="No">mediainfo</code>プロパティ。</p>
+    <p>このソリューションの基本的なアプローチは次のとおりです。</p>
+    <ol>
+      <li>を待つ<code translate="No">loadstart</code>のイベント<code translate="No">mediainfo</code>設定するプロパティ。</li>
+      <li>を割り当てます<code translate="No">cue_points</code>からの配列<code translate="No">mediainfo</code>変数へのプロパティ。この変数には、完全なVideoCloudキューポイント情報が含まれています。</li>
+      <li>キューポイントイベントで、に基づいて対応するキューポイントデータを取得します。<code translate="No">time</code>プロパティ値。これは、オブジェクトのプロパティ値に基づいて配列からオブジェクトを取得するヘルパー関数を使用して行われます。</li>
+      <li>キューポイントからのデータを使用します。</li>
+    </ol>
+    <p>次の画像は、キューポイント配列全体（左上）、単一のキューポイントデータコレクション（右上）、およびその単一のキューポイントデータコレクションからの1つのプロパティ（右下）を示しています。</p>
+    <figure class="bcls-figure"><img class="bcls-image" alt="キューポイントデータ" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/cue-points/using-cue-points/cue-point-all-vc-data.png"/></figure>
+    <p>以下のスニペットでは、上記の例の新しい/変更されたコードのみを説明します。</p>
+    <ul>
+      <li>452〜463行目：すべてのキューポイントの配列から単一のキューポイントデータコレクションを抽出するために使用される関数を含めます。すべてのキューポイントの配列、特定の値を検索するプロパティ、最後に検索する値を渡すことに注意してください。</li>
+      <li>432行目：<code translate="No">loadstart</code>イベントをリッスンします。動画の読み込みが始まると、<code translate="No">mediainfo</code>プロパティが入力されます。</li>
+      <li>434行目：すべてのVideoCloudキューポイントの配列を変数に割り当てます。</li>
+      <li>443行目：キューポイントディスパッチイベントハンドラーで、特定のキューポイントのデータコレクションを変数に割り当てます。ここで、最初の箇条書きで説明した関数が呼び出されます。使用される引数は次のとおりです。
+        <ul>
+          <li><code translate="No">cuePointAra</code>:VideoCloudキューポイントのコレクション全体。</li>
+          <li><code translate="No">'time'</code>:値を検索するプロパティ。</li>
+          <li><code translate="No">tt.activeCues[0].startTime</code>:キューポイントディスパッチイベントハンドラーで現在処理されているキューポイントの開始時刻。</li>
+        </ul>
+      </li>
+      <li>444〜445行目：デバッグ<code translate="No">console.log()</code>メソッド呼び出し。これは本番コードで削除する必要があります。</li>
+    </ul>
+    <pre class="line-numbers" data-start="426">
+<code class="language-html" translate="No">&lt;script&gt;
+  videojs.getPlayer('myPlayerID').ready(function() {
+    var myPlayer = this,
+      cuePointAra = [],
+      allCuePointData;
+    myPlayer.on('loadstart', function () {
+      //console.log('mediainfo', myPlayer.mediainfo);
+      cuePointAra = myPlayer.mediainfo.cue_points;
+      var tt = myPlayer.textTracks()[0];
+      tt.oncuechange = function () {
+        if (tt.activeCues[0] !== undefined) {
+          var dynamicHTML = "id: " + tt.activeCues[0].id + ", ";
+          dynamicHTML += "text: " + tt.activeCues[0].text + ", ";
+          dynamicHTML += "startTime: " + tt.activeCues[0].startTime + ",  ";
+          dynamicHTML += "endTime: " + tt.activeCues[0].endTime;
+          document.getElementById("insertionPoint").innerHTML += dynamicHTML + "&lt;br/&gt;";
+          allCuePointData = getSubArray(cuePointAra, 'time', tt.activeCues[0].startTime);
+          console.log('cue point data:', allCuePointData);
+          console.log('cue point metadata:', allCuePointData[0].metadata);
+        }
+      }
+      myPlayer.play();
+      myPlayer.muted(true);
+    });
+
+    function getSubArray(targetArray, objProperty, value) {
+      var i, totalItems = targetArray.length,
+        objFound = false,
+        idxArr = [];
+      for (i = 0; i &lt; totalItems; i++) {
+        if (targetArray[i][objProperty] === value) {
+          objFound = true;
+          idxArr.push(targetArray[i]);
+        }
+      }
+      return idxArr;
+    };
+  });
+&lt;/script&gt;</code></pre>
+  </section>
+  <section class="bcls-section">
+    <h2 id="HTML5_standard_cue_points">HTML5標準キューポイント</h2>
+    <p>HTML5標準キューポイントは、所定の形式でトラック要素として保存されます。優れた入門コンテンツは、次のHTML5Rocksチュートリアルにあります。<a href="//www.html5rocks.com/en/tutorials/track/basics/">トラック要素入門</a>。ドキュメントのこのセクションでは、WebVTTキューポイントファイルの形式と、それらのキューポイントの処理方法について学習します。</p>
+    <h3>キューポイントのWebVTTファイル形式</h3>
+    <p>WebVTTファイル形式は厳密に定義されています。キューポイントの場合、ファイルは次のように構成されます。</p>
+    <ul>
+      <li>文字列<strong>WebVTT</strong>ファイルの最初の行として</li>
+      <li>1 つの空白行</li>
+      <li>特定のキューポイントの識別子</li>
+      <li>フォームの期間<strong>00：00：00.000-&gt; 00：00：00.000</strong> ;これはhours：minutes：seconds.milliseconds形式であり、厳密に解析されます。必要に応じて、数値をゼロで埋める必要があります</li>
+      <li>次の空白行までの期間に続く文字は、<strong>テキスト</strong>値;ここに複数の異なる値を格納する場合は、JSONが適切に機能するため、簡単に解析できます</li>
+      <li>1 つの空白行</li>
+      <li>識別子/期間/テキスト/空白行の形式を使用して、複数のキューポイントを追加できます</li>
+    </ul>
+    <aside class="bcls-aside bcls-aside--tip">注：これでWebVTTフォーマットを検証できます<a href="//quuz.org/webvtt/">バリデーター</a>。</aside>
+    <p>以下は、2つのキューポイントを定義する有効なWebVTTキューポイントドキュメントです。1つは2〜5秒の期間で、もう1つは10〜15秒の期間です。</p>
+    <pre class="line-numbers">
+<code class="language-javascript" translate="No">WEBVTT
+
+multiCell
+00:00:02.000 --&gt; 00:00:05.000
+{
+"title": "Multi-celled organisms",
+"description": "Multi-celled organisms have different types of cells that perform specialized functions.",
+"src": "multiCell.jpg",
+"href": "http://en.wikipedia.org/wiki/Multicellular"
+}
+
+insects
+00:00:10.000 --&gt; 00:00:15.000
+{
+"title": "Insects",
+"description": "Insects are the most diverse group of animals on the planet with estimates for the total number of current species range from two million to 50 million. The first insects appeared around 400 million years ago, identifiable by a hard exoskeleton, three-part body, six legs, compound eyes and antennae.",
+"src": "insects.jpg",
+"href": "http://en.wikipedia.org/wiki/Insects"
+}</code></pre>
+    <p>次のビデオを再生すると、上記のキューポイントWebVTTファイルが処理されていることがわかります。キューポイントの開始時に、動的に作成されたHTMLがページに挿入され、その後に解析されたJSONが表示されます。<strong>テキスト</strong>フィールド。キューポイントの終わりにメッセージ<strong>キューポイントの持続時間</strong>表示されています。</p>
+    <video-js id="myPlayerID2" data-video-id="4607357817001" data-account="1752604059001" data-player="VkIrj2aFx" data-embed="default" class="video-js" controls="">
+      <track kind="metadata" src="https://solutions.brightcove.com/bcls/tests/player/cuepoints.vtt" />
+    </video-js>
+    <p>******** Cue Point Information ********</p>
+    <p id="insertionPoint2">&nbsp;</p>
+    <p>****** End Cue Point Information ******</p>
+    <h3>プロセスキューポイントの概要</h3>
+    <p>HTML5標準キューポイントを使用するための基本的な手順は次のとおりです。</p>
+    <ol>
+      <li>を使用して、キューポイントを含むWebVTTファイルを読み込みます。<code translate="No">&lt;track&gt;</code>の子としてネストされたタグ<code translate="No">&lt;video-js&gt;</code>鬼ごっこ。</li>
+      <li>で<code translate="No">loadedmetadata</code>イベントハンドラー、適切なテキストトラック要素を取得します。</li>
+      <li>同じイベントハンドラーで、の2番目のイベントハンドラーを構成します。<code translate="No">oncuechange</code>キューポイントイベント。</li>
+      <li>の中に<code translate="No">oncuechange</code>イベントハンドラー、<code translate="No">activecues</code>配列オブジェクトにはゼロ番目の要素が定義されています。はいの場合、キューポイントの開始に作用します。
+        <aside class="bcls-aside bcls-aside--information">注：あなたは持っているでしょう<code translate="No">oncuechange</code>キューポイントが開始および停止するときにディスパッチされるイベント。ザ・<code translate="No">activecues</code>配列は、キューポイントの期間中のみ値を持ちます。したがって、<code translate="No">oncuechange</code>イベントが発生し、定義されたオブジェクトがありません<code translate="No">activecues</code>配列、ディスパッチされたイベントがキューポイント停止用であることがわかります。</aside>
+      </li>
+      <li>の中に<code translate="No">oncuechange</code>イベントハンドラー、<code translate="No">activecues</code>配列オブジェクトには0番目の要素が定義されており、定義されていない場合は、キューポイントストップに作用します。</li>
+    </ol>
+    <aside class="bcls-aside bcls-aside--information">注：キューポイントの期間が重複している場合は、上記の手順のロジックを少し変更する必要があります。</aside>
+    <div class="video-cloud-only">
+      <h3>キューポイントコードを処理する</h3>
+      <p>&nbsp;</p>
+      <ul>
+        <li>122行目：<code translate="No">&lt;track&gt;</code>タグを使用して WebVTT ファイルを読み込んで、テキストトラックを作成します。</li>
+        <li>126行目：動的に作成された HTML を挿入する場所として、段落要素を作成します。</li>
+        <li>134、152行目：<code translate="No">one()</code>メソッドを使用して、<code translate="No">loadedmetadata</code>イベントを一度だけリッスンします。イベントハンドラ関数は、ここでは匿名で定義されています。</li>
+        <li>135行目：最後にロードされたテキストトラックのインデックスを変数に割り当てます。</li>
+        <li>136号線:前の手順で決定したインデックスを使用して、<code translate="No">textTracks()</code>配列の最後の要素を変数に割り当てるメソッドを使用して TextTracks 配列を取得します。このロジックのバリエーションについては、以下の「<a href="#findtrack">正しいトラックを探す</a>」セクションを参照してください。</li>
+        <li>137、149行目：<code translate="No">oncuechange</code>イベントが送出されるときのイベントハンドラ関数を設定します。</li>
+        <li>138行目：ActiveCues 配列で最初の (0 番目の配列要素) キューポイントが定義されていることを確認します。これは、開始キューポイントイベントであることを示します。</li>
+        <li>139〜145行目：キューポイントからの情報を使用して HTML を動的に作成し、HTML ページに注入します。これには、JSON の解析と JSON のさまざまなフィールドの表示が含まれます。</li>
+        <li>146〜147行目：キューポイントの終端に達したノートを表示します。</li>
+        <li>150行目：ビデオを再生します。</li>
+      </ul>
+      <pre class="line-numbers" data-start="115">
+<code class="language-html" translate="No">&lt;video-js id="myPlayerID2"
+  data-account="1752604059001"
+  data-player="8cfb6785-c4be-43b4-af68-7ca2fe3a6ebf"
+  data-embed="default"
+  data-video-id="3851380732001"
+  class="video-js" controls&gt;
+
+  &lt;track kind="metadata" src="https://solutions.brightcove.com/bcls/tests/player/cuepoints.vtt" /&gt;
+&lt;/video-js&gt;
+
+&lt;p id="insertionPoint2"&gt;&lt;/p&gt;
+
+&lt;script src="https://players.brightcove.net/1752604059001/8cfb6785-c4be-43b4-af68-7ca2fe3a6ebf_default/index.min.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript"&gt;
+  videojs.getPlayer('myPlayerID').ready(function() {
+    var myPlayer = this;
+    myPlayer.one("loadedmetadata", function () {
+      var trackIndex = myPlayer.textTracks().length - 1;
+      var tt = myPlayer.textTracks()[trackIndex];
+      tt.oncuechange = function () {
+        if (tt.activeCues[0] !== undefined) {
+          var dynamicHTML = "id: " + tt.activeCues[0].id + ", ";
+          dynamicHTML += "text: " + tt.activeCues[0].text + ", ";
+          dynamicHTML += "startTime: " + tt.activeCues[0].startTime + ",  ";
+          dynamicHTML += "endTime: " + tt.activeCues[0].endTime;
+          document.getElementById("insertionPoint2").innerHTML += dynamicHTML + "&lt;br/&gt;&lt;br/&gt;";
+          jsonData = JSON.parse(tt.activeCues[0].text);
+          document.getElementById("insertionPoint2").innerHTML += jsonData.title + ": " + jsonData.description + "&lt;br/&gt;&lt;br/&gt;";
+        } else {
+          document.getElementById("insertionPoint2").innerHTML += "Cue point duration over" + "&lt;br/&gt;&lt;br/&gt;";
+        }
+      } //end oncuechange
+      myPlayer.play();
+      myPlayer.muted(true);
+    }); //end loadedmetadata
+  }); //end ready
+&lt;/script&gt;</code></pre>
+    </div>
+    <div class="player-only">
+      <h3>キューポイントコードを処理する</h3>
+      <p>&nbsp;</p>
+      <ul>
+        <li>270行目：<code translate="No">&lt;track&gt;</code>タグを使用して WebVTT ファイルを読み込んで、テキストトラックを作成します。</li>
+        <li>273行目：動的に作成された HTML を挿入する場所として、段落要素を作成します。</li>
+        <li>285、309行目：<code translate="No">one()</code>メソッドを使用して、<code translate="No">loadedmetadata</code>イベントを一度だけリッスンします。イベントハンドラ関数は、ここでは匿名で定義されています。</li>
+        <li>286行目：最後にロードされたテキストトラックのインデックスを変数に割り当てます。</li>
+        <li>287行目：前の手順で決定したインデックスを使用して、<code translate="No">textTracks()</code>配列の最後の要素を変数に割り当てるメソッドを使用して TextTracks 配列を取得します。このロジックのバリエーションについては、以下の「<a href="#findtrack">正しいトラックを探す</a>」セクションを参照してください。</li>
+        <li>289、301行目：<code translate="No">oncuechange</code>イベントが送出されるときのイベントハンドラ関数を設定します。</li>
+        <li>290行目：ActiveCues 配列で最初の (0 番目の配列要素) キューポイントが定義されていることを確認します。これは、開始キューポイントイベントであることを示します。</li>
+        <li>291-294行目：キューポイントからの情報を使用して HTML を動的に作成し、HTML ページに注入します。これには、JSON の解析と JSON のさまざまなフィールドの表示が含まれます。</li>
+        <li>295〜297行目：キューポイントの終端に達したノートを表示します。</li>
+        <li>302号線:ビデオを再生します。</li>
+      </ul>
+      <p>&nbsp;</p>
+    </div>
+    <p>WebVTTファイルをプログラムで追加できると想定できます。<code translate="No">addRemoteTextTrack()</code>方法。この場合、キューポイントを使用する前に処理する準備ができていない競合状態が発生する可能性があるため、信頼性が低くなります。を使用してWebVTTファイルを追加しても安全です<code translate="No">&lt;track&gt;</code>図のようにタグを付けます。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="findtrack">正しいトラックを見つける</h2>
+    <p>このドキュメントの多くの場所で、複数のテキストトラックがプレーヤーに関連付けられている場合に問題が発生する可能性があります。プレーヤーに関連付けられているテキストトラックは1つだけであると想定されたため、次のコードが使用されました。<code translate="No">var tt = myPlayer.textTracks()[0];</code>。0番目の配列要素を選択すると、プレーヤーに関連付けられた単一のテキストトラックが想定されます。</p>
+    <p>テキストトラックは、キューポイントだけでなく、他の種類のデータにも使用されます。ザ・<strong>種類</strong>属性には、次の値を含めることができます。</p>
+    <ul>
+      <li>字幕</li>
+      <li>キャプション</li>
+      <li>説明</li>
+      <li>チャプタ</li>
+      <li>メタデータ</li>
+    </ul>
+    <p>これは、複数のテキストトラックがプレーヤーに関連付けられている可能性が非常に高いことを意味し、アプリケーションロジックに適したトラックを見つける方法が必要です。次のコードは、利用可能なテキストトラックをループします。<strong>メタデータ</strong>（キューポイント）値が見つかりました：</p>
+    <pre class="line-numbers">
+<code class="language-html" translate="No">&lt;script type="text/javascript"&gt;
+  videojs.getPlayer('myPlayerID').ready(function() {
+    var myPlayer = this,
+      allTextTacks,
+      attLength,
+      tt;
+    myPlayer.one("loadedmetadata", function () {
+      allTextTacks = myPlayer.textTracks();
+      attLength = allTextTacks.length;
+      for (var i = 0; i &lt; attLength; i++) {
+        if (allTextTacks[i].kind === 'metadata') {
+          tt = allTextTacks[i];
+          break;
+        };
+      };
+    });
+  });
+&lt;/script&gt;</code></pre>
+    <p>次に、前の例のロジックを使用して、を使用してキューポイントを処理できます。<code translate="No">tt</code>必要なテキストトラックを含む変数。</p>
+  </section>
+  <section class="bcls-section video-cloud-only">
+    <h2 id="Programmatic_cue_points">プログラムによるキューポイント</h2>
+    <p>プログラムでキューポイントを追加することができます。重要なメソッドはHTML5から来ています<code translate="No">VTTCue</code>インターフェース。次の構文を使用してキューポイントを作成できます。</p>
+    <pre>
+<code class="language-javascript" translate="No">new VTTCue( startTime, endTime, text )</code></pre>
+    <p>キューポイントを処理するロジックは前の例と非常に似ているため、上記で使用したものとは異なるコードのみを詳しく説明します。</p>
+    <ul>
+      <li>
+        <p>43、44行目：追加します<code translate="No">textTrack</code>プレイヤーの要素を使用するプレイヤーへの要素<code translate="No">addRemoteTextTrack()</code>方法。指定します<code translate="No">kind</code>することが<strong>メタデータ</strong>、および<code translate="No">label</code>、 この場合<strong>時限キューポイント</strong>。</p>
+        <aside class="bcls-aside bcls-aside--information">注：プレーヤーから削除できるのはリモートテキストトラックのみであるため、<a href="https://docs.brightcove.com/brightcove-player/current-release/Player.html#addRemoteTextTrack"> addRemoteTextTrack（）</a>方法。</aside>
+      </li>
+      <li>
+        <p>45〜48行目：プレーヤーを使用して2つのキューポイントを作成する前に、10ミリ秒待ちます<code translate="No">addCue()</code>方法。キューポイントは、HTML5を使用してインスタンス化されます<code translate="No">VTTCue()</code>コンストラクタ。</p>
+        <aside class="bcls-aside bcls-aside--tip">SafariとiOSの場合、キューポイントを追加する前に遅延する必要があります。そうしないと、キューポイントが追加されません。これは、BrightcovePlayerがSafariブラウザとiOSでネイティブの非同期トラックを使用するためです。</aside>
+      </li>
+      <li>22行目：<code translate="No">addtrack</code>イベントをリッスンします。</li>
+      <li>23行目です:プレーヤーに関連付けられているすべてのテキストトラックを取得します。</li>
+      <li>24行目です:を設定します<code translate="No">attLength</code>テキストトラックの数に可変。この値は、次のコードセグメントのループで使用されます。</li>
+      <li>25〜30行目：各テキストトラックをループして、<code translate="No">label</code>正しい値と等しくなるようにします。見つかったら、現在のテキストトラックを変数に割り当て、ループから抜け出します。</li>
+    </ul>
+    <aside class="bcls-aside bcls-aside--tip">注：以下の学習サンプルコード以外では、主要なキューポイント情報を含むデータ構造をループしてキューポイントが作成される可能性が非常に高くなります。</aside>
+    <pre class="line-numbers" data-start="1">
+<code class="language-html" translate="No">&lt;video-js id="myPlayerID"
+  data-video-id="4607746980001"
+  data-account="1507807800001"
+  data-player="default"
+  data-embed="default"
+  class="video-js"
+  width="640" height="360"
+  controls&gt;&lt;/video-js&gt;
+
+&lt;script src="https://players.brightcove.net/1507807800001/default_default/index.min.js"&gt;&lt;/script&gt;
+
+&lt;p id="insertionPoint"&gt;&lt;/p&gt;
+
+&lt;script type="text/javascript"&gt;
+  videojs.getPlayer("myPlayerID").ready(function () {
+    var myPlayer = this,
+      textTrack = [],
+      allTextTacks,
+      attLength,
+      tt;
+    myPlayer.one("loadedmetadata", function () {
+      myPlayer.textTracks().addEventListener('addtrack', function () {
+        allTextTacks = myPlayer.textTracks();
+        attLength = allTextTacks.length;
+        for (var i = 0; i &lt; attLength; i++) {
+          if (allTextTacks[i].label === 'Timed Cue Point') {
+            tt = allTextTacks[i];
+            break;
+          }
+        }
+        tt.oncuechange = function () {
+          if (tt.activeCues[0] !== undefined) {
+            var dynamicHTML = "id: " + tt.activeCues[0].id + ", ";
+            dynamicHTML += "text: &lt;strong&gt;" + tt.activeCues[0].text + "&lt;/strong&gt;, ";
+            dynamicHTML += "startTime: &lt;strong&gt;" + tt.activeCues[0].startTime + "&lt;/strong&gt;,  ";
+            dynamicHTML += "endTime: &lt;strong&gt;" + tt.activeCues[0].endTime + "&lt;/strong&gt;";
+            document.getElementById("insertionPoint").innerHTML += dynamicHTML + "&lt;br/&gt;&lt;br/&gt;";
+          } else {
+            document.getElementById("insertionPoint").innerHTML += "Cue point duration over" + "&lt;br/&gt;&lt;br/&gt;";
+          }
+        }; //end oncuechange
+      }); // end playing
+      textTrack = myPlayer.addRemoteTextTrack({kind: 'metadata', label: 'Timed Cue Point', mode: 'hidden'}, false);
+      textTrack.track.mode = 'hidden';
+      setTimeout(function(){
+        textTrack.track.addCue(new window.VTTCue(2, 5, 'cue point 1 text'));
+        textTrack.track.addCue(new window.VTTCue(10, 15, 'cue point 2 text'));
+      }, 10);
+    }); //end on loadedmetadata
+  }); //end ready
+&lt;/script&gt;</code></pre>
+    <p>次のスクリーンショットに示すように、コードは出力を生成します。注意してください<strong>id</strong>を使用する場合、値は提供されません<code translate="No">VTTCue()</code>コンストラクターメソッド。</p>
+    <figure class="bcls-figure"><img class="bcls-image" alt="動的キューポイント" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/cue-points/using-cue-points/cue-points-dynamic.png"/></figure>
+  </section>
+  <section class="bcls-section">
+    <h2 id="ID3_and_media_cue_points">ID3とメディアキューポイント</h2>
+    <p>メディアにID3キューポイントまたはメディアキューポイントが関連付けられている場合は、<code translate="No">id3CuePointsTrack()</code>そして<code translate="No">mediaCuePointsTrack()</code>メソッド。たとえば、キューポイントの変更をリッスンするには、次を使用します。</p>
+    <pre class="line-numbers">
+<code class="language-javascript" translate="No">videojs.getPlayer('myPlayerID').ready(function () {
+  var myPlayer = this;
+  myPlayer.one("canplay", function () {
+    <span class="bcls-highlight">myPlayer.id3CuePointsTrack().on('cuechange', function () {
+      // process cue point here
+    });</span>
+  });
+});</code></pre>
+    <h3>ID3の詳細</h3>
+    <p>以下は、ID3キューポイントの使用に関するより多くの洞察を提供します。</p>
+    <ul>
+      <li>ID3タグを使用して、時限メタデータをストリームに挿入できます。</li>
+      <li>セグメントごとに複数のID3フレームを持つことができます。</li>
+      <li>Brightcove Playerは、前述の方法を使用して、ID3キューポイントを解析し、テキストトラックとして公開します。<code translate="No">id3CuePointsTrack()</code>方法。</li>
+      <li>待つのがベストプラクティスです<code translate="No">canplay</code>イベントが発生した場合、またはアクセスしようとしたときにトラックを取得できない可能性があります。</li>
+      <li>タグごとに複数のフレームがサポートされています。</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Known_issues">既知の問題</h2>
+    <ul>
+      <li>Safariでは、終了時間が開始時間と等しい場合、キューポイントはトリガーされません。したがって、Safariの互換性が問題になる場合、キューポイントにはゼロより大きい期間が必要です。</li>
+    </ul>
+  </section>
+</article>
+<script src="https://players.brightcove.net/1752604059001/VkIrj2aFx_default/index.min.js"></script><script src="https://players.brightcove.net/3676484087001/4f14e962-a11f-441f-8c00-0c89b8edb0a6_default/index.min.js"></script><script>
+  videojs.getPlayer('myPlayerID').ready(function() {
+  	var player = this;
+  	player.one("loadedmetadata",function(){
+  		var tt = player.textTracks()[0];
+  		tt.oncuechange = function() {
+  			if(tt.activeCues[0] !== undefined){
+  				var dynamicHTML = "id: <strong>" + tt.activeCues[0].id + ", ";
+  				dynamicHTML += "text: <strong>" + tt.activeCues[0].text + ", ";
+  				dynamicHTML += "startTime: <strong>" + tt.activeCues[0].startTime + ",  ";
+  				dynamicHTML += "endTime: <strong>" + tt.activeCues[0].endTime + "";
+  				document.getElementById("insertionPoint").innerHTML += dynamicHTML + "<br/>";
+  			}
+  		}
+  		//player.play();
+  		player.muted(true);
+  	});
+  });
+  </script><script>
+  videojs.getPlayer('myPlayerID2').ready(function() {
+  	var myPlayer = this;
+
+  	myPlayer.one("loadedmetadata",function(){
+  		var trackIndex = myPlayer.textTracks().length -1;
+  		var tt = myPlayer.textTracks()[trackIndex];
+  		tt.oncuechange = function() {
+  			if(tt.activeCues[0] !== undefined){
+console.log('tt.activeCues[0]',tt.activeCues[0]);
+  				var dynamicHTML = "id: <strong>" + tt.activeCues[0].id + ", ";
+  				dynamicHTML += "text: <strong>" + tt.activeCues[0].text + ", ";
+  				dynamicHTML += "startTime: <strong>" + tt.activeCues[0].startTime + ",  ";
+  				dynamicHTML += "endTime: <strong>" + tt.activeCues[0].endTime + "";
+  				document.getElementById("insertionPoint2").innerHTML += dynamicHTML + "<br/><br/>";
+  				jsonData = JSON.parse(tt.activeCues[0].text);
+  				document.getElementById("insertionPoint2").innerHTML += jsonData.title + ": " + jsonData.description + "<br/><br/>";
+  			} else {
+  				document.getElementById("insertionPoint2").innerHTML += "<strong>Cue point duration over" + "<br/><br/>";
+  			}
+  		} //end oncuechange
+  		//myPlayer.play();
+  		myPlayer.muted(true);
+  	}); //end loadedmetadata
+
+  }); //end ready
+  </script><script>
+  var myPlayer3,
+  textTrack;
+
+  videojs.getPlayer('myPlayerID3').ready(function() {
+  	var myPlayer3 = this;
+  	myPlayer3.src({
+  		"type": "video/mp4",
+  		"src": "//solutions.brightcove.com/bcls/assets/videos/Water-In-Motion.mp4"
+  	});
+  	textTrack = myPlayer3.addTextTrack('metadata', 'Timed Cue Point');
+  	textTrack.addCue(new window.VTTCue(2,4,'cue point 1 text'));
+  	textTrack.addCue(new window.VTTCue(6,8,'cue point 2 text'));
+  	textTrack.addCue(new window.VTTCue(10,11,'cue point 3 text'));
+  	textTrack.addCue(new window.VTTCue(15,20,'cue point 4 text - LAST CUEPOINT'));
+  	var tt = myPlayer3.textTracks()[0];
+  	tt.oncuechange = function() {
+  		if(tt.activeCues[0] !== undefined){
+  			//var dynamicHTML = "id: " + tt.activeCues[0].id + ", ";
+  			var dynamicHTML = "text: <strong>" + tt.activeCues[0].text + ", ";
+  			dynamicHTML += "startTime: <strong>" + tt.activeCues[0].startTime + ",  ";
+  			dynamicHTML += "endTime: <strong>" + tt.activeCues[0].endTime + "";
+  			document.getElementById("insertionPoint3").innerHTML += dynamicHTML + "<br/>";
+  		} else {
+  			document.getElementById("insertionPoint3").innerHTML += "Cue point duration over" + "<br/><br/>";
+  		}
+  	} //end oncuechange
+  }); //end ready
+  </script>
+<!-- complete bootstrap layout -->
+    </div>
+    <div class="col-sm-2 right-side-bar">
+      
+      <nav class="right-side-nav" id="right_side_nav">
+        <h6 class="toc">ページコンテンツ</h6>
+        <ul id="in_page_nav" class="list-none"></ul>
+      </nav>
+      
+    </div>
+  </div>
+</div>
+
+<hr>
+<div class="last-updated">
+  ページ最終更新日 2020年9月28日
+</div>
+
+
+
+<footer class="bcls-footer" role="contentinfo">
+  <div class="row">
+    <div class="region region-footer-top-center col-md-12">
+      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+
+        <h2>ブライトコーブサポート</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://status.brightcove.com">システムステータス</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">サポートへのお問い合わせ</a>
+          </li>
+          <li>
+            <a href="https://support.brightcove.com/">ドキュメンテーション</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
+
+        <h2>トレーニング</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">オンラインコース</a>
+          </li>
+          <li>
+            <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
+          </li>
+          <li>
+            <a href="https://university.brightcove.com/">Brightcove University</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
+
+        <h2>Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://www.brightcove.com">Brightcove.com</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">お問合せ</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="region region-footer-bottom-center col-md-12">
+      <div class="bcls-copyright footer-menu">
+        <table>
+          <tr>
+            <td>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. All rights reserved.</div>
+            </td>
+            <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
+            <td>
+              <div class="gf-links-cols footer-menu">
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</footer>
+<div id="talla_wrapper">
+  <p style="text-align: right;position: relative;"><button style="background:rgb(9, 7, 140);color:Snow;padding:.3rem;position:fixed;right:0;bottom:1em;z-index:9999999" onclick="javascript:displayChat()">質問ですか? </button> </p>
+  <div id="talla_chat">
+</div>
+</div>
+<script>
+      
+  var searchBox = sajari.init({
+    mode: "search-box",
+    project: "1588255093746585379", // Set this to your project.
+    collection: "brightcove-documenation", // Set this to your collection.
+    instantPipeline: "autocomplete", // Pipeline used as you type
+    inputPlaceholder: "Search", // Input element placeholder
+    maxSuggestions: 5, // Maximum number of suggestions to show
+    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
+  });
+  
+    searchBox("sub", "pipeline.search-sent", function (_, query) {
+      window.location = "/search.html?q=" + encodeURIComponent(query.q);
+    });
+  
+
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
+  <script src="/assets/js/sites_nav.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
+  <script src="/assets/js/feedback.js"></script>
+  
+  <script src="/assets/js/sajari-search-foot.js"></script>
+  
+  <!-- <script src="/assets/js/sajari-index.js"></script> -->
+  <script src="https://assets.talla.com/latest/embeddedjs/talla.js"></script>
+  <script src="/assets/js/talla-init.js"></script>
+  <style>
+    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
+      background-color: lightblue;
+    }
+    div.sj-tabs__tab {
+      margin-top: 3rem;
+      margin-left: .3rem;
+      border-top-left-radius: .4rem;
+      border-top-right-radius: .4rem;
+      background-color:#e8e8e8;
+    }
+
+    div.sj-tabs__tab.sj-tabs__tab--selected {
+      border-bottom-color: crimson;
+      background-color: #f8f8f8;
+    }
+
+    p.sj-results__result__description.css-p9jvyt {
+      font-size: 1rem;
+    }
+
+    .sj-result__text.css-31l7gp h3 {
+      color: navy;
+      font-size: 1.4rem;
+    }
+    </style>
+
+</body>
+
+</html>
