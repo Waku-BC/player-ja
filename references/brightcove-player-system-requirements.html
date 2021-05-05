@@ -1,37 +1,47 @@
 ﻿<!doctype html>
-<html lang="ja">
+<html lang="en-us">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   
-  <title>Brightcove Playerのシステム要件</title>
+  <title>ブライトコーブプレーヤーのシステム要件</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">  
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
   <link rel="stylesheet" href="/assets/css/local.css">
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2728311-17"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2728311-17');
+</script>
   <script src="/assets/js/sajari-head.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
 <body class="body">
 
 <header>
   <div class="div-header">
-    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Player_Logo.svg" alt="製品ロゴ" style="max-height: 100px;max-width: 232px;"/></a>
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/SVG/COVE004_Brightcove_Player_Logo_RGB_K.svg" alt="ブライトコーブ" style="max-width: 200px;"/></a>
 <!-- GTranslate: https://gtranslate.io/ -->
-<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+<select onchange="doGTranslate(this);"><option value="">言語を選択</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
 
 <script>
 /* <![CDATA[ */
@@ -41,94 +51,105 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 
 
 
-    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="サポート"/> サポートへのお問い合わせ</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="システムステータス"/> システムステータス</a></span> <br/>
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><i data-feather="help-circle"></i> サポートへのお問い合わせ</a> <span style="vertical-align: middle;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><i data-feather="cloud"></i> システムステータス</a></span> <br/>
     
   </div>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb arr-right">
       
-      <li class="breadcrumb-item"><a href="/">ホーム</a></li>
+      <li class="breadcrumb-item first-item"><a href="/">ホーム</a></li>
       
       
       
       <li class="breadcrumb-item"><a href="/references/">参考文献</a></li>
       
-      <li class="breadcrumb-item active" aria-current="page">Brightcove Playerのシステム要件</li>
+      <li class="breadcrumb-item active" aria-current="page">ブライトコーブプレーヤーのシステム要件</li>
     </ol>
   </nav>
 </header>
 <div class="container">
     <div class="row">
-            <div class="col-sm-3 left-side-bar">
-        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
-          <option value="">Brightcove ブのその他のドキュメント</option>
-          
-            
-              <option value="https://support.brightcove.com">ドキュメントホーム</option>
-            
-          
-            
-              <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
-            
-          
-            
-              <option value="https://beacon.support.brightcove.com">Brightcove ブビーコン</option>
-            
-          
-            
-              <option value="https://campaign.support.brightcove.com">Brightcove ブキャンペーン</option>
-            
-          
-            
-              <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
-            
-          
-            
-              <option value="https://live.support.brightcove.com">Brightcove ブ・ライブ</option>
-            
-          
-            
-              <option value="https://gallery.support.brightcove.com">Brightcove ブギャラリー</option>
-            
-          
-            
-              <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
-            
-          
-            
-              <option value="https://social.support.brightcove.com">Brightcove ブソーシャル</option>
-            
-          
-            
-              <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
-            
-          
-            
-              <option value="https://player.support.brightcove.com">Brightcove ブのプレーヤー開発</option>
-            
-          
-            
-              <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
-            
-          
-            
-              <option value="https://sdks.support.brightcove.com">ビデオクラウドデバイス SDK</option>
-            
-          
-            
-              <option value="https://integrations.support.brightcove.com">統合および CMS コネクタ</option>
-            
-          
-            
-              <option value="https://general.support.brightcove.com">ビデオクラウドの一般情報</option>
-            
-          
-            
-              <option value="https://zencoder.support.brightcove.com">Zencoder</option>
-            
-          
-        </select>
-
+      <div class="col-sm-3 left-side-bar">
+				<select id="site_select" class="bcls-select" style="margin-left: 1rem;">
+					<option value="">ブライトコーブのその他のドキュメント</option>
+					
+						
+							<option value="https://support.brightcove.com">ドキュメントホーム</option>
+						
+					
+						
+							<option value="">— ビデオクラウド —</option>
+						
+					
+						
+							<option value="https://studio.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドスタジオ</option>
+						
+					
+						
+							<option value="https://player.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブのプレーヤー開発</option>
+						
+					
+						
+							<option value="https://apis.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドプラットフォーム API</option>
+						
+					
+						
+							<option value="https://sdks.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドデバイス SDK</option>
+						
+					
+						
+							<option value="https://integrations.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;統合および CMS コネクタ</option>
+						
+					
+						
+							<option value="https://general.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドの一般情報</option>
+						
+					
+						
+							<option value="">— ビデオ必需品 —</option>
+						
+					
+						
+							<option value="https://beacon.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブビーコン</option>
+						
+					
+						
+							<option value="https://live.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブ・ライブ</option>
+						
+					
+						
+							<option value="https://zencoder.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;Zencoder</option>
+						
+					
+						
+							<option value="">— ビデオクラウドアドオン —</option>
+						
+					
+						
+							<option value="https://audience.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブオーディエンス</option>
+						
+					
+						
+							<option value="https://campaign.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブキャンペーン</option>
+						
+					
+						
+							<option value="https://engage.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブエンゲージ</option>
+						
+					
+						
+							<option value="https://gallery.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブギャラリー</option>
+						
+					
+						
+							<option value="https://ssai.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブ SSAI</option>
+						
+					
+						
+							<option value="https://social.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブソーシャル</option>
+						
+					
+				</select>
         <nav class="sidenav" id="side_nav">
           
             
@@ -136,7 +157,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             
           
             
-              <h5 class="submenu-header"><a href="/getting-started/index.html">はじめに<strong> + </strong></a></h5>
+              <h5 class="submenu-header"><a href="/getting-started/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;はじめに</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
@@ -144,11 +165,11 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/getting-started/what-brightcove-player.html">Brightcove ブプレーヤーとは何ですか？</a></li>
+                    <li><a href="/getting-started/what-brightcove-player.html">ブライトコーブプレーヤーとは何ですか？</a></li>
                   
                 
                   
-                    <li><a href="/getting-started/overview-brightcove-player.html">概要:Brightcove ブプレーヤー</a></li>
+                    <li><a href="/getting-started/overview-brightcove-player.html">概要:ブライトコーブプレーヤー</a></li>
                   
                 
                   
@@ -156,7 +177,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/getting-started/overview-brightcove-player-plugins.html">概要:Brightcove ブプレーヤープラグイン</a></li>
+                    <li><a href="/getting-started/overview-brightcove-player-plugins.html">概要:ブライトコーブプレーヤープラグイン</a></li>
                   
                 
                   
@@ -164,7 +185,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/getting-started/step-step-brightcove-player.html">ステップバイステップ:Brightcove ブプレーヤー</a></li>
+                    <li><a href="/getting-started/step-step-brightcove-player.html">ステップバイステップ:ブライトコーブプレーヤー</a></li>
                   
                 
                   
@@ -172,7 +193,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/training/training-demand-developing-brightcove-player.html">トレーニング:Brightcove ブプレーヤーで開発する</a></li>
+                    <li><a href="/training/training-demand-developing-brightcove-player.html">トレーニング:ブライトコーブプレーヤーで開発する</a></li>
                   
                 
                   
@@ -183,7 +204,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             
           
             
-              <h5 class="submenu-header"><a href="/basics/index.html">基本を学びましょう<strong> + </strong></a></h5>
+              <h5 class="submenu-header"><a href="/basics/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;基本を学びましょう</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
@@ -226,31 +247,31 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             
           
             
-              <h5 class="submenu-header"><a href="/references/index.html">参考文献<strong> + </strong></a></h5>
+              <h5 class="submenu-header"><a href="/references/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;リファレンス</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
-                    <li><a href="/references/brightcove-player-5-6-migration-guide.html">Brightcove ブプレーヤ 5 から 6 への移行ガイド</a></li>
+                    <li><a href="/references/brightcove-player-5-6-migration-guide.html">ブライトコーブプレーヤ 5 から 6 への移行ガイド</a></li>
                   
                 
                   
-                    <li><a href="https://docs.brightcove.com/brightcove-player/current-release/index.html">Brightcove ブプレーヤ API ドキュメント (外部サイト) </a></li>
+                    <li><a href="https://docs.brightcove.com/brightcove-player/current-release/index.html">ブライトコーブプレーヤ API ドキュメント (外部サイト)</a></li>
                   
                 
                   
-                    <li><a href="/references/brightcove-player-cookies.html">Brightcove ブプレーヤーのクッキー</a></li>
+                    <li><a href="/references/brightcove-player-cookies.html">ブライトコーブプレーヤーのクッキー</a></li>
                   
                 
                   
-                    <li><a href="/references/brightcove-player-error-reference.html">Brightcove ブプレーヤーのエラーリファレンス</a></li>
+                    <li><a href="/references/brightcove-player-error-reference.html">ブライトコーブプレーヤーのエラーリファレンス</a></li>
                   
                 
                   
-                    <li><a href="https://groups.google.com/forum/embed/?place=forum/bcplayerdev#!forum/bcplayerdev">Brightcove ブプレーヤー発表フォーラム</a></li>
+                    <li><a href="https://groups.google.com/forum/embed/?place=forum/bcplayerdev#!forum/bcplayerdev">ブライトコーブプレーヤー発表フォーラム</a></li>
                   
                 
                   
-                    <li><a href="/references/brightcove-player-system-requirements.html">Brightcove ブプレーヤーのシステム要件</a></li>
+                    <li><a href="/references/brightcove-player-system-requirements.html">ブライトコーブプレーヤーのシステム要件</a></li>
                   
                 
                   
@@ -274,7 +295,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="https://docs.brightcove.com/brightcove-player/current-release/Player.html">プレイヤーメソッド/イベント API (外部サイト) </a></li>
+                    <li><a href="https://docs.brightcove.com/brightcove-player/current-release/Player.html">プレイヤーメソッド/イベント API (外部サイト)</a></li>
                   
                 
                   
@@ -289,7 +310,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             
           
             
-              <h5 class="submenu-header"><a href="/plugins/index.html">プラグイン<strong> + </strong></a></h5>
+              <h5 class="submenu-header"><a href="/plugins/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;プラグイン</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
@@ -317,7 +338,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/plugins/chromecast-plugin-brightcove-player.html">Chromecast </a></li>
+                    <li><a href="/plugins/chromecast-plugin-brightcove-player.html">Chromecast</a></li>
                   
                 
                   
@@ -333,7 +354,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/plugins/configuring-brightcove-player-drm.html">DRM </a></li>
+                    <li><a href="/plugins/configuring-brightcove-player-drm.html">DRM</a></li>
                   
                 
                   
@@ -341,11 +362,11 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/plugins/hls-plugin.html">HLS </a></li>
+                    <li><a href="/plugins/hls-plugin.html">HLS</a></li>
                   
                 
                   
-                    <li><a href="/plugins/live-dvrux-plugin.html">ライブDVRUX </a></li>
+                    <li><a href="/plugins/live-dvrux-plugin.html">ライブDVRUX</a></li>
                   
                 
                   
@@ -365,7 +386,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/plugins/playlist-ui-plugin.html">プレイリスト UI </a></li>
+                    <li><a href="/plugins/playlist-ui-plugin.html">プレイリスト UI</a></li>
                   
                 
                   
@@ -393,6 +414,10 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
+                    <li><a href="/plugins/thumbnails-plugin.html">サムネの求め</a></li>
+                  
+                
+                  
                     <li><a href="/plugins/video-seo-schema-generator-plugin.html">ビデオ SEO スキーマジェネレータ</a></li>
                   
                 
@@ -400,7 +425,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             
           
             
-              <h5 class="submenu-header"><a href="/advertising/index.html"><strong>広告+ </strong></a></h5>
+              <h5 class="submenu-header"><a href="/advertising/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;広告</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
@@ -436,11 +461,11 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/advertising/guide-contrib-ads-migration.html">ガイド:contrib-ads の移行</a></li>
+                    <li><a href="/advertising/guide-contrib-ads-migration.html">ガイド: contrib-ads の移行</a></li>
                   
                 
                   
-                    <li><a href="/plugins/implementing-server-side-ads-brightcove-player.html">Brightcove ブプレーヤーで SSAI を実装する</a></li>
+                    <li><a href="/plugins/implementing-server-side-ads-brightcove-player.html">ブライトコーブプレーヤーで SSAI を実装する</a></li>
                   
                 
                   
@@ -456,7 +481,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/advertising/known-issues-server-side-ad-insertion-ssai.html">既知の問題:サーバー側広告挿入 (SSAI) </a></li>
+                    <li><a href="/advertising/known-issues-server-side-ad-insertion-ssai.html">既知の問題:サーバー側広告挿入 (SSAI)</a></li>
                   
                 
                   
@@ -472,11 +497,11 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/advertising/using-dfp-premium-brightcove-player.html">Brightcove ブプレーヤーで DFP プレミアムを使用する</a></li>
+                    <li><a href="/advertising/using-dfp-premium-brightcove-player.html">ブライトコーブプレーヤーで DFP プレミアムを使用する</a></li>
                   
                 
                   
-                    <li><a href="/advertising/using-player-enhancements-live-ssai-brightcove-player.html">ライブSSAIとアドバンスト・プレイヤー・ツールキットの使用</a></li>
+                    <li><a href="/advertising/using-player-enhancements-live-ssai-brightcove-player.html">ライブ SSAI でのプレーヤー拡張機能の使用</a></li>
                   
                 
                   
@@ -487,7 +512,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             
           
             
-              <h5 class="submenu-header"><a href="/publish/index.html">動画とプレーヤーの公開<strong> + </strong></a></h5>
+              <h5 class="submenu-header"><a href="/publish/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;動画とプレーヤーの公開</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
@@ -495,19 +520,19 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/publish/available-options-advanced-page-embed-code.html">詳細設定 (ページ内) 埋め込みコードで使用可能なオプション</a></li>
+                    <li><a href="/publish/available-options-advanced-page-embed-code.html">詳細設定 (ページ内) 埋め込みコードのオプション</a></li>
                   
                 
                   
-                    <li><a href="/publish/available-options-standard-iframe-embed-code.html">標準 (iframe) 埋め込みコードで使用可能なオプション</a></li>
+                    <li><a href="/publish/available-options-standard-iframe-embed-code.html">標準 (iframe) 埋め込みコードのオプション</a></li>
                   
                 
                   
-                    <li><a href="/publish/brightcove-player-loader.html">Brightcove ブのプレーヤーローダー</a></li>
+                    <li><a href="/publish/brightcove-player-loader.html">ブライトコーブのプレーヤーローダー</a></li>
                   
                 
                   
-                    <li><a href="/publish/bulk-updating-brightcove-default-player.html">Brightcove ブのデフォルトプレーヤーの一括更新</a></li>
+                    <li><a href="/publish/bulk-updating-brightcove-default-player.html">ブライトコーブのデフォルトプレーヤーの一括更新</a></li>
                   
                 
                   
@@ -527,7 +552,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/publish/using-non-brightcove-player.html">Brightcove ブ以外のプレーヤーを使用する</a></li>
+                    <li><a href="/publish/using-non-brightcove-player.html">ブライトコーブ以外のプレーヤーを使用する</a></li>
                   
                 
                   
@@ -546,23 +571,23 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             
           
             
-              <h5 class="submenu-header"><a href="/troubleshooting/index.html">トラブルシューティング<strong> + </strong></a></h5>
+              <h5 class="submenu-header"><a href="/troubleshooting/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;トラブルシューティング</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
-                    <li><a href="/troubleshooting/brightcove-playback-technology-app.html">Brightcove ブの再生テクノロジーアプリ</a></li>
+                    <li><a href="/troubleshooting/brightcove-playback-technology-app.html">ブライトコーブの再生テクノロジーアプリ</a></li>
                   
                 
                   
-                    <li><a href="/references/brightcove-player-error-reference.html">Brightcove ブプレーヤーのエラーリファレンス</a></li>
+                    <li><a href="/references/brightcove-player-error-reference.html">ブライトコーブプレーヤーのエラーリファレンス</a></li>
                   
                 
                   
-                    <li><a href="/troubleshooting/brightcove-player-information-modal.html">Brightcove ブのプレーヤー情報モーダル</a></li>
+                    <li><a href="/troubleshooting/brightcove-player-information-modal.html">ブライトコーブのプレーヤー情報モーダル</a></li>
                   
                 
                   
-                    <li><a href="/troubleshooting/brightcove-player-troubleshooting-guide.html">Brightcove ブプレーヤーのトラブルシューティングガイド</a></li>
+                    <li><a href="/troubleshooting/brightcove-player-troubleshooting-guide.html">ブライトコーブプレーヤーのトラブルシューティングガイド</a></li>
                   
                 
                   
@@ -598,7 +623,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/troubleshooting/step-step-brightcove-player-debugger.html">ステップバイステップ:Brightcove ブプレーヤーデバッガ</a></li>
+                    <li><a href="/troubleshooting/step-step-brightcove-player-debugger.html">ステップバイステップ:ブライトコーブプレーヤーデバッガ</a></li>
                   
                 
                   
@@ -610,7 +635,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/troubleshooting/vetting-brightcove-player-releases.html">Vetting Brightcove ブプレーヤーリリース</a></li>
+                    <li><a href="/troubleshooting/vetting-brightcove-player-releases.html">Vetting ブライトコーブプレーヤーリリース</a></li>
                   
                 
                   
@@ -621,7 +646,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             
           
             
-              <h5 class="submenu-header"><a href="/styling/index.html">スタイリング &amp; 外観<strong> + </strong></a></h5>
+              <h5 class="submenu-header"><a href="/styling/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;スタイリング &amp; 外観</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
@@ -637,7 +662,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/styling/quick-start-player-customization-legacy-skin.html">「クイックスタート:プレイヤーのカスタマイズ-レガシースキン</a></li>
+                    <li><a href="/styling/quick-start-player-customization-legacy-skin.html">クイックスタート:プレイヤーのカスタマイズ-レガシースキン</a></li>
                   
                 
                   
@@ -645,7 +670,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/styling/responsive-sizing-brightcove-player.html">Brightcove ブプレーヤーのレスポンシブサイジング</a></li>
+                    <li><a href="/styling/responsive-sizing-brightcove-player.html">ブライトコーブプレーヤーのレスポンシブサイジング</a></li>
                   
                 
                   
@@ -668,7 +693,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             
           
             
-              <h5 class="submenu-header"><a href="/playback/index.html"><strong>再生+ </strong></a></h5>
+              <h5 class="submenu-header"><a href="/playback/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;再生</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
@@ -676,11 +701,11 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/troubleshooting/brightcove-playback-technology-app.html">Brightcove ブの再生テクノロジーアプリ</a></li>
+                    <li><a href="/troubleshooting/brightcove-playback-technology-app.html">ブライトコーブの再生テクノロジーアプリ</a></li>
                   
                 
                   
-                    <li><a href="/playback/xdr-with-bcplayer.html">Brightcove ブプレーヤーでのクロスデバイス再開</a></li>
+                    <li><a href="/playback/xdr-with-bcplayer.html">ブライトコーブプレーヤーでのクロスデバイス再開</a></li>
                   
                 
                   
@@ -689,6 +714,10 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                 
                   
                     <li><a href="/playback/delivering-hls-video.html">HLS ビデオの配信</a></li>
+                  
+                
+                  
+                    <li><a href="/playback/using-delivery-rules-with-bcp.html">ブライトコーブプレーヤーでの配信ルール</a></li>
                   
                 
                   
@@ -704,7 +733,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/playback/ios-and-brightcove-player.html">iOS と Brightcove Player </a></li>
+                    <li><a href="/playback/ios-and-brightcove-player.html">iOS と Brightcove Player</a></li>
                   
                 
                   
@@ -724,14 +753,14 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/playback/using-brightcove-player-tve.html">TVE でBrightcove ブプレーヤーを使用する</a></li>
+                    <li><a href="/playback/using-brightcove-player-tve.html">TVE でブライトコーブプレーヤーを使用する</a></li>
                   
                 
               </ul>
             
           
             
-              <h5 class="submenu-header"><a href="/content-protection/index.html">DRM &amp; コンテンツ保護<strong> + </strong></a></h5>
+              <h5 class="submenu-header"><a href="/content-protection/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;DRM とコンテンツ保護</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
@@ -739,7 +768,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/content-protection/creating-dash-drm-manifest-brightcove-player.html">Brightcove ブプレーヤー用の DASH DRM マニフェストを作成する</a></li>
+                    <li><a href="/content-protection/creating-dash-drm-manifest-brightcove-player.html">ブライトコーブプレーヤー用の DASH DRM マニフェストを作成する</a></li>
                   
                 
                   
@@ -770,11 +799,11 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             
           
             
-              <h5 class="submenu-header"><a href="/coding-topics/index.html">コーディングトピック<strong> + </strong></a></h5>
+              <h5 class="submenu-header"><a href="/coding-topics/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;コーディングトピック</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
-                    <li><a href="/publish/brightcove-player-loader.html">Brightcove ブのプレーヤーローダー</a></li>
+                    <li><a href="/publish/brightcove-player-loader.html">ブライトコーブのプレーヤーローダー</a></li>
                   
                 
                   
@@ -790,7 +819,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/coding-topics/programmatically-localizing-brightcove-player.html">Brightcove ブプレーヤーのローカライズ</a></li>
+                    <li><a href="/coding-topics/programmatically-localizing-brightcove-player.html">ブライトコーブプレーヤーのローカライズ</a></li>
                   
                 
                   
@@ -810,7 +839,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/coding-topics/overview-player-api.html">概要:プレーヤー API </a></li>
+                    <li><a href="/coding-topics/overview-player-api.html">概要:プレーヤー API</a></li>
                   
                 
                   
@@ -822,11 +851,11 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/coding-topics/reporting-brightcove-player-configurations.html">Brightcove ブプレーヤーの設定に関するレポート</a></li>
+                    <li><a href="/coding-topics/reporting-brightcove-player-configurations.html">ブライトコーブプレーヤーの設定に関するレポート</a></li>
                   
                 
                   
-                    <li><a href="/coding-topics/requirejs-and-brightcove-player.html">RequireJSとBrightcove ブプレーヤー</a></li>
+                    <li><a href="/coding-topics/requirejs-and-brightcove-player.html">RequireJSとブライトコーブプレーヤー</a></li>
                   
                 
                   
@@ -849,7 +878,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             
           
             
-              <h5 class="submenu-header"><a href="/general/index.html">一般情報<strong> + </strong></a></h5>
+              <h5 class="submenu-header"><a href="/general/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;一般情報</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
@@ -865,11 +894,11 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/general/brightcove-player-6-now-default-version.html">Brightcove ブ Player 6 がデフォルトバージョンになりました</a></li>
+                    <li><a href="/general/brightcove-player-6-now-default-version.html">ブライトコーブ Player 6 がデフォルトバージョンになりました</a></li>
                   
                 
                   
-                    <li><a href="/general/brightcove-player-accessibility.html">Brightcove ブプレーヤーのアクセシビリティ</a></li>
+                    <li><a href="/general/brightcove-player-accessibility.html">ブライトコーブプレーヤーのアクセシビリティ</a></li>
                   
                 
                   
@@ -881,7 +910,11 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/references/guide-playlist-api.html">ガイド:プレイリスト API </a></li>
+                    <li><a href="/general/ga-self-configure.html">Googleアナリティクスの自己構成</a></li>
+                  
+                
+                  
+                    <li><a href="/references/guide-playlist-api.html">ガイド:プレイリスト API</a></li>
                   
                 
                   
@@ -901,7 +934,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/general/live-hls.html">ライブHLS </a></li>
+                    <li><a href="/general/live-hls.html">ライブHLS</a></li>
                   
                 
                   
@@ -941,11 +974,11 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/general/using-screen-reader-brightcove-player.html">Brightcove ブプレーヤーでスクリーンリーダーを使用する</a></li>
+                    <li><a href="/general/using-screen-reader-brightcove-player.html">ブライトコーブプレーヤーでスクリーンリーダーを使用する</a></li>
                   
                 
                   
-                    <li><a href="/general/versions-brightcove-player-documentation.html">Brightcove ブプレーヤーのドキュメントのバージョン</a></li>
+                    <li><a href="/general/versions-brightcove-player-documentation.html">ブライトコーブプレーヤーのドキュメントのバージョン</a></li>
                   
                 
                   
@@ -956,7 +989,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             
           
             
-              <h5 class="submenu-header"><a href="/code-samples/index.html">コードサンプル<strong> + </strong></a></h5>
+              <h5 class="submenu-header"><a href="/code-samples/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;コードサンプル</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
@@ -971,7 +1004,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             
           
             
-              <h5 class="submenu-header"><a href="/amp/index.html">AMP <strong> + </strong></a></h5>
+              <h5 class="submenu-header"><a href="/amp/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;アンプ</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
@@ -982,11 +1015,15 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                     <li><a href="/amp/amp-using-external-video.html">AMP外部ビデオを使用する</a></li>
                   
                 
+                  
+                    <li><a href="/amp/amp-and-advertising.html">AMPと広告</a></li>
+                  
+                
               </ul>
             
           
             
-              <h5 class="submenu-header"><a href="/training/index.html"><strong>トレーニング+ </strong></a></h5>
+              <h5 class="submenu-header"><a href="/training/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;トレーニング</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
@@ -1006,7 +1043,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/training/training-demand-developing-brightcove-player.html">トレーニング:Brightcove ブプレーヤーで開発する</a></li>
+                    <li><a href="/training/training-demand-developing-brightcove-player.html">トレーニング:ブライトコーブプレーヤーで開発する</a></li>
                   
                 
                   
@@ -1014,37 +1051,33 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
                   
                 
                   
-                    <li><a href="/training/brightcove-university.html">Brightcove Universityトレーニングコース</a></li>
+                    <li><a href="/training/brightcove-university.html">ブライトコーブ大学トレーニングコース</a></li>
                   
                 
               </ul>
             
           
             
-              <h5 class="submenu-header"><a href="/release-notes/index.html">リリースノート<strong> + </strong></a></h5>
+              <h5 class="submenu-header"><a href="/release-notes/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;リリースノート</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
-                    <li><a href="/release-notes/brightcove-player-release-notes.html">Brightcove ブプレーヤーリリースノート</a></li>
+                    <li><a href="/release-notes/brightcove-player-release-notes.html">ブライトコーブプレーヤーリリースノート</a></li>
                   
                 
                   
-                    <li><a href="/release-notes/brightcove-player-prerelease-notes.html">Brightcove ブプレーヤープレリリースノート</a></li>
+                    <li><a href="/release-notes/brightcove-player-prerelease-notes.html">ブライトコーブプレーヤープレリリースノート</a></li>
                   
                 
               </ul>
             
           
             
-              <h5 class="submenu-header"><a href="/support/index.html"><strong>サポート+ </strong></a></h5>
+              <h5 class="submenu-header"><a href="/support/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;サポート</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                 
                   
-                    
-                  
-                
-                  
-                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcove ブのシステムステータスページの表示</a></li>
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">ブライトコーブのシステムステータスページの表示</a></li>
                   
                 
                   
@@ -1083,101 +1116,82 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 
 
 <article class="bcls-article">
-  <h1>Brightcove Playerのシステム要件</h1>
-  <summary>このトピックでは、Brightcove Playerでサポートされるプラットフォームとブラウザーについての情報を提供します。</summary>
+  <h1>ブライトコーブプレーヤーのシステム要件</h1>
+  <summary>このトピックでは、Brightcove Player でサポートされているプラットフォームとブラウザについて説明します。</summary>
   <section class="bcls-section">
     <table class="bcls-table">
       <thead class="bcls-table__head">
         <tr>
-          <th>ブラウザー</th>
-          <th>バージョン</th>
-          <th>注</th>
+          <th style="width:25%">ブラウザー</th>
+          <th style="width:25%">バージョン</th>
+          <th style="width:50%">備考</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
-          <td >Internet Explorer (Win)</td>
-          <td >11</td>
-          <td ><ul>
-              <li>Windows8.1以降のIE11は、HTMLベースのHLSとDASH（MSEを活用）を使用します</li>
-              <li>Windows &lt;8.1上のIE11は、HLS用のFlash（Flashが無効になっている場合はMP4にフォールバックします）とDASH用のSilverlightを使用します</li>
-              <li>互換モードのIE10および11では、ドメイン制限のあるコンテンツを表示すると、ドメイン制限のエラーが表示されます。</li>
-              <li>IEの<strong translate="No">Compatibility</strong>モードは&nbsp;<strong>ない</strong>&nbsp;サポートされています</li>
-              <li>IEの<strong translate="No">Enterprise</strong>モードは&nbsp;<strong>ない</strong>&nbsp;サポートされています</li>
-              <!-- <li>IE11 on Windows 10 and 8.1, and IE11 on Win8 Metro, use Native/Shaka-Player. (Shaka-Player provides DASH support. Note that prior to the Brightcove Player DRM plugin version 4, the playback technology used for DASH support was built on top of Dash.js.) All other IE versions and configurations use the Silverlight plugin.</li> -->
-              <li>2018 年 7 月 1 日以降、Brightcove ブプレーヤーは、IE 8、9、10 を含む、バージョン 11 より前の Microsoft Internet Explorer のすべてのバージョンをサポートしなくなります。7 月 1 日より前にリリースされた Brightcove Player のバージョンは IE 10 以降で引き続き動作する可能性がありますが、Brightcove ブはこれらのブラウザーでテストしたり、これらのバージョンに固有のバグ修正を検討したりすることはありません。</li>
-              <li><a href="https://www.itprotoday.com/windows-10/what-are-windows-10-n-and-kn-editions">Windows 10N/10KN </a>エディションには、Windows Media Player および関連テクノロジがプリインストールされていません。ビデオを再生するには、<a href="https://support.microsoft.com/en-us/help/3010081/media-feature-pack-for-windows-10-n-and-windows-10-kn-editions">マイクロソフトのメディア機能パックをインストールできます</a>。</li>
-            </ul></td>
+          <td>インターネットエクスプローラー (勝利)</td>
+          <td>11</td>
+          <td>2021 <strong>年 6 月 15 日以降</strong>、ブライトコーブはどのバージョンの Windows でも Internet Explorer 11 (IE11) を積極的にサポートしなくなります。この日付以降、関連するバグレポートおよび機能強化リクエストは受け付けられません。Brightcove Player 6.x のどのバージョンでも IE11 サポートを意図的に削除することはしませんが、このサポートに対する積極的なテストも行いません。IE11 のサポートが必要なお客様は、引き続き機能を維持するために、6 月 15 日以前にリリースされた最後のバージョンにプレーヤーをロックすることができます。ロックされたプレイヤーは、新しい機能強化やバグ修正を受けられなくなりました。Edge は Microsoft の推奨ブラウザで、ブライトコーブチームが完全にサポートしています。</td>
         </tr>
         <tr>
-          <td >Microsoft Edge</td>
-          <td >最新</td>
-          <td ><a href="https://www.itprotoday.com/windows-10/what-are-windows-10-n-and-kn-editions">Windows 10N/10KN </a>エディションには、Windows Media Player および関連テクノロジがプリインストールされていません。ビデオを再生するには、<a href="https://support.microsoft.com/en-us/help/3010081/media-feature-pack-for-windows-10-n-and-windows-10-kn-editions">マイクロソフトのメディア機能パックをインストールできます</a>。</td>
+          <td>マイクロソフトエッジ (Win &amp; Mac)</td>
+          <td>現在のメジャーバージョンと以前の2つのメジャーバージョン</td>
+          <td>&nbsp;</td>
         </tr>
         <tr>
-          <td >Chrome Desktop (Win、Mac)</td>
-          <td >最新</td>
-          <td >&nbsp;</td>
+          <td>Chrome デスクトップ (勝つ、Mac)</td>
+          <td>現在のメジャーバージョンと以前の2つのメジャーバージョン</td>
+          <td>&nbsp;</td>
         </tr>
         <tr>
-          <td >Firefox Desktop (Win、Mac)</td>
-          <td >最新</td>
-          <td >&nbsp;</td>
+          <td>クロームモバイル (アンドロイド)</td>
+          <td>現在のメジャーバージョンと以前の2つのメジャーバージョン</td>
+          <td>GoogleはもはやChromeブラウザでAndroid 4.x以前をサポートしていません。</td>
         </tr>
         <tr>
-          <td >Safari Desktop (Mac)</td>
-          <td >9以降</td>
-          <td >&nbsp;</td>
+          <td>Chrome モバイル (iOS)</td>
+          <td>現在のメジャーバージョンと以前の2つのメジャーバージョン</td>
+          <td>プラグインの互換性については、ブライトコーブの <a href="/plugins/advertising-ima3-plugin.html">IMA</a> またはその他のサードパーティ製ドキュメントを参照してください。</td>
         </tr>
         <tr>
-          <td >Safari Mobile (iOS)</td>
-          <td >9以降</td>
-          <td >&nbsp;</td>
+          <td>Safari デスクトップ（Mac）</td>
+          <td>現在のメジャーバージョンと以前の2つのメジャーバージョン</td>
+          <td>&nbsp;</td>
         </tr>
         <tr>
-          <td >Chrome Mobile（iOS）</td>
-          <td >最新</td>
-          <td >Brightcove ブにご相談ください<a href="/plugins/advertising-ima3-plugin.html">IMA</a>またはプラグインの互換性に関する他のサードパーティのドキュメント。</td>
-        </tr>
-        <!-- <tr>
-			<td >Embedded Web Views (iOS)</td>
-			<td >9+</td>
-			<td >Please consult Brightcove's <a href="/plugins/advertising-ima3-plugin.html">IMA</a> or other 3rd-party docs for plugin compatibility.</td>
-		</tr> --><!-- <tr>
-<td >Android Native Browser</td>
-<td >2.3, 4+</td>
-<td >The Android stock browser is not actively supported by Google, and it is being replaced with Chrome on most Android 5.0+ devices.</td>
-</tr> -->
-        <tr>
-          <td >Chrome Mobile (Android)</td>
-          <td >最新</td>
-          <td >Googleは、ChromeブラウザでAndroid4.x以前をサポートしなくなりました。</td>
+          <td>サファリモバイル (iOS)</td>
+          <td>現在のメジャーバージョンと以前の2つのメジャーバージョン</td>
+          <td>&nbsp;</td>
         </tr>
         <tr>
-          <td >IE Windows 8 Tablet</td>
-          <td >11</td>
-          <td >&nbsp;</td>
+          <td>Firefoxデスクトップ（勝利、Mac）</td>
+          <td>現在のメジャーバージョンと以前の2つのメジャーバージョン</td>
+          <td>&nbsp;</td>
         </tr>
         <tr>
-          <td >Chrome OS</td>
-          <td >33以降</td>
-          <td >&nbsp;</td>
+          <td>Firefox ESR</td>
+          <td>現在</td>
+          <td>&nbsp;</td>
         </tr>
       </tbody>
     </table>
   </section>
   <p>&nbsp;</p>
   <div class="BCL-references">
-    <h3>注</h3>
+    <h3>注意:</h3>
     <ul>
-      <li>実際のマシンのみがサポートされています。プレーヤーは通常、仮想マシンとホスト型仮想デスクトップ（HVD）で動作すると予想されますが、これらのテストは行われず、サポートされていません。</li>
-      <li>Flash Playerが必要な場合は常に、最新バージョンが必要です。</li>
-      <li>以前のバージョンのAndroidにある「ストック」ブラウザ（多くの場合、「インターネット」という名前のアイコンが付いています）には、ビデオの再生に関して実行できない問題がいくつかあるため、お勧めしません。</li>
-      <li>Brightcove Playerは、Prototype.js v1.6が存在する場合に失敗することが知られており、v1.7が存在する場合に機能する可能性があります。Brightcove Playerは、Prototype.jsのどのバージョンとの共有環境での使用もサポートしていません。</li>
+      <li>Windows 8.1+のIE 11では、HTMLベースのHLSとDASH（MSEを活用）を使用している。</li>
+      <li>Windows &lt; 8.1 の IE 11 では HLS にはフラッシュ (フラッシュが無効になっている場合は MP4 にフォールバックします)、ダッシュには Silverlight を使用します。フラッシュと Silverlight は、マイクロソフトではサポートされなくなったため、利用できない場合があります。 <li>互換モードでは、IE 10 および 11 は、ドメイン制限コンテンツを表示するときにドメイン制限エラーを表示します。</li>
+      <li>IE の互換モードはサポートされていません。</li>
+      <li>IEのエンタープライズモードはサポートされていません。</li>
+      <li>Windows <a href="https://www.itprotoday.com/windows-10/what-are-windows-10-n-and-kn-editions">10N/10KN</a> エディションには、Windows Media Player および関連テクノロジがプリインストールされていません。ビデオを再生するには、 <a href="https://support.microsoft.com/en-us/help/3010081/media-feature-pack-for-windows-10-n-and-windows-10-kn-editions">マイクロソフトのメディア機能パックをインストールできます</a>。</li>
+      <li>実機のみがサポートされます。通常、プレーヤーは仮想マシンとホスト仮想デスクトップ (HVD) で動作すると予想されますが、これらのテストは行わず、サポートしていません。</li>
+      <li>Flash Playerが必要な場合、最新バージョンが必要です。</li>
+      <li>Androidの以前のバージョンで見つかった「ストック」ブラウザ（多くの場合、「インターネット」という名前のアイコン）には、ビデオ再生に関する多くの問題があり、推奨されません。</li>
+      <li>Prototype.js v1.6 が存在する場合、ブライトコーブプレーヤーが失敗することが知られており、v1.7 が存在する場合は動作する可能性があります。Brightcove Player は、Prototype.js のどのバージョンでも共有環境での使用をサポートしていません。</li>
     </ul>
   </div>
 </article>
-
 <!-- complete bootstrap layout -->
     </div>
     <div class="col-sm-2 right-side-bar">
@@ -1192,11 +1206,18 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 </div>
 
 <hr>
-<footer class="bcls-footer" role="contentinfo">  <div class="row">
+<div class="last-updated">
+  ページ最終更新日 2021年4月27日
+</div>
+
+
+
+<footer class="bcls-footer" role="contentinfo">
+  <div class="row">
     <div class="region region-footer-top-center col-md-12">
       <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
 
-        <h2>Brightcove ブサポート</h2>
+        <h2>ブライトコーブのサポート</h2>
 
         <ul class="menu">
           <li>
@@ -1223,14 +1244,14 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
           </li>
           <li>
-            <a href="https://university.brightcove.com/">Brightcove University</a>
+            <a href="https://university.brightcove.com/">ブライトコーブ大学</a>
           </li>
         </ul>
 
       </nav>
       <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
 
-        <h2>Brightcove</h2>
+        <h2>ブライトコーブ</h2>
 
         <ul class="menu">
           <li>
@@ -1249,12 +1270,12 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <table>
           <tr>
             <td>
-              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. All rights reserved.</div>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> ブライトコーブ Inc. すべての権利を保有</div>
             </td>
             <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
             <td>
               <div class="gf-links-cols footer-menu">
-                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin" style="margin-right: 1rem;"><i data-feather="linkedin" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter" style="margin-right: 1rem;"><i data-feather="twitter" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i data-feather="facebook" style="color:#8E9093;height: 1.25rem;"></i></a>
                 </div>
               </div>
             </td>
@@ -1265,8 +1286,6 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   </div>
 </footer>
 
-</div>
-</div>
 <script>
       
   var searchBox = sajari.init({
@@ -1303,6 +1322,9 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   
   <script src="/assets/js/sajari-search-foot.js"></script>
   
+  <script>
+  feather.replace()
+</script>
   <!-- <script src="/assets/js/sajari-index.js"></script> -->
   <style>
     a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
