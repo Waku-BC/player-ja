@@ -1092,8 +1092,8 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   </section>
   <section class="bcls-section">
     <h2 id="Player">プレーヤー</h2>
-    <aside class="bcls-aside bcls-aside--information language-editable">注：このドキュメントでは、CSS に関する知識と、ブラウザーの開発ツールを使用して HTML 要素のクラスを表示し、適用可能な CSS を調べることを前提としています。前提条件となる基本的な知識がない場合は、<a href="/getting-started/step-step-player-customization.html">ステップバイステップ：プレイヤーのカスタマイズ</a>。</aside>
-    <p >プレイヤーの外観を変更することはできますが、まずそれに対処する方法が必要です。これを確認するには、詳細（ページ内埋め込み）コードが挿入されたHTMLページを参照します。の中に<strong><span translate="No">Elements</span></strong>開発ツールのセクションで、<code translate="No">&lt;video-js&gt;</code>タグを付けると、値を持つクラスがあることがわかります<code translate="No">video-js</code>とりわけ、割り当てられました。</p>
+    <aside class="bcls-aside bcls-aside--information language-editable">注：このドキュメントでは、CSS に関する知識と、ブラウザーの開発ツールを使用して HTML 要素のクラスを表示し、適用可能な CSS を調べることを前提としています。前提条件となる基本的な知識がない場合は、<a href="/getting-started/step-step-player-customization.html">ステップバイステップ：プレーヤーのカスタマイズ</a>。</aside>
+    <p >プレーヤーの外観を変更することはできますが、まずそれに対処する方法が必要です。これを確認するには、詳細（ページ内埋め込み）コードが挿入されたHTMLページを参照します。の中に<strong><span translate="No">Elements</span></strong>開発ツールのセクションで、<code translate="No">&lt;video-js&gt;</code>タグを付けると、値を持つクラスがあることがわかります<code translate="No">video-js</code>とりわけ、割り当てられました。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="カスタマイズ-プレーヤーの要素" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/player-elements.png"/></figure>
     <p >これを知ったら、スタイルを使用してプレーヤー自体を変更することができます。たとえば、プレーヤーの周囲に境界線を含めるには、次のスタイルを使用できます。</p>
     <pre class="line-numbers">
@@ -1110,7 +1110,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <h2 id="iframe_player">iframeプレーヤー</h2>
     <p >プレーヤーの標準（iframe）実装を使用している場合、状況は異なります。あなたはまだプレーヤーを見るでしょう<code translate="No">video-js</code>クラスですが、もちろん、iframe内と<code translate="No">video-js</code>鬼ごっこ。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="iframe-player-elements" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/iframe-elements.png"/></figure>
-    <p >作成したスタイルは、iframe 内のプレーヤーでも動作しますが、CSS ファイルを作成して Studio を使用してプレーヤーに関連付ける必要があります。あなたはに行くことによってこれを行います<strong>プレイヤー</strong>モジュールをクリックし、CSSを関連付けるプレーヤーをクリックしてから、<strong>プラグイン&gt;スタイルシート</strong>セクションは、CSSファイルのパスを追加します。</p>
+    <p >作成したスタイルは、iframe 内のプレーヤーでも動作しますが、CSS ファイルを作成して Studio を使用してプレーヤーに関連付ける必要があります。<strong>プレーヤー</strong>モジュールをクリックし、CSSを関連付けるプレーヤーをクリックしてから、<strong>プラグイン&gt;スタイルシート</strong>セクションから、CSSファイルのパスを追加します。</p>
     <p >iframe自体をカスタマイズしたい場合は、要素セレクターを使用してこれを行うことができます。次に、<code translate="No">&lt;style&gt;</code>タグを使用して希望通りに変更します。以下の例では、プレーヤーの周囲に境界線が追加されています。</p>
     <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;!doctype html&gt;
@@ -1455,7 +1455,7 @@ spacer.setAttribute("style", "justify-content: flex-end;");</code></pre>
   <section class="bcls-section">
     <h2 id="Hover_gradient">ホバーグラデーション</h2>
     <p >プレーヤーが最初に読み込まれたとき、およびプレーヤーの上にマウスを置くと、ビデオタイトルが表示され、プレーヤーの上部に黒から透明のグラデーションが表示されます。このセクションでは、グラデーションを変更する方法を説明します。</p>
-    <p >実際のグラデーションはCSSによって制御されます<code translate="No">linear-gradient</code>の機能<code translate="No">vjs-dock-text</code> HTML <code translate="No">&lt;div&gt;.</code>グラデーションのサイズは、高さによって制御できます。<code translate="No">vjs-dock-text</code> HTML <code translate="No">&lt;div&gt;</code>。プレイヤーからのその要素とその子は次のとおりです。</p>
+    <p >実際のグラデーションはCSSによって制御されます<code translate="No">linear-gradient</code>の機能<code translate="No">vjs-dock-text</code> HTML <code translate="No">&lt;div&gt;.</code>グラデーションのサイズは、高さによって制御できます。<code translate="No">vjs-dock-text</code> HTML <code translate="No">&lt;div&gt;</code>。プレーヤーからのその要素とその子は次のとおりです。</p>
     <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;div class="vjs-dock-text"&gt;
   &lt;h1 class="vjs-dock-title"&gt;Tiger&lt;/h1&gt;
@@ -1491,7 +1491,7 @@ spacer.setAttribute("style", "justify-content: flex-end;");</code></pre>
     <figure class="bcls-figure"><img class="bcls-image" alt="プレイボタンクラス" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/play-button-classes.png"/></figure>
     <p >大きな再生ボタンをカスタマイズするには、次の 3 つの方法があります。</p>
     <ul>
-      <li>プレイヤーに割り当てられたIDを参照します。</li>
+      <li>プレーヤーに割り当てられたIDを参照します。</li>
       <li>プロパティの関連性を高めるには、複数のクラスを使用します。</li>
       <li>JavaScript を使用してプレーヤーの id 属性を設定し、CSS で参照します。</li>
     </ul>
@@ -1565,7 +1565,7 @@ spacer.setAttribute("style", "justify-content: flex-end;");</code></pre>
   <section class="bcls-section">
     <h2 id="Component_selectors">コンポーネントセレクター</h2>
     <p >これらのスクリーンショットと次の表は、コンポーネントと、そのコンポーネントを操作するために必要なCSSセレクターを示しています。コンポーネント自体の詳細については、<a href="/coding-topics/overview-components.html">コンポーネントの概要</a> doc。</p>
-    <h3>プレイヤーのロードとホバーで</h3>
+    <h3>プレーヤーのロードとホバーで</h3>
     <figure class="bcls-figure"><img style="max-width: none" width="794" height="352" alt="ロード時のコンポーネント" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/5x-components-onload.png"/></figure>
     <h3>再生中</h3>
     <figure class="bcls-figure"><img class="bcls-image" style="max-width: none" width="831" height="525" alt="コンポーネント再生" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/6x-components.png"/></figure>
