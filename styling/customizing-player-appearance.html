@@ -1084,18 +1084,18 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 
 <article class="bcls-article">
   <h1>プレーヤーの外観のカスタマイズ</h1>
-  <summary>このトピックは、BrightcovePlayerの外観をカスタマイズするための入門書です。コンテンツはChromeの開発ツールを使用していますが、最新のブラウザはすべて同等の機能を備えています。さまざまなブラウザで開発ツールを使用する方法の簡単な紹介については、<a href="https://general.support.brightcove.com/developer/concepts-javascript-debugging-basics.html">デバッグの基本</a>資料。</summary>
-  <aside class="bcls-aside bcls-aside--information language-editable">このドキュメントは、CSSを使用してプレーヤーをカスタマイズします。Studioで使用できるカスタマイズオプションのセットは限られており、実装するためにCSSの知識は必要ありません。を参照してください<a href="https://studio.support.brightcove.com/players/styling-players.html">スタイリングプレーヤー</a>詳細については、ドキュメントを参照してください。</aside>
+  <summary>このトピックは、BrightcovePlayerの外観をカスタマイズするための入門書です。コンテンツはChromeの開発ツールを使用していますが、最新のブラウザはすべて同等の機能を備えています。さまざまなブラウザで開発ツールを使用する方法の簡単な紹介については、<a href="https://general.support.brightcove.com/developer/concepts-javascript-debugging-basics.html">デバッグの基本</a>ドキュメントを参照して下さい。</summary>
+  <aside class="bcls-aside bcls-aside--information language-editable">このドキュメントは、CSSを使用してプレーヤーをカスタマイズします。Studioで使用できるカスタマイズオプションのセットは限られており、実装するためにCSSの知識は必要ありません。詳細については、<a href="https://studio.support.brightcove.com/players/styling-players.html">スタイリングプレーヤー</a>ドキュメントを参照してください。</aside>
   <section class="bcls-section">
     <h2 id="Create_own_skin">独自のスキンを作成する</h2>
     <p >デフォルトのスキンを使用せず、独自のスキンを作成したい場合は、Player Management API を使用して行うことができます。必要な情報は、<a href="/general/player-configuration-guide.html#skin">プレーヤー設定ガイドに記載されています</a>。</p>
   </section>
   <section class="bcls-section">
     <h2 id="Player">プレーヤー</h2>
-    <aside class="bcls-aside bcls-aside--information language-editable">注：このドキュメントでは、CSS に関する知識と、ブラウザーの開発ツールを使用して HTML 要素のクラスを表示し、適用可能な CSS を調べることを前提としています。前提条件となる基本的な知識がない場合は、<a href="/getting-started/step-step-player-customization.html">ステップバイステップ：プレイヤーのカスタマイズ</a>。</aside>
-    <p >プレイヤーの外観を変更することはできますが、まずそれに対処する方法が必要です。これを確認するには、詳細（ページ内埋め込み）コードが挿入されたHTMLページを参照します。の中に<strong><span translate="No">Elements</span></strong>開発ツールのセクションで、<code translate="No">&lt;video-js&gt;</code>タグを付けると、値を持つクラスがあることがわかります<code translate="No">video-js</code>とりわけ、割り当てられました。</p>
+    <aside class="bcls-aside bcls-aside--information language-editable">注：このドキュメントでは、CSS に関する知識と、ブラウザーの開発ツールを使用して HTML 要素のクラスを表示し、適用可能な CSS を調べることを前提としています。前提条件となる基本的な知識がない場合は、<a href="/getting-started/step-step-player-customization.html">ステップバイステップ：プレーヤーのカスタマイズ</a>を参照して下さい。</aside>
+    <p >プレーヤーの外観を変更することはできますが、まずはそれに対処する方法が必要です。これを確認するには、詳細（ページ内埋め込み）コードが挿入されたHTMLページを参照します。<strong><span translate="No">Elements</span></strong>開発ツールのセクションで、<code translate="No">&lt;video-js&gt;</code>タグを見ると、多くの値が割り当てられていますが、とりわけ<code translate="No">video-js</code>の値を持つクラスがあることが分かります。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="カスタマイズ-プレーヤーの要素" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/player-elements.png"/></figure>
-    <p >これを知ったら、スタイルを使用してプレーヤー自体を変更することができます。たとえば、プレーヤーの周囲に境界線を含めるには、次のスタイルを使用できます。</p>
+    <p >これが分かったら、styleを使用してプレーヤー自体を変更することができます。たとえば、プレーヤーの周囲に境界線を含めるには、次のスタイルを使用できます。</p>
     <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;style&gt;
   .video-js {
@@ -1108,10 +1108,10 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   </section>
   <section class="bcls-section">
     <h2 id="iframe_player">iframeプレーヤー</h2>
-    <p >プレーヤーの標準（iframe）実装を使用している場合、状況は異なります。あなたはまだプレーヤーを見るでしょう<code translate="No">video-js</code>クラスですが、もちろん、iframe内と<code translate="No">video-js</code>鬼ごっこ。</p>
+    <p >プレーヤーの標準（iframe）実装を使用している場合、状況は異なります。<code translate="No">video-js</code>クラスのプレーヤーが引き続き教示されますが、当然iframe内および<code translate="No">video-js</code>タグ内にあります。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="iframe-player-elements" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/iframe-elements.png"/></figure>
-    <p >作成したスタイルは、iframe 内のプレーヤーでも動作しますが、CSS ファイルを作成して Studio を使用してプレーヤーに関連付ける必要があります。あなたはに行くことによってこれを行います<strong>プレイヤー</strong>モジュールをクリックし、CSSを関連付けるプレーヤーをクリックしてから、<strong>プラグイン&gt;スタイルシート</strong>セクションは、CSSファイルのパスを追加します。</p>
-    <p >iframe自体をカスタマイズしたい場合は、要素セレクターを使用してこれを行うことができます。次に、<code translate="No">&lt;style&gt;</code>タグを使用して希望通りに変更します。以下の例では、プレーヤーの周囲に境界線が追加されています。</p>
+    <p >作成したスタイルは、iframe 内のプレーヤーでも動作しますが、CSS ファイルを作成して Studio を使用してプレーヤーに関連付ける必要があります。<strong>Player</strong>モジュールをクリックし、CSSを関連付けるプレーヤーをクリックしてから、<strong>プラグイン&gt;スタイルシート</strong>セクションにて、CSSファイルのパスを追加します。</p>
+    <p >iframe自体をカスタマイズしたい場合は、要素セレクターを使用して行うことができます。次に、<code translate="No">&lt;style&gt;</code>タグを使用して希望通りに変更します。以下の例では、プレーヤーの周囲に境界線が追加されています。</p>
     <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;!doctype html&gt;
 &lt;html&gt;
@@ -1141,18 +1141,18 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   </section>
   <section class="bcls-section">
     <h2 id="Play_button">[再生] ボタン</h2>
-    <p >再生ボタンの外観を変更したい場合は、まずそれに対処する方法を知る必要があります。Chromeでは、ボタンを右クリックします。表示される選択肢から選択します<strong><span translate="No">Inspect</span></strong>。選択した場合<strong><span translate="No">Inspect</span></strong>、Chromeの&nbsp;<strong>開発ツール</strong>開くでしょう。</p>
+    <p >再生ボタンの外観を変更したい場合は、まずはそれに対処する方法を知る必要があります。Chromeでは、ボタン上で右クリックします。コンテキストメニューに表示される選択肢から<strong><span translate="No">Inspect</span></strong>を選択します。<strong><span translate="No">Inspect</span></strong>を選択したらChromeの&nbsp;<strong>開発ツール</strong>開きます。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="検査ボタン" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/inspect-button.png"/></figure>
-    <p >の中に<strong><span translate="No">Elements</span></strong>開発ツールのセクションには、ボタン要素に対応するHTMLコードが表示されます。</p>
+    <p >開発ツールの中の<strong><span translate="No">Elements</span></strong>セクションに、ボタン要素に対応するHTMLコードが表示されます。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="大きな再生ボタン" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/big-play-button.png"/></figure>
-    <p >上記のハイライトされたコードから、ボタンに割り当てられたクラスがわかります<code translate="No">vjs-big-play-button</code>。再生ボタンの色（虎に合わせる）と不透明度は、次のスタイルで変更されます。</p>
+    <p >上記のハイライトされたコードから、ボタンに割り当てられたクラスが<code translate="No">vjs-big-play-button</code>である事が分かります。再生ボタンの色（を虎色に合わせる）と不透明度は、次のスタイルで変更できます。</p>
     <pre class="line-numbers">
 <code class="language-css" translate="No">.vjs-big-play-button {
   background-color: #B37D5B;
   opacity: .6;
 }</code></pre>
-    <p >このアプローチはうまくいくと思うでしょうが、そうではありません。CSSで作業するときは、プロパティの特異性を認識する必要があります。これは、ブラウザが関連性に基づいて要素に適用されるプロパティ値を決定する方法を指します。</p>
-    <p >ボタンの変更を適用する1つの方法は、セレクターに別のクラスを追加することです。たとえば、<code translate="No">.video-js</code>セレクターの特異性を高めるためのクラス。詳細については、<a href="#CSS_specificity"> CSSの特異性</a>セクション</p>
+    <p >このアプローチはうまくいくと思うでしょうが、そうではありません。CSSで作業するときは、プロパティの特異性を注意する必要があります。これは、ブラウザが関連性に基づいて要素に適用されるプロパティ値を決定する方法を指します。</p>
+    <p >ボタンの変更を適用する1つの方法は、セレクターに別のクラスを追加することです。たとえば、<code translate="No">.video-js</code>クラスを使用し、セレクターの特異性を高める事ができます。詳細については、<a href="#CSS_specificity"> CSSの特異性</a>セクションを参照して下さい。</p>
     <p >次に、CSS でプレーヤーの大きな再生ボタンを次のように参照します。</p>
     <pre class="line-numbers">
 <code class="language-css" translate="No"><span class="bcls-highlight">.video-js</span> .vjs-big-play-button {
@@ -1166,11 +1166,11 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <pre class="line-numbers">
 <code class="language-javascript" translate="No">display: none;</code></pre>
     <h3>実験</h3>
-    <p >次の CodePen では、再生ボタンを試すことができます。再生ボタンの三角形は実際にはフォントであり、<code translate="No">font-size</code>そのサイズはスタイルで制御されることに注意してください。</p>
+    <p >次の CodePenで、再生ボタンを試すことができます。再生ボタンの三角形は実際にはフォントであり、そのサイズは<code translate="No">font-size</code>スタイルで制御されることに注意してください。</p>
     <p data-height="414" data-theme-id="14832" data-slug-hash="KVVNLX" data-default-tab="result" data-user="mboles" class="codepen"><a href="http://codepen.io">CodePen </a>の Pen <a href="http://codepen.io/mboles/pen/KVVNLX/"> 5.x ビッグプレイボタンのカスタマイズマット・ボレス</a> ( <a href="http://codepen.io/mboles"> @mboles </a> ) を参照してください。</p>
     <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
     <h3>ホバーテキストを変更する</h3>
-    <p >大きな再生ボタンにカーソルを合わせたときに表示されるテキストを変更したい場合は、<strong>動画を再生します</strong>&nbsp;デフォルトでは、動画に固有の何かに、それを行うことができます。目的の言語を引数として使用して、次のJavaScriptを追加します。<code translate="No">controlText</code>方法。</p>
+    <p >大きな再生ボタンにカーソルを合わせたときに表示されるテキストを動画固有のものに変更する事が可能です。デフォルトでテキストは<strong>Play Video</strong>&nbsp;です。<code translate="No">controlText</code>メソッドを引数として必要な言い回しを使い、次のJavaScriptを追加します。</p>
     <pre class="line-numbers">
 <code class="language-javascript" translate="No">videojs.getPlayer('myPlayerID').ready(function() {
   var myPlayer = this;
@@ -1179,13 +1179,13 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 </code></pre>
   </section>
   <section class="bcls-section">
-    <h2 id="Controls_visibility">可視性をコントロールします</h2>
-    <p >コントロールバーとそれに含まれるコントロールを表示するかどうかを制御できます。プレーヤーの作成の開始からコントロールバーを非表示にする場合は、次のスタイルを使用できます。</p>
+    <h2 id="Controls_visibility">コントロールの可視性</h2>
+    <p >コントロールバーとそれに含まれるコントロールを表示するかどうかを制御できます。プレーヤーの作成時からコントロールバーを非表示にする場合は、次のスタイルを使用できます。</p>
     <pre class="line-numbers">
 <code class="language-css" translate="No">.video-js .vjs-control-bar {
   display: none;
 }</code></pre>
-    <p >あるイベントに基づいてこれを動的に実行したい場合は、<code translate="No">controlBar.hide()/show()</code>メソッド。以下のコードスニペットは、使用するメソッドを示しています（これは、<code translate="No">id</code>の値で<code translate="No">myPlayer</code>ビデオ上）：</p>
+    <p >あるイベントに基づいてこれを動的に実行したい場合は、<code translate="No">controlBar.hide()/show()</code>メソッドを使用できます。以下のコードスニペットは、使用するメソッドを示しています（<code translate="No">id</code>と<code translate="No">myPlayer</code>という値をビデオに持っていると仮定しています）：</p>
     <pre class="line-numbers">
 <code class="language-javascript" translate="No">&lt;video-js id="myPlayerID"
 	data-video-id="5781068653001"
@@ -1214,8 +1214,8 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 		myPlayer.controlBar.show();
 	}
 &lt;/script&gt;</code></pre>
-    <h3>コントロールが隠れることはありません</h3>
-    <p >コントロールが隠れないようにすることもできます。これを行うには、<code translate="No">transform.none</code>スタイル。セレクターは、変換の特異性のために6つのクラスが使用される限り非常に長いです。</p>
+    <h3>コントロールを隠さないようにする</h3>
+    <p >コントロールが隠れないようにすることもできます。これを行うには、<code translate="No">transform.none</code>スタイルを使用します。セレクターは、変換の特異性のために6つのクラスが使用される限り長くなります。</p>
     <pre class="line-numbers">
 <code class="language-css" translate="No">.video-js.not-hover.vjs-has-started.vjs-paused.vjs-user-active .vjs-control-bar:not(.vjs-focus-within):not(.vjs-control-bar-visible),
 .video-js.not-hover.vjs-has-started.vjs-paused.vjs-user-inactive .vjs-control-bar:not(.vjs-focus-within):not(.vjs-control-bar-visible),
@@ -1235,15 +1235,15 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   -ms-transform: none;
 }</code></pre>
     </aside>
-    <aside class="bcls-aside bcls-aside--tip language-editable">このCSSを使用してコントロールバーが消えないようにすることは、コントロールバーの要素を右クリックしてそれらを検査するときに非常に役立ちます。これを行わないと、右クリックするとコントロールバーが消えます。また、最初の右クリックでBrightcove Playerの情報メニューが表示され、<strong> 2回目の右クリックで、検査を選択できるメニューが表示されます</strong>。</aside>
+    <aside class="bcls-aside bcls-aside--tip language-editable">このCSSを使用してコントロールバーが消えないようにすることは、コントロールバーの要素を右クリックしてそれらを検証するときに非常に役立ちます。これを行わないと、右クリックするとコントロールバーが消えます。また、最初の右クリックでBrightcove Playerの情報メニューが表示され、<strong> 2回目の右クリックで、検証を選択できるコンテキストメニューが表示されます</strong>。</aside>
   </section>
   <section class="bcls-section">
     <h2 id="Progress_bar">プログレスバー</h2>
-    <p >これで、進行状況インジケーターの色を変更する方法がわかります。次に示すように、インジケーターのデフォルトの色はフクシアです。</p>
+    <p >進行状況インジケーターの色を変更する方法ですが、次に示すように、インジケーターのデフォルトの色はフクシアです。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="カスタマイズ-プレーヤーの要素" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/play-progress-standard.png"/></figure>
-    <p >ここでの課題は、要素のクラス名を見つけることです。ドキュメントの前半で説明したのと同じ手法を使用して、要素を右クリックし、<strong><span translate="No">Inspect</span></strong>、次にドリルダウンすると、<code translate="No">vjs-play-progress</code>クラス。</p>
+    <p >ここでの課題は、要素のクラス名を見つけることです。ドキュメントの前半で説明したのと同様に、要素を右クリックし、<strong><span translate="No">Inspect</span></strong>を選択し、ドリルダウンすると、<code translate="No">vjs-play-progress</code>クラスが表示されます。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="進行状況とボリューム要素" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/play-progress-element.png"/></figure>
-    <aside class="bcls-aside bcls-aside--tip language-editable">ブラウザでは、実際にコンソールでクラス名を検索できます。たとえば、Chromeでは単に使用します<strong>CTL-F</strong>次に、探しているクラスに入ります。</aside>
+    <aside class="bcls-aside bcls-aside--tip language-editable">ブラウザでは、実際にコンソールでクラス名を検索できます。たとえば、Chromeでは<strong>CTL-F</strong>を使用して、探しているクラス名を入力するだけです。</aside>
     <p >ザ・<code translate="No">background-color</code>要素の色を変更し、スタイルを設定する必要があります。必要なスタイルがここに表示されます。</p>
     <pre class="line-numbers">
 <code class="language-css" translate="No">.video-js .vjs-play-progress {
@@ -1255,7 +1255,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   </section>
   <section class="bcls-section">
     <h2 id="Volume_controls">ボリュームコントロール</h2>
-    <p >CSSを使用するか、CSSを渡すことで、ボリュームコントロールをカスタマイズできます。<code translate="No">options</code>プレーヤー作成中のオブジェクト。</p>
+    <p >CSSを使用するか、プレーヤー作成時に<code translate="No">options</code>オブジェクトを渡すことにより、ボリュームコントロールをカスタマイズできます。</p>
     <h3>CSSを使用して更新する</h3>
     <p >次に、ボリュームコントロールの色を変更する方法を説明します。デフォルトの外観を次に示します。フクシアの音量レベルバーが付いた白い音量ボタンです。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="カスタマイズ-プレーヤーの要素" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/volume-standard.png"/></figure>
@@ -1264,7 +1264,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 <code class="language-css" translate="No">.vjs-volume-panel.vjs-control.vjs-volume-panel-horizontal {
   color: yellow;
 }</code></pre>
-    <p >ボリュームバーの色を変更するには、<code translate="No">background-color</code>要素のスタイルを設定する必要があります。必要なスタイルがここに表示されます。</p>
+    <p >ボリュームバーの色を変更するには、<code translate="No">background-color</code>要素のスタイルを設定する必要があります。必要なスタイルはここに示されている通りです。</p>
     <pre class="line-numbers">
 <code class="language-css" translate="No">.video-js .vjs-volume-level{
   background-color: yellow;
@@ -1272,17 +1272,17 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <p ><code translate="No">.video-js</code>クラスがセレクタに追加されたことに注目してください。これは、セレクタのCSSの特異性を高めるために行われます。</p>
     <p >ボタンとボリュームバーのスタイル設定の結果を次に示します。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="カスタマイズ-プレーヤーの要素" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/volume-yellow.png"/></figure>
-    <h3>オプションオブジェクトを使用して更新</h3>
-    <p >ボリュームコントロールのレイアウトを変更するには、<code translate="No">options</code>オブジェクトに<a href="/publish/delaying-player-instantiation.html">bc（）メソッド</a>次のように：</p>
+    <h3>optionオブジェクトを使用して更新</h3>
+    <p >ボリュームコントロールのレイアウトを変更するには、次のように<code translate="No">options</code>オブジェクトを<a href="/publish/delaying-player-instantiation.html">bc（）メソッド</a>に渡すことができます</p>
     <ol class="bcls-tasklist">
-      <li>から次の属性を削除して、プレーヤーの作成を遅らせます<code translate="No">video</code>鬼ごっこ：
+      <li><code translate="No">video</code>タグから次の属性を削除して、プレーヤーの作成を遅らせます。：
         <ul>
           <li><code translate="No">data-account</code></li>
           <li><code translate="No">data-player</code></li>
           <li><code translate="No">data-video-id</code></li>
         </ul>
       </li>
-      <li>を定義する<code translate="No">options</code>オブジェクトが<code translate="No">volumePanel</code>垂直であり、コントロールバーとインラインではありません。
+      <li><code translate="No">volumePanel</code>垂直になり、コントロールバーとインラインにならないように、<code translate="No">options</code>オブジェクトを定義します。
         <pre class="line-numbers">
 <code class="language-css" translate="No">var options = {
   controlBar: {
@@ -1293,28 +1293,28 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   }
 };</code></pre>
       </li>
-      <li>最初に削除されたプレーヤー属性を追加します。</li>
-      <li>を呼び出してプレーヤーを作成します<a href="/publish/delaying-player-instantiation.html">bc（）メソッド</a>とともに<code translate="No">options</code>オブジェクト。
+      <li>最初に削除したプレーヤー属性を追加します。</li>
+      <li><code translate="No">options</code>オブジェクトを指定して<a href="/publish/delaying-player-instantiation.html">bc（）メソッド</a>プレーヤーを作成します。
         <pre>
 <code class="language-css" translate="No">bc("myPlayerID", options);</code></pre>
       </li>
-      <li>詳細については、<a href="/code-samples/brightcove-player-sample-vertical-volume-control.html">垂直ボリュームコントロール</a>プレーヤーのサンプル。
+      <li>詳細については、<a href="/code-samples/brightcove-player-sample-vertical-volume-control.html">垂直ボリュームコントロール</a>プレーヤーのサンプルを参照して下さい。
         <figure class="bcls-figure"><img class="bcls-image" alt="カスタマイズ-プレーヤーの要素" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/vertical-volume.png"/></figure>
       </li>
     </ol>
   </section>
   <section class="bcls-section">
     <h2 id="Fonts">フォント</h2>
-    <p >タイトルと説明は、プレーヤーが最初にロードされたとき、およびユーザーがプレーヤーの上にカーソルを置いたときに表示されます。タイトルと説明のフォントのスタイルは、一緒にまたは個別に変更できます。のHTML <strong>ドック</strong>次のスクリーンショットに示すように表示されます。あることに注意してください<code translate="No">&lt;div&gt;</code>クラスがの要素<code translate="No">vjs-dock-text</code>他に2つ含まれています<code translate="No">&lt;div&gt;</code>を含む要素<strong>題名</strong>そして<strong>説明</strong>。</p>
+    <p >タイトルと説明は、プレーヤーが最初にロードされたとき、およびユーザーがプレーヤーの上にカーソルを置いたときに表示されます。タイトルと説明のフォントのスタイルは、一緒にまたは個別に変更できます。次のスクリーンショットに示すように、<strong>ドック</strong>のHTMLが表示されます。タイトルと説明を含む他の２つの<code translate="No">&lt;div&gt;</code>要素を含む<code translate="No">vjs-dock-text</code>を持つ<code translate="No">&lt;div&gt;</code>要素があることに注意してください。<strong>題名</strong>そして<strong>説明</strong></p>
     <figure class="bcls-figure"><img class="bcls-image" alt="ドックテキストセレクター" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/dock-text-elements.png"/></figure>
-    <p >にスタイルを設定することで、タイトルと説明の両方に影響を与えることができます<code translate="No">vjs-dock-text</code>クラス。に設定されているスタイルに注意してください<code translate="No">.vjs-dock-title</code>そして<code translate="No">.vjs-dock-description</code>もちろん、より高いレベルで設定されたスタイルによって完全に上書きされることはありません。次のスタイルとそのテキストの結果に示されているように、一部のスタイルは継承されます。</p>
+    <p >に<code translate="No">vjs-dock-text</code>クラスにスタイルを設定することで、タイトルと説明の両方に影響を与えることができます。もちろん、<code translate="No">.vjs-dock-title</code>および<code translate="No">.vjs-dock-description</code>に設定されたスタイルは、より高いレベルに設定されているスタイルによって完全に上書きされるわけではないので注意して下さい。次のスタイルとそのテキストの結果に示されているように、一部のスタイルは継承されます。</p>
     <pre class="line-numbers">
 <code class="language-css" translate="No">.video-js .vjs-dock-text {
   color: yellow;
   font-size: .7em;
 }</code></pre>
     <figure class="bcls-figure"><img class="bcls-image" alt="ドックテキストセレクターの例" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/dock-text-selector.png"/></figure>
-    <p >個々のタイトルと説明を直接スタイル設定できます。以下に設定されているスタイルを示します<code translate="No">.vjs-dock-title</code>そして<code translate="No">.vjs-dock-description</code>クラスセレクター。結果のテキストにスタイルが表示されます。</p>
+    <p >個々のタイトルと説明を直接スタイル設定できます。以下に、<code translate="No">.vjs-dock-title</code>および<code translate="No">.vjs-dock-description</code>クラスセレクターで設定されたスタイルを示します。その結果テキストにスタイルが表示されます。</p>
     <pre class="line-numbers">
 <code class="language-css" translate="No">.video-js .vjs-dock-title {
   color: red;
@@ -1328,38 +1328,38 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   </section>
   <section class="bcls-section">
     <h2 id="Controlbar_icon_manipulation">コントロールバーアイコンの操作</h2>
-    <p >HTMLの順序によって決定されるコントロールバーアイコンの順序<code translate="No">&lt;div&gt;</code> s親コントロールバー<code translate="No">&lt;div&gt;</code>。ここにコントロールバーが表示されます<code translate="No">&lt;div&gt;</code>そのすべての子供たちと。</p>
+    <p >親コントロールバー<code translate="No">&lt;div&gt;</code>内のHTML<code translate="No">&lt;div&gt;</code>の順序によってコントロールバーのアイコンの順番が決まります。ここに、全ての子を含むコントロールバー<code translate="No">&lt;div&gt;</code>を示します。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="要素-controlbar-div" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/elements-controlbar-div.png"/></figure>
-    <p >一般に、これはコントロールバーのアイコンに配置するときに取るべきアプローチです。</p>
+    <p >一般に、コントロールバーのアイコンに配置するときに取るべきアプローチになります。</p>
     <ul>
       <li>コントロールバーに挿入する要素を動的に作成します。</li>
       <li>コントロールバー要素への参照を取得します。</li>
       <li>コントロールバーの前に新しい要素を挿入する要素への参照を取得します。</li>
-      <li>JavaScriptを使用する<code translate="No">insertBefore()</code>アイコンを配置する方法。</li>
+      <li>JavaScriptの<code translate="No">insertBefore()</code>メソッドを使用してアイコンを配置する方法。</li>
     </ul>
     <aside class="bcls-aside bcls-aside--tip language-editable">
-      <p >の構文<code translate="No">insertBefore()</code>は：</p>
+      <p ><code translate="No">insertBefore()</code>の構文は次の通りです：</p>
       <pre class="line-numbers">
 <code class="language-javascript" translate="No">parent.insertBefore(newElement,insertBeforeElement)</code></pre>
-      <p >これは、以下の詳細なコードで、新しいコントロールバー（親）への参照を取得するJavaScriptが表示されることを意味します<code translate="No">&lt;div&gt;</code>コントロールバーに挿入するアイコンと、最後に新しいアイコンが挿入される要素への参照があります。</p>
+      <p >これは、以下の詳細なコードで、新しいコントロールバー（親）への参照を取得するJavaScript、コントロールバーに挿入するアイコンを含む新しい<code translate="No">&lt;div&gt;</code>と、最後に新しいアイコンが挿入される要素への参照が表示されます。</p>
     </aside>
     <p >具体的には、次のコードを使用して、ボリュームアイコンの前にダウンロードビデオアイコンを挿入します。</p>
     <ul>
       <li>280〜285行目：ダウンロードボタンのスタイル。</li>
       <li>291-295行目：変数を割り当て、次のHTML要素を作成します。
         <ul>
-          <li>ザ・<code translate="No">&lt;div&gt;</code>ダウンロードアイコンのアイコンが含まれます。</li>
+          <li><code translate="No">&lt;div&gt;</code>ダウンロードアイコンのアイコンを含む。</li>
           <li>アイコンをクリック可能にするアンカータグ。</li>
           <li>アイコン画像自体。</li>
         </ul>
       </li>
       <li>297〜2980行目：新しい要素にIDクラスとCSSクラスを割り当てます。</li>
       <li>300行目：画像にソースを割り当てます。</li>
-      <li>301行目：を割り当てます<code translate="No">href</code>リンクへ。</li>
+      <li>301行目：リンクに<code translate="No">href</code>を割り当てます。</li>
       <li>302号線:リンクに画像を追加します。</li>
-      <li>303行目：動的に作成されたリンクを追加します<code translate="No">&lt;div&gt;</code>。</li>
-      <li>306行目：で使用するコントロールバーへの参照を取得します<code translate="No">insertBefore()</code>。</li>
-      <li>308行目：新しいアイコンが前に挿入される要素への参照を取得して、<code translate="No">insertBefore()</code>。</li>
+      <li>303行目：動的に作成された<code translate="No">&lt;div&gt;</code>へのリンクを追加します。</li>
+      <li>306行目：<code translate="No">insertBefore()</code>で使用するコントロールバーへの参照を取得します。</li>
+      <li>308行目：<code translate="No">insertBefore()</code>で使用するために、新しいアイコンが前に挿入される要素への参照を取得します。</li>
       <li>310行目：動的に作成された要素を挿入します。</li>
     </ul>
     <pre class="line-numbers" data-start="279">
@@ -1404,14 +1404,14 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <p >結果は次のようになります。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="ダウンロード-アイコン-前-フルスクリーン" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/download-icon-before-fullscreen.png"/></figure>
     <h3>右端のアイコン</h3>
-    <p >コントロールバーの右端にアイコンを表示したい場合は、<code translate="No">insertBefore()</code>とともに<code translate="No">appendChild()</code>ここに示すように、メソッド：</p>
+    <p >コントロールバーの右端にアイコンを表示したい場合は、次のように<code translate="No">insertBefore()</code>を<code translate="No">appendChild()</code>メソッドに置き換えます：</p>
     <pre class="line-numbers">
 <code class="language-javascript" translate="No">controlBar.appendChild(newElement);</code></pre>
-    <p ><a href="/code-samples/brightcove-player-sample-download-video-plugin.html">Brightcove Player のサンプルに、アイコンを追加する例（この場合はファイルをダウンロードする）を示します。ビデオプラグインのドキュメントをダウンロードします</a>。</p>
+    <p ><a href="/code-samples/brightcove-player-sample-download-video-plugin.html">アイコンを追加する例（この場合はファイルをダウンロードする)は、Brightcove Player サンプル: ビデオプラグインのドキュメントをダウンロードに示されています</a>。</p>
     <h3 id="spacer">スペーサーを使用する</h3>
     <p >上記の手法は、コントロールバーにアイコンを配置するために機能しますが、コントロールバーを操作する他のコードと互換性がない可能性があります。また、一般的に再利用するためにコードをプラグインに抽象化することはほとんどありません。</p>
-    <p >前の段落の弱点は、特別なものを使用することで克服できます<strong>スペーサー</strong>特にアイコンを追加するためにコントロールバーに挿入される要素。スペーサーの欠点は、アイコンを配置できる場所を完全に制御できないことですが、このセクションで前述した手法を使用します。</p>
-    <p >次のスクリーンショット（緑色の楕円で強調表示）に示すように、スペーサー要素は、左側の時間情報と右側のフルスクリーンアイコンの間のコントロールバーにあります。に注意してください<strong>要素</strong>開発ツールのセクション要素はHTMLで定義されています<code translate="No">&lt;div&gt;</code>。</p>
+    <p >前の段落の弱点は、アイコンを追加するためにコントロールバーに挿入された特別な<strong>スペーサー</strong>を使用することで克服できます。スペーサーの欠点は、アイコンを配置できる場所を完全に制御できないことですが、このセクションで前述した手法を使用します。</p>
+    <p >スペーサー要素は、次のスクリーンショット（緑色の楕円で強調表示）に示すように、左側の時間情報と右側のフルスクリーンアイコンの間のコントロールバーにあります。<strong>要素</strong>開発ツールの要素では、要素がHTML<code translate="No">&lt;div&gt;</code>で定義されてることに注意して下さい。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="スペーサー" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/spacer.png"/></figure>
     <p >スペーサー要素にアイコンを配置するには、次のコードを使用します。これは、このセクションで前述したコードと非常によく似ています。コードの結果は、コードスニペットの次のスクリーンショットに表示されます。</p>
     <pre class="line-numbers">
@@ -1427,8 +1427,8 @@ spacer.setAttribute("style", "justify-content: flex-end;");</code></pre>
     <figure class="bcls-figure"><img class="bcls-image" alt="スペーサー-右" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/spacer-right.png"/></figure>/playback/ios-and-brightcove-player.html/playback/ios-and-brightcove-player.html
   </section>
   <section class="bcls-section">
-    <h2 id="Remove_fullscreen_icon">フルスクリーンボタンを削除</h2>
-    <p >iOSで動画の全画面表示を許可すると、問題が発生する可能性があります。詳細については、<a href="/playback/ios-and-brightcove-player.html"> iOSとBrightcoveプレーヤー</a>資料。コントロールバーからフルスクリーンボタンを削除したい場合は、次のコードを使用して削除できます。</p>
+    <h2 id="Remove_fullscreen_icon">フルスクリーンボタンの削除</h2>
+    <p >iOSで動画の全画面表示を許可すると、問題が発生する可能性があります。詳細については、<a href="/playback/ios-and-brightcove-player.html"> iOSとBrightcoveプレーヤー</a>ドキュメントを参照して下さい。コントロールバーからフルスクリーンボタンを削除したい場合は、次のコードを使用して削除できます。</p>
     <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;script type="text/javascript"&gt;
   videojs.getPlayer('myPlayerID').ready(function() {
@@ -1439,32 +1439,32 @@ spacer.setAttribute("style", "justify-content: flex-end;");</code></pre>
     }</span>
   });
 &lt;/script&gt;</code></pre>
-    <p >注意してください<code translate="No">if</code>ボタンがiOSデバイスでのみ削除されるようにするステートメント。</p>
+    <p >ボタンがiOSデバイスでのみ削除されるように、<code translate="No">if</code>ステートメントであることに注意してください</p>
   </section>
   <section class="bcls-section">
     <h2 id="Controlbar_icon_glow">コントロールバーアイコン「グロー」</h2>
-    <p >コントロールバーのアイコンのテキストシャドウ（「グロー」と呼ばれることもあります）を変更できます。たとえば、色を変更したり、グローを増やしてアイコンに焦点を合わせたりすることができます。次のスクリーンショットは、テキストの影を赤で示しています。</p>
+    <p >コントロールバーのアイコンのテキストシャドウ（「グロー」と呼ばれることもあります）を変更できます。たとえば、色を変更したり、輝きを増やしてアイコンに注意を向けることができます。次のスクリーンショットは、テキストの影を赤で示しています。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="赤いテキストの影" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/red-glow.png"/></figure>
-    <p >表示される影響は、CSSを変更することによって行われます<code translate="No">text-shadow</code>。セレクターは、アイコンにフォーカスまたはホバー状態がある場合にのみ変更が発生することを決定します。</p>
+    <p >表示される影響は、CSSで<code translate="No">text-shadow</code>を変更することによって行われます。セレクターは、アイコンにフォーカスまたはホバー状態がある場合にのみ変更が発生するように決定します。</p>
     <pre class="line-numbers">
 <code class="language-css" translate="No">.video-js .vjs-control:hover:before, .video-js .vjs-control:focus:before {
   text-shadow: 0 0 1em #f00,0 0 1em #f00,0 0 1em #f00;
 }</code></pre>
-    <p >かなり複雑な詳細については<code translate="No">text-shadow</code>スタイル、MDNを参照<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow">テキストシャドウ</a>資料。</p>
+    <p >複雑な<code translate="No">text-shadow</code>スタイルの詳細については、MDNの<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow">テキストシャドウ</a>ドキュメントを参照して下さい。</p>
   </section>
   <section class="bcls-section">
     <h2 id="Hover_gradient">ホバーグラデーション</h2>
     <p >プレーヤーが最初に読み込まれたとき、およびプレーヤーの上にマウスを置くと、ビデオタイトルが表示され、プレーヤーの上部に黒から透明のグラデーションが表示されます。このセクションでは、グラデーションを変更する方法を説明します。</p>
-    <p >実際のグラデーションはCSSによって制御されます<code translate="No">linear-gradient</code>の機能<code translate="No">vjs-dock-text</code> HTML <code translate="No">&lt;div&gt;.</code>グラデーションのサイズは、高さによって制御できます。<code translate="No">vjs-dock-text</code> HTML <code translate="No">&lt;div&gt;</code>。プレイヤーからのその要素とその子は次のとおりです。</p>
+    <p >実際のグラデーションは<code translate="No">vjs-dock-text</code> HTML <code translate="No">&lt;div&gt;.</code>のCSS<code translate="No">linear-gradient</code>機能によって制御されます。グラデーションのサイズは、<code translate="No">vjs-dock-text</code> HTML <code translate="No">&lt;div&gt;</code>の高さで制御できます。プレーヤーからの要素と子は次のとおりです。</p>
     <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;div class="vjs-dock-text"&gt;
   &lt;h1 class="vjs-dock-title"&gt;Tiger&lt;/h1&gt;
   &lt;h2 class="vjs-dock-description"&gt;&lt;/h2&gt;
 &lt;/div&gt;</code></pre>
-    <p >グラデーションのデフォルト値は、<code translate="No">rgba()</code>（赤-緑-青-アルファ）関数、ここに示すように：</p>
+    <p >グラデーションのデフォルト値は、次に示すように<code translate="No">rgba()</code>（赤-緑-青-アルファ）関数を使用します：</p>
     <pre class="line-numbers">
 <code class="language-javascript" translate="No">linear-gradient(180deg,rgba(0,0,0,.8) 25%,transparent 100%);</code></pre>
-    <p >これらの値により、グラデーションは黒から水平方向にフェードし、アルファは<strong>.8</strong>、透明に。の値<strong>25％</strong>はカットオフ値であり、<code translate="No">rgba</code>関数は、透明へのフェードが始まる前に、スペースの最初の25％で使用されます。</p>
+    <p >これらの値により、グラデーションはアルファは<strong>.8</strong>の黒から水平方向にフェードします。つまり、<code translate="No">rgba</code>関数で設定された値は、透明へのフェードが始まる前に、スペースの最初の<strong>25％</strong>に使用されます。</p>
     <p >説明の目的で、本番環境ではこのグラデーションを使用しないため、次のスタイルでスクリーンショットにグラデーションを作成します。</p>
     <pre class="line-numbers">
 <code class="language-css" translate="No">.video-js .vjs-dock-text {
@@ -1473,7 +1473,7 @@ spacer.setAttribute("style", "justify-content: flex-end;");</code></pre>
 }</code></pre>
     <figure class="bcls-figure"><img class="bcls-image" alt="悪い青のグラデーション" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/gradient-blue.png"/></figure>
     <p >この例では、0.8アルファの青いグラデーションが45度の下り坂の角度で適用されます。線形グラデーションで設定されたカラー/アルファは、グラデーションがフェードし始める前の最初の35％に使用されます。また、要素の高さの80％が使用されます。</p>
-    <p >次のCodePenを使用すると、値を試すことができます。ビデオを開始し、マウスを出し入れして、デフォルトで使用される微妙なグラデーションを確認します。</p>
+    <p >次のCodePenを使用すると、値を試すことができます。ビデオを開始し、マウスを出し入れして、デフォルトで使用される微細なグラデーションを確認します。</p>
     <p data-height="371" data-theme-id="14832" data-slug-hash="XXyKqx" data-default-tab="result" data-user="bcls" class="codepen">ペンを見る<a href="http://codepen.io/team/bcls/pen/XXyKqx/">ホバーグラデーションルナスキン</a> Brightcove Learning Services（<a href="https://codepen.io/team/rcrooks1969"> @bcls</a>） オン<a href="http://codepen.io">CodePen</a>。</p>
     <script async src="//assets.codepen.io/assets/embed/ei.js"></script></section>
   <section class="bcls-section">
@@ -1487,24 +1487,24 @@ spacer.setAttribute("style", "justify-content: flex-end;");</code></pre>
   <section class="bcls-section">
     <h2 id="CSS_specificity">CSSの特異性</h2>
     <p >CSS の特異性は、ブラウザーが関連性に基づいて要素に適用されるプロパティ値を決定する方法を指します。この概念の詳細については、「<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity">特異性</a>」の記事を参照してください。</p>
-    <p >Chromeで、大きな再生ボタンを確認します。<code translate="No">background</code>プロパティは複数のクラスを使用して設定されていることに注意してください。つまり、このプロパティをオーバーライドするために 1 <code translate="No">.vjs-big-play-button</code>つのクラスだけを使用することはできません。</p>
+    <p >Chromeで、大きな再生ボタンを検証します。<code translate="No">background</code>プロパティは複数のクラスを使用して設定されていることに注意してください。つまり、このプロパティを上書きするために 1つの <code translate="No">.vjs-big-play-button</code>クラスだけを使用することはできないことを意味します。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="プレイボタンクラス" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/play-button-classes.png"/></figure>
     <p >大きな再生ボタンをカスタマイズするには、次の 3 つの方法があります。</p>
     <ul>
-      <li>プレイヤーに割り当てられたIDを参照します。</li>
+      <li>プレーヤーに割り当てられたIDを参照します。</li>
       <li>プロパティの関連性を高めるには、複数のクラスを使用します。</li>
       <li>JavaScript を使用してプレーヤーの id 属性を設定し、CSS で参照します。</li>
     </ul>
     <h3>ID を参照する</h3>
-    <p >以来<code translate="No">id</code>属性はCSSの特異性に関して高い関連性があり、<code translate="No">id</code> CSSセレクターに<code translate="No">background-color</code>プロパティ。</p>
-    <p >まだ行っていない場合は、<code translate="No">id</code>に属性<code translate="No">video</code>次のような要素：</p>
+    <p ><code translate="No">id</code>属性はCSSの特異性に関して高い関連性があるため、CSSセレクターに<code translate="No">id</code>を追加すると、<code translate="No">background-color</code>プロパティが上書きされます。</p>
+    <p >まだ行っていない場合は、次のように<code translate="No">video</code>要素に<code translate="No">id</code>属性を追加します：</p>
     <pre class="line-numbers">
 <code class="language-html" translate="No"><span class="bcls-highlight">&lt;video-js id="video_1"</span>
   data-account="1752604059001"
   data-player="68f30408-8fb4-431d-accb-8c5baa8c4790"
   data-embed="default"
   class="video-js" controls&gt;&lt;/video-js&gt;</code></pre>
-    <p >CSS で、<code translate="No">.vjs-big-play-button</code>クラスセレクターに id 値を追加します。次のように背景色と不透明度をオーバーライドします。</p>
+    <p >CSS で、<code translate="No">.vjs-big-play-button</code>クラスセレクターに id 値を追加します。次のように背景色と不透明度を上書きします。</p>
     <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;style&gt;
 <span class="bcls-highlight">  #video_1 .vjs-big-play-button {
@@ -1519,9 +1519,9 @@ spacer.setAttribute("style", "justify-content: flex-end;");</code></pre>
     <p >大きな再生ボタンがオレンジ色になったことがわかります。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="orange-play-button.png" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/orange-play-button.png"/></figure>
     <h3>複数のクラスの使用</h3>
-    <p >以来<code translate="No">background</code>大きな再生ボタンのプロパティは2つのクラスを使用して設定されます。このプロパティを上書きするには、CSSセレクターに少なくとも2つのクラスが必要です。</p>
-    <p >追加します<code translate="No">.video-js</code>クラスへ<code translate="No">.vjs-big-play-button</code>クラスセレクター。<code translate="No">.video-js</code>クラスはビデオコンテナに設定されていることに注意してください。</p>
-    <p >これらの値を使用して、クラス名が<code translate="No">vjs-big-play-button</code>クラス名がの要素の子孫です<code translate="No">.video-js</code>。</p>
+    <p >大きな再生ボタンの<code translate="No">background</code>プロパティは2つのクラスを使用して設定されます。このプロパティを上書きするには、CSSセレクターに少なくとも2つのクラスが必要です。</p>
+    <p ><code translate="No">.video-js</code>クラスを<code translate="No">.vjs-big-play-button</code>クラスセレクターに追加します。<code translate="No">.video-js</code>クラスはビデオコンテナに設定されていることに注意してください。</p>
+    <p >これらの値を使用して、クラス名が<code translate="No">.video-js</code>の子孫であるクラス名<code translate="No">vjs-big-play-button</code>の全ての要素を選択しているといえます。</p>
     <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;style&gt;
 <span class="bcls-highlight">  .video-js .vjs-big-play-button {</span>
@@ -1538,8 +1538,8 @@ spacer.setAttribute("style", "justify-content: flex-end;");</code></pre>
     <p >JavaScriptを使用して、大きな再生ボタンにIDを動的に追加することもできます。その後、CSSからそのIDを参照することができます。</p>
     <p >大きな再生ボタン要素に ID を追加するコードを追加します。</p>
     <ul>
-      <li>173行目:クラスを持つ最初の要素への参照を取得します<code translate="No">vjs-big-play-button</code>。</li>
-      <li>174号線:<code translate="No">id</code>大きな再生ボタンに属性を追加します。</li>
+      <li>173行目:<code translate="No">vjs-big-play-button</code>のクラスを持つ最初の要素への参照を取得します。</li>
+      <li>174号線:大きな再生ボタンに<code translate="No">id</code>属性を追加します。</li>
     </ul>
     <pre class="line-numbers" data-start="171">
 <code class="language-html" translate="No">  &lt;script type="text/JavaScript"&gt;
@@ -1564,8 +1564,8 @@ spacer.setAttribute("style", "justify-content: flex-end;");</code></pre>
   </section>
   <section class="bcls-section">
     <h2 id="Component_selectors">コンポーネントセレクター</h2>
-    <p >これらのスクリーンショットと次の表は、コンポーネントと、そのコンポーネントを操作するために必要なCSSセレクターを示しています。コンポーネント自体の詳細については、<a href="/coding-topics/overview-components.html">コンポーネントの概要</a> doc。</p>
-    <h3>プレイヤーのロードとホバーで</h3>
+    <p >これらのスクリーンショットと次の表は、コンポーネントと、そのコンポーネントを操作するために必要なCSSセレクターを示しています。コンポーネント自体の詳細については、<a href="/coding-topics/overview-components.html">コンポーネントの概要</a>ドキュメントを参照して下さい。</p>
+    <h3>プレーヤーのロードとホバーで</h3>
     <figure class="bcls-figure"><img style="max-width: none" width="794" height="352" alt="ロード時のコンポーネント" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/5x-components-onload.png"/></figure>
     <h3>再生中</h3>
     <figure class="bcls-figure"><img class="bcls-image" style="max-width: none" width="831" height="525" alt="コンポーネント再生" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/5x-player-styling/customize-appearance/6x-components.png"/></figure>
@@ -1652,23 +1652,23 @@ spacer.setAttribute("style", "justify-content: flex-end;");</code></pre>
         </tr>
       </tbody>
     </table>
-    <p >お探しのセレクターがテーブルにない場合は、メールでお知らせください。<a id="selectorrequest" href="mailto:docs@brightcove.com">ナレッジチーム</a>それをテーブルに入れます。</p>
+    <p >お探しのセレクターがテーブルにない場合は、<a id="selectorrequest" href="mailto:docs@brightcove.com">ナレッジチーム</a>にメールでお知らせください。テーブルに追加いたします。</p>
   </section>
   <section class="bcls-section">
     <h2 id="PLAYER_CLASS">{PLAYER_CLASS}</h2>
-    <p >ザ・<code translate="No">{PLAYER_CLASS}</code>はセレクターであり、プレーヤーの実際のクラス固有のセレクターに置き換えられます。次に例を示します。</p>
+    <p ><code translate="No">{PLAYER_CLASS}</code>はセレクターであり、プレーヤーの実際のクラス固有のセレクターに置き換えられます。次に例を示します。</p>
     <pre class="line-numbers">
 <code class="language-css" translate="No">.bc-player-oH9IdGudo_default</code></pre>
-    <p ><code translate="No">{PLAYER_CLASS}</code> helps you make your CSS specific enough to overwrite the built-in styles without having to make CSS for each player individually or use something like:</p>
+    <p ><code translate="No">{PLAYER_CLASS}</code>を使用すると、CSSを特定して、組み込みのスタイルを上書きすることができます。プレーヤーごとにCSSを個別に作成したり、次のようなものを使用したりする必要はありません。:</p>
     <pre class="line-numbers">
 <code class="language-css" translate="No">.video-js.video-js</code></pre>
-    <p >たとえば、読み込みスピナーをオーバーライドしたい場合は、次を使用します。</p>
+    <p >例えば、ロードスピナーを上書きしたい場合は、次を使用します。</p>
     <pre class="line-numbers">
 <code class="language-css" translate="No">.video-js.video-js .vjs-loading-spinner {...}</code></pre>
-    <p >これはデフォルトを上書きするのに十分具体的ですが、ページに2人目のプレーヤーがいる場合。以下を使用しても、ページ内の他のプレーヤーには影響しません。</p>
+    <p >これはデフォルトを上書きするのに十分具体的ですが、ページに2つ目のプレーヤーがある場合、以下を使用しても、ページ内の他のプレーヤーには影響しません。</p>
     <pre class="line-numbers">
 <code class="language-css" translate="No">.video-js{PLAYER_CLASS} .vjs-loading-spinner {...}</code></pre>
-    <p>注意してください<code translate="No">{PLAYER_CLASS}</code>セレクターは、プレーヤー構成スタイルシート配列に追加され（たとえば、StudioまたはPlayer Management APIを介して）プレーヤーに直接組み込まれているCSSファイルでのみ使用できます。このセレクターは、経由で個別に含まれている高度な実装コードCSSでは機能しません<code translate="No">&lt;style&gt;&lt;/style&gt;</code>または<code translate="No">&lt;link&gt;&lt;/link&gt;</code>タグ。</p>
+    <p>注意してください<code translate="No">{PLAYER_CLASS}</code>セレクターは、プレーヤー構成スタイルシート配列に追加され（たとえば、StudioまたはPlayer Management APIを介して）プレーヤーに直接組み込まれているCSSファイルでのみ使用できることに注意して下さい。このセレクターは、<code translate="No">&lt;style&gt;&lt;/style&gt;</code>または<code translate="No">&lt;link&gt;&lt;/link&gt;</code>タグを介して個別に含まれている高度な実装コードCSSでは機能しません。</p>
   </section>
 </article>
 
