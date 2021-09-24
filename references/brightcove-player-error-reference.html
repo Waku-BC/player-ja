@@ -1097,22 +1097,22 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 
     <ul>
       <li>
-        <a href="#Standard_errors">エラープラグインからディスパッチされた標準エラー</a>：これらのエラー名はで始まります<strong>MEDIA_ERR</strong>。
+        <a href="#Standard_errors">エラープラグインからディスパッチされた標準エラー</a>：これらのエラー名は<strong>MEDIA_ERR</strong>で始まります。
       </li>
       <li>
-        <a href="#Custom_Brightcove_errors">Brightcoveによって定義され、エラープラグインからディスパッチされたカスタムエラー</a>：これらのエラー名はで始まります<strong>PLAYER_ERR</strong>。
+        <a href="#Custom_Brightcove_errors">Brightcoveによって定義され、エラープラグインからディスパッチされたカスタムエラー</a>：これらのエラー名は<strong>PLAYER_ERR</strong>で始まります。
       </li>
       <li>
-        <a href="#Catalog_errors">VideoCloudカタログからディスパッチされたエラー</a>：これらのエラー名はで始まります<strong>VIDEO_CLOUD_ERR</strong>。もちろん、<strong>Brightcove プレーヤー</strong>顧客にはこれらのエラーは表示されません。
+        <a href="#Catalog_errors">VideoCloudカタログからディスパッチされたエラー</a>：これらのエラー名は<strong>VIDEO_CLOUD_ERR</strong>で始まります。もちろん、<strong>Brightcove プレーヤー</strong>のお客さんにはこれらのエラーは表示されません。
       </li>
       <li>
-        <a href="#HLS_plugin_errors">HLSプラグインからディスパッチされたエラー</a>：これらのエラーはすべて同じタイプであり、<strong> APPEND_BUFFER_ERR</strong>、およびメッセージはブラウザのネイティブエラーから取得されます。
+        <a href="#HLS_plugin_errors">HLSプラグインからディスパッチされたエラー</a>：これらのエラーはすべて同じタイプの<strong> APPEND_BUFFER_ERR</strong>であり、メッセージはブラウザのネイティブエラーから取得されます。
       </li>
       <li>
         <a href="#Console_errors">ブラウザの開発ツールコンソールで報告されたエラー</a>：これらのエラーは、ブラウザのコンソールにのみ表示されるため、開発者向けです。
       </li>
       <li>
-        <a href="#Custom_user_errors">エラープラグインによってユーザー定義およびディスパッチされるカスタムエラー</a>：これらのエラー名は、たとえばユーザーによって定義されます<strong>AGE_GATE_ERROR</strong>。
+        <a href="#Custom_user_errors">エラープラグインによってユーザー定義およびディスパッチされるカスタムエラー</a>：これらのエラー名は、ユーザーが定義します<strong>AGE_GATE_ERROR</strong>。
       </li>
       <li><a href="#Network_security_errors">ネットワークセキュリティエラー</a></li>
     </ul>
@@ -1122,7 +1122,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <h2 id="Standard_errors">標準エラー</h2>
 
     <p>
-      非常に一般的に、メディアエラーは、メディアを取得または再生しようとして問題が発生したときに発生します。たとえば、ネットワーク接続が失われた場合、または復号化できない暗号化されたビデオを取得した場合、メディアエラーが発生します。詳細については、<a href="//player.support.brightcove.com/plugins/display-error-messages-plugin.html#standarderrors">標準エラー</a>のセクション<strong>エラーメッセージプラグインを表示する</strong>資料。
+      一般的に、メディアエラーは、メディアを取得または再生しようとして問題が発生したときに発生します。たとえば、ネットワーク接続が失われた場合、または復号化できない暗号化されたビデオを取得した場合、メディアエラーが発生します。詳細については、<a href="//player.support.brightcove.com/plugins/display-error-messages-plugin.html#standarderrors">標準エラー</a>のセクション<strong>エラーメッセージプラグインを表示する</strong>資料して下さい。
     </p>
 
     <table class="bcls-table">
@@ -1148,7 +1148,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             ビデオ接続が失われました。インターネットに接続していることを確認してください
           </td>
           <td>
-            ネットワークエラーが原因で、メディアのダウンロードが途中で失敗しました。現在、MP4および/またはプログレッシブダウンロードのビデオフォーマットに最も役立ちます。を参照してください<a href="//player.support.brightcove.com/plugins/display-error-messages-plugin.html#Known_issues">既知の問題点</a>のセクション<strong>エラーメッセージプラグインを表示する</strong>詳細についてはドキュメント。
+            ネットワークエラーが原因で、メディアのダウンロードが途中で失敗しました。現在、MP4および/またはプログレッシブダウンロードのビデオフォーマットに最も役立ちます。詳細については、<strong>エラーメッセージプラグインを表示プラグイン</strong>ドキュメントの<a href="//player.support.brightcove.com/plugins/display-error-messages-plugin.html#Known_issues">既知の問題点</a>セクションを参照してて下さい。
           </td>
         </tr>
         <tr>
@@ -1197,7 +1197,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <h2 id="Custom_Brightcove_errors">カスタムエラー</h2>
 
     <p>
-      非常に一般的に、プレーヤーエラーは、ビデオがロードされたときに発生し、何らかの理由で再生できません。たとえば、ドメイン、地域、またはIPの制限によりビデオの表示が妨げられている場合、プレーヤーエラーが発生します。詳細については、<a href="//player.support.brightcove.com/plugins/display-error-messages-plugin.html#bccustomerrors">カスタムエラー</a>のセクション<strong>エラーメッセージプラグインを表示する</strong>資料。
+      一般的に、プレーヤーエラーは、ビデオがロードされたときに発生し、何らかの理由で再生できません。たとえば、ドメイン、地域、またはIPの制限によりビデオの表示が妨げられている場合、プレーヤーエラーが発生します。詳細については、<strong>エラーメッセージプラグインを表示する</strong>ドキュメントの<a href="//player.support.brightcove.com/plugins/display-error-messages-plugin.html#bccustomerrors">カスタムエラー</a>のセクションを参照して下さい。
     </p>
 
     <table class="bcls-table">
@@ -1244,7 +1244,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <h2 id="Catalog_errors">カタログエラー</h2>
 
     <p>
-      非常に一般的に、ビデオまたはプレイリストの取得または最初の再生に問題がある場合、カタログはエラーをスローします。たとえば、存在しないID、またはプレーヤーが存在する別のアカウントのIDを使用してビデオを取得すると、カタログエラーが発生します。詳細については、<a href="//player.support.brightcove.com/references/player-catalog.html#catalogerrors">カタログエラー</a>のセクション<strong>プレイヤーカタログ</strong>資料。
+      一般的に、ビデオまたはプレイリストの取得または最初の再生に問題がある場合、カタログはエラーをスローします。たとえば、存在しないID、またはプレーヤーが存在する別のアカウントのIDを使用してビデオを取得すると、カタログエラーが発生します。詳細については、<strong>プレイヤーカタログ</strong>ドキュメントの<a href="//player.support.brightcove.com/references/player-catalog.html#catalogerrors">カタログエラー</a>セクションを参照して下さい。
     </p>
 
     <table class="bcls-table">
@@ -1278,7 +1278,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <tr>
           <td><code translate="No">VIDEO_CLOUD_ERR_NOT_PLAYABLE</code></td>
           <td>
-            Video Cloud動画を再生できません。<br/> Frequent causes of this error include when a video ID is deactivated or when the scheduled availability has expired.
+            Video Cloud動画を再生できません。<br/> エラーのよくある原因には、ビデオIDが非アクティブ化された時、またはスケジュールされた公開期間が期限切れになった時が含まれます。
           </td>
         </tr>
       </tbody>
@@ -1289,7 +1289,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <h2 id="HLS_plugin_errors">HLSプラグインエラー</h2>
 
     <p>
-      詳細については、<a href="//player.support.brightcove.com/plugins/hls-plugin.html#Errors">エラー</a>のセクション<strong>HLSプラグイン</strong>資料。
+      詳細については、<strong>HLSプラグイン</strong>ドキュメントの<a href="//player.support.brightcove.com/plugins/hls-plugin.html#Errors">エラー</a>セクションを参照して下さい。
     </p>
 
     <table class="bcls-table">
@@ -1327,10 +1327,10 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
       <tbody class="bcls-table__body">
         <tr>
           <td>
-            <code translate="No">VIDEOJS: ERROR:</code> videojs-contrib-ads has not seen a loadstart event 5 seconds after being initialized, but a source is present.これは、videojs-contrib-ads の初期化が遅すぎることを示しています。同じティックで video.js の直後に初期化する必要があります。その結果、一部の広告は再生されず、一部のメディアイベントは正しくありません。詳細については、https：//github.com/videojs/videojs-contrib-ads#important-note-about-initializationを参照してください。
+            <code translate="No">VIDEOJS: ERROR:</code> videojs-contrib-adsは、初期化されてから5秒後にloadstartイベントを認識していませんが、ソースは存在します。これは、videojs-contrib-adsの初期化が遅すぎることを示しています。同じティックでvideo.jsの直後に初期化する必要があります。その結果、一部の広告は再生されず、一部のメディアイベントは正しくなります。詳細については、https：//github.com/videojs/videojs-contrib-ads#important-note-about-initializationを参照して下さい。
           </td>
           <td>
-            これが表示されるのは、IMA3プラグインが正しく機能するためには、プレーヤーの初期化の直後、他のプラグインが初期化される前にロードする必要があるためです。を参照してください<a href="//player.support.brightcove.com/plugins/advertising-ima3-plugin.html#Implement_using_code">コードを使用して実装する</a>のセクション<strong>IMA3プラグイン</strong>ソリューションのドキュメント。
+            これが表示されるのは、IMA3プラグインが正しく機能するためには、プレーヤーの初期化の直後、他のプラグインが初期化される前にロードする必要があるためです。解決策については、<strong>IMA3プラグイン</strong>ドキュメントの<a href="//player.support.brightcove.com/plugins/advertising-ima3-plugin.html#Implement_using_code">コードを使用して実装する</a>セクションを参照して下さい。
           </td>
         </tr>
       </tbody>
@@ -1341,7 +1341,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <h2 id="Custom_user_errors">カスタムユーザーエラー</h2>
 
     <p>
-      詳細については、<a href="//player.support.brightcove.com/plugins/display-error-messages-plugin.html#usercustomerrors">カスタムエラーの追加</a>のセクション<strong>エラーメッセージプラグインを表示する</strong>資料。標準のカスタムユーザーエラーはありません。
+      詳細については、<strong>エラーメッセージプラグインを表示する</strong>ドキュメントの<a href="//player.support.brightcove.com/plugins/display-error-messages-plugin.html#usercustomerrors">カスタムエラーの追加</a>セクションを参照して下さい。標準のカスタムユーザーエラーはありません。
     </p>
   </section>
 
@@ -1362,7 +1362,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <tr>
           <td><code translate="No">FLASHLS_ERR_CROSS_DOMAIN</code></td>
           <td>
-            ビデオをロードできませんでした：クロスドメインアクセスが拒否されました。<br/> You may need a <strong>crossdomain.xml</strong> file at the root of your playlist file that allows the domain you are requesting from (or '*').
+            ビデオをロードできませんでした：クロスドメインアクセスが拒否されました。<br/> プレイリストファイルのルートに、要求元のドメイン(または '*')を許可する <strong>crossdomain.xml</strong> ファイルが必要になる場合があります。
           </td>
         </tr>
       </tbody>
