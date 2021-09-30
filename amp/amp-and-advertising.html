@@ -1,0 +1,78 @@
+---
+title: 'AMPと広告'
+description: このトピックでは、AMPを使用するBrightcoveプレーヤーで広告を表示する方法を学習します。また、ブライトコーブのプレーヤー/AMP 構成でクライアント側の同意を使用する方法についても説明します.
+parent: "amp"
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+    <summary>{{ page.description }}</summary>
+    <section class="bcls-section">
+        <h2 id="section-name">AMPプレーヤーでの広告の実装</h2>
+        <p>プレロールを含む広告は、AMPで使用されるプレーヤーで動作します。広告プラグインとその設定は、プレイヤーの設定に含める必要があります。広告サーバーの呼び出しに記事固有の値を含める必要がある場合は、このマニュアルで後述するように、カスタムデータをプレーヤープラグインに渡すことができます。</p>
+        <p>AMP は、有効な AMP ページに追加できる項目が非常に厳格です。詳細については、「Video Cloud Video を使用する<a href="/amp/amp-using-video-cloud-video.html">  AMP」</a>ドキュメントを参照してください。たとえば、<code translate="No">id</code><code translate="No">amp-brightcove</code>タグにを追加するという標準的な方法を使用することはできず、<code translate="No">script</code>ブロックを使用して、例えば、IMA3 プラグインを設定します。</p>
+        <p>繰り返すには、Studio またはプレーヤー管理 API を使用して、プレーヤーの設定に広告を実装する必要があります。</p>
+        <p>などの広告マクロを使用する広告設定 URL を使用する場合は<code translate="No">{pageVariable.<span class="bcls-highlight">adId</span>}</code>、プレーヤーの設定を変更する必要があります。次のようなカスタムパラメータを使用できます。</p>
+        <pre class="line-numbers">
+  <code class="language-html" translate="No">data-param-ad-id="preonlybumper"</code>   </pre>
+        <p>これにより、広告マクロで値が自動的に利用されるわけではありません<code translate="No">{pageVariable.adId}</code>。広告の URL <code translate="No">ad-id/adId</code>でプロパティを使用できるようにするには、Brightcove Playerの<a href="/general/player-configuration-guide.html#query_string_to_window">  query_string_to_window </a>設定オプションを使用する必要があります。このオプションは、クエリ文字列パラメーターからのグローバル名前空間 (ウィンドウ) 変数の母集団を制御します。すべてのクエリ文字列パラメーターをグローバル名前空間に追加するには、プレーヤーの設定に以下を追加します。
+            <pre class="line-numbers">
+<code class="language-bash" translate="No">"query_string_to_window": {
+  "target": "queryStringParams"
+}</code>   </pre>
+            <p><code translate="no">queryStringsParams</code>の名前は、パラメータが格納される「変数」であり、必要に応じて名前を変更できます。</p>
+            <p>何らかの理由で、限られたパラメーターのみをグローバル名前空間に割り当てる場合は、そうすることができます。たとえば、<code class="language-html" translate="No">data-param-<span class="bcls-highlight">ad-id</span>="..."</code>プラグインでのみ使用できるようにするには、プレーヤー設定に以下を追加します。</p>
+            <pre class="line-numbers">
+<code class="language-bash" translate="No">"query_string_to_window": {
+  "globals": [
+    "adId"
+  ]
+}</code>   </pre>
+            <p>プレーヤー設定の更新に関する具体的な手順については、Player Management API リファレンスの「<a href="https://apis.support.brightcove.com/player-management/references/reference.html#operation/UpdatePlayerConfiguration">プレーヤー構成</a> -プレーヤー設定の更新」を参照してください。</p>
+    </section>
+    <section class="bcls-section">
+        <h2 id="section-name">AMP同意と広告</h2>
+        <p>AMP では、クライアント側の同意を使用して、ユーザーがオンライン体験をさらに制御することができます。AMP ページが AMP-同意を得てユーザーの同意を管理しており、プレーヤーで広告を使用している場合は、その同意に応じてプレイヤーの広告リクエストを適応させることができます。それには、
+            <pre><code class="language-javascript">データブロックオン同意= "_till_responded」</code> </pre>
+            属性を amp-brightcove 要素に追加します。これにより、ユーザーが同意を承諾または拒否するまで、プレーヤーの負荷が遅れます。同意がわかっている後続のページでは、プレーヤーは遅滞なく通常どおりロードされます。</p>
+        <aside class="bcls-aside bcls-aside--information">AMP ユーザの同意の詳細については、AMP <a href="https://amp.dev/documentation/examples/user-consent/client_side_user_consent_flow/"></a>のクライアント側ユーザ同意フローのドキュメントを参照してください。</aside>
+        <h3>広告構成</h3>
+        <p>広告とAMPを実装する最も簡単なシナリオは、BrightcovePlayerの標準のIMA広告とGoogleAdManagerの統合を使用することです。<code translate="no"> npa = 1</code>同意が不明または与えられていない場合に広告リクエストに追加されます。これを行うには、追加します</p>
+            <pre><code class="language-javascript">「imaAddnPa」: 真</code> </pre>
+            <p>プレーヤーのAMPサポートプラグインのオプションに追加すると、次のように、これが広告サーバーのURLに自動的に追加されます。</p>
+        <figure class="bcls-figure">
+            <img class="bcls-image" src="/assets/images/amp/amp-ad-plugin-config.png" alt="plugin configuration">
+        </figure>
+        <p>広告サーバーのURLに対するその他の変更については、同意状態が3つのクエリパラメーターを使用してプレーヤーのiframeに設定されます。</p>
+
+        <ul>
+            <li><code translate="no">AMP初期同意状態</code> :同意が受け入れられるか、拒否されるか、不明か</li>
+            <li><code translate="no">AMPConsentSharedData</code> :同意ベンダーからのデータのJSON文字列</li>
+            <li><code translate="no">アンプの初期同意値</code> :同意ベンダーからの同意文字列</li>
+        </ul>
+
+        <p>同意状態は、AMP で定義されている整数です。</p>
+
+        <ul>
+            <li>十分な:1</li>
+            <li>不足:2</li>
+            <li>不明ではない_必須:3</li>
+            <li>不明:4</li>
+        </ul>
+
+        <p>プレーヤー構成を更新して、プレーヤーiframeのクエリパラメーターを単純なJavascript変数として使用できるようにするには、JSONエディターのプレーヤー構成に以下を追加します。</p>
+        <pre><code class="language-javascript">「query_string_to_window」: {"target": "queryStringParams"}</code></pre>
+        <p>参考までに、UIのスクリーンショットを次に示します。
+        </p>
+        <figure class="bcls-figure">
+            <img class="bcls-image" src="/assets/images/amp/amp-ad-json-editor.png" alt="JSON editor">
+        </figure>
+        <p>次に、マクロを使用するか、severURLを関数として構成することにより、広告サーバー要求で同意クエリパラメーターを使用できます。</p>
+        <h4>マクロの例</h4>
+        <pre><code class="language-javascript">「adServerURL」: "https://ads.example.com/ad?consent = {pageVariable.queryStringParams.ampInitialConsentState} &amp;consentString= {pageVariable.queryStringParams.ampInitialConsentValue} "</code></pre>
+        <h4>機能例</h4>
+        <p>以下を使用して、広告サーバーのURLなしでプレーヤーを構成します。</p>
+        <pre><code class="language-javascript">Videojs.registerPlugin ('setadUrl', function () { this.ima3.settings.serverUrl = function(callback) { if (window.queryStringParams.ampInitialConsentState === 1) { // Sufficient consent callback('https://ads.example.com/adwithconsent?string={pageVariable.queryStringParams.ampInitialConsentValue} ');} else { // Use a different ad callback('https://ads.example.com/basicad'); } });</code></pre>
+
+
+    </section>
+</article>

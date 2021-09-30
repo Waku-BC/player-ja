@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>無題ドキュメント</title>
+</head>
+
+<body>
+
+    <video-js id="myPlayerID" data-video-id="5141730843001" data-account="1752604059001" data-player="default" data-embed="default" data-application-id class="video-js" controls width="640" height="360"></video-js>
+    <script src="https://players.brightcove.net/1752604059001/default_default/index.min.js"></script>
+
+    <!-- Display the start position of the video as well as the current play position -->
+    <p>動画開始クッキー値 = <span id="cookieDisplay1"></span></p>
+    <p>現在のクッキー値 = <span id="cookieDisplay2"></span></p>
+
+    <script type="text/javascript">
+        videojs.getPlayer ('myPlayerID') .ready (function () { // Function to read the browser cookie var read_cookie = function(key) { var result; return (result = new RegExp('(^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? result[2] : null; } //++ブラウザクッキーを読み込む ++// 変数を初期化し、ブライトコーブのビデオ位置に関連付けられたブラウザークッキーを読み込む var myPlayer = これ, VideoStart = 0, currentPosition, クッキー = read_cookie (「BC_Position」);//++++ クッキーの値を確認します ++// クッキーが存在する場合は、ビデオの開始位置をこの値に設定します。それ以外の場合は、ビデオの先頭から開始します。if (クッキー!= null) { videoStart = cookie; }そうでなければ{ videoStart = 0; } //+++ ビデオ再生を開始する ++++//プレーヤーの準備ができたら待つ。myPlayer.on (「loadeddata」, function () { // If video position is greater than zero, than start playback at that point. if (videoStart &gt; 0) { myPlayer.currentTime(parseInt(videoStart)); myPlayer.play(); } })//ビデオ開始位置 document.getElementByID (「cookieDisplay1") を表示します。innerHTML = VideoStart;//+++ クッキーを増やす ++// 現在の再生位置が変更されたときにリッスンします。これは15〜250ミリ秒ごとにする必要があります。myPlayer.on (「timeupdate」, function () { currentPosition = myPlayer.currentTime(); // When the integer value changes, then update the cookie if (Math.round(currentPosition) != videoStart) { videoStart = Math.round(currentPosition); document.cookie = "BC_position=" + escape(videoStart) + ";"; // Display the current video position document.getElementById("cookieDisplay2").innerHTML = read_cookie("BC_position"); } });//++クッキーをリセットする ++// 動画の再生が最後に達したら、クッキーの値をゼロにリセットする myPlayer.on (「終了」, 関数 ( { console.log('in ended') videoStart = 0; document.cookie = "BC_position=;expires=0;"; } ))};
+    </script>
+
+</body>
+
+</html>
