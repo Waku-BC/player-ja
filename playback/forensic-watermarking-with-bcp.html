@@ -1,0 +1,150 @@
+---
+title: 「Brightcove Playerによるフォレンジック・ウォーターマーキング」
+description: 「このトピックでは、Brightcove Player を使用して、フォレンジックウォーターマークで保護されたビデオを配信する方法について説明します。「
+parent: Playback
+---
+<article class="bcls-article">
+  <h1>{{ page.title }}</h1>
+  <summary>{{ page.description }}</summary>
+
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+    <p>
+      フォレンジックウォーターマーキングを使用すると、著作権侵害や不正なコンテンツ共有からプレミアムコンテンツを保護できます。この機能により、動画に目に見えない透かしが追加され、コンテンツのリークを追跡できるようになります。
+    </p>
+    <p>詳細については、を参照してください。<a href="https://apis.support.brightcove.com/general/overview-forensic-watermarking.html">概要：</a>フォレンジック・ウォーターマーク文書。</p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Requirements">要件</h2>
+    <p>この機能をサポートするには、次の要件が必要です。</p>
+    <h3>セットアップ</h3>
+    <p>プレーヤーの構成に加えて、セットアップ要件があります。詳細については、<a href="https://apis.support.brightcove.com/general/overview-forensic-watermarking.html">概要：</a>フォレンジック・ウォーターマーク文書。</p>
+
+    <h3>ブライトコーブ・プレイヤー</h3>
+    <p>Brightcove Player バージョン 6.55 以降が必要です。最新バージョンを推奨</p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Configuring_Brightcove_Player">Brightcove Player設定</h2>
+    <p>
+      フォレンジック透かしを使用するようにプレーヤーを構成するには、次の手順に従います。
+    </p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>視聴者 ID がアナリティクスのウェブビーコン（<code translate="No">user</code>フィールド内）に渡されるように、プレーヤーは登録システムと統合されている必要があります。</p>
+        <p>これを行うには、<code translate="No">setUser()</code>メソッドを使用します。たとえば、</p>
+        <pre>
+<code class="language-html" translate="No">myPlayer.bcAnalytics.client.setUser('viewer id');</code></pre>
+      </li>
+      <li>
+        <p>
+          動画を入手する前に、プレーヤーカタログオブジェクトの一部として Nagra ウォーターマークトークンの値で文字列トークンを設定します。
+        </p>
+        <pre>
+<code class="language-html" translate="No">myPlayer.catalog.setWatermarkingToken()</code></pre>
+      </li>
+      <li>
+        <p>
+          透かしトークンを設定したら、Brightcove Playback API からデータをリクエストし、プレーヤーにロードする準備が整いました。
+        </p>
+        <p>
+          1 つのビデオをフェッチする例を次に示します。
+        </p>
+        <aside class="bcls-aside bcls-aside--tip"><code translate="No">bc()</code>このメソッドは、カタログを呼び出す前に透かしトークンを設定できるようにするために使用されることに注意してください。</aside><aside class="bcls-aside bcls-aside--information">注:<code translate="No">data-video-id</code><code translate="No">&lt;video-js&gt;</code>タグにパラメータを含めないようにしてください。そうすると、ウォーターマークトークンなしで自動ビデオリクエストがトリガーされるためです。</aside>
+
+        <h3>HTML</h3>
+  <pre class="line-numbers">
+<code class="language-html" translate="No">&lt;div style=&quot;max-width: 960px;&quot;&gt;
+  &lt;video-js id=&quot;myPlayerID&quot;
+    data-embed=&quot;default&quot;
+    controls=&quot;&quot;
+    data-application-id=&quot;&quot;
+    class=&quot;vjs-fluid&quot;&gt;
+  &lt;/video-js&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;https://players.brightcove.net/your account id/your player id_default/index.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+        <h3>JavaScript</h3>
+<pre class="line-numbers">
+<code class="language-javascript" translate="No">&lt;script&gt;
+  // +++ Add the player attributes +++
+  var myPlayer,
+    myPlayerEl = document.getElementById(&quot;myPlayerID&quot;);
+  myPlayerEl.setAttribute('data-account', your account id);
+  myPlayerEl.setAttribute('data-player', 'your player id');
+
+  // +++ Create the player +++
+  myPlayer = bc(myPlayerEl);
+
+  // Set the viewer id for Brightcove analytics
+  <span class="bcls-highlight">myPlayer.bcAnalytics.client.setUser(<span class="bcls-input">'viewer id'</span>)</span>;
+
+  // Set the watermarking key
+  <span class="bcls-highlight">myPlayer.catalog.setWatermarkingToken(<span class="bcls-input">your watermark token</span>)</span>;
+
+  myPlayer.catalog.get({id: 'your video id', type: 'video'}).
+  then(function(data) {
+    myPlayer.catalog.load(data);
+    myPlayer.muted(true);
+    myPlayer.play();
+  }).
+  catch(function(error) {
+    throw new Error(error);
+  });
+&lt;/script&gt;
+</code></pre>
+      </li>
+    </ol> 
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Using_a_data_attribute">データ属性の使用</h2>
+   <p>または、プロパティ名を使用して、プレーヤーカタログオブジェクトの一部として文字列トークンを渡すこともできます<code translate="No">data-watermarking-token</code>。</p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>プレーヤーの高度な埋め込みコードを取得します。</li>
+      <li>
+        <p>プレーヤーの埋め込みコードにウォーターマークトークンを含めます。これを行うには、データ・ウォーターマーク・トークンを属性として追加します。 <video-js> タグ。</p>
+          <pre class="line-numbers">
+<code class="language-html" translate="No">&lt;video-js id=&quot;myPlayerID&quot;
+  data-account=&quot;1752604059001&quot; 
+  data-player=&quot;default&quot; 
+  data-embed=&quot;default&quot; 
+  controls=&quot;&quot; 
+  data-video-id=&quot;5550679964001&quot; 
+  data-playlist-id=&quot;&quot; 
+  data-application-id=&quot;&quot; 
+  <span class="bcls-highlight">data-watermarking-token=&quot;<span class="bcls-input">your watermark token</span>&quot;</span>
+  width=&quot;960&quot; height=&quot;540&quot;&gt;
+&lt;/video-js&gt;            
+</code></pre>
+      </li>
+      <li>
+        <p>視聴者 ID がアナリティクスのウェブビーコン（<code translate="No">user</code>フィールド内）に渡されるように、プレーヤーは登録システムと統合されている必要があります。</p>
+        <p>これを行うには、<code translate="No">setUser()</code>メソッドを使用します。たとえば、</p>
+        <pre><code class="language-html" translate="No">myPlayer.bcAnalytics.client.setUser('viewer id');</code></pre>
+        <h3>JavaScript</h3>
+        <pre class="line-numbers">
+<code class="language-html" translate="No">&lt;script&gt;
+  videojs.getPlayer('myPlayerID').ready(function() {
+    var myPlayer = this;
+
+    // Set the viewer id for Brightcove analytics
+    <span class="bcls-highlight">myPlayer.bcAnalytics.client.setUser('<span class="bcls-input">viewer id</span>'</span>); 
+  });
+&lt;/script&gt;      
+</code></pre>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Limitations">制約事項</h2>
+    <p>この機能の制限の詳細については、を参照してください。<a href="https://apis.support.brightcove.com/general/overview-forensic-watermarking.html#Limitations">概要：フォレンジック透かし</a>資料。</p>
+  </section>
+
+  
+</article>

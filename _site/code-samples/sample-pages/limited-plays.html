@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Brightcove Playerサンプル：限定プレイ</title>
+</head>
+
+<body>
+    <!-- Player embed code with an id attribute -->
+    <video-js id="myPlayerID" data-video-id="5718453946001" data-account="1752604059001" data-player="default" data-embed="default" data-application-id class="video-js" controls width="640" height="360"></video-js>
+    <script src="https://players.brightcove.net/1752604059001/default_default/index.min.js"></script>
+
+    <!-- Display the number of video views the user has watched -->
+    <p>ビュー数 = <span id="cookieDisplay1"></span></p>
+
+    <!-- custom script -->
+    <script type="text/javascript">
+        videojs.getPlayer ('myPlayerID') .ready (function () { // Function to read the browser cookie var read_cookie = function(key) { var result; return (result = new RegExp('(^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? result[2] : null; } //変数を初期化し、ブライトコーブのビデオビューに関連付けられたブラウザークッキーを読み込む var myPlayer = これ, VideoStart = 0, currentPosition, クッキー = read_cookie (「BC_Views」);//ユーザーが最大ビュー数に達しました myPlayer.Errors ( { "errors": { "-3": { "headline": "You've reached your maximum views.", "type": "USER_MAX_VIEWS", "message": "Please come back tomorrow." } }});//クッキーの値を表示します document.getElementById (「cookieDisplay1") .innerHTML = クッキー;//クッキーの値が 2 以上の場合は、カスタムエラーメッセージを表示します (クッキー!= ヌル &amp;&amp; クッキー &gt;= 2 { // Wait for the player to be loaded before displaying the message myPlayer.on("loadedmetadata", function() { myPlayer.error({ code: '-3', dismiss: false } ));})} //ユーザーが動画を再生するたびに、ブラウザのクッキーをインクリメントします myPlayer.one (「再生」, 関数 () { var d = new Date(); d.setTime(d.getTime() + (1 * 24 * 60 * 60 * 1000)); cookie++; document.cookie = "BC_views=" + cookie + ";expires=" + d.toUTCString(); } );});
+    </script>
+
+</body>
+
+</html>

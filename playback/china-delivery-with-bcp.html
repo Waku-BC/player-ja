@@ -1,0 +1,159 @@
+---
+title: 'Brightcoveプレーヤーによる中国配送'
+description: 「このトピックでは、BrightcovePlayerを使用して国外から中国にビデオを配信する方法を学習します。」
+parent: Playback
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary> 
+
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+
+    <p>Brightcoveは、国外から中国にビデオを配信するためのソリューションを提供します。このソリューションは、次の2つの部分で構成されています。</p>
+    <ul>
+      <li>中国内でホストされているプロキシサーバー</li>
+      <li>接続された中国固有のCDN</li>
+    </ul>
+
+    <p>プロキシは、ビデオ以外のトラフィック（Playback APIリクエスト、Analyticsビーコン、およびWebプレーヤー自体）を中国の視聴者との間で、外部にあるBrightcoveインフラストラクチャにルーティングします。</p>
+
+    <p>CDNはプロキシに接続され、ビデオと画像のコンテンツを処理します。</p>
+
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Requirements">必要条件</h2>
+    <p>Brightcove China Deliveryをサポートするには、次の要件が必要です。</p>
+    <h3>セットアップ</h3>
+    <ul>
+      <li>
+        プレーヤーの構成に加えて、セットアップ要件があります
+        <p>詳細については、を参照してください。<a href="https://studio.support.brightcove.com/general/china-delivery-overview.html">概要：チャイナデリバリー</a></p>
+      </li>
+    </ul>
+    <h3>ブライトコーブ・プレイヤー</h3>
+    <ul>
+      <li>BrightcovePlayerバージョン6.44以降が必要です。最新バージョンをお勧めします</li>
+    </ul>
+
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Configuring_Brightcove_Player">Brightcove Player設定</h2>
+    <p>中国内で動画を配信するには、Brightcove 中国配信プロキシを使用するようにプレーヤーを設定する必要があります。</p>
+    <p>中国互換プレーヤーを作成するには、次の手順に従います。</p>
+
+    <ol class="bcls-tasklist">
+      <li>
+        <p>
+          ビデオクラウドスタジオで、<strong></strong>プレーヤーモジュールを開きます。既存のプレーヤーを使用するか、新しいプレーヤーを作成します。
+        </p>
+        <aside class="bcls-aside bcls-aside--information">Brightcove Playerバージョン6.44以降（最新リリースを推奨）を使用することを忘れないでください。</aside>
+      </li>
+      <li>プレーヤーの名前のリンクを選択して、プレーヤーのプロパティを開きます。</li>
+      <li><p>左側のナビゲーションで、[ <strong>JSON エディタ] を選択します</strong>。</p>
+      <figure class="bcls-figure"><img class="bcls-image--no-border" alt="JSON Editor" src="/assets/images/playback/china-json-editor.png" />
+        <figcaption class="bcls-caption--image">JSONエディター</figcaption>
+        </figure>
+      </li>
+      <li><p>プロキシを設定するには、以下を追加します。</p>
+        <pre class="line-numbers">
+<code class="language-json" translate="No">&quot;china_proxy_domain&quot;: &quot;china.example.com&quot;</code></pre>
+        <aside class="bcls-aside bcls-aside--information">これはホスト名のみである必要があります。プロトコル (https://など) はなく、スラッシュを含む特殊文字もありません。</aside>
+      </li>
+      <li>
+        <p>
+          コードは次のようになります。
+        </p>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="China proxy setting" src="/assets/images/playback/china-proxy-setting.png" />
+        <figcaption class="bcls-caption--image">中国のプロキシ設定</figcaption>
+        </figure>
+      </li>
+      <li>クリック<strong>保存する</strong>、およびプレーヤーを公開します。</li>
+      <li>プレーヤーを埋め込みまたは共有する場合、埋め込みコードがBrightcove PlayerCDNを使用していることに注意してください。
+        <pre class="line-numbers">
+<code class="language-json" translate="No">&lt;script
+  src=&quot;//<span class="bcls-highlight">players.brightcove.net</span>/1752604059001/jnOD8yLME_default/index.min.js&quot;&gt;
+&lt;/script&gt;</code></pre>
+      </li>
+      <li>中国の配信ドメインを使用するようにBrightcovePlayerCDNを変更します。
+        <pre class="line-numbers">
+<code class="language-json" translate="No">&lt;script
+  src=&quot;//<span class="bcls-highlight">china.example.com</span>/1752604059001/jnOD8yLME_default/index.min.js&quot;&gt;
+&lt;/script&gt;</code></pre>
+          <aside class="bcls-aside bcls-aside--warning">を使用して<code translate="No">players.brightcove.net</code>ドメインを使用すると、コンテンツを再生できなくなり、中国でのプレーヤーの読み込み時間が遅くなります。</aside>
+      </li>
+    </ol>
+
+    <h3>注</h3>
+    <p>と<code translate="No">china_proxy_domain</code>設定すると、プレーヤーによって開始されたすべてのリクエストは、そのドメイン内のURLに送信されます。上記のサンプル値 ( <strong>  china.example.com </strong> ) を使用すると、次の要求が表示される場合があります。</p>
+    <table class="bcls-table">
+            <!-- <caption class="bcls-caption--table">Table Caption (optional <strong><caption class="bcls-caption--table"></strong>)</caption> -->
+            <thead class="bcls-table__head">
+                <tr>
+                    <th>システム</th>
+                    <th>パス</th>
+                </tr>
+            </thead>
+            <tbody class="bcls-table__body"> 
+                <tr>
+                    <td>プレイヤーCDN</td>
+                    <td>//china.example.com/players/...</td>
+                </tr>
+                <tr>
+                    <td>再生 API</td>
+                    <td>//china.example.com/再生/v1/...</td>
+                </tr>
+                <tr>
+                    <td>分析</td>
+                    <td>//china.example.com/V2/tracker...</td>
+                </tr>
+                
+            </tbody>
+        </table>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Localization">ローカライズ</h2>
+    <p><code translate="No">china_proxy_domain</code>設定すると、Brightcove Player <strong></strong>は自動的に 2 つの言語で設定されます。</p>
+    <ul>
+      <li><code translate="No">zh-Hans</code>   :簡体字中国語 (デフォルト)</li>
+      <li><code translate="No">zh-Hant</code>   :繁体字中国語</li>
+    </ul>
+
+    <p><code translate="No">china_proxy_domain</code>の設定は、次の設定と同じ効果があります（ただし、これらは不要です）。</p>
+    <pre class="line-numbers">
+<code class="language-json" translate="No">&quot;language&quot;: &quot;zh-Hans&quot;,
+&quot;languages&quot;: [&quot;zh-Hans&quot;, &quot;zh-Hant&quot;],
+</code></pre>
+    <p><code translate="No">china_proxy_domain</code><code translate="No">language</code>またはに値が指定された場合、このデフォルトの効果は発生しません。<code translate="No">languages</code>構成！デフォルトの動作を上書きするには、これらの設定を組み合わせて一致させます。</p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Adding_more_languages">言語を追加する</h2>
+    <p><code translate="No">zh-Hans</code><code translate="No">zh-Hant</code>およびよりも多くの言語が必要な場合は、プレーヤーに言語設定を追加できます。この設定は次のようになります。</p>
+   
+    <pre class="line-numbers">
+<code class="language-json" translate="No">&quot;china_proxy_domain&quot;: &quot;china.example.com&quot;,
+&quot;languages&quot;: [&quot;zh-Hans&quot;, &quot;zh-Hant&quot;, &quot;en&quot;, &quot;jp&quot;],
+</code></pre>
+    <p>この例のプレーヤーはデフォルトのままですが<code translate="No">zh-Hans</code>、英語と日本語も追加します。</p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Changing_the_default_language">デフォルトの言語を変更する</h2>
+    <p>とは異なるデフォルト言語を設定するには<code translate="No">zh-Hans</code>、<code translate="No">language</code>設定を追加します。設定は次のようになります。</p>
+   
+    <pre class="line-numbers">
+<code class="language-json" translate="No">&quot;china_proxy_domain&quot;: &quot;china.example.com&quot;,
+&quot;language&quot;: &quot;zh-Hant&quot;,
+</code></pre>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Limitations">制約事項</h2>
+    <p>この機能の制限の詳細については、を参照してください。<a href="https://studio.support.brightcove.com/general/china-delivery-overview.html#Limitations">概要：チャイナデリバリー</a>資料。</p>
+  </section>
+
+</article>

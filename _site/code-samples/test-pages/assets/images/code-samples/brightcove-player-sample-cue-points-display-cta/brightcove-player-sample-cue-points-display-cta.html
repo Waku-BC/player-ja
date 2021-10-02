@@ -1,0 +1,16 @@
+<video-js id="myPlayerID" 
+  data-video-id="4784521906001" 
+  data-account="1752604059001" 
+  data-player="ryeOJ8f5dZ" 
+  data-embed="default"
+  data-application-id 
+  class="video-js" 
+  controls></video-js>
+<script src="https://players.brightcove.net/1752604059001/ryeOJ8f5dZ_default/index.min.js"></script>
+
+<script>
+  var myPlayer, timeouTID, removetatime; videojs.getPlayer ('myPlayerID') .ready (関数 () { var cuePointAra = [], allCuePointData; myPlayer = this; // Hide overlay initially myPlayer.addClass("hide-overlay"); // +++ Listen for cue change then pass data to be displayed +++ myPlayer.on("loadstart", function(evt) { cuePointAra = myPlayer.mediainfo.cue_points; console.log(cuePointAra); var tt = myPlayer.textTracks()[0]; // When a cue point starts, extract cue data and pass data to be displayed tt.oncuechange = function() { if (tt.activeCues[0] !== undefined) { allCuePointData = getSubArray( cuePointAra, "time", tt.activeCues[0].startTime ); displayCTA(allCuePointData[0]); } }; myPlayer.play ();});//++キューポイントメタデータからデータピースを抽出し、オーバーレイを表示する ++++ 関数 displayCTA (cpData) {//メタデータを基に 3 つの部分の配列に分割するセミコロンの位置 var dataAra = cpdata.metadata.Split (「;」), durationCTA = DataAra [0], textCTA = DataAra [1], urlCTA = DataAra [2],//アンカータグを動的に構築する hrefCTA = ' <a href="' +
+        urlCTA +
+        '"><span style="background-color: black; color: red;">'  + textCTA +」</span></a>「, timeoutValue;//デュレーションの設定、タイムアウトの設定、動的HTMLの注入とオーバーレイの表示タイムアウト値 = 数値 (durationCTA) * 1000; timeout = window.setTimeout (checkTime, timeoutValue); document.getElementsByClassName (「vjs-オーバーレイ」) [0]。innerHTML = hrefCTA; myPlayer.removeClass (「hide-overlay」);}//+++ タイムアウトをクリアしてオーバーレイを削除する ++++//タイムアウトに達したときに呼び出される関数 checkTime () { window.clearTimeout(timeoutID); myPlayer.addClass("hide-overlay"); } //++キューポイント情報を抽出するためのヘルパー関数 ++++ 関数 getSubArray (targetArray, objProperty,value) { var i, totalItems = targetArray.length, objFound = false, idxArr = []; for (i = 0; i &lt; totalItems; i++) { if (targetArray[i][objProperty] === value) { objFound = true; idxArr.push(targetArray[i]); } } idxArr;}});
+
+</script>

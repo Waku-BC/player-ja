@@ -1,39 +1,50 @@
-﻿<!doctype html>
-<html lang="ja">
+<!doctype html>
+<html lang="en-us">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
+  <meta name="description" content="In this topic you will learn via a hands-on introduction about plugin development and use.">
   
-  <title>ステップバイステップ:プラグイン開発</title>
+  <title>ステップバイステップ：プラグイン開発</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">  
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/learning-paths/learning-paths.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
   <link rel="stylesheet" href="/assets/css/local.css">
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2728311-17"></script>
+<script translate="no">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2728311-17');
+</script>
   <script src="/assets/js/sajari-head.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
 <body class="body">
 
 <header>
   <div class="div-header">
-    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Player_Logo.svg" alt="製品ロゴ" style="max-height: 100px;max-width: 232px;"/></a>
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/SVG/COVE004_Brightcove_Player_Logo_RGB_K.svg" alt="Brightcove" style="max-width: 200px;"></a>
 <!-- GTranslate: https://gtranslate.io/ -->
-<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+<select onchange="doGTranslate(this);"><option value="">Select Language</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
 
-<script>
+<script translate="no">
 /* <![CDATA[ */
 function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
 /* ]]> */
@@ -41,1029 +52,579 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 
 
 
-    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="サポート"/> サポートへのお問い合わせ</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="システムステータス"/> システムステータス</a></span> <br/>
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><i data-feather="help-circle"></i> サポートに連絡する</a><span style="vertical-align: middle;margin-left:1em;margin-right:1em;">| </span><a href="https://status.brightcove.com/"><i data-feather="cloud"></i> システムステータス</a></span>
+    <br>
     
   </div>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb arr-right">
       
-      <li class="breadcrumb-item"><a href="/">ホーム</a></li>
+      <li class="breadcrumb-item first-item"><a href="/">ホーム</a></li>
+        
+      <li class="breadcrumb-item"><a href="/coding-topics/">Coding Topics</a></li>
       
-      
-      
-      <li class="breadcrumb-item"><a href="/coding-topics/">コーディングトピック</a></li>
-      
-      <li class="breadcrumb-item active" aria-current="page">ステップバイステップ:プラグイン開発</li>
+      <li class="breadcrumb-item active" aria-current="page">ステップバイステップ：プラグイン開発</li>
     </ol>
   </nav>
 </header>
 <div class="container">
     <div class="row">
-            <div class="col-sm-3 left-side-bar">
-        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
-          <option value="">Brightcove のその他のドキュメント</option>
-          
-            
-              <option value="https://support.brightcove.com">ドキュメントホーム</option>
-            
-          
-            
-              <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
-            
-          
-            
-              <option value="https://beacon.support.brightcove.com">Brightcove ビーコン</option>
-            
-          
-            
-              <option value="https://campaign.support.brightcove.com">Brightcove キャンペーン</option>
-            
-          
-            
-              <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
-            
-          
-            
-              <option value="https://live.support.brightcove.com">Brightcove ・ライブ</option>
-            
-          
-            
-              <option value="https://gallery.support.brightcove.com">Brightcove ギャラリー</option>
-            
-          
-            
-              <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
-            
-          
-            
-              <option value="https://social.support.brightcove.com">Brightcove ソーシャル</option>
-            
-          
-            
-              <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
-            
-          
-            
-              <option value="https://player.support.brightcove.com">Brightcove のプレーヤー開発</option>
-            
-          
-            
-              <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
-            
-          
-            
-              <option value="https://sdks.support.brightcove.com">ビデオクラウドデバイス SDK</option>
-            
-          
-            
-              <option value="https://integrations.support.brightcove.com">統合および CMS コネクタ</option>
-            
-          
-            
-              <option value="https://general.support.brightcove.com">ビデオクラウドの一般情報</option>
-            
-          
-            
-              <option value="https://zencoder.support.brightcove.com">Zencoder</option>
-            
-          
-        </select>
-
+      <div class="col-sm-3 left-side-bar">
+				<select id="site_select" class="bcls-select" style="margin-left: 1rem;">
+					<option value="">ブライトコーブのその他のドキュメント</option>
+					 
+							<option value="https://support.brightcove.com">ドキュメンテーションホーム</option>
+						  
+							<option value="">-ビデオクラウド-</option>
+						  
+							<option value="https://studio.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドスタジオ</option>
+						  
+							<option value="https://player.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブプレイヤー開発</option>
+						  
+							<option value="https://apis.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドプラットフォームAPI</option>
+						  
+							<option value="https://sdks.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドデバイスSDK</option>
+						  
+							<option value="https://integrations.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;統合とCMSコネクタ</option>
+						  
+							<option value="https://general.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドの一般情報</option>
+						  
+							<option value="">-ビデオエッセンシャル-</option>
+						  
+							<option value="https://beacon.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブビーコン</option>
+						  
+							<option value="https://live.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブライブ</option>
+						  
+							<option value="https://zencoder.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp; Zencoder</option>
+						  
+							<option value="">-ビデオクラウドアドオン-</option>
+						  
+							<option value="https://campaign.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブキャンペーン</option>
+						  
+							<option value="https://engage.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブエンゲージ</option>
+						  
+							<option value="https://gallery.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブギャラリー</option>
+						  
+							<option value="https://studio.support.brightcove.com/social/index.html">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブソーシャル</option>
+						  
+							<option value="https://ssai.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブSSAI</option>
+						 
+				</select>
         <nav class="sidenav" id="side_nav">
-          
-            
+           
             <h5><a href="/index.html">ホーム</a></h5>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/getting-started/index.html">はじめに<strong> + </strong></a></h5>
+              
+              <h5 class="submenu-header"><a href="/getting-started/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;はじめに</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
-                
-                  
+                 
                     <li><a href="/training/developer-basics-videos.html">開発者向け基本ビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/what-brightcove-player.html">Brightcove プレーヤーとは何ですか？</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/overview-brightcove-player.html">概要:Brightcove プレーヤー</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/learning-guide-video-advertising.html">学習ガイド:動画広告</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/overview-brightcove-player-plugins.html">概要:Brightcove プレーヤープラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="/training/player-development-training-videos.html">プレーヤー開発トレーニングビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/step-step-brightcove-player.html">ステップバイステップ:Brightcove プレーヤー</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/step-step-player-customization.html">ステップバイステップ:プレーヤーのカスタマイズ</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-developing-brightcove-player.html">トレーニング:Brightcove プレーヤーで開発する</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/learning-guide-using-rest-apis.html">学習ガイド:REST API を使用する</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/basics/index.html">基本を学びましょう<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/basics/developer-basics-advanced-player-code.html">アドバンスプレイヤーコード</a></li>
-                  
-                
-                  
-                    <li><a href="/basics/developer-basics-autoplaying-video.html">ビデオの自動再生</a></li>
-                  
-                
-                  
-                    <li><a href="/basics/developer-basics-custom-plugin-converting-code.html">カスタムプラグイン-コードの変換</a></li>
-                  
-                
-                  
-                    <li><a href="/basics/developer-basics-custom-plugin-passing-data.html">カスタムプラグイン-データの受け渡し</a></li>
-                  
-                
-                  
-                    <li><a href="/basics/developer-basics-custom-plugin-using-studio.html">カスタムプラグイン-Studioを使用する</a></li>
-                  
-                
-                  
-                    <li><a href="/basics/developer-basics-custom-plugin-why-and-how.html">カスタムプラグイン-理由と方法</a></li>
-                  
-                
-                  
-                    <li><a href="/training/developer-basics-videos.html">開発者向け基本ビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/basics/developer-basics-generating-player-code.html">プレイヤーコードを生成しています</a></li>
-                  
-                
-                  
-                    <li><a href="/basics/developer-basics-preparing-write-code.html">コードを書く準備をする</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/references/index.html">参考文献<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/references/brightcove-player-5-6-migration-guide.html">Brightcove プレーヤ 5 から 6 への移行ガイド</a></li>
-                  
-                
-                  
-                    <li><a href="https://docs.brightcove.com/brightcove-player/current-release/index.html">Brightcove プレーヤ API ドキュメント (外部サイト) </a></li>
-                  
-                
-                  
-                    <li><a href="/references/brightcove-player-cookies.html">Brightcove プレーヤーのクッキー</a></li>
-                  
-                
-                  
-                    <li><a href="/references/brightcove-player-error-reference.html">Brightcove プレーヤーのエラーリファレンス</a></li>
-                  
-                
-                  
-                    <li><a href="https://groups.google.com/forum/embed/?place=forum/bcplayerdev#!forum/bcplayerdev">Brightcove プレーヤー発表フォーラム</a></li>
-                  
-                
-                  
-                    <li><a href="/references/brightcove-player-system-requirements.html">Brightcove プレーヤーのシステム要件</a></li>
-                  
-                
-                  
-                    <li><a href="/references/catalog-search-architecture.html">カタログ検索アーキテクチャ</a></li>
-                  
-                
-                  
-                    <li><a href="https://general.support.brightcove.com/general/known-issues-studio-brightcove-player-and-apis.html">既知の問題</a></li>
-                  
-                
-                  
-                    <li><a href="/references/player-catalog.html">プレーヤーカタログ</a></li>
-                  
-                
-                  
-                    <li><a href="/references/player-feature-support-browser.html">ブラウザによるプレーヤー機能のサポート</a></li>
-                  
-                
-                  
-                    <li><a href="/references/player-metadata-bcinfo.html">bcinfo からのプレーヤーメタデータ</a></li>
-                  
-                
-                  
-                    <li><a href="https://docs.brightcove.com/brightcove-player/current-release/Player.html">プレイヤーメソッド/イベント API (外部サイト) </a></li>
-                  
-                
-                  
-                    <li><a href="/references/guide-playlist-api.html">プレイリスト API ガイド</a></li>
-                  
-                
-                  
-                    <li><a href="/references/video-metadata-mediainfo.html">mediainfo からの動画メタデータ</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/plugins/index.html">プラグイン<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/plugins/360degvr-video-plugin.html">360º ビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/ad-only-plugin.html">広告のみ</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/advertising-freewheel-plugin.html">FreeWheel プラグインでの広告</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/advertising-ima3-plugin.html">IMA3 プラグインでの広告</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/upgrading-ima3-plugin-version-3.html">IMA3 プラグインバージョン 3 へのアップグレード</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/implementing-server-side-ads-brightcove-player.html">SSAIとの広告</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/chromecast-plugin-brightcove-player.html">Chromecast </a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/custom-endscreen-plugin.html">カスタムエンドスクリーン</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/display-error-messages-plugin.html">エラーメッセージの表示</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/display-thumbnail-previews-plugin.html">サムネイルプレビューを表示</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/configuring-brightcove-player-drm.html">DRM </a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/google-tag-manager-plugin-brightcove-player.html">グーグルタグマネージャ</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/hls-plugin.html">HLS </a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/live-dvrux-plugin.html">ライブDVRUX </a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/display-overlay-plugin.html">オーバーレイ</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/overview-brightcove-player-plugins.html">概要:プレーヤープラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/picture-picture-plugin-aka-floating-or-pinned.html">ピクチャー・イン・ピクチャー</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/playerplugin-version-testing.html">プレーヤー/プラグインのバージョンテスト</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/playlist-ui-plugin.html">プレイリスト UI </a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/changelog/index.html">プラグインの更新履歴</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/plugin-registry.html">プラグインレジストリ</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/plugin-version-reference.html">プラグインバージョンリファレンス</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/quality-selection-plugin.html">品質選択</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/social-sharing-plugin.html">ソーシャルメディア</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/tealium-plugin-brightcove-player.html">Tealium タグマネージャ</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/video-seo-schema-generator-plugin.html">ビデオ SEO スキーマジェネレータ</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/advertising/index.html"><strong>広告+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/advertising/ad-events-and-ad-objects.html">広告イベントと広告オブジェクト</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/ad-only-plugin.html">広告専用プラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/advertising-freewheel-plugin.html">FreeWheel プラグインでの広告</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/advertising-ima3-plugin.html">IMA3 プラグインでの広告</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/client-side-preroll-with-live-ssai.html">ライブSSAIを使用したクライアント側のプリロール広告</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/displaying-ads-using-ad-cue-points.html">広告キューポイントを使用した広告の表示</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/flash-no-longer-valid-ima.html">フラッシュはもはやIMA では無効です</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/guide-ad-partner-integration.html">ガイド:広告パートナーの統合</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/guide-contrib-ads-migration.html">ガイド:contrib-ads の移行</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/implementing-server-side-ads-brightcove-player.html">Brightcove プレーヤーで SSAI を実装する</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/jump-start-header-bidding-ad.html">ジャンプ開始:ヘッダー入札広告</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/jump-start-outstream-ad.html">ジャンプ開始:アウトストリーム広告</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/jump-start-pre-roll-ad.html">ジャンプ開始:プレロール広告</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/known-issues-server-side-ad-insertion-ssai.html">既知の問題:サーバー側広告挿入 (SSAI) </a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/learning-guide-video-advertising.html">学習ガイド:動画広告</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/step-step-implementing-advertising.html">ステップバイステップ:広告の実装</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/testing-pre-release-advertising-plugins.html">プレリリース広告プラグインのテスト</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/using-dfp-premium-brightcove-player.html">Brightcove プレーヤーで DFP プレミアムを使用する</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/using-player-enhancements-live-ssai-brightcove-player.html">ライブSSAIとアドバンスト・プレイヤー・ツールキットの使用</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/video-cloud-ssai-ad-tag-validation.html">ビデオクラウド SSAI 広告タグの検証</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/publish/index.html">動画とプレーヤーの公開<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/publish/assigning-video-player-programmatically.html">プログラムによるプレーヤーへのビデオの割り当て</a></li>
-                  
-                
-                  
-                    <li><a href="/publish/available-options-advanced-page-embed-code.html">詳細設定 (ページ内) 埋め込みコードで使用可能なオプション</a></li>
-                  
-                
-                  
-                    <li><a href="/publish/available-options-standard-iframe-embed-code.html">標準 (iframe) 埋め込みコードで使用可能なオプション</a></li>
-                  
-                
-                  
-                    <li><a href="/publish/brightcove-player-loader.html">Brightcove のプレーヤーローダー</a></li>
-                  
-                
-                  
-                    <li><a href="/publish/bulk-updating-brightcove-default-player.html">Brightcove のデフォルトプレーヤーの一括更新</a></li>
-                  
-                
-                  
-                    <li><a href="https://studio.support.brightcove.com/publish/choosing-correct-embed-code.html">正しい埋め込みコードの選択</a></li>
-                  
-                
-                  
-                    <li><a href="/publish/delaying-player-instantiation.html">プレイヤーのインスタンス化の遅延</a></li>
-                  
-                
-                  
-                    <li><a href="/publish/pre-release-player.html">プレリリースプレーヤー</a></li>
-                  
-                
-                  
-                    <li><a href="/publish/syndication-strategies.html">シンジケーション戦略</a></li>
-                  
-                
-                  
-                    <li><a href="/publish/using-non-brightcove-player.html">Brightcove 以外のプレーヤーを使用する</a></li>
-                  
-                
-                  
-                    <li><a href="https://studio.support.brightcove.com/publish/using-multiple-players-one-page.html">1ページで複数のプレイヤーを使用する</a></li>
-                  
-                
-                  
-                    <li><a href="https://studio.support.brightcove.com/publish/using-reference-ids.html">参照 ID の使用</a></li>
-                  
-                
-                  
-                    <li><a href="">ビデオレンディションインスペクタ</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/troubleshooting/index.html">トラブルシューティング<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/troubleshooting/brightcove-playback-technology-app.html">Brightcove の再生テクノロジーアプリ</a></li>
-                  
-                
-                  
-                    <li><a href="/references/brightcove-player-error-reference.html">Brightcove プレーヤーのエラーリファレンス</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/brightcove-player-information-modal.html">Brightcove のプレーヤー情報モーダル</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/brightcove-player-troubleshooting-guide.html">Brightcove プレーヤーのトラブルシューティングガイド</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/creating-charles-log.html">チャールズ・ログの作成</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/creating-network-log.html">ネットワークログの作成</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/domain-restrictions-messaging.html">ドメイン制限メッセージング</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/display-error-messages-plugin.html">エラーメッセージプラグインの表示</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/manually-setting-player-version.html">プレーヤーのバージョンを手動で設定する</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/playerplugin-version-testing.html">プレーヤー/プラグインのバージョンテスト</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/player-informational-properties.html">プレイヤー情報プロパティ</a></li>
-                  
-                
-                  
-                    <li><a href="/code-samples/brightcove-player-sample-live-custom-error-message.html">サンプル:ライブカスタムエラーメッセージ</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/step-step-brightcove-player-debugger.html">ステップバイステップ:Brightcove プレーヤーデバッガ</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/running-network-path-trace.html">ネットワークパストレースの実行</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/using-player-reference.html">プレーヤーリファレンスの使用</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/vetting-brightcove-player-releases.html">Vetting Brightcove プレーヤーリリース</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/viewing-player-configuration.html">プレーヤ設定の表示</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/styling/index.html">スタイリング &amp; 外観<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/styling/customizing-player-appearance.html">プレーヤーの外観のカスタマイズ</a></li>
-                  
-                
-                  
-                    <li><a href="/styling/customizing-player-appearance-legacy-skin.html">プレイヤーの外観のカスタマイズ-レガシースキン</a></li>
-                  
-                
-                  
-                    <li><a href="/styling/brightcove-player-sample-player-styling-playground.html">プレイヤースタイリングプレイグラウンド</a></li>
-                  
-                
-                  
-                    <li><a href="/styling/quick-start-player-customization-legacy-skin.html">「クイックスタート:プレイヤーのカスタマイズ-レガシースキン</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/step-step-player-customization.html">ステップバイステップ:プレーヤーのカスタマイズ</a></li>
-                  
-                
-                  
-                    <li><a href="/styling/responsive-sizing-brightcove-player.html">Brightcove プレーヤーのレスポンシブサイジング</a></li>
-                  
-                
-                  
-                    <li><a href="/styling/sizing-player.html">プレーヤーのサイズ変更</a></li>
-                  
-                
-                  
-                    <li><a href="/styling/skins-and-player-versions.html">スキンとプレーヤーのバージョン</a></li>
-                  
-                
-                  
-                    <li><a href="https://studio.support.brightcove.com/media/styling-captions.html">キャプションのスタイル設定</a></li>
-                  
-                
-                  
-                    <li><a href="/styling/styling-playlists.html">プレイリストのスタイリング</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/playback/index.html"><strong>再生+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/playback/autoplay-considerations.html">自動再生に関する考慮事項</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/brightcove-playback-technology-app.html">Brightcove の再生テクノロジーアプリ</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/xdr-with-bcplayer.html">Brightcove プレーヤーでのクロスデバイス再開</a></li>
-                  
-                
-                  
-                    <li><a href="https://studio.support.brightcove.com/publish/deep-linking.html">ディープリンク</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/delivering-hls-video.html">HLS ビデオの配信</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/determining-which-rendition-will-play.html">再生するレンディションを決定する</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/guide-playback-technology.html">ガイド:再生技術</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/hls-plugin.html">HLS プラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/ios-and-brightcove-player.html">iOS と Brightcove Player </a></li>
-                  
-                
-                  
-                    <li><a href="/playback/overview-https-support.html">概要:HTTPSサポート</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/quality-selection-plugin.html">品質選択プラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/static-url-delivery.html">静的 URL 配信</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/streaming-playready-protected-content-dynamic-delivery.html">PlayReady 保護されたコンテンツのストリーミング</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/using-brightcove-player-tve.html">TVE でBrightcove プレーヤーを使用する</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/content-protection/index.html">DRM &amp; コンテンツ保護<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="https://studio.support.brightcove.com/players/configuring-player-content-restrictions.html">プレーヤーコンテンツ制限の設定</a></li>
-                  
-                
-                  
-                    <li><a href="/content-protection/creating-dash-drm-manifest-brightcove-player.html">Brightcove プレーヤー用の DASH DRM マニフェストを作成する</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/domain-restrictions-messaging.html">ドメイン制限メッセージング</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/configuring-brightcove-player-drm.html">DRMプラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="/content-protection/overview-content-protection.html">概要:コンテンツ保護</a></li>
-                  
-                
-                  
-                    <li><a href="/content-protection/policy-keys.html">ポリシーキー</a></li>
-                  
-                
-                  
-                    <li><a href="/content-protection/restricting-video-playback-using-ip-address.html">IP アドレスを使用したビデオ再生の制限</a></li>
-                  
-                
-                  
-                    <li><a href="/content-protection/signed-urls-and-token-auth-live-stream.html">ライブストリームでの署名付き URL とトークン認証</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/coding-topics/index.html">コーディングトピック<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/publish/brightcove-player-loader.html">Brightcove のプレーヤーローダー</a></li>
-                  
-                
-                  
-                    <li><a href="/references/catalog-search-architecture.html">カタログ検索のアップグレード</a></li>
-                  
-                
-                  
-                    <li><a href="/code-samples/brightcove-player-sample-trigger-rewind-custom-event.html">カスタムイベント</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/guide-playback-technology.html">ガイド:再生技術</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/programmatically-localizing-brightcove-player.html">Brightcove プレーヤーのローカライズ</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/localizing-plugins.html">プラグインのローカライズ</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/player-events.html">プレイヤーイベント</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/overview-components.html">概要:コンポーネント</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/overview-https-support.html">概要:HTTPSサポート</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/overview-player-api.html">概要:プレーヤー API </a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/pass-data-plugin.html">プラグインにデータを渡す</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/react-player-loader.html">プレイヤーローダーを反応させる</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/reporting-brightcove-player-configurations.html">Brightcove プレーヤーの設定に関するレポート</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/requirejs-and-brightcove-player.html">RequireJSとBrightcove プレーヤー</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/step-step-plugin-development.html">ステップバイステップ:プラグイン開発</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/step-step-videojs-plugin-generator.html">ステップバイステップ:Video.js プラグインジェネレータ</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/using-bc-and-getplayer-methods.html">bc () と getPlayer () メソッドを使用する</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/viewing-player-configuration.html">プレーヤ設定の表示</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/general/index.html">一般情報<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="https://studio.support.brightcove.com/publish/adding-application-id-player-embed-code.html">プレーヤーの埋め込みコードへのアプリケーション ID の追加</a></li>
-                  
-                
-                  
-                    <li><a href="/general/adding-captions-videos-programmatically.html">プログラムによる動画へのキャプションの追加</a></li>
-                  
-                
-                  
-                    <li><a href="https://studio.support.brightcove.com/media/adding-chapters-video.html">ビデオへのチャプターの追加</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-player-6-now-default-version.html">Brightcove  Player 6 がデフォルトバージョンになりました</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-player-accessibility.html">Brightcove プレーヤーのアクセシビリティ</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/custom-endscreen-plugin.html">カスタムエンドスクリーンプラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/display-overlay-plugin.html">オーバーレイプラグインを表示</a></li>
-                  
-                
-                  
-                    <li><a href="/references/guide-playlist-api.html">ガイド:プレイリスト API </a></li>
-                  
-                
-                  
-                    <li><a href="/general/identify-and-delete-low-performing-videos.html">パフォーマンスの低い動画の特定と削除</a></li>
-                  
-                
-                  
-                    <li><a href="/general/implementing-cue-points-programmatically.html">プログラムによるキューポイントの実装</a></li>
-                  
-                
-                  
-                    <li><a href="/general/implementing-playlists.html">プレイリストの実装</a></li>
-                  
-                
-                  
-                    <li><a href="/general/implementing-modaldialog.html">ModalDialogの実装</a></li>
-                  
-                
-                  
-                    <li><a href="/general/live-hls.html">ライブHLS </a></li>
-                  
-                
-                  
-                    <li><a href="/general/live-stream-configuration.html">ライブストリーム設定</a></li>
-                  
-                
-                  
-                    <li><a href="/general/multiple-audio-tracks.html">複数のオーディオトラック</a></li>
-                  
-                
-                  
-                    <li><a href="/general/player-configuration-guide.html">プレーヤー設定ガイド</a></li>
-                  
-                
-                  
-                    <li><a href="/general/playing-live-streams.html">ライブストリームを再生する</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/playlist-ui-plugin.html">プレイリスト UI プラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="/content-protection/signed-urls-and-token-auth-live-stream.html">ライブストリームでの署名付き URL とトークン認証</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/social-sharing-plugin.html">ソーシャルメディアプラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="https://apis.support.brightcove.com/player-management/getting-started/step-step-player-management.html">ステップバイステップ:プレーヤー管理</a></li>
-                  
-                
-                  
-                    <li><a href="/styling/styling-playlists.html">プレイリストのスタイリング</a></li>
-                  
-                
-                  
-                    <li><a href="/general/using-screen-reader-brightcove-player.html">Brightcove プレーヤーでスクリーンリーダーを使用する</a></li>
-                  
-                
-                  
-                    <li><a href="/general/versions-brightcove-player-documentation.html">Brightcove プレーヤーのドキュメントのバージョン</a></li>
-                  
-                
-                  
-                    <li><a href="/general/volume-control.html">ボリュームコントロール</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/code-samples/index.html">コードサンプル<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/code-samples/index-thumb.html">グループ別のコードサンプル</a></li>
-                  
-                
-                  
-                    <li><a href="/code-samples/index.html">コードサンプルインデックス</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/amp/index.html">AMP <strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/amp/amp-using-video-cloud-video.html">AMP ビデオクラウドビデオを使用する</a></li>
-                  
-                
-                  
-                    <li><a href="/amp/amp-using-external-video.html">AMP外部ビデオを使用する</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/training/index.html"><strong>トレーニング+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/training/online-training-courses.html">すべてのオンライントレーニングコース</a></li>
-                  
-                
-                  
-                    <li><a href="/training/developer-basics-videos.html">開発者向け基本ビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/training/player-development-training-videos.html">プレーヤー開発トレーニングビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/training/register-training.html">インストラクター主導トレーニングへの登録</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-developing-brightcove-player.html">トレーニング:Brightcove プレーヤーで開発する</a></li>
-                  
-                
-                  
-                    <li><a href="https://apis.support.brightcove.com/player-management/getting-started/training-demand-quick-start-player-management.html">トレーニング:プレーヤー管理へのクイックスタート</a></li>
-                  
-                
-                  
-                    <li><a href="/training/brightcove-university.html">Brightcove Universityトレーニングコース</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/release-notes/index.html">リリースノート<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/release-notes/brightcove-player-release-notes.html">Brightcove プレーヤーリリースノート</a></li>
-                  
-                
-                  
-                    <li><a href="/release-notes/brightcove-player-prerelease-notes.html">Brightcove プレーヤープレリリースノート</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/support/index.html"><strong>サポート+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
                     
-                  
-                
-                  
-                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcove のシステムステータスページの表示</a></li>
-                  
-                
-                  
-                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
-                  
-                
-                  
-                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
-                  
-                
+                    <li><a href="/getting-started/what-brightcove-player.html">Brightcove Playerとは何ですか？</a></li>
+                    
+                    <li><a href="/getting-started/overview-brightcove-player.html">概要:Brightcove Player</a></li>
+                    
+                    <li><a href="/getting-started/learning-guide-video-advertising.html">学習ガイド:動画広告</a></li>
+                    
+                    <li><a href="/getting-started/overview-brightcove-player-plugins.html">概要:Brightcove Playerプラグイン</a></li>
+                    
+                    <li><a href="/training/player-development-training-videos.html">プレーヤー開発トレーニングビデオ</a></li>
+                    
+                    <li><a href="/getting-started/step-step-brightcove-player.html">ステップバイステップ:Brightcove Player</a></li>
+                    
+                    <li><a href="/getting-started/step-step-player-customization.html">ステップバイステップ:プレーヤーのカスタマイズ</a></li>
+                    
+                    <li><a href="/training/training-demand-developing-brightcove-player.html">トレーニング:Brightcoveプレーヤーで開発する</a></li>
+                    
+                    <li><a href="/getting-started/learning-guide-using-rest-apis.html">学習ガイド:REST API を使用する</a></li>
+                   
               </ul>
-            
-          
+              
+              <h5 class="submenu-header"><a href="/basics/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;基本を学ぼう</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/basics/developer-basics-advanced-player-code.html">アドバンスプレイヤーコード</a></li>
+                    
+                    <li><a href="/basics/developer-basics-autoplaying-video.html">ビデオの自動再生</a></li>
+                    
+                    <li><a href="/basics/developer-basics-custom-plugin-converting-code.html">カスタムプラグイン-コードの変換</a></li>
+                    
+                    <li><a href="/basics/developer-basics-custom-plugin-passing-data.html">カスタムプラグイン-データの受け渡し</a></li>
+                    
+                    <li><a href="/basics/developer-basics-custom-plugin-using-studio.html">カスタムプラグイン-Studioを使用する</a></li>
+                    
+                    <li><a href="/basics/developer-basics-custom-plugin-why-and-how.html">カスタムプラグイン-理由と方法</a></li>
+                    
+                    <li><a href="/training/developer-basics-videos.html">開発者向け基本ビデオ</a></li>
+                    
+                    <li><a href="/basics/developer-basics-generating-player-code.html">プレイヤーコードを生成しています</a></li>
+                    
+                    <li><a href="/basics/developer-basics-preparing-write-code.html">コードを書く準備をする</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/references/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;参考文献</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/references/brightcove-player-5-6-migration-guide.html">Brightcoveプレーヤ 5 から 6 への移行ガイド</a></li>
+                    
+                    <li><a href="/brightcove-player/current-release/index.html">ブライトコーブプレイヤー API ドキュメント</a></li>
+                    
+                    <li><a href="/references/brightcove-player-cookies.html">Brightcove Playerクッキー</a></li>
+                    
+                    <li><a href="/references/brightcove-player-error-reference.html">Brightcove Playerエラーリファレンス</a></li>
+                    
+                    <li><a href="/references/brightcove-player-system-requirements.html">Brightcove Playerシステム要件</a></li>
+                    
+                    <li><a href="/references/catalog-search-architecture.html">カタログ検索アーキテクチャ</a></li>
+                    
+                    <li><a href="https://general.support.brightcove.com/general/known-issues-studio-brightcove-player-and-apis.html">既知の問題</a></li>
+                    
+                    <li><a href="/references/player-catalog.html">プレーヤーカタログ</a></li>
+                    
+                    <li><a href="/references/player-feature-support-browser.html">ブラウザによるプレーヤー機能のサポート</a></li>
+                    
+                    <li><a href="/references/player-metadata-bcinfo.html">bcinfo からのプレーヤーメタデータ</a></li>
+                    
+                    <li><a href="/brightcove-player/current-release/Player.html">プレイヤーメソッド/イベント API</a></li>
+                    
+                    <li><a href="/references/guide-playlist-api.html">プレイリスト API ガイド</a></li>
+                    
+                    <li><a href="/references/video-metadata-mediainfo.html">mediainfo からのビデオメタデータ</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/plugins/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;プラグイン</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/plugins/360degvr-video-plugin.html">360º ビデオ</a></li>
+                    
+                    <li><a href="/plugins/ad-only-plugin.html">広告のみ</a></li>
+                    
+                    <li><a href="/plugins/advertising-freewheel-plugin.html">FreeWheel プラグインでの広告</a></li>
+                    
+                    <li><a href="/plugins/advertising-ima3-plugin.html">IMA3 プラグインでの広告</a></li>
+                    
+                    <li><a href="/plugins/upgrading-ima3-plugin-version-3.html">IMA3 プラグインバージョン 3 へのアップグレード</a></li>
+                    
+                    <li><a href="/plugins/implementing-server-side-ads-brightcove-player.html">SSAIとの広告</a></li>
+                    
+                    <li><a href="/plugins/airplay-plugin.html">AirPlay</a></li>
+                    
+                    <li><a href="/plugins/chromecast-plugin-brightcove-player.html">Chromecast</a></li>
+                    
+                    <li><a href="/plugins/custom-endscreen-plugin.html">カスタムエンドスクリーン</a></li>
+                    
+                    <li><a href="/plugins/display-error-messages-plugin.html">エラーメッセージの表示</a></li>
+                    
+                    <li><a href="/plugins/display-thumbnail-previews-plugin.html">サムネイルプレビューを表示</a></li>
+                    
+                    <li><a href="/plugins/configuring-brightcove-player-drm.html">DRM</a></li>
+                    
+                    <li><a href="/plugins/google-tag-manager-plugin-brightcove-player.html">グーグルタグマネージャ</a></li>
+                    
+                    <li><a href="/plugins/hls-plugin.html">HLS</a></li>
+                    
+                    <li><a href="/plugins/live-dvrux-plugin.html">ライブDVRUX</a></li>
+                    
+                    <li><a href="/plugins/display-overlay-plugin.html">オーバーレイ</a></li>
+                    
+                    <li><a href="/plugins/overview-brightcove-player-plugins.html">概要:プレーヤープラグイン</a></li>
+                    
+                    <li><a href="/plugins/picture-picture-plugin-aka-floating-or-pinned.html">ピクチャー・イン・ピクチャー</a></li>
+                    
+                    <li><a href="/plugins/playerplugin-version-testing.html">プレーヤー/プラグインのバージョンテスト</a></li>
+                    
+                    <li><a href="/plugins/playlist-endscreen-plugin.html">プレイリスト終了画面</a></li>
+                    
+                    <li><a href="/plugins/playlist-ui-plugin.html">プレイリスト UI</a></li>
+                    
+                    <li><a href="/plugins/changelog/index.html">プラグインの更新履歴</a></li>
+                    
+                    <li><a href="/plugins/plugin-registry.html">プラグインレジストリ</a></li>
+                    
+                    <li><a href="/plugins/plugin-version-reference.html">プラグインバージョンリファレンス</a></li>
+                    
+                    <li><a href="/plugins/quality-selection-plugin.html">品質選択</a></li>
+                    
+                    <li><a href="/plugins/social-sharing-plugin.html">ソーシャルメディア</a></li>
+                    
+                    <li><a href="/plugins/tealium-plugin-brightcove-player.html">Tealium タグマネージャ</a></li>
+                    
+                    <li><a href="/plugins/thumbnails-plugin.html">サムネイル探し</a></li>
+                    
+                    <li><a href="/plugins/video-seo-schema-generator-plugin.html">ビデオ SEO スキーマジェネレータ</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/advertising/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;広告</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/advertising/ad-events-and-ad-objects.html">広告イベントと広告オブジェクト</a></li>
+                    
+                    <li><a href="/plugins/ad-only-plugin.html">広告専用プラグイン</a></li>
+                    
+                    <li><a href="/plugins/advertising-freewheel-plugin.html">FreeWheel プラグインでの広告</a></li>
+                    
+                    <li><a href="/plugins/advertising-ima3-plugin.html">IMA3 プラグインでの広告</a></li>
+                    
+                    <li><a href="/advertising/client-side-preroll-with-live-ssai.html">ライブSSAIを使用したクライアント側のプリロール広告</a></li>
+                    
+                    <li><a href="/advertising/displaying-ads-using-ad-cue-points.html">広告キューポイントを使用した広告の表示</a></li>
+                    
+                    <li><a href="/advertising/flash-no-longer-valid-ima.html">フラッシュはもはやIMA では無効です</a></li>
+                    
+                    <li><a href="/advertising/guide-ad-partner-integration.html">ガイド:広告パートナーの統合</a></li>
+                    
+                    <li><a href="/advertising/guide-contrib-ads-migration.html">ガイド:contrib-ads の移行</a></li>
+                    
+                    <li><a href="/plugins/implementing-server-side-ads-brightcove-player.html">Brightcoveプレーヤーで SSAI を実装する</a></li>
+                    
+                    <li><a href="/advertising/jump-start-header-bidding-ad.html">ジャンプ開始:ヘッダー入札広告</a></li>
+                    
+                    <li><a href="/advertising/jump-start-outstream-ad.html">ジャンプ開始:アウトストリーム広告</a></li>
+                    
+                    <li><a href="/advertising/jump-start-pre-roll-ad.html">ジャンプ開始:プレロール広告</a></li>
+                    
+                    <li><a href="/advertising/known-issues-server-side-ad-insertion-ssai.html">既知の問題:サーバー側広告挿入 (SSAI) </a></li>
+                    
+                    <li><a href="/getting-started/learning-guide-video-advertising.html">学習ガイド:動画広告</a></li>
+                    
+                    <li><a href="/advertising/step-step-implementing-advertising.html">ステップバイステップ:広告の実装</a></li>
+                    
+                    <li><a href="/advertising/testing-pre-release-advertising-plugins.html">プレリリース広告プラグインのテスト</a></li>
+                    
+                    <li><a href="/advertising/using-dfp-premium-brightcove-player.html">Brightcoveプレーヤーで DFP プレミアムを使用する</a></li>
+                    
+                    <li><a href="/advertising/using-player-enhancements-live-ssai-brightcove-player.html">ライブSSAIのプレーヤー拡張機能の使用</a></li>
+                    
+                    <li><a href="/advertising/video-cloud-ssai-ad-tag-validation.html">ビデオクラウド SSAI 広告タグの検証</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/publish/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;動画とプレーヤーの公開</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/publish/assigning-video-player-programmatically.html">プログラムによるプレーヤーへのビデオの割り当て</a></li>
+                    
+                    <li><a href="/publish/available-options-advanced-page-embed-code.html">高度な（ページ内の）埋め込みコードのオプション</a></li>
+                    
+                    <li><a href="/publish/available-options-standard-iframe-embed-code.html">標準（iframe）埋め込みコードのオプション</a></li>
+                    
+                    <li><a href="/publish/brightcove-player-loader.html">Brightcoveのプレーヤーローダー</a></li>
+                    
+                    <li><a href="/publish/bulk-updating-brightcove-default-player.html">Brightcoveのデフォルトプレーヤーの一括更新</a></li>
+                    
+                    <li><a href="https://studio.support.brightcove.com/publish/choosing-correct-embed-code.html">正しい埋め込みコードの選択</a></li>
+                    
+                    <li><a href="/publish/delaying-player-instantiation.html">プレイヤーのインスタンス化の遅延</a></li>
+                    
+                    <li><a href="/publish/pre-release-player.html">プレリリースプレーヤー</a></li>
+                    
+                    <li><a href="/publish/syndication-strategies.html">シンジケーション戦略</a></li>
+                    
+                    <li><a href="/publish/using-non-brightcove-player.html">Brightcove以外のプレーヤーを使用する</a></li>
+                    
+                    <li><a href="https://studio.support.brightcove.com/publish/using-multiple-players-one-page.html">1ページで複数のプレイヤーを使用する</a></li>
+                    
+                    <li><a href="https://studio.support.brightcove.com/publish/using-reference-ids.html">参照 ID の使用</a></li>
+                    
+                    <li><a href="">ビデオレンディションインスペクタ</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/troubleshooting/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;トラブルシューティング</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/troubleshooting/brightcove-playback-technology-app.html">Brightcoveの再生テクノロジーアプリ</a></li>
+                    
+                    <li><a href="/references/brightcove-player-error-reference.html">Brightcove Playerエラーリファレンス</a></li>
+                    
+                    <li><a href="/troubleshooting/brightcove-player-information-modal.html">Brightcoveのプレーヤー情報モーダル</a></li>
+                    
+                    <li><a href="/troubleshooting/brightcove-player-troubleshooting-guide.html">Brightcove Playerトラブルシューティングガイド</a></li>
+                    
+                    <li><a href="/troubleshooting/creating-charles-log.html">チャールズ・ログの作成</a></li>
+                    
+                    <li><a href="/troubleshooting/creating-network-log.html">ネットワークログの作成</a></li>
+                    
+                    <li><a href="/troubleshooting/domain-restrictions-messaging.html">ドメイン制限メッセージング</a></li>
+                    
+                    <li><a href="/plugins/display-error-messages-plugin.html">エラーメッセージプラグインの表示</a></li>
+                    
+                    <li><a href="/troubleshooting/manually-setting-player-version.html">プレーヤーのバージョンを手動で設定する</a></li>
+                    
+                    <li><a href="/plugins/playerplugin-version-testing.html">プレーヤー/プラグインのバージョンテスト</a></li>
+                    
+                    <li><a href="/troubleshooting/player-informational-properties.html">プレイヤー情報プロパティ</a></li>
+                    
+                    <li><a href="/code-samples/brightcove-player-sample-live-custom-error-message.html">サンプル:ライブカスタムエラーメッセージ</a></li>
+                    
+                    <li><a href="/troubleshooting/step-step-brightcove-player-debugger.html">ステップバイステップ:Brightcoveプレーヤーデバッガ</a></li>
+                    
+                    <li><a href="/troubleshooting/running-network-path-trace.html">ネットワークパストレースの実行</a></li>
+                    
+                    <li><a href="/troubleshooting/using-player-reference.html">プレーヤーリファレンスの使用</a></li>
+                    
+                    <li><a href="/troubleshooting/vetting-brightcove-player-releases.html">Vetting Brightcoveプレーヤーリリース</a></li>
+                    
+                    <li><a href="/troubleshooting/viewing-player-configuration.html">プレーヤ設定の表示</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/styling/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;スタイリングと外観</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/styling/customizing-player-appearance.html">プレーヤーの外観のカスタマイズ</a></li>
+                    
+                    <li><a href="/styling/customizing-player-appearance-legacy-skin.html">プレイヤーの外観のカスタマイズ-レガシースキン</a></li>
+                    
+                    <li><a href="/styling/brightcove-player-sample-player-styling-playground.html">プレイヤースタイリングプレイグラウンド</a></li>
+                    
+                    <li><a href="/styling/quick-start-player-customization-legacy-skin.html">「クイックスタート:プレイヤーのカスタマイズ-レガシースキン</a></li>
+                    
+                    <li><a href="/getting-started/step-step-player-customization.html">ステップバイステップ:プレーヤーのカスタマイズ</a></li>
+                    
+                    <li><a href="/styling/responsive-sizing-brightcove-player.html">Brightcove Playerレスポンシブサイジング</a></li>
+                    
+                    <li><a href="/styling/sizing-player.html">プレーヤーのサイズ変更</a></li>
+                    
+                    <li><a href="/styling/skins-and-player-versions.html">スキンとプレーヤーのバージョン</a></li>
+                    
+                    <li><a href="https://studio.support.brightcove.com/media/styling-captions.html">キャプションのスタイル設定</a></li>
+                    
+                    <li><a href="/styling/styling-playlists.html">プレイリストのスタイリング</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/playback/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;再生</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/playback/autoplay-considerations.html">自動再生に関する考慮事項</a></li>
+                    
+                    <li><a href="/troubleshooting/brightcove-playback-technology-app.html">Brightcoveの再生テクノロジーアプリ</a></li>
+                    
+                    <li><a href="/playback/china-delivery-with-bcp.html">チャイナデリバリー</a></li>
+                    
+                    <li><a href="/playback/xdr-with-bcplayer.html">クロスデバイスレジューム</a></li>
+                    
+                    <li><a href="https://studio.support.brightcove.com/publish/deep-linking.html">ディープリンク</a></li>
+                    
+                    <li><a href="/playback/delivering-hls-video.html">HLS ビデオの配信</a></li>
+                    
+                    <li><a href="/playback/using-delivery-rules-with-bcp.html">配達規則</a></li>
+                    
+                    <li><a href="/playback/determining-which-rendition-will-play.html">再生するレンディションを決定する</a></li>
+                    
+                    <li><a href="/playback/forensic-watermarking-with-bcp.html">フォレンジック透かし</a></li>
+                    
+                    <li><a href="/playback/guide-playback-technology.html">ガイド:再生技術</a></li>
+                    
+                    <li><a href="/plugins/hls-plugin.html">HLS プラグイン</a></li>
+                    
+                    <li><a href="/playback/ios-and-brightcove-player.html">iOS と Brightcove Player</a></li>
+                    
+                    <li><a href="/playback/playback-restrictions-with-bcp.html">再生の制限</a></li>
+                    
+                    <li><a href="/playback/overview-https-support.html">概要:HTTPSサポート</a></li>
+                    
+                    <li><a href="/plugins/quality-selection-plugin.html">品質選択プラグイン</a></li>
+                    
+                    <li><a href="/playback/static-url-delivery.html">静的 URL 配信</a></li>
+                    
+                    <li><a href="/playback/streaming-playready-protected-content-dynamic-delivery.html">PlayReady 保護されたコンテンツのストリーミング</a></li>
+                    
+                    <li><a href="/playback/using-brightcove-player-tve.html">TVE でBrightcoveプレーヤーを使用する</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/content-protection/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;DRMとコンテンツ保護</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="https://studio.support.brightcove.com/players/configuring-player-content-restrictions.html">プレーヤーコンテンツ制限の設定</a></li>
+                    
+                    <li><a href="/content-protection/creating-dash-drm-manifest-brightcove-player.html">Brightcoveプレーヤー用の DASH DRM マニフェストを作成する</a></li>
+                    
+                    <li><a href="/troubleshooting/domain-restrictions-messaging.html">ドメイン制限メッセージング</a></li>
+                    
+                    <li><a href="/plugins/configuring-brightcove-player-drm.html">DRMプラグイン</a></li>
+                    
+                    <li><a href="/content-protection/overview-content-protection.html">概要:コンテンツ保護</a></li>
+                    
+                    <li><a href="/content-protection/policy-keys.html">ポリシーキー</a></li>
+                    
+                    <li><a href="/content-protection/restricting-video-playback-using-ip-address.html">IP アドレスを使用したビデオ再生の制限</a></li>
+                    
+                    <li><a href="/content-protection/signed-urls-and-token-auth-live-stream.html">ライブストリームでの署名付き URL とトークン認証</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/coding-topics/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;コーディングトピック</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/publish/brightcove-player-loader.html">Brightcoveのプレーヤーローダー</a></li>
+                    
+                    <li><a href="/references/catalog-search-architecture.html">カタログ検索のアップグレード</a></li>
+                    
+                    <li><a href="/code-samples/brightcove-player-sample-trigger-rewind-custom-event.html">カスタムイベント</a></li>
+                    
+                    <li><a href="/playback/guide-playback-technology.html">ガイド:再生技術</a></li>
+                    
+                    <li><a href="/coding-topics/programmatically-localizing-brightcove-player.html">Brightcove Playerローカライズ</a></li>
+                    
+                    <li><a href="/coding-topics/localizing-plugins.html">プラグインのローカライズ</a></li>
+                    
+                    <li><a href="/coding-topics/player-events.html">プレイヤーイベント</a></li>
+                    
+                    <li><a href="/coding-topics/overview-components.html">概要:コンポーネント</a></li>
+                    
+                    <li><a href="/playback/overview-https-support.html">概要:HTTPSサポート</a></li>
+                    
+                    <li><a href="/coding-topics/overview-player-api.html">概要:プレーヤー API </a></li>
+                    
+                    <li><a href="/coding-topics/pass-data-plugin.html">プラグインにデータを渡す</a></li>
+                    
+                    <li><a href="/coding-topics/react-player-loader.html">プレイヤーローダーを反応させる</a></li>
+                    
+                    <li><a href="/coding-topics/reporting-brightcove-player-configurations.html">Brightcove Player設定に関するレポート</a></li>
+                    
+                    <li><a href="/coding-topics/requirejs-and-brightcove-player.html">RequireJSとBrightcove Player</a></li>
+                    
+                    <li><a href="/coding-topics/retrieve-bitrate-current-rendition.html">現在のレンディションのビットレートを取得する</a></li>
+                    
+                    <li><a href="/coding-topics/step-step-plugin-development.html">ステップバイステップ:プラグイン開発</a></li>
+                    
+                    <li><a href="/coding-topics/step-step-videojs-plugin-generator.html">ステップバイステップ:Video.js プラグインジェネレータ</a></li>
+                    
+                    <li><a href="/coding-topics/using-bc-and-getplayer-methods.html">bc () と getPlayer () メソッドを使用する</a></li>
+                    
+                    <li><a href="/troubleshooting/viewing-player-configuration.html">プレーヤ設定の表示</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/general/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;一般情報</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="https://studio.support.brightcove.com/publish/adding-application-id-player-embed-code.html">プレーヤーの埋め込みコードへのアプリケーション ID の追加</a></li>
+                    
+                    <li><a href="/general/adding-captions-videos-programmatically.html">プログラムによる動画へのキャプションの追加</a></li>
+                    
+                    <li><a href="https://studio.support.brightcove.com/media/adding-chapters-video.html">ビデオへのチャプターの追加</a></li>
+                    
+                    <li><a href="/general/brightcove-player-6-now-default-version.html">Brightcove Player 6 がデフォルトバージョンになりました</a></li>
+                    
+                    <li><a href="/general/brightcove-player-accessibility.html">Brightcove Playerアクセシビリティ</a></li>
+                    
+                    <li><a href="/plugins/custom-endscreen-plugin.html">カスタムエンドスクリーンプラグイン</a></li>
+                    
+                    <li><a href="/plugins/display-overlay-plugin.html">オーバーレイプラグインを表示</a></li>
+                    
+                    <li><a href="/general/ga-self-configure.html">GoogleAnalyticsの自己構成</a></li>
+                    
+                    <li><a href="/references/guide-playlist-api.html">ガイド:プレイリスト API </a></li>
+                    
+                    <li><a href="/general/identify-and-delete-low-performing-videos.html">パフォーマンスの低い動画の特定と削除</a></li>
+                    
+                    <li><a href="/general/implementing-cue-points-programmatically.html">プログラムによるキューポイントの実装</a></li>
+                    
+                    <li><a href="/general/implementing-playlists.html">プレイリストの実装</a></li>
+                    
+                    <li><a href="/general/implementing-modaldialog.html">ModalDialogの実装</a></li>
+                    
+                    <li><a href="/general/live-hls.html">ライブHLS</a></li>
+                    
+                    <li><a href="/general/live-stream-configuration.html">ライブストリーム設定</a></li>
+                    
+                    <li><a href="/general/multiple-audio-tracks.html">複数のオーディオトラック</a></li>
+                    
+                    <li><a href="/general/player-configuration-guide.html">プレーヤー設定ガイド</a></li>
+                    
+                    <li><a href="/general/playing-live-streams.html">ライブストリームを再生する</a></li>
+                    
+                    <li><a href="/plugins/playlist-ui-plugin.html">プレイリスト UI プラグイン</a></li>
+                    
+                    <li><a href="/content-protection/signed-urls-and-token-auth-live-stream.html">ライブストリームでの署名付き URL とトークン認証</a></li>
+                    
+                    <li><a href="/plugins/social-sharing-plugin.html">ソーシャルメディアプラグイン</a></li>
+                    
+                    <li><a href="https://apis.support.brightcove.com/player-management/getting-started/step-step-player-management.html">ステップバイステップ:プレーヤー管理</a></li>
+                    
+                    <li><a href="/styling/styling-playlists.html">プレイリストのスタイリング</a></li>
+                    
+                    <li><a href="/general/using-screen-reader-brightcove-player.html">Brightcoveプレーヤーでスクリーンリーダーを使用する</a></li>
+                    
+                    <li><a href="/general/versions-brightcove-player-documentation.html">Brightcove Playerドキュメントのバージョン</a></li>
+                    
+                    <li><a href="/general/volume-control.html">ボリュームコントロール</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/code-samples/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;コードサンプル</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/code-samples/index-thumb.html">グループ別のコードサンプル</a></li>
+                    
+                    <li><a href="/code-samples/index.html">コードサンプルインデックス</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/amp/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;AMP</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/amp/amp-using-video-cloud-video.html">AMP ビデオクラウドビデオを使用する</a></li>
+                    
+                    <li><a href="/amp/amp-using-external-video.html">AMP外部ビデオを使用する</a></li>
+                    
+                    <li><a href="/amp/amp-and-advertising.html">AMPと広告</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/training/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;トレーニング</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/training/online-training-courses.html">すべてのオンライントレーニングコース</a></li>
+                    
+                    <li><a href="/training/developer-basics-videos.html">開発者向け基本ビデオ</a></li>
+                    
+                    <li><a href="/training/player-development-training-videos.html">プレーヤー開発トレーニングビデオ</a></li>
+                    
+                    <li><a href="/training/register-training.html">インストラクター主導トレーニングへの登録</a></li>
+                    
+                    <li><a href="/training/training-demand-developing-brightcove-player.html">トレーニング:Brightcoveプレーヤーで開発する</a></li>
+                    
+                    <li><a href="https://apis.support.brightcove.com/player-management/getting-started/training-demand-quick-start-player-management.html">トレーニング:プレーヤー管理へのクイックスタート</a></li>
+                    
+                    <li><a href="/training/brightcove-university.html">Brightcove Universityトレーニングコース</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/release-notes/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;リリースノート</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/release-notes/brightcove-player-release-notes.html">Brightcoveプレーヤーリリースノート</a></li>
+                    
+                    <li><a href="/release-notes/brightcove-player-prerelease-notes.html">Brightcoveプレーヤープレリリースノート</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/support/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;サポート</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcoveのシステムステータスページの表示</a></li>
+                    
+                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
+                    
+                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
+                    
+                    <li><a href="/support/reset-support-portal-password.html">サポートポータルのパスワードをリセットする</a></li>
+                   
+              </ul>
+             
       </nav>
     </div>
     <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
   <!-- bootstrap layout -->
 
-<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="ナビゲーションメニュー"/></p>
+<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Navigation Menu"></p>
 
 <!-- search bar -->
 <div id="nav-search-box" style="margin-top: 1rem;"></div>
@@ -1074,50 +635,43 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   <ul id="centered_in_page_toc" class="list-none"></ul>
 </details>
 <!-- open in new tab/window -->
-<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="新しいタブで開く" style="margin-top:4em;width: 1.5em;"/></a>
-
-
-
-  
-    
-
-
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a> 
 <article class="bcls-article">
   <h1>ステップバイステップ:プラグイン開発</h1>
-  <summary>このトピックでは、プラグインの開発と使用についての実践的な紹介を通じて学習します。</summary>
+  <summary>In this topic you will learn via a hands-on introduction about plugin development and use.</summary>
   <section id="developmentapproach" class="bcls-section">
     <h2>開発アプローチ</h2>
-    <p>プラグイン用に開発するJavaScriptとCSSは、最終的にはインターネットでアクセス可能な場所に保存する必要がありますが、開発中にローカルで作成してテストすることをお勧めします。これを行うには、以下を実行します。</p>
+    <p>プラグイン用に開発する JavaScript と CSS は、最終的にインターネットにアクセスできる場所に保存する必要がありますが、開発時にはローカルで作成してテストすることをお勧めします。これを行うには、次の操作を実行します。</p>
     <ul>
-      <li>JavaScriptプラグインコードを含むファイルを作成します</li>
-      <li>CSSプラグインコードを含むファイルを作成します（必要な場合）</li>
-      <li>テスト用のHTMLファイルを作成します。使用<code translate="No">embed_in_page</code>プレーヤーの実装</li>
-      <li>追加します<code translate="No">id</code>に<code translate="No">&lt;video-js&gt;</code>鬼ごっこ</li>
-      <li>JavaScriptおよびCSSページへのリンク</li>
-      <li>使う<code translate="No">&lt;script&gt;</code>関数を呼び出すためのタグ</li>
-      <li>コードを開発してデバッグする</li>
+      <li>JavaScript プラグインコードを含むファイルを作成する</li>
+      <li>CSS プラグインコードを含むファイルを作成します (必要な場合)</li>
+      <li>テスト用の HTML ファイルを作成します。<code translate="No">embed_in_page</code>プレーヤー用の実装を使用する</li>
+      <li><code translate="No">id</code><code translate="No">&lt;video-js&gt;</code>タグにを追加します</li>
+      <li>JavaScript および CSS ページへのリンク</li>
+      <li><code translate="No">&lt;script&gt;</code>タグを使用して関数を呼び出します</li>
+      <li>コードの開発とデバッグ</li>
     </ul>
-    <p>このドキュメントの残りの部分では、簡単なプラグインを構築してデプロイするためのこれらの手順について説明します。</p>
+    <p>このドキュメントの残りの部分では、簡単なプラグインを構築してデプロイする手順を説明します。</p>
   </section>
   <section id="buildthebasics" class="bcls-section">
     <h2>基本を構築する</h2>
-    <p>プラグインの構築プロセスを開始するには、上記の基本的な高レベルの手順のいくつかを実行する必要があります。</p>
+    <p>プラグインの構築プロセスを開始するには、上記の基本的な、高レベルの手順の一部を実行する必要があります。</p>
     <ol class="bcls-tasklist">
-      <li>名前の付いたフォルダを作成します<code translate="No">plugin-dev</code>実際のHTTPサーバーを使用して参照できます。サーバーは、このドキュメントで後述するiframe実装テストに必要です。</li>
+      <li>実際の HTTP <code translate="No">plugin-dev</code>サーバを使用して参照できるという名前のフォルダを作成します。サーバは、このドキュメントの後半の iframe 実装テストに必要です。</li>
       <li>このフォルダーに、次の名前の3つのファイルを作成します。
         <ul>
-          <li><strong translate="No">plugin-dev.html</strong> (Insert the basic elements for an HTML page into the file)</li>
+          <li><strong translate="No">plugin-dev.html</strong> (HTML ページの基本要素をファイルに挿入します)</li>
           <li><strong translate="No">plugin-dev.js</strong></li>
           <li><strong translate="No">plugin-dev.css</strong></li>
         </ul>
       </li>
-      <li>スタジオの使用<strong translate="No">Players</strong>モジュール、新しいプレーヤーを作成します。</li>
-      <li class="video-cloud-only">の中に<strong translate="No">Media</strong>モジュールで、ビデオを選択し、新しく作成したプレーヤーで公開します。</li>
-      <li class="player-only">を使用して<strong translate="No">VIDEO CONTENT</strong>セクションで、ビデオをプレーヤーに関連付けてから、プレーヤーを保存して公開します。</li>
-      <li class="video-cloud-only">をコピーします<strong translate="No">Advanced</strong>コードを記述して、本体に貼り付けます<code translate="No">plugin-dev.html</code>ページ。</li>
-      <li class="player-only">から<strong translate="No">Embed Code &amp; URL &gt; Published Player</strong>メニュー、コピー<strong translate="No">Advanced Embed Code</strong>コードを記述して、本体に貼り付けます<code translate="No">plugin-dev.html</code>ページ。</li>
+      <li>Studio の<strong translate="No"> Players</strong>モジュールを使用して、新しいプレーヤーを作成します。</li>
+      <li class="video-cloud-only"><strong translate="No"></strong>メディアモジュールで、ビデオを選択し、新しく作成したプレーヤーで公開します。</li>
+      <li class="player-only">[ <strong translate="No">VIDEO CONTENT</strong> ] セクションを使用して、ビデオをプレーヤーに関連付けて、プレーヤーを保存して公開します。</li>
+      <li class="video-cloud-only"><strong translate="No"></strong>詳細コードをコピーして、<code translate="No">plugin-dev.html</code>ページの本文に貼り付けます。</li>
+      <li class="player-only">[ <strong translate="No">埋め込みコードと URL] &gt; [公開済みプレーヤー</strong> ] メニューから、[ <strong translate="No"></strong>高度な埋め込みコード] コードをコピーして、<code translate="No">plugin-dev.html</code>ページ。</li>
       <li>追加します<code translate="No">id</code>に属性<code translate="No">&lt;video-js&gt;</code>の値を持つタグ<code translate="No">player</code>。</li>
-      <li>HTMLページが次のように表示されることを確認してください<span class="player-only">（BrightcovePlayerのお客様は<code translate="No">data-video-id</code>プロパティ）</span>：
+      <li>HTML ページが次のような表示されていることを確認します<span class="player-only">（<code translate="No">data-video-id</code>Brightcove Playerのお客様にはプロパティがありません）</span>。
         <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;!doctype html&gt;
 &lt;html&gt;
@@ -1144,9 +698,9 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   </section>
   <section id="javascript" class="bcls-section">
     <h2>JavaScriptを作成する</h2>
-    <p>次に、JavaScriptコードを作成してテストし、ビデオのオーバーレイを作成します。</p>
+    <p>次に、JavaScript コードを作成してテストし、ビデオのオーバーレイを作成します。</p>
     <ol class="bcls-tasklist">
-      <li>ファイルを開く<code translate="No">plugin-dev.js</code>次のJavaScriptコードを貼り付けます。
+      <li><code translate="No">plugin-dev.js</code>ファイルを開き、次の JavaScript コードで貼り付けます。
         <pre class="line-numbers">
 <code class="language-javascript" translate="No">videojs.registerPlugin('pluginDev', function() {
   var player = this,
@@ -1155,35 +709,35 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   overlay.innerHTML = "Becoming a plugin developer";
   player.el().appendChild(overlay);
 });</code></pre>
-        <aside class="bcls-aside bcls-aside--information">注：バージョン5.x以前のプレーヤーの場合、使用する必要があります<code translate="No">videojs.plugin()</code>の代わりに<code translate="No">videojs.registerPlugin()</code></aside>
+        <aside class="bcls-aside bcls-aside--information">注:バージョン 5.x 以前のプレイヤーでは、<code translate="No">videojs.plugin()</code>の代わりに使用する必要があります。<code translate="No">videojs.registerPlugin()</code></aside>
       </li>
       <li>挿入された各行の理解を確認してください。
         <ul>
-          <li>1行目と7行目は、新しいプレーヤープラグインを開始および終了するための標準構文です。この場合、プラグイン名は<code translate="No">pluginDev</code>。</li>
-          <li>2行目は、プレーヤーのハンドルを取得するための標準的な方法です。これは、後で行うプレーヤーのメソッドを呼び出すために必要です。</li>
-          <li>3行目では、ドキュメントに段落要素を作成し、それをに割り当てます。<code translate="No">overlay</code>変数。</li>
-          <li>4行目では、後でCSSと組み合わせて使用されるクラスをオーバーレイに割り当てています。</li>
-          <li>5行目では、段落要素にテキストを追加しています。</li>
+          <li>1 行目と 7 行目は新しいプレーヤープラグインの開始と終了の標準的な構文です。この場合、プラグイン名はです<code translate="No">pluginDev</code>。</li>
+          <li>ライン2は、プレイヤーにハンドルを取得する方法を持つ標準的な方法です。これは、後で行うプレーヤーのメソッドを呼び出すために必要です。</li>
+          <li>3 行目では、文書内に段落エレメントが作成され、<code translate="No">overlay</code>変数に割り当てられます。</li>
+          <li>4行目では、後でCSSと組み合わせて使用されるオーバーレイにクラスを割り当てます。</li>
+          <li>5 行目では、段落エレメントにテキストが追加されます。</li>
           <li>6行目は<code translate="No">el()</code>プレーヤーのDOM要素を取得するプレーヤーのメソッド。次に、新しい段落要素をそのDOMに追加します。</li>
         </ul>
-        <aside class="bcls-aside bcls-aside--information">注：プラグインのJavaScriptコード（上記の7行目）の最後にある末尾のセミコロンが必要です。</aside>
+        <aside class="bcls-aside bcls-aside--information">注:プラグインの JavaScript コードの末尾にあるセミコロン (上記の 7 行目) は必須です。</aside>
       </li>
       <li>HTML ファイルで、<code translate="No">&lt;script&gt;</code>既存のタグのすぐ下に次のコードを追加します。このコードには JavaScript ファイルが含まれており、その JavaScript で定義されているメソッドを呼び出します。
         <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;script type="text/javascript" src="plugin-dev.js"&gt;&lt;/script&gt;
 &lt;script&gt;videojs.getPlayer('myPlayerID').pluginDev();&lt;/script&gt;</code></pre>
       </li>
-      <li>HTMLページをもう一度参照すると、何も変更されていないことがわかります。問題は、オーバーレイは存在するが表示されないことです。これは後で変更します。</li>
-      <li>オーバーレイが存在することを確認するには、ブラウザの開発ツールを使用します。の中に<em>要素</em>セクション、プレーヤーのを確認してください<code translate="No">&lt;div&gt;</code>要素を入力すると、次に示すように、新しく挿入された段落要素が表示されます。
-        <figure class="bcls-figure"><img class="bcls-image" alt="クイックスタートオーバーレイインエレメント" src="//learning-services-media.brightcove.com/doc-assets/player-development/plugins/qs-plugin-dev/quick-start-overlay-in-elements.png"/></figure>
+      <li>HTML ページをもう一度参照すると、何も変更されていないことがわかります。問題は、オーバーレイがあるが目に見えないことです。これは後で変更します。</li>
+      <li>オーバーレイが存在することを確認するには、ブラウザの開発ツールを使用します。の中に <em>エレメント</em> セクションで、<code translate="No">&lt;div&gt;</code>プレイヤーの要素をチェックすると、次に示すように、新しく挿入された段落要素が表示されます。
+        <figure class="bcls-figure"><img class="bcls-image" alt="quick-start-overlay-in-elements" src="/assets/images/coding-topics/sbs-plugin-quick-start-overlay-in-elements.png" /></figure>
       </li>
     </ol>
   </section>
   <section id="styletheplugin" class="bcls-section">
     <h2>プラグインのスタイルを設定する</h2>
-    <p>オーバーレイがプレーヤーの一部になりましたが、表示されていません。次に、オーバーレイが表示されるようにスタイルを設定します。ドキュメントのこのセクションでは、非常に単純なCSSを使用して、オーバーレイが表示されるようにします。</p>
+    <p>オーバーレイがプレーヤーの一部になりますが、表示されません。次に、オーバーレイが表示されるようにスタイルを設定します。このドキュメントのこのセクションでは、オーバーレイが表示されるように非常に単純な CSS を使用します。</p>
     <ol class="bcls-tasklist">
-      <li>ファイルを開く<code translate="No">plugin-dev.css</code>次のスタイルで貼り付けます。
+      <li><code translate="No">plugin-dev.css</code>ファイルを開き、次のスタイルで貼り付けます。
         <pre class="line-numbers">
 <code class="language-javascript" translate="No">.vjs-overlay {
     background-color: #333333;
@@ -1193,20 +747,20 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     margin-left: 20px;
 }</code></pre>
       </li>
-      <li>HTMLファイルで、既存のコードのすぐ下に次のコードを追加します<code translate="No">&lt;link&gt;</code>鬼ごっこ。このコードは、新しく作成したCSSファイルにリンクしています。
+      <li>HTML ファイルで、<code translate="No">&lt;link&gt;</code>既存のタグのすぐ下に次のコードを追加します。このコードは、新しく作成された CSS ファイルにリンクします。
         <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;link href="plugin-dev.css" rel="stylesheet"&gt;</code></pre>
       </li>
       <li>HTMLページを参照すると、オーバーレイが表示されていることがわかります。
-        <figure class="bcls-figure"><img class="bcls-image" alt="クイックスタートオーバーレイ表示" src="//learning-services-media.brightcove.com/doc-assets/player-development/plugins/qs-plugin-dev/quick-start-overlay-showing.png"/></figure>
+        <figure class="bcls-figure"><img class="bcls-image" alt="quick-start-overlay-showing" src="/assets/images/coding-topics/sbs-plugin-quick-start-overlay-showing.png" /></figure>
       </li>
     </ol>
   </section>
   <section id="passdatatoplugin" class="bcls-section">
     <h2>プラグインにデータを渡す</h2>
-    <p>初期化時にプラグインの動作を変更したい場合がよくあります。これは、を使用してプラグインにデータを渡すことで可能です。<code translate="No">options</code>プロパティ。この例では、オーバーレイに表示されるテキストを渡します。</p>
+    <p>多くの場合、初期化時にプラグインの動作を変更したい場合があります。これは、<code translate="No">options</code>プロパティを使用してプラグインにデータを渡すことで可能です。この例では、オーバーレイに表示されるテキストを渡します。</p>
     <ol class="bcls-tasklist">
-      <li>HTMLページを開き、<code translate="No">&lt;script&gt;</code>タグが付いているので、<code translate="No">options</code>が作成され、キーと値のペアが<em>"overlayText"： "このデータは初期化時に提供されます"</em>。また、合格<code translate="No">options</code>を呼び出すときの引数としての変数<code translate="No">pluginDev()</code>方法。変更は次のように表示されます。
+      <li>HTML ページを開き、<code translate="No">&lt;script&gt;</code>タグを変更して、<code translate="No">options</code>という名前の変数が作成され、キーと値のペアを持つオブジェクトを割り当てます。 <em>「OverlayText」:「このデータは初期化時に提供されます」</em>。また、合格<code translate="No">options</code>を呼び出すときの引数としての変数<code translate="No">pluginDev()</code>方法。変更は次のように表示されます。
         <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;script type="text/javascript" src="plugin-dev-copy.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript"&gt;
@@ -1214,7 +768,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 &lt;/script&gt;
 <span class="bcls-highlight">&lt;script&gt;videojs.getPlayer('myPlayerID').pluginDev(options);&lt;/script&gt;</span></code></pre>
       </li>
-      <li>関数に渡されたデータを使用するには、プラグインのJavaScriptを変更する必要があります。行110は、データをパラメーターとして受け入れる関数を示し、行114はオブジェクトのデータを使用します。
+      <li>関数に渡されたデータを使用するには、プラグインの JavaScript を変更する必要があります。110行目には、データをパラメータとして受け入れる関数が示され、114行目ではオブジェクトのデータが使用されます。
         <pre class="line-numbers">
 <code class="language-javascript" translate="No"><span class="bcls-highlight">videojs.registerPlugin('pluginDev', function(options) {</span>
   var player = this,
@@ -1225,51 +779,50 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 });</code></pre>
       </li>
       <li>HTMLページを参照すると、使用されている新しいテキストが表示されます。
-        <figure class="bcls-figure"><img class="bcls-image" alt="クイックスタートオプション-表示" src="//learning-services-media.brightcove.com/doc-assets/player-development/plugins/qs-plugin-dev/quick-start-options-showing.png"/></figure>
+        <figure class="bcls-figure"><img class="bcls-image" alt="quick-start-options-showing" src="/assets/images/coding-topics/sbs-plugin-quick-start-options-showing.png" /></figure>
       </li>
     </ol>
-    <aside class="bcls-aside bcls-aside--warning">注：JavaScriptを介したプラグインの呼び出しを含む、ドキュメントのこのセクションに示されているプロセスは、開発目的であり、初期構成とテストに役立ちますが、ベストプラクティスとは見なされません。ベストプラクティスは、embed_in_page実装を使用している場合でも、プレーヤー構成スタジオの一部としてプラグインを含めることです（次のセクションを参照）。</aside>
+    <aside class="bcls-aside bcls-aside--warning">注:JavaScriptを介したプラグインの呼び出しを含む、ドキュメントのこのセクションに示されているプロセスは、開発目的であり、初期構成とテストに役立ちますが、ベストプラクティスとは見なされません。ベストプラクティスは、embed_in_page 実装を使用している場合でも、プラグインをプレイヤー設定スタジオの一部として含めることです (次のセクションを参照)。</aside>
   </section>
   <section id="deploytheplugin" class="bcls-section">
     <h2>プラグインをデプロイする</h2>
-    <p>プラグイン、CSS、プレーヤーが正しく機能するようになったら、適切に使用するためにアセットをデプロイする必要があります。展開に必要な手順の概要は次のとおりです。</p>
+    <p>プラグイン、CSS、プレーヤーが正常に機能したら、適切に使用するためにアセットを展開する必要があります。ここでは、展開に必要な手順の概要を示します。</p>
     <ul>
-      <li>JavaScriptファイルとCSSファイルをリモートの場所にコピー/移動します</li>
-      <li>Studioを使用して、プラグイン構成をプレーヤーに追加します。</li>
-      <li>テスト用のHTMLファイルを作成し、プレーヤーのiframe実装を使用します</li>
-      <li>異常をテストする</li>
+      <li>JavaScript および CSS ファイルをリモートロケーションにコピー/移動する</li>
+      <li>Studio を使用して、プラグイン設定をプレーヤーに追加します。</li>
+      <li>テスト用のHTMLファイルを作成し、プレーヤー用のiframe実装を使用する</li>
+      <li>異常のテスト</li>
     </ul>
-    <p>これらの手順をガイドします。</p>
+    <p>これで、これらの手順を案内します。</p>
     <ol class="bcls-tasklist">
-      <li>プラグインのJavaScriptファイルとCSSファイルを、インターネットでアクセス可能な任意の場所に移動します。
-        <aside class="bcls-aside bcls-aside--information">必要に応じて、以下の例に示す場所にあるファイルを使用できます。また、を使用することができます<a href="https://apis.support.brightcove.com/delivery-system/">配信システムAPI</a>自分のリポジトリにファイルを保存します。</aside>
+      <li>プラグインのJavaScriptファイルとCSSファイルを、インターネットでアクセス可能な任意の場所に移動します。<aside class="bcls-aside bcls-aside--information">選択した場合は、次の例に示す場所にあるファイルを使用できます。<a href="https://apis.support.brightcove.com/delivery-system/">デリバリーシステム API</a>を使用して、ファイルを独自のリポに保存することもできます。</aside>
       </li>
       <li>作業しているフォルダに、という別のファイルを作成します<code translate="No">plugin-dev-iframe.html</code>。</li>
-      <li>スタジオを使用する<strong translate="No">Players</strong>以前に作成したプレーヤーを編集するモジュール。</li>
+      <li>Studio の<strong translate="No"> Players</strong>モジュールを使用して、前に作成したプレーヤーを編集します。</li>
       <li>左側のナビゲーションメニューで [ <strong>プラグイン</strong> ] をクリックします。</li>
-      <li>次のクリック<strong>プラグインを追加する</strong>。</li>
+      <li>次に、<strong>プラグインを追加 &gt; カスタムプラグインをクリックします</strong>。</li>
       <li>[ <strong>プラグイン名</strong> ] に、と入力します<code translate="No">pluginDev</code>。</li>
-      <li>のために<strong>JavaScript</strong> URL、入力（またはURL）：
+      <li><strong> JavaScript の</strong>  URL には、（または自分の URL）を入力します。
         <pre>
  <code class="language-json" translate="No">https://solutions.brightcove.com/bcls/brightcove-player/plugins/plugin-dev.js</code></pre>
       </li>
-      <li>のために<strong>CSS</strong> URL、入力（またはURL）：
+      <li><strong> CSS の</strong>  URL には、（または URL）を入力します。
         <pre>
  <code class="language-json" translate="No">https://solutions.brightcove.com/bcls/brightcove-player/plugins/plugin-dev.css</code></pre>
       </li>
-      <li>[ <strong>オプション (JSON) </strong> ] テキストボックスに構成オプションを入力します。
+      <li>[ <strong>オプション (JSON)] </strong>テキストボックスに構成オプションを入力します。
         <pre class="line-numbers">
  <code class="language-json" translate="No">{"overlayText": "This data is supplied at initialization"}</code></pre>
       </li>
       <li>構成ダイアログは次のように表示されます。
-        <figure class="bcls-figure"><img class="bcls-image" alt="プラグインダイアログ" src="//learning-services-media.brightcove.com/doc-assets/player-development/plugins/qs-plugin-dev/plugins-dialog.png"/></figure>
+        <figure class="bcls-figure"><img class="bcls-image" alt="Plugins dialog" src="/assets/images/coding-topics/sbs-plugin-plugins-dialog.png" /></figure>
       </li>
-      <li>[<strong>保存</strong>]をクリックします。</li>
-      <li>プレーヤーを公開するには、[ <strong>パブリッシュと埋め込み] [&gt; 変更を公開</strong> ] をクリックします。</li>
-      <li>開くダイアログを閉じるには、[ <strong>閉じる</strong> ] をクリックします。</li>
-      <li class="video-cloud-only">の中に<strong translate="No">Media</strong>モジュールで、ビデオを選択し、新しく更新および公開されたプレーヤーで公開します。</li>
-      <li class="video-cloud-only">をコピーします<strong translate="No">Standard</strong>コードを記述して、本体に貼り付けます<code translate="No">plugin-dev-iframe.html</code>ページ。ページは次のように表示されます。</li>
-      <li class="player-only">から<strong translate="No">Embed Code &amp; URL &gt; Published Player</strong>メニュー、コピー<strong translate="No">Standard Embed Code</strong>コードを記述して、本体に貼り付けます<code translate="No">plugin-dev-iframe.html</code>ページ。ページは次のように表示されます。
+      <li>[ <strong>保存] をクリックします</strong>。</li>
+      <li>プレーヤーを公開するには、[ <strong>パブリッシュと埋め込み] &gt; [変更の公開] の順にクリックします</strong>。</li>
+      <li>開いているダイアログを閉じるには、[ <strong>閉じる] をクリックします</strong>。</li>
+      <li class="video-cloud-only"><strong translate="No"></strong>メディアモジュールで、ビデオを選択し、新しく更新および公開したプレーヤーで公開します。</li>
+      <li class="video-cloud-only"><strong translate="No"></strong>標準コードをコピーして、<code translate="No">plugin-dev-iframe.html</code>ページの本文に貼り付けます。ページは次のように表示されます。</li>
+      <li class="player-only">[ <strong translate="No">埋め込みコードと URL] &gt; [公開済みプレーヤー</strong> ] メニューから、[ <strong translate="No"></strong>標準埋め込みコード] コードをコピーして、<code translate="No">plugin-dev-iframe.html</code>ページ。ページは次のように表示されます。
         <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;!doctype html&gt;
 &lt;html&gt;
@@ -1285,20 +838,19 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 
 &lt;/html&gt;</code></pre>
       </li>
-      <li>HTMLページを参照すると、プラグインがiframeで正しく機能していることがわかります。</li>
+      <li>HTML ページを参照すると、プラグインが iframe で正常に機能していることがわかります。</li>
     </ol>
   </section>
   <section id="3rdparty" class="bcls-section">
     <h2>サードパーティライブラリ</h2>
     <p>プラグインがサードパーティのライブラリ（jQueryなど）に依存している場合は、次の2つの方法のいずれかにそれらを含める必要があります。</p>
     <ul>
-      <li>ライブラリを別のJavaScriptファイルとして<strong translate="No">Plugins</strong>のセクション<strong translate="No">Players</strong>のモジュール<span class="video-cloud-only">ビデオクラウド</span>スタジオ。</li>
-      <li>に複数のエントリを追加します<strong translate="No">scripts</strong> curlステートメントのプレーヤー構成のセクション。</li>
+      <li>ライブラリを別のJavaScriptファイルとして<strong translate="No">プラグイン</strong>のセクション<strong translate="No">プレイヤー</strong>のモジュール<span class="video-cloud-only">ビデオクラウド</span>スタジオ。</li>
+      <li>に複数のエントリを追加します<strong translate="No">スクリプト</strong> curlステートメントのプレーヤー構成のセクション。</li>
     </ul>
-    <p>上記の両方のシナリオで、プラグインが依存しているライブラリをプラグインのJavaScriptエントリの前に配置するようにしてください。エントリーの順序は重要です。</p>
+    <p>上記の両方のシナリオで、プラグインが依存しているライブラリをプラグインのJavaScriptエントリの前に配置するようにしてください。エントリの順序は重要です。</p>
   </section>
 </article>
-
 <!-- complete bootstrap layout -->
     </div>
     <div class="col-sm-2 right-side-bar">
@@ -1313,11 +865,19 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 </div>
 
 <hr>
-<footer class="bcls-footer" role="contentinfo">  <div class="row">
+<div class="last-updated">
+  ページの最終更新日21 May 2021
+</div>
+
+
+
+<footer class="bcls-footer" role="contentinfo">
+  <div class="row">
     <div class="region region-footer-top-center col-md-12">
       <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+        <img src="https://support.brightcove.com/site-assets/images/site/SVG/COVE004_Brightcove_Logo_093020_RGB_KO.svg" class="bc-footer-logo" alt="Brightcove">
 
-        <h2>Brightcove サポート</h2>
+        <h2>ブライトコーブのサポート</h2>
 
         <ul class="menu">
           <li>
@@ -1344,14 +904,14 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
           </li>
           <li>
-            <a href="https://university.brightcove.com/">Brightcove University</a>
+            <a href="https://university.brightcove.com/">ブライトコーブ大学</a>
           </li>
         </ul>
 
       </nav>
       <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
 
-        <h2>Brightcove</h2>
+        <h2>ブライトコーブ</h2>
 
         <ul class="menu">
           <li>
@@ -1370,12 +930,12 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <table>
           <tr>
             <td>
-              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. All rights reserved.</div>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> ブライトコーブ株式会社すべての権利を保有しています。</div>
             </td>
             <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
             <td>
               <div class="gf-links-cols footer-menu">
-                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin" style="margin-right: 1rem;"><i data-feather="linkedin" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter" style="margin-right: 1rem;"><i data-feather="twitter" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i data-feather="facebook" style="color:#8E9093;height: 1.25rem;"></i></a>
                 </div>
               </div>
             </td>
@@ -1386,9 +946,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   </div>
 </footer>
 
-</div>
-</div>
-<script>
+<script translate="no">
       
   var searchBox = sajari.init({
     mode: "search-box",
@@ -1415,17 +973,22 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
   
   <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/learning-paths/learning-paths.js"></script>
   <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
   <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
   <script src="/assets/js/sites_nav.js"></script>
   <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
   <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/sajari-reindex.js"></script>
   <script src="/assets/js/feedback.js"></script>
   
   <script src="/assets/js/sajari-search-foot.js"></script>
   
+  <script translate="no">
+  feather.replace()
+</script>
   <!-- <script src="/assets/js/sajari-index.js"></script> -->
-  <style>
+  <style translate="no">
     a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
       background-color: lightblue;
     }

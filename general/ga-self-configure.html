@@ -1,0 +1,135 @@
+---
+title: 'GoogleAnalyticsの自己構成'
+description: 「このトピックでは、ブライトコーブにこのプロセスを許可できない、または許可しない場合に、Brightcove Player 用の Google アナリティクスプラグインを設定する方法を学習します。「
+parent: "general"
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+  <section class="bcls-section">
+    <aside class="bcls-aside bcls-aside--information">Players モジュールは Google のユニバーサルアナリティクスデータモデルをサポートしています。現在、新しいGoogle Analytics4アップデートはサポートされていません。ブライトコーブでは、プレーヤーモジュールと Brightcove Players と統合する場合は、ユニバーサルアナリティクスを使用することをお勧めします。</aside>
+    <h2 id="Introduction">はじめに</h2>
+    <p>構成プロセスは、次のタスクで構成されます。</p>
+    <ul>
+      <li>Brightcove Player でサポートされているイベントから、トラッキングするイベントを選択します。</li>
+      <li>Google アナリティクスプラグインでサポートされているディメンションから、使用するカスタムディメンションを選択します。</li>
+      <li>Google アナリティクスで、選択したカスタムディメンションを作成します。</li>
+      <li>ビデオクラウドスタジオで、Google アナリティクスプラグインの設定情報を追加します。これは、プレーヤーの JSON エディタを使用して行います。</li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Select_events">イベントを選択</h2>
+    <p>JSON 設定では、追跡するイベントをリストします。次のうちどれを追跡するかを決定します。</p>
+    <ul>
+      <li>player_load</li>
+      <li>video</li>
+      <li>video_印象</li>
+      <li>play_request</li>
+      <li>start</li>
+      <li>end</li>
+      <li>エラー</li>
+      <li>video_view</li>
+      <li>videocomplete</li>
+    </ul>
+
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Select_custom_dimensions">カスタム次元の選択</h2>
+    <p>Google アナリティクスデータで使用できるカスタムディメンションは 8 つあります。次のうちどれを使用するかを決定します。</p>
+    <ul>
+      <li>bcvideo_account</li>
+      <li>bcvideo_platform_version</li>
+      <li>bcvideo_player</li>
+      <li>bcvideo_range</li>
+      <li>bcvideo_session</li>
+      <li>bcvideo_tags</li>
+      <li>bcvideo_video_duration</li>
+      <li>bcvideo_video_seconds_video</li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Create_custom_dimensions">カスタム次元の作成</h2>
+    <p>使用するカスタム次元をそれぞれ作成する必要があります。このドキュメントのGoogleの手順に従って、プロセスを進んでください。<a href="https://support.google.com/analytics/answer/2709829?hl=en">カスタムディメンションと指標を作成および編集します</a>。</p>
+    <p>各カスタムディメンションの作成中に、を選択するように求められます<strong>範囲</strong>。これらのカスタムディメンションには、次の値を使用します。 <samp>ヒット</samp>。また、次のスクリーンショットに示すように、各カスタムディメンションを作成すると、インデックスまたはシーケンス番号が関連付けられます。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/general/ga-self-configure/custom-dimension-index.png" alt="custom dimension index">
+    </figure>
+    <p>構成JSONでインデックス番号が必要になるため、作成されたカスタムディメンションのテーブルを利用できるようにする必要があります。</p>
+    <p>ディメンションを作成するときに、よりわかりやすい名前を選択できます。たとえば、次のことを考慮してください。</p>
+    <ul>
+      <li>のカスタム寸法を作成する場合<code translate="no">bcvideo_video_duration</code>簡単に名前を付けます<strong>間隔</strong>レポートでわかりやすい名前を使用したいからです。</li>
+      <li>作成すると、<strong> Duration</strong>に関連付けられたインデックスは<code translate="no"> 7</code>になります。</li>
+      <li>構成JSONでは、次の割り当てを使用します。
+        <pre><code class="language-json" translate="No">"bcvideo_video_duration": "dimension7"</code></pre>
+        インデックス番号は、フレンドリ名をプラグインの内部名に関連付けます。
+      </li>
+    </ul>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/general/ga-self-configure/ga-dimension-names-index-google-drawings.png" alt="analytics dimension names index">
+    </figure>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Add_JSON_configuration_to_player">JSON構成をプレーヤーに追加する</h2>
+    <p>使用するイベント、および使用するカスタムディメンションについて決定し、後者を作成しました。プレイヤー設定に含める JSON を作成する準備ができていることが分かっています。</p>
+    <p>例は、コードの各論理グループを説明する表を以下に示します。このガイドに従って、独自の JSON を構築できます。</p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>線分</th>
+          <th>詳細</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>1.19</td>
+          <td>プラグイン設定に関するすべての情報のJSON境界</td>
+        </tr>
+        <tr>
+          <td>2-3</td>
+          <td>プラグインとバージョンを定義します</td>
+        </tr>
+        <tr>
+          <td>4.18</td>
+          <td><code translate="no"></code>プラグインのオプション定義の JSON 境界</td>
+        </tr>
+        <tr>
+          <td>5.11</td>
+          <td>カスタム定義の JSON 境界</td>
+        </tr>
+        <tr>
+          <td>6-10</td>
+          <td>作成したカスタム次元を定義します。カスタム定義の作成時に割り当てられたディメンションの名前、コロン、<strong>文字列次元、</strong>直後に続くインデックス番号を使用します。</td>
+        </tr>
+        <tr>
+          <td>12.16</td>
+          <td>追跡するために選択したイベントの JSON 境界</td>
+        </tr>
+        <tr>
+          <td>13-15</td>
+          <td>上記の [ <a href="#Select_events">イベントの選択] </a>セクションから、トラッキング対象として選択したすべてのイベント</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td>GoogleAnalyticsによって割り当てられたトラッカーID</td>
+        </tr>
+      </tbody>
+    </table>
+    <pre class="line-numbers"><code class="language-json">{ "registry_id": "@brightcove/videojs-bc-ga", "version": "1.x", "options": { "paramsToTrack": { "bcvideo_video_seconds_viewed": "dimension1", "bcvideo_range": "dimension2", "bcvideo_video_duration": "dimension3", "bcvideo_player": "dimension4", "bcvideo_session": "dimension5" } ,「EventToTrack」: { "video_impression": "Video Impression", "play_request": "Play Request", "video_engagement": "Video Engagement" } ,「トラッカー」:「UA-123456-1"}}</code></pre>
+    <p>構成JSONが完了したら、次の手順に従って、BrightcovePlayerの構成に貼り付けます。</p>
+    <ol class="bcls-tasklist">
+      <li>ビデオクラウドスタジオにログインします。</li>
+      <li>に移動します<strong>プレイヤー</strong>モジュールをクリックし、新しい構成を追加するプレーヤーをクリックします。</li>
+      <li>左側のナビゲーションで、[ <strong>  JSON エディタ] をクリックします</strong>。</li>
+      <li>すでにプレーヤー用のプラグインが設定されている場合は、そのセクションにコードを貼り付けることができます。それ以外の場合は、プラグイン用のJSONを追加する必要があります。いずれの場合も、結果は次のようになりますが、もちろんプレーヤー情報とJSONを使用します（プラグインのJSON構成は黄色で強調表示されています）。
+        <pre class="line-numbers"><code class="language-json">{ "compatibility": true, "video_cloud": { "policy_key": "BCpkADawqM2w1K7269Ic17hjK0O2-ibj221pVcELpF1l5nZuiL-123456789123456789" } ,「プレーヤー」: { "template": { "name": "single-video-template", "version": "6.48.5" } },「プラグイン」: [ <span class="bcls-highlight">{ "registry_id": "@brightcove/videojs-bc-ga", "version": "1.x", "options": { "paramsToTrack": { "bcvideo_video_seconds_viewed": "dimension1", "bcvideo_range": "dimension2", "bcvideo_video_duration": "dimension3", "bcvideo_player": "dimension4", "bcvideo_session": "dimension5" } ,「EventToTrack」: { "video_impression": "Video Impression", "play_request": "Play Request", "video_engagement": "Video Engagement" } ,「トラッカー」:「UA-123456-1"}}</span> ]}</code></pre>
+      </li>
+      <li>変更を保存してプレーヤーを公開すると、GoogleAnalyticsプラグインを使用できるようになります。</li>
+    </ol>
+  </section>
+
+</article>

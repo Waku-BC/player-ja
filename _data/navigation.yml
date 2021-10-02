@@ -1,0 +1,492 @@
+- section:
+  name: 'ホーム'
+  url: '/index.html'
+- section:
+  name: 'はじめに'
+  url: '/getting-started/index.html'
+  docs:
+    - name: 開発者向け基本ビデオ
+      url: /training/developer-basics-videos.html
+    - name: 'Brightcove Playerとは何ですか？'
+      url: /getting-started/what-brightcove-player.html
+    - name: '概要:Brightcove Player'
+      url: /getting-started/overview-brightcove-player.html
+    - name: '学習ガイド:動画広告'
+      url: /getting-started/learning-guide-video-advertising.html
+    - name: '概要:Brightcove Playerプラグイン'
+      url: /getting-started/overview-brightcove-player-plugins.html
+    - name: プレーヤー開発トレーニングビデオ
+      url: /training/player-development-training-videos.html
+    - name: 'ステップバイステップ:Brightcove Player'
+      url: /getting-started/step-step-brightcove-player.html
+    - name: 'ステップバイステップ:プレーヤーのカスタマイズ'
+      url: /getting-started/step-step-player-customization.html
+    - name: 'トレーニング:Brightcoveプレーヤーで開発する'
+      url: /training/training-demand-developing-brightcove-player.html
+    - name: '学習ガイド:REST API を使用する'
+      url: /getting-started/learning-guide-using-rest-apis.html
+- section:
+  name: '基本を学ぼう'
+  url: '/basics/index.html'
+  docs:
+    - name: アドバンスプレイヤーコード
+      url: /basics/developer-basics-advanced-player-code.html
+    - name: ビデオの自動再生
+      url: /basics/developer-basics-autoplaying-video.html
+    - name: 'カスタムプラグイン-コードの変換'
+      url: /basics/developer-basics-custom-plugin-converting-code.html
+    - name: 'カスタムプラグイン-データの受け渡し'
+      url: /basics/developer-basics-custom-plugin-passing-data.html
+    - name: 'カスタムプラグイン-Studioを使用する'
+      url: /basics/developer-basics-custom-plugin-using-studio.html
+    - name: 'カスタムプラグイン-理由と方法'
+      url: /basics/developer-basics-custom-plugin-why-and-how.html
+    - name: 開発者向け基本ビデオ
+      url: /training/developer-basics-videos.html
+    - name: プレイヤーコードを生成しています
+      url: /basics/developer-basics-generating-player-code.html
+    - name: コードを書く準備をする
+      url: /basics/developer-basics-preparing-write-code.html
+- section:
+  name: '参考文献'
+  url: '/references/index.html'
+  docs:
+    - name: Brightcoveプレーヤ 5 から 6 への移行ガイド
+      url: /references/brightcove-player-5-6-migration-guide.html
+    - name: ブライトコーブプレイヤー API ドキュメント
+      url: /brightcove-player/current-release/index.html
+    - name: Brightcove Playerクッキー
+      url: /references/brightcove-player-cookies.html
+    - name: Brightcove Playerエラーリファレンス
+      url: /references/brightcove-player-error-reference.html
+    - name: Brightcove Playerシステム要件
+      url: /references/brightcove-player-system-requirements.html
+    - name: カタログ検索アーキテクチャ
+      url: /references/catalog-search-architecture.html
+    - name: 既知の問題
+      url: https://general.support.brightcove.com/general/known-issues-studio-brightcove-player-and-apis.html
+    - name: プレーヤーカタログ
+      url: /references/player-catalog.html
+    - name: ブラウザによるプレーヤー機能のサポート
+      url: /references/player-feature-support-browser.html
+    - name: bcinfo からのプレーヤーメタデータ
+      url: /references/player-metadata-bcinfo.html
+    - name: プレイヤーメソッド/イベント API
+      url: /brightcove-player/current-release/Player.html
+    - name: プレイリスト API ガイド
+      url: /references/guide-playlist-api.html
+    - name: mediainfo からのビデオメタデータ
+      url: /references/video-metadata-mediainfo.html
+- section:
+  name: 'プラグイン'
+  url: '/plugins/index.html'
+  docs:
+    - name: 360º ビデオ
+      url: /plugins/360degvr-video-plugin.html
+    - name: 広告のみ
+      url: /plugins/ad-only-plugin.html
+    - name: FreeWheel プラグインでの広告
+      url: /plugins/advertising-freewheel-plugin.html
+    - name: IMA3 プラグインでの広告
+      url: /plugins/advertising-ima3-plugin.html
+    - name: IMA3 プラグインバージョン 3 へのアップグレード
+      url: /plugins/upgrading-ima3-plugin-version-3.html
+    - name: SSAIとの広告
+      url: /plugins/implementing-server-side-ads-brightcove-player.html
+    - name: AirPlay 
+      url: /plugins/airplay-plugin.html
+    - name: Chromecast 
+      url: /plugins/chromecast-plugin-brightcove-player.html
+    - name: カスタムエンドスクリーン
+      url: /plugins/custom-endscreen-plugin.html
+    - name: エラーメッセージの表示
+      url: /plugins/display-error-messages-plugin.html
+    - name: サムネイルプレビューを表示
+      url: /plugins/display-thumbnail-previews-plugin.html
+    - name: DRM 
+      url: /plugins/configuring-brightcove-player-drm.html
+    - name: グーグルタグマネージャ
+      url: /plugins/google-tag-manager-plugin-brightcove-player.html
+    - name: HLS
+      url: /plugins/hls-plugin.html
+    - name: ライブDVRUX 
+      url: /plugins/live-dvrux-plugin.html
+    - name: オーバーレイ
+      url: /plugins/display-overlay-plugin.html
+    - name: '概要:プレーヤープラグイン'
+      url: /plugins/overview-brightcove-player-plugins.html
+    - name: ピクチャー・イン・ピクチャー
+      url: /plugins/picture-picture-plugin-aka-floating-or-pinned.html
+    - name: プレーヤー/プラグインのバージョンテスト
+      url: /plugins/playerplugin-version-testing.html
+    - name: プレイリスト終了画面
+      url: /plugins/playlist-endscreen-plugin.html
+    - name: プレイリスト UI 
+      url: /plugins/playlist-ui-plugin.html
+    - name: プラグインの更新履歴
+      url: /plugins/changelog/index.html
+    - name: プラグインレジストリ
+      url: /plugins/plugin-registry.html
+    - name: プラグインバージョンリファレンス
+      url: /plugins/plugin-version-reference.html
+    - name: 品質選択
+      url: /plugins/quality-selection-plugin.html
+    - name: ソーシャルメディア
+      url: /plugins/social-sharing-plugin.html
+    - name: Tealium タグマネージャ
+      url: /plugins/tealium-plugin-brightcove-player.html
+    - name: サムネイル探し
+      url: /plugins/thumbnails-plugin.html
+    - name: ビデオ SEO スキーマジェネレータ
+      url: /plugins/video-seo-schema-generator-plugin.html
+- section:
+  name: '広告'
+  url: '/advertising/index.html'
+  icon: '<i data-feather="dollar-sign"></i>'
+  docs:
+    - name: 広告イベントと広告オブジェクト
+      url: /advertising/ad-events-and-ad-objects.html
+    - name: 広告専用プラグイン
+      url: /plugins/ad-only-plugin.html
+    - name: FreeWheel プラグインでの広告
+      url: /plugins/advertising-freewheel-plugin.html
+    - name: IMA3 プラグインでの広告
+      url: /plugins/advertising-ima3-plugin.html
+    - name: 'ライブSSAIを使用したクライアント側のプリロール広告'
+      url: /advertising/client-side-preroll-with-live-ssai.html
+    - name: 広告キューポイントを使用した広告の表示
+      url: /advertising/displaying-ads-using-ad-cue-points.html
+    - name: フラッシュはもはやIMA では無効です
+      url: /advertising/flash-no-longer-valid-ima.html
+    - name: 'ガイド:広告パートナーの統合'
+      url: /advertising/guide-ad-partner-integration.html
+    - name: 'ガイド:contrib-ads の移行'
+      url: /advertising/guide-contrib-ads-migration.html
+    - name: Brightcoveプレーヤーで SSAI を実装する
+      url: /plugins/implementing-server-side-ads-brightcove-player.html
+    - name: 'ジャンプ開始:ヘッダー入札広告'
+      url: /advertising/jump-start-header-bidding-ad.html
+    - name: 'ジャンプ開始:アウトストリーム広告'
+      url: /advertising/jump-start-outstream-ad.html
+    - name: 'ジャンプ開始:プレロール広告'
+      url: /advertising/jump-start-pre-roll-ad.html
+    - name: '既知の問題:サーバー側広告挿入 (SSAI) '
+      url: /advertising/known-issues-server-side-ad-insertion-ssai.html
+    - name: '学習ガイド:動画広告'
+      url: /getting-started/learning-guide-video-advertising.html
+    - name: 'ステップバイステップ:広告の実装'
+      url: /advertising/step-step-implementing-advertising.html
+    - name: プレリリース広告プラグインのテスト
+      url: /advertising/testing-pre-release-advertising-plugins.html
+    - name: Brightcoveプレーヤーで DFP プレミアムを使用する
+      url: /advertising/using-dfp-premium-brightcove-player.html
+    - name: ライブSSAIのプレーヤー拡張機能の使用
+      url: /advertising/using-player-enhancements-live-ssai-brightcove-player.html
+    - name: ビデオクラウド SSAI 広告タグの検証
+      url: /advertising/video-cloud-ssai-ad-tag-validation.html
+- section:
+  name: '動画とプレーヤーの公開'
+  url: '/publish/index.html'
+  docs:
+    - name: プログラムによるプレーヤーへのビデオの割り当て
+      url: /publish/assigning-video-player-programmatically.html
+    - name: 高度な（ページ内の）埋め込みコードのオプション
+      url: /publish/available-options-advanced-page-embed-code.html
+    - name: 標準（iframe）埋め込みコードのオプション
+      url: /publish/available-options-standard-iframe-embed-code.html
+    - name: Brightcoveのプレーヤーローダー
+      url: /publish/brightcove-player-loader.html
+    - name: Brightcoveのデフォルトプレーヤーの一括更新
+      url: /publish/bulk-updating-brightcove-default-player.html
+    - name: 正しい埋め込みコードの選択
+      url: https://studio.support.brightcove.com/publish/choosing-correct-embed-code.html
+    - name: プレイヤーのインスタンス化の遅延
+      url: /publish/delaying-player-instantiation.html
+    - name: プレリリースプレーヤー
+      url: /publish/pre-release-player.html
+    - name: シンジケーション戦略
+      url: /publish/syndication-strategies.html
+    - name: Brightcove以外のプレーヤーを使用する
+      url: /publish/using-non-brightcove-player.html
+    - name: 1ページで複数のプレイヤーを使用する
+      url: https://studio.support.brightcove.com/publish/using-multiple-players-one-page.html
+    - name: 参照 ID の使用
+      url: https://studio.support.brightcove.com/publish/using-reference-ids.html
+    - name: ビデオレンディションインスペクタ
+      url:
+- section:
+  name: 'トラブルシューティング'
+  url: '/troubleshooting/index.html'
+  docs:
+    - name: Brightcoveの再生テクノロジーアプリ
+      url: /troubleshooting/brightcove-playback-technology-app.html
+    - name: Brightcove Playerエラーリファレンス
+      url: /references/brightcove-player-error-reference.html
+    - name: Brightcoveのプレーヤー情報モーダル
+      url: /troubleshooting/brightcove-player-information-modal.html
+    - name: Brightcove Playerトラブルシューティングガイド
+      url: /troubleshooting/brightcove-player-troubleshooting-guide.html
+    - name: チャールズ・ログの作成
+      url: /troubleshooting/creating-charles-log.html
+    - name: ネットワークログの作成
+      url: /troubleshooting/creating-network-log.html
+    - name: ドメイン制限メッセージング
+      url: /troubleshooting/domain-restrictions-messaging.html
+    - name: エラーメッセージプラグインの表示
+      url: /plugins/display-error-messages-plugin.html
+    - name: プレーヤーのバージョンを手動で設定する
+      url: /troubleshooting/manually-setting-player-version.html
+    - name: プレーヤー/プラグインのバージョンテスト
+      url: /plugins/playerplugin-version-testing.html
+    - name: プレイヤー情報プロパティ
+      url: /troubleshooting/player-informational-properties.html
+    - name: 'サンプル:ライブカスタムエラーメッセージ'
+      url: /code-samples/brightcove-player-sample-live-custom-error-message.html
+    - name: 'ステップバイステップ:Brightcoveプレーヤーデバッガ'
+      url: /troubleshooting/step-step-brightcove-player-debugger.html
+    - name: ネットワークパストレースの実行
+      url: /troubleshooting/running-network-path-trace.html
+    - name: プレーヤーリファレンスの使用
+      url: /troubleshooting/using-player-reference.html
+    - name: Vetting Brightcoveプレーヤーリリース
+      url: /troubleshooting/vetting-brightcove-player-releases.html
+    - name: プレーヤ設定の表示
+      url: /troubleshooting/viewing-player-configuration.html
+- section:
+  name: 'スタイリングと外観'
+  url: '/styling/index.html'
+  docs:
+    - name: プレーヤーの外観のカスタマイズ
+      url: /styling/customizing-player-appearance.html
+    - name: プレイヤーの外観のカスタマイズ-レガシースキン
+      url: /styling/customizing-player-appearance-legacy-skin.html
+    - name: プレイヤースタイリングプレイグラウンド
+      url: /styling/brightcove-player-sample-player-styling-playground.html
+    - name: '「クイックスタート:プレイヤーのカスタマイズ-レガシースキン'
+      url: /styling/quick-start-player-customization-legacy-skin.html
+    - name: 'ステップバイステップ:プレーヤーのカスタマイズ'
+      url: /getting-started/step-step-player-customization.html
+    - name: Brightcove Playerレスポンシブサイジング
+      url: /styling/responsive-sizing-brightcove-player.html
+    - name: プレーヤーのサイズ変更
+      url: /styling/sizing-player.html
+    - name: スキンとプレーヤーのバージョン
+      url: /styling/skins-and-player-versions.html
+    - name: キャプションのスタイル設定
+      url: https://studio.support.brightcove.com/media/styling-captions.html
+    - name: プレイリストのスタイリング
+      url: /styling/styling-playlists.html
+- section:
+  name: '再生'
+  url: '/playback/index.html'
+  docs:
+    - name: 自動再生に関する考慮事項
+      url: /playback/autoplay-considerations.html
+    - name: Brightcoveの再生テクノロジーアプリ
+      url: /troubleshooting/brightcove-playback-technology-app.html
+    - name: チャイナデリバリー
+      url: /playback/china-delivery-with-bcp.html
+    - name: クロスデバイスレジューム
+      url: /playback/xdr-with-bcplayer.html
+    - name: ディープリンク
+      url: https://studio.support.brightcove.com/publish/deep-linking.html
+    - name: HLS ビデオの配信
+      url: /playback/delivering-hls-video.html
+    - name: 配達規則
+      url: /playback/using-delivery-rules-with-bcp.html
+    - name: 再生するレンディションを決定する
+      url: /playback/determining-which-rendition-will-play.html
+    - name: フォレンジック透かし
+      url: /playback/forensic-watermarking-with-bcp.html
+    - name: 'ガイド:再生技術'
+      url: /playback/guide-playback-technology.html
+    - name: HLS プラグイン
+      url: /plugins/hls-plugin.html
+    - name: iOS と Brightcove Player 
+      url: /playback/ios-and-brightcove-player.html
+    - name: 再生の制限
+      url: /playback/playback-restrictions-with-bcp.html
+    - name: '概要:HTTPSサポート'
+      url: /playback/overview-https-support.html
+    - name: 品質選択プラグイン
+      url: /plugins/quality-selection-plugin.html
+    - name: 静的 URL 配信
+      url: /playback/static-url-delivery.html
+    - name: PlayReady 保護されたコンテンツのストリーミング
+      url: /playback/streaming-playready-protected-content-dynamic-delivery.html
+    - name: TVE でBrightcoveプレーヤーを使用する
+      url: /playback/using-brightcove-player-tve.html
+- section:
+  name: 'DRMとコンテンツ保護'
+  url: '/content-protection/index.html'
+  docs:
+    - name: プレーヤーコンテンツ制限の設定
+      url: https://studio.support.brightcove.com/players/configuring-player-content-restrictions.html
+    - name: Brightcoveプレーヤー用の DASH DRM マニフェストを作成する
+      url: /content-protection/creating-dash-drm-manifest-brightcove-player.html
+    - name: ドメイン制限メッセージング
+      url: /troubleshooting/domain-restrictions-messaging.html
+    - name: DRMプラグイン
+      url: /plugins/configuring-brightcove-player-drm.html
+    - name: '概要:コンテンツ保護'
+      url: /content-protection/overview-content-protection.html
+    - name: ポリシーキー
+      url: /content-protection/policy-keys.html
+    - name: IP アドレスを使用したビデオ再生の制限
+      url: /content-protection/restricting-video-playback-using-ip-address.html
+    - name: ライブストリームでの署名付き URL とトークン認証
+      url: /content-protection/signed-urls-and-token-auth-live-stream.html
+- section:
+  name: 'コーディングトピック'
+  url: '/coding-topics/index.html'
+  docs:
+    - name: Brightcoveのプレーヤーローダー
+      url: /publish/brightcove-player-loader.html
+    - name: カタログ検索のアップグレード
+      url: /references/catalog-search-architecture.html
+    - name: カスタムイベント
+      url: /code-samples/brightcove-player-sample-trigger-rewind-custom-event.html
+    - name: 'ガイド:再生技術'
+      url: /playback/guide-playback-technology.html
+    - name: Brightcove Playerローカライズ
+      url: /coding-topics/programmatically-localizing-brightcove-player.html
+    - name: プラグインのローカライズ
+      url: /coding-topics/localizing-plugins.html
+    - name: プレイヤーイベント
+      url: /coding-topics/player-events.html
+    - name: '概要:コンポーネント'
+      url: /coding-topics/overview-components.html
+    - name: '概要:HTTPSサポート'
+      url: /playback/overview-https-support.html
+    - name: '概要:プレーヤー API '
+      url: /coding-topics/overview-player-api.html
+    - name: プラグインにデータを渡す
+      url: /coding-topics/pass-data-plugin.html
+    - name: プレイヤーローダーを反応させる
+      url: /coding-topics/react-player-loader.html
+    - name: Brightcove Player設定に関するレポート
+      url: /coding-topics/reporting-brightcove-player-configurations.html
+    - name: RequireJSとBrightcove Player
+      url: /coding-topics/requirejs-and-brightcove-player.html
+    - name: 現在のレンディションのビットレートを取得する
+      url: /coding-topics/retrieve-bitrate-current-rendition.html
+    - name: 'ステップバイステップ:プラグイン開発'
+      url: /coding-topics/step-step-plugin-development.html
+    - name: 'ステップバイステップ:Video.js プラグインジェネレータ'
+      url: /coding-topics/step-step-videojs-plugin-generator.html
+    - name: bc () と getPlayer () メソッドを使用する
+      url: /coding-topics/using-bc-and-getplayer-methods.html
+    - name: プレーヤ設定の表示
+      url: /troubleshooting/viewing-player-configuration.html
+- section:
+  name: '一般情報'
+  url: '/general/index.html'
+  docs:
+    - name: プレーヤーの埋め込みコードへのアプリケーション ID の追加
+      url: https://studio.support.brightcove.com/publish/adding-application-id-player-embed-code.html
+    - name: プログラムによる動画へのキャプションの追加
+      url: /general/adding-captions-videos-programmatically.html
+    - name: ビデオへのチャプターの追加
+      url: https://studio.support.brightcove.com/media/adding-chapters-video.html
+    - name: Brightcove Player 6 がデフォルトバージョンになりました
+      url: /general/brightcove-player-6-now-default-version.html
+    - name: Brightcove Playerアクセシビリティ
+      url: /general/brightcove-player-accessibility.html
+    - name: カスタムエンドスクリーンプラグイン
+      url: /plugins/custom-endscreen-plugin.html
+    - name: オーバーレイプラグインを表示
+      url: /plugins/display-overlay-plugin.html
+    - name: 'GoogleAnalyticsの自己構成'
+      url: /general/ga-self-configure.html
+    - name: 'ガイド:プレイリスト API '
+      url: /references/guide-playlist-api.html
+    - name: パフォーマンスの低い動画の特定と削除
+      url: /general/identify-and-delete-low-performing-videos.html
+    - name: プログラムによるキューポイントの実装
+      url: /general/implementing-cue-points-programmatically.html
+    - name: プレイリストの実装
+      url: /general/implementing-playlists.html
+    - name: ModalDialogの実装
+      url: /general/implementing-modaldialog.html
+    - name: ライブHLS 
+      url: /general/live-hls.html
+    - name: ライブストリーム設定
+      url: /general/live-stream-configuration.html
+    - name: 複数のオーディオトラック
+      url: /general/multiple-audio-tracks.html
+    - name: プレーヤー設定ガイド
+      url: /general/player-configuration-guide.html
+    - name: ライブストリームを再生する
+      url: /general/playing-live-streams.html
+    - name: プレイリスト UI プラグイン
+      url: /plugins/playlist-ui-plugin.html
+    - name: ライブストリームでの署名付き URL とトークン認証
+      url: /content-protection/signed-urls-and-token-auth-live-stream.html
+    - name: ソーシャルメディアプラグイン
+      url: /plugins/social-sharing-plugin.html
+    - name: 'ステップバイステップ:プレーヤー管理'
+      url: https://apis.support.brightcove.com/player-management/getting-started/step-step-player-management.html
+    - name: プレイリストのスタイリング
+      url: /styling/styling-playlists.html
+    - name: Brightcoveプレーヤーでスクリーンリーダーを使用する
+      url: /general/using-screen-reader-brightcove-player.html
+    - name: Brightcove Playerドキュメントのバージョン
+      url: /general/versions-brightcove-player-documentation.html
+    - name: ボリュームコントロール
+      url: /general/volume-control.html
+- section:
+  name: 'コードサンプル'
+  url: '/code-samples/index.html'
+  docs:
+    - name: グループ別のコードサンプル
+      url: /code-samples/index-thumb.html
+    - name: コードサンプルインデックス
+      url: /code-samples/index.html
+- section:
+  name: 'AMP'
+  url: '/amp/index.html'
+  docs:
+    - name: AMP ビデオクラウドビデオを使用する
+      url: /amp/amp-using-video-cloud-video.html
+    - name: AMP外部ビデオを使用する
+      url: /amp/amp-using-external-video.html
+    - name: AMPと広告
+      url: /amp/amp-and-advertising.html
+- section:
+  name: 'トレーニング'
+  url: '/training/index.html'
+  docs:
+    - name: すべてのオンライントレーニングコース
+      url: /training/online-training-courses.html
+    - name: 開発者向け基本ビデオ
+      url: /training/developer-basics-videos.html
+    - name: プレーヤー開発トレーニングビデオ
+      url: /training/player-development-training-videos.html
+    - name: インストラクター主導トレーニングへの登録
+      url: /training/register-training.html
+    - name: 'トレーニング:Brightcoveプレーヤーで開発する'
+      url: /training/training-demand-developing-brightcove-player.html
+    - name: 'トレーニング:プレーヤー管理へのクイックスタート'
+      url: https://apis.support.brightcove.com/player-management/getting-started/training-demand-quick-start-player-management.html
+    - name: Brightcove Universityトレーニングコース
+      url: /training/brightcove-university.html
+- section:
+  name: リリースノート
+  url: /release-notes/index.html
+  docs:
+    - name: Brightcoveプレーヤーリリースノート
+      url: /release-notes/brightcove-player-release-notes.html
+    - name: Brightcoveプレーヤープレリリースノート
+      url: /release-notes/brightcove-player-prerelease-notes.html
+- section:
+  name: 'サポート'
+  url: '/support/index.html'
+  docs:
+    - name: 'Brightcoveのシステムステータスページの表示'
+      url: '/support/viewing-brightcove-system-status-page.html'
+    - name: '営業へのお問い合わせ'
+      url: '/support/contact-sales.html'
+    - name: 'サポートケースを開く'
+      url: '/support/opening-case-with-brightcove-support.html'
+    - name: 'サポートポータルのパスワードをリセットする'
+      url: '/support/reset-support-portal-password.html'

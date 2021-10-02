@@ -1,1115 +1,37 @@
-﻿<!doctype html>
-<html lang="ja">
+---
+title: ソーシャルメディア
+description: 'ソーシャル共有プラグインこのトピックでは、ソーシャルメディアプラグインを使用して、Facebook、Google+、ツイッター、Tumblr、Pinterest、LinkedIn を通じてユーザーがビデオを共有できるようにする方法を学習します。'
+parent: Plugins
+---
+ <h1>{{ page.title }}</h1>
+ <article class="bcls-article">
+  <summary>{{ page.description }}</summary>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  
-  <title>ソーシャル共有プラグイン</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">  
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
-  <link rel="stylesheet" href="/assets/css/local.css">
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&display=swap">
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
-  <script src="/assets/js/sajari-head.js"></script>
-</head>
-
-<body class="body">
-
-<header>
-  <div class="div-header">
-    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Player_Logo.svg" alt="製品ロゴ" style="max-height: 100px;max-width: 232px;"/></a>
-<!-- GTranslate: https://gtranslate.io/ -->
-<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
-
-<script>
-/* <![CDATA[ */
-function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
-/* ]]> */
-</script>
-
-
-
-    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="サポート"/> サポートへのお問い合わせ</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="システムステータス"/> システムステータス</a></span> <br/>
-    
-  </div>
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb arr-right">
-      
-      <li class="breadcrumb-item"><a href="/">ホーム</a></li>
-      
-      
-      
-      <li class="breadcrumb-item"><a href="/plugins/">プラグイン</a></li>
-      
-      <li class="breadcrumb-item active" aria-current="page">ソーシャル共有プラグイン</li>
-    </ol>
-  </nav>
-</header>
-<div class="container">
-    <div class="row">
-            <div class="col-sm-3 left-side-bar">
-        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
-          <option value="">Brightcove のその他のドキュメント</option>
-          
-            
-              <option value="https://support.brightcove.com">ドキュメントホーム</option>
-            
-          
-            
-              <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
-            
-          
-            
-              <option value="https://beacon.support.brightcove.com">Brightcove ビーコン</option>
-            
-          
-            
-              <option value="https://campaign.support.brightcove.com">Brightcove キャンペーン</option>
-            
-          
-            
-              <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
-            
-          
-            
-              <option value="https://live.support.brightcove.com">Brightcove ・ライブ</option>
-            
-          
-            
-              <option value="https://gallery.support.brightcove.com">Brightcove ギャラリー</option>
-            
-          
-            
-              <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
-            
-          
-            
-              <option value="https://social.support.brightcove.com">Brightcove ソーシャル</option>
-            
-          
-            
-              <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
-            
-          
-            
-              <option value="https://player.support.brightcove.com">Brightcove のプレーヤー開発</option>
-            
-          
-            
-              <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
-            
-          
-            
-              <option value="https://sdks.support.brightcove.com">ビデオクラウドデバイス SDK</option>
-            
-          
-            
-              <option value="https://integrations.support.brightcove.com">統合および CMS コネクタ</option>
-            
-          
-            
-              <option value="https://general.support.brightcove.com">ビデオクラウドの一般情報</option>
-            
-          
-            
-              <option value="https://zencoder.support.brightcove.com">Zencoder</option>
-            
-          
-        </select>
-
-        <nav class="sidenav" id="side_nav">
-          
-            
-            <h5><a href="/index.html">ホーム</a></h5>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/getting-started/index.html">はじめに<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/training/developer-basics-videos.html">開発者向け基本ビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/what-brightcove-player.html">Brightcove プレーヤーとは何ですか？</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/overview-brightcove-player.html">概要:Brightcove プレーヤー</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/learning-guide-video-advertising.html">学習ガイド:動画広告</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/overview-brightcove-player-plugins.html">概要:Brightcove プレーヤープラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="/training/player-development-training-videos.html">プレーヤー開発トレーニングビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/step-step-brightcove-player.html">ステップバイステップ:Brightcove プレーヤー</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/step-step-player-customization.html">ステップバイステップ:プレーヤーのカスタマイズ</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-developing-brightcove-player.html">トレーニング:Brightcove プレーヤーで開発する</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/learning-guide-using-rest-apis.html">学習ガイド:REST API を使用する</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/basics/index.html">基本を学びましょう<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/basics/developer-basics-advanced-player-code.html">アドバンスプレイヤーコード</a></li>
-                  
-                
-                  
-                    <li><a href="/basics/developer-basics-autoplaying-video.html">ビデオの自動再生</a></li>
-                  
-                
-                  
-                    <li><a href="/basics/developer-basics-custom-plugin-converting-code.html">カスタムプラグイン-コードの変換</a></li>
-                  
-                
-                  
-                    <li><a href="/basics/developer-basics-custom-plugin-passing-data.html">カスタムプラグイン-データの受け渡し</a></li>
-                  
-                
-                  
-                    <li><a href="/basics/developer-basics-custom-plugin-using-studio.html">カスタムプラグイン-Studioを使用する</a></li>
-                  
-                
-                  
-                    <li><a href="/basics/developer-basics-custom-plugin-why-and-how.html">カスタムプラグイン-理由と方法</a></li>
-                  
-                
-                  
-                    <li><a href="/training/developer-basics-videos.html">開発者向け基本ビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/basics/developer-basics-generating-player-code.html">プレイヤーコードを生成しています</a></li>
-                  
-                
-                  
-                    <li><a href="/basics/developer-basics-preparing-write-code.html">コードを書く準備をする</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/references/index.html">参考文献<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/references/brightcove-player-5-6-migration-guide.html">Brightcove プレーヤ 5 から 6 への移行ガイド</a></li>
-                  
-                
-                  
-                    <li><a href="https://docs.brightcove.com/brightcove-player/current-release/index.html">Brightcove プレーヤ API ドキュメント (外部サイト) </a></li>
-                  
-                
-                  
-                    <li><a href="/references/brightcove-player-cookies.html">Brightcove プレーヤーのクッキー</a></li>
-                  
-                
-                  
-                    <li><a href="/references/brightcove-player-error-reference.html">Brightcove プレーヤーのエラーリファレンス</a></li>
-                  
-                
-                  
-                    <li><a href="https://groups.google.com/forum/embed/?place=forum/bcplayerdev#!forum/bcplayerdev">Brightcove プレーヤー発表フォーラム</a></li>
-                  
-                
-                  
-                    <li><a href="/references/brightcove-player-system-requirements.html">Brightcove プレーヤーのシステム要件</a></li>
-                  
-                
-                  
-                    <li><a href="/references/catalog-search-architecture.html">カタログ検索アーキテクチャ</a></li>
-                  
-                
-                  
-                    <li><a href="https://general.support.brightcove.com/general/known-issues-studio-brightcove-player-and-apis.html">既知の問題</a></li>
-                  
-                
-                  
-                    <li><a href="/references/player-catalog.html">プレーヤーカタログ</a></li>
-                  
-                
-                  
-                    <li><a href="/references/player-feature-support-browser.html">ブラウザによるプレーヤー機能のサポート</a></li>
-                  
-                
-                  
-                    <li><a href="/references/player-metadata-bcinfo.html">bcinfo からのプレーヤーメタデータ</a></li>
-                  
-                
-                  
-                    <li><a href="https://docs.brightcove.com/brightcove-player/current-release/Player.html">プレイヤーメソッド/イベント API (外部サイト) </a></li>
-                  
-                
-                  
-                    <li><a href="/references/guide-playlist-api.html">プレイリスト API ガイド</a></li>
-                  
-                
-                  
-                    <li><a href="/references/video-metadata-mediainfo.html">mediainfo からの動画メタデータ</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/plugins/index.html">プラグイン<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/plugins/360degvr-video-plugin.html">360º ビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/ad-only-plugin.html">広告のみ</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/advertising-freewheel-plugin.html">FreeWheel プラグインでの広告</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/advertising-ima3-plugin.html">IMA3 プラグインでの広告</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/upgrading-ima3-plugin-version-3.html">IMA3 プラグインバージョン 3 へのアップグレード</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/implementing-server-side-ads-brightcove-player.html">SSAIとの広告</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/chromecast-plugin-brightcove-player.html">Chromecast </a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/custom-endscreen-plugin.html">カスタムエンドスクリーン</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/display-error-messages-plugin.html">エラーメッセージの表示</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/display-thumbnail-previews-plugin.html">サムネイルプレビューを表示</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/configuring-brightcove-player-drm.html">DRM </a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/google-tag-manager-plugin-brightcove-player.html">グーグルタグマネージャ</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/hls-plugin.html">HLS </a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/live-dvrux-plugin.html">ライブDVRUX </a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/display-overlay-plugin.html">オーバーレイ</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/overview-brightcove-player-plugins.html">概要:プレーヤープラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/picture-picture-plugin-aka-floating-or-pinned.html">ピクチャー・イン・ピクチャー</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/playerplugin-version-testing.html">プレーヤー/プラグインのバージョンテスト</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/playlist-ui-plugin.html">プレイリスト UI </a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/changelog/index.html">プラグインの更新履歴</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/plugin-registry.html">プラグインレジストリ</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/plugin-version-reference.html">プラグインバージョンリファレンス</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/quality-selection-plugin.html">品質選択</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/social-sharing-plugin.html">ソーシャルメディア</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/tealium-plugin-brightcove-player.html">Tealium タグマネージャ</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/video-seo-schema-generator-plugin.html">ビデオ SEO スキーマジェネレータ</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/advertising/index.html"><strong>広告+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/advertising/ad-events-and-ad-objects.html">広告イベントと広告オブジェクト</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/ad-only-plugin.html">広告専用プラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/advertising-freewheel-plugin.html">FreeWheel プラグインでの広告</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/advertising-ima3-plugin.html">IMA3 プラグインでの広告</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/client-side-preroll-with-live-ssai.html">ライブSSAIを使用したクライアント側のプリロール広告</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/displaying-ads-using-ad-cue-points.html">広告キューポイントを使用した広告の表示</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/flash-no-longer-valid-ima.html">フラッシュはもはやIMA では無効です</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/guide-ad-partner-integration.html">ガイド:広告パートナーの統合</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/guide-contrib-ads-migration.html">ガイド:contrib-ads の移行</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/implementing-server-side-ads-brightcove-player.html">Brightcove プレーヤーで SSAI を実装する</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/jump-start-header-bidding-ad.html">ジャンプ開始:ヘッダー入札広告</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/jump-start-outstream-ad.html">ジャンプ開始:アウトストリーム広告</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/jump-start-pre-roll-ad.html">ジャンプ開始:プレロール広告</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/known-issues-server-side-ad-insertion-ssai.html">既知の問題:サーバー側広告挿入 (SSAI) </a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/learning-guide-video-advertising.html">学習ガイド:動画広告</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/step-step-implementing-advertising.html">ステップバイステップ:広告の実装</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/testing-pre-release-advertising-plugins.html">プレリリース広告プラグインのテスト</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/using-dfp-premium-brightcove-player.html">Brightcove プレーヤーで DFP プレミアムを使用する</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/using-player-enhancements-live-ssai-brightcove-player.html">ライブSSAIとアドバンスト・プレイヤー・ツールキットの使用</a></li>
-                  
-                
-                  
-                    <li><a href="/advertising/video-cloud-ssai-ad-tag-validation.html">ビデオクラウド SSAI 広告タグの検証</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/publish/index.html">動画とプレーヤーの公開<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/publish/assigning-video-player-programmatically.html">プログラムによるプレーヤーへのビデオの割り当て</a></li>
-                  
-                
-                  
-                    <li><a href="/publish/available-options-advanced-page-embed-code.html">詳細設定 (ページ内) 埋め込みコードで使用可能なオプション</a></li>
-                  
-                
-                  
-                    <li><a href="/publish/available-options-standard-iframe-embed-code.html">標準 (iframe) 埋め込みコードで使用可能なオプション</a></li>
-                  
-                
-                  
-                    <li><a href="/publish/brightcove-player-loader.html">Brightcove のプレーヤーローダー</a></li>
-                  
-                
-                  
-                    <li><a href="/publish/bulk-updating-brightcove-default-player.html">Brightcove のデフォルトプレーヤーの一括更新</a></li>
-                  
-                
-                  
-                    <li><a href="https://studio.support.brightcove.com/publish/choosing-correct-embed-code.html">正しい埋め込みコードの選択</a></li>
-                  
-                
-                  
-                    <li><a href="/publish/delaying-player-instantiation.html">プレイヤーのインスタンス化の遅延</a></li>
-                  
-                
-                  
-                    <li><a href="/publish/pre-release-player.html">プレリリースプレーヤー</a></li>
-                  
-                
-                  
-                    <li><a href="/publish/syndication-strategies.html">シンジケーション戦略</a></li>
-                  
-                
-                  
-                    <li><a href="/publish/using-non-brightcove-player.html">Brightcove 以外のプレーヤーを使用する</a></li>
-                  
-                
-                  
-                    <li><a href="https://studio.support.brightcove.com/publish/using-multiple-players-one-page.html">1ページで複数のプレイヤーを使用する</a></li>
-                  
-                
-                  
-                    <li><a href="https://studio.support.brightcove.com/publish/using-reference-ids.html">参照 ID の使用</a></li>
-                  
-                
-                  
-                    <li><a href="">ビデオレンディションインスペクタ</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/troubleshooting/index.html">トラブルシューティング<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/troubleshooting/brightcove-playback-technology-app.html">Brightcove の再生テクノロジーアプリ</a></li>
-                  
-                
-                  
-                    <li><a href="/references/brightcove-player-error-reference.html">Brightcove プレーヤーのエラーリファレンス</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/brightcove-player-information-modal.html">Brightcove のプレーヤー情報モーダル</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/brightcove-player-troubleshooting-guide.html">Brightcove プレーヤーのトラブルシューティングガイド</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/creating-charles-log.html">チャールズ・ログの作成</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/creating-network-log.html">ネットワークログの作成</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/domain-restrictions-messaging.html">ドメイン制限メッセージング</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/display-error-messages-plugin.html">エラーメッセージプラグインの表示</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/manually-setting-player-version.html">プレーヤーのバージョンを手動で設定する</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/playerplugin-version-testing.html">プレーヤー/プラグインのバージョンテスト</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/player-informational-properties.html">プレイヤー情報プロパティ</a></li>
-                  
-                
-                  
-                    <li><a href="/code-samples/brightcove-player-sample-live-custom-error-message.html">サンプル:ライブカスタムエラーメッセージ</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/step-step-brightcove-player-debugger.html">ステップバイステップ:Brightcove プレーヤーデバッガ</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/running-network-path-trace.html">ネットワークパストレースの実行</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/using-player-reference.html">プレーヤーリファレンスの使用</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/vetting-brightcove-player-releases.html">Vetting Brightcove プレーヤーリリース</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/viewing-player-configuration.html">プレーヤ設定の表示</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/styling/index.html">スタイリング &amp; 外観<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/styling/customizing-player-appearance.html">プレーヤーの外観のカスタマイズ</a></li>
-                  
-                
-                  
-                    <li><a href="/styling/customizing-player-appearance-legacy-skin.html">プレイヤーの外観のカスタマイズ-レガシースキン</a></li>
-                  
-                
-                  
-                    <li><a href="/styling/brightcove-player-sample-player-styling-playground.html">プレイヤースタイリングプレイグラウンド</a></li>
-                  
-                
-                  
-                    <li><a href="/styling/quick-start-player-customization-legacy-skin.html">「クイックスタート:プレイヤーのカスタマイズ-レガシースキン</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/step-step-player-customization.html">ステップバイステップ:プレーヤーのカスタマイズ</a></li>
-                  
-                
-                  
-                    <li><a href="/styling/responsive-sizing-brightcove-player.html">Brightcove プレーヤーのレスポンシブサイジング</a></li>
-                  
-                
-                  
-                    <li><a href="/styling/sizing-player.html">プレーヤーのサイズ変更</a></li>
-                  
-                
-                  
-                    <li><a href="/styling/skins-and-player-versions.html">スキンとプレーヤーのバージョン</a></li>
-                  
-                
-                  
-                    <li><a href="https://studio.support.brightcove.com/media/styling-captions.html">キャプションのスタイル設定</a></li>
-                  
-                
-                  
-                    <li><a href="/styling/styling-playlists.html">プレイリストのスタイリング</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/playback/index.html"><strong>再生+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/playback/autoplay-considerations.html">自動再生に関する考慮事項</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/brightcove-playback-technology-app.html">Brightcove の再生テクノロジーアプリ</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/xdr-with-bcplayer.html">Brightcove プレーヤーでのクロスデバイス再開</a></li>
-                  
-                
-                  
-                    <li><a href="https://studio.support.brightcove.com/publish/deep-linking.html">ディープリンク</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/delivering-hls-video.html">HLS ビデオの配信</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/determining-which-rendition-will-play.html">再生するレンディションを決定する</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/guide-playback-technology.html">ガイド:再生技術</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/hls-plugin.html">HLS プラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/ios-and-brightcove-player.html">iOS と Brightcove Player </a></li>
-                  
-                
-                  
-                    <li><a href="/playback/overview-https-support.html">概要:HTTPSサポート</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/quality-selection-plugin.html">品質選択プラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/static-url-delivery.html">静的 URL 配信</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/streaming-playready-protected-content-dynamic-delivery.html">PlayReady 保護されたコンテンツのストリーミング</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/using-brightcove-player-tve.html">TVE でBrightcove プレーヤーを使用する</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/content-protection/index.html">DRM &amp; コンテンツ保護<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="https://studio.support.brightcove.com/players/configuring-player-content-restrictions.html">プレーヤーコンテンツ制限の設定</a></li>
-                  
-                
-                  
-                    <li><a href="/content-protection/creating-dash-drm-manifest-brightcove-player.html">Brightcove プレーヤー用の DASH DRM マニフェストを作成する</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/domain-restrictions-messaging.html">ドメイン制限メッセージング</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/configuring-brightcove-player-drm.html">DRMプラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="/content-protection/overview-content-protection.html">概要:コンテンツ保護</a></li>
-                  
-                
-                  
-                    <li><a href="/content-protection/policy-keys.html">ポリシーキー</a></li>
-                  
-                
-                  
-                    <li><a href="/content-protection/restricting-video-playback-using-ip-address.html">IP アドレスを使用したビデオ再生の制限</a></li>
-                  
-                
-                  
-                    <li><a href="/content-protection/signed-urls-and-token-auth-live-stream.html">ライブストリームでの署名付き URL とトークン認証</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/coding-topics/index.html">コーディングトピック<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/publish/brightcove-player-loader.html">Brightcove のプレーヤーローダー</a></li>
-                  
-                
-                  
-                    <li><a href="/references/catalog-search-architecture.html">カタログ検索のアップグレード</a></li>
-                  
-                
-                  
-                    <li><a href="/code-samples/brightcove-player-sample-trigger-rewind-custom-event.html">カスタムイベント</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/guide-playback-technology.html">ガイド:再生技術</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/programmatically-localizing-brightcove-player.html">Brightcove プレーヤーのローカライズ</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/localizing-plugins.html">プラグインのローカライズ</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/player-events.html">プレイヤーイベント</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/overview-components.html">概要:コンポーネント</a></li>
-                  
-                
-                  
-                    <li><a href="/playback/overview-https-support.html">概要:HTTPSサポート</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/overview-player-api.html">概要:プレーヤー API </a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/pass-data-plugin.html">プラグインにデータを渡す</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/react-player-loader.html">プレイヤーローダーを反応させる</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/reporting-brightcove-player-configurations.html">Brightcove プレーヤーの設定に関するレポート</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/requirejs-and-brightcove-player.html">RequireJSとBrightcove プレーヤー</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/step-step-plugin-development.html">ステップバイステップ:プラグイン開発</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/step-step-videojs-plugin-generator.html">ステップバイステップ:Video.js プラグインジェネレータ</a></li>
-                  
-                
-                  
-                    <li><a href="/coding-topics/using-bc-and-getplayer-methods.html">bc () と getPlayer () メソッドを使用する</a></li>
-                  
-                
-                  
-                    <li><a href="/troubleshooting/viewing-player-configuration.html">プレーヤ設定の表示</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/general/index.html">一般情報<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="https://studio.support.brightcove.com/publish/adding-application-id-player-embed-code.html">プレーヤーの埋め込みコードへのアプリケーション ID の追加</a></li>
-                  
-                
-                  
-                    <li><a href="/general/adding-captions-videos-programmatically.html">プログラムによる動画へのキャプションの追加</a></li>
-                  
-                
-                  
-                    <li><a href="https://studio.support.brightcove.com/media/adding-chapters-video.html">ビデオへのチャプターの追加</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-player-6-now-default-version.html">Brightcove  Player 6 がデフォルトバージョンになりました</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-player-accessibility.html">Brightcove プレーヤーのアクセシビリティ</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/custom-endscreen-plugin.html">カスタムエンドスクリーンプラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/display-overlay-plugin.html">オーバーレイプラグインを表示</a></li>
-                  
-                
-                  
-                    <li><a href="/references/guide-playlist-api.html">ガイド:プレイリスト API </a></li>
-                  
-                
-                  
-                    <li><a href="/general/identify-and-delete-low-performing-videos.html">パフォーマンスの低い動画の特定と削除</a></li>
-                  
-                
-                  
-                    <li><a href="/general/implementing-cue-points-programmatically.html">プログラムによるキューポイントの実装</a></li>
-                  
-                
-                  
-                    <li><a href="/general/implementing-playlists.html">プレイリストの実装</a></li>
-                  
-                
-                  
-                    <li><a href="/general/implementing-modaldialog.html">ModalDialogの実装</a></li>
-                  
-                
-                  
-                    <li><a href="/general/live-hls.html">ライブHLS </a></li>
-                  
-                
-                  
-                    <li><a href="/general/live-stream-configuration.html">ライブストリーム設定</a></li>
-                  
-                
-                  
-                    <li><a href="/general/multiple-audio-tracks.html">複数のオーディオトラック</a></li>
-                  
-                
-                  
-                    <li><a href="/general/player-configuration-guide.html">プレーヤー設定ガイド</a></li>
-                  
-                
-                  
-                    <li><a href="/general/playing-live-streams.html">ライブストリームを再生する</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/playlist-ui-plugin.html">プレイリスト UI プラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="/content-protection/signed-urls-and-token-auth-live-stream.html">ライブストリームでの署名付き URL とトークン認証</a></li>
-                  
-                
-                  
-                    <li><a href="/plugins/social-sharing-plugin.html">ソーシャルメディアプラグイン</a></li>
-                  
-                
-                  
-                    <li><a href="https://apis.support.brightcove.com/player-management/getting-started/step-step-player-management.html">ステップバイステップ:プレーヤー管理</a></li>
-                  
-                
-                  
-                    <li><a href="/styling/styling-playlists.html">プレイリストのスタイリング</a></li>
-                  
-                
-                  
-                    <li><a href="/general/using-screen-reader-brightcove-player.html">Brightcove プレーヤーでスクリーンリーダーを使用する</a></li>
-                  
-                
-                  
-                    <li><a href="/general/versions-brightcove-player-documentation.html">Brightcove プレーヤーのドキュメントのバージョン</a></li>
-                  
-                
-                  
-                    <li><a href="/general/volume-control.html">ボリュームコントロール</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/code-samples/index.html">コードサンプル<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/code-samples/index-thumb.html">グループ別のコードサンプル</a></li>
-                  
-                
-                  
-                    <li><a href="/code-samples/index.html">コードサンプルインデックス</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/amp/index.html">AMP <strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/amp/amp-using-video-cloud-video.html">AMP ビデオクラウドビデオを使用する</a></li>
-                  
-                
-                  
-                    <li><a href="/amp/amp-using-external-video.html">AMP外部ビデオを使用する</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/training/index.html"><strong>トレーニング+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/training/online-training-courses.html">すべてのオンライントレーニングコース</a></li>
-                  
-                
-                  
-                    <li><a href="/training/developer-basics-videos.html">開発者向け基本ビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/training/player-development-training-videos.html">プレーヤー開発トレーニングビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/training/register-training.html">インストラクター主導トレーニングへの登録</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-developing-brightcove-player.html">トレーニング:Brightcove プレーヤーで開発する</a></li>
-                  
-                
-                  
-                    <li><a href="https://apis.support.brightcove.com/player-management/getting-started/training-demand-quick-start-player-management.html">トレーニング:プレーヤー管理へのクイックスタート</a></li>
-                  
-                
-                  
-                    <li><a href="/training/brightcove-university.html">Brightcove Universityトレーニングコース</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/release-notes/index.html">リリースノート<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/release-notes/brightcove-player-release-notes.html">Brightcove プレーヤーリリースノート</a></li>
-                  
-                
-                  
-                    <li><a href="/release-notes/brightcove-player-prerelease-notes.html">Brightcove プレーヤープレリリースノート</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/support/index.html"><strong>サポート+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    
-                  
-                
-                  
-                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcove のシステムステータスページの表示</a></li>
-                  
-                
-                  
-                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
-                  
-                
-                  
-                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
-                  
-                
-              </ul>
-            
-          
-      </nav>
-    </div>
-    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
-  <!-- bootstrap layout -->
-
-<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="ナビゲーションメニュー"/></p>
-
-<!-- search bar -->
-<div id="nav-search-box" style="margin-top: 1rem;"></div>
-<!-- in-page navigation for narrow screens -->
-<details class="centered-inpage-nav" id="centered_inpage_nav">
-  <summary><h6 class="toc">ページコンテンツ</h6></summary>
-  <nav id="centered_toc"></nav>
-  <ul id="centered_in_page_toc" class="list-none"></ul>
-</details>
-<!-- open in new tab/window -->
-<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="新しいタブで開く" style="margin-top:4em;width: 1.5em;"/></a>
-
-
-
-  
-    
-
-
-<article class="bcls-article">
-  <h1>ソーシャル共有プラグイン</h1>
-  <summary>このトピックでは、ソーシャルメディアプラグインを使用して、ユーザーがFacebook、Google +、Twitter、Tumblr、Pinterest、LinkedInを介してビデオを共有できるようにする方法を学習します。</summary>
   <section class="bcls-section">
     <h2 id="Example">例</h2>
-    <p>BrightcovePlayerが掲載されたWebページがあるとします。ここで、ユーザーがソーシャルメディアプラットフォーム間でビデオを共有できるようにします。ソーシャルメディアプラグインを使用すると、タイトルと説明のドックにソーシャル共有アイコンが表示されます。</p>
-    <aside class="bcls-aside bcls-aside--information">注：タイトルと説明のドックを表示しないようにプレーヤーが構成されている場合、共有アイコンがプレーヤーのコントロール領域に表示されます。</aside>
-    <figure class="bcls-figure"><img class="bcls-image" alt="ソーシャルメディアアイコン" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/social-media-plugin/social-media-icon.png"/></figure>
+    <p>たとえば、Brightcove Playerのウェブページがあるとします。今、ユーザーはソーシャルメディアプラットフォーム間でビデオを共有できるようにしたいと考えています。ソーシャルメディアプラグインを使用すると、タイトルと説明のドックにソーシャル共有アイコンが表示されます。</p>
+    <aside class="bcls-aside bcls-aside--information">注:プレーヤーがタイトルと説明ドックを表示しないように設定されている場合、共有アイコンがプレーヤーコントロール領域に表示されます。</aside>
+    <figure class="bcls-figure"><img class="bcls-image" alt="Social Media icon" src="/assets/images/plugins/social/social-media-icon.png" /></figure>
     <p>このアイコンをクリックすると、次に示すようなソーシャル共有画面が表示されます。</p>
-    <figure class="bcls-figure"><img class="bcls-image" alt="ソーシャルメディア共有インターフェース" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/social-media-plugin/social-media-selection.png"/></figure>
+    <figure class="bcls-figure"><img class="bcls-image" alt="Social Media Share Interface" src="/assets/images/plugins/social/social-media-selection.png" /></figure>
     <p>次の2つの理由から、プレーヤーの幅と高さを設定する必要があります。</p>
     <ol>
-      <li>幅または高さが設定されていない場合、Twitterに渡す値がないため、Twitterカードが検証されません。</li>
-      <li>上のスクリーンショットに示すように、幅はソーシャルプラグインのインターフェースに対応するのに十分な幅である必要があります。インターフェースを使用して、ビデオ側にインターフェースを自動的に表示することもできます。<code translate="No">displayAfterVideo </code>プロパティ、以下に記載されています。</li>
+      <li>幅や高さが設定されていない場合、Twitterに渡す値がないため、Twitterカードは検証されません。</li>
+      <li>上のスクリーンショットに示すように、幅は、ソーシャルプラグインのインターフェイスを収容するのに十分な幅にする必要があります。インターフェースを使用して、ビデオ側にインターフェースを自動的に表示することもできます。<code translate="No">displayAfterVideo </code>プロパティ、以下に記載されています。</li>
     </ol>
     <aside class="bcls-aside bcls-aside--tip">
-      <p>注：Studioには、プレーヤーにソーシャルシェアリングを追加するオプションがあり、多くの場合、ニーズに十分対応できます。このドキュメントでは、ソーシャルメディアプラグインの使用に関するすべての側面について説明します。次のスクリーンショットは、StudioのUIを示しています。</p>
-      <figure class="bcls-figure"><img class="bcls-image" alt="" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/social-media-plugin/social-media-studio.png"/></figure>
+      <p>注:Studioでは、プレーヤーにソーシャル共有を追加するオプションがあり、多くの場合、ニーズに十分です。このドキュメントでは、ソーシャルメディアプラグインの使用に関するすべての側面について説明します。次のスクリーンショットは、StudioのUIを示しています。</p>
+      <figure class="bcls-figure"><img class="bcls-image" alt="" src="/assets/images/plugins/social/social-media-studio.png" /></figure>
     </aside>
     <p>クリック<a href="http://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media.html">ここに</a>プラグインを使用し、ソーシャルメディアのメタタグを含むWebページの実用的なサンプル。</p>
   </section>
   <section class="bcls-section">
     <h2 id="Overview">概要</h2>
-    <p>このドキュメントでは、BrightcovePlayerを使用して既存のHTMLページのソーシャルメディア共有を有効にする手順について説明します。これは、適切な構成情報を使用してBrightcoveプレーヤーを作成し、そのプレーヤーをHTMLページに追加したことを前提としています。</p>
+    <p>このドキュメントでは、既存の HTML ページの Brightcove Player とのソーシャルメディア共有を有効にする手順について説明します。ここでは、適切な設定情報を使用して Brightcove Player を作成し、そのプレーヤーを HTML ページに追加していることを前提としています。</p>
     <p>ソーシャルメディアプラグインを追加するには、次の手順に従います。</p>
     <ol class="bcls-tasklist">
       <li>
-        <p>プレーヤーを構成します。これにより、ソーシャルメディアプラグインを使用するようにBrightcoveプレーヤーが更新されます。プレーヤーとのソーシャル共有を含めるには、次の3つの方法があります。</p>
+        <p>プレーヤーを設定します。これにより、Brightcove Player がソーシャルメディアプラグインを使用するように更新されます。プレーヤーとのソーシャル共有を含めるには、次の3つの方法があります。</p>
         <!-- <aside class="bcls-aside bcls-aside--information">
 			<ul>
 				<li>You will need the URL to the HTML page with your Brightcove Player.</li>
@@ -1119,25 +41,28 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         
         <ul>
           <li>
-            <p><a href="#Configure_player">プレーヤーのプロパティを構成する</a><br/>スタジオで<strong>プレイヤー</strong>モジュール、あなたはすることができます<a href="https://studio.support.brightcove.com/players/configuring-social-properties-player.html">でプロパティを構成します<strong>ソーシャル</strong>セクション</a>。これは、さまざまなソーシャルメディアプラットフォームを選択するためのインターフェイスを提供しますが、他の構成オプションは提供しません。</p>
+            <p><a href="#Configure_player">プレーヤーのプロパティを構成する</a><br />
+              スタジオで<strong>プレイヤー</strong>モジュール、あなたはすることができます<a href="https://studio.support.brightcove.com/players/configuring-social-properties-player.html">でプロパティを構成します<strong>ソーシャル</strong>セクション</a>。これは、さまざまなソーシャルメディアプラットフォームを選択するためのインターフェイスを提供しますが、他の構成オプションは提供しません。</p>
           </li>
           <li>
-            <p><a href="#Configure_player_with_options">オプションでプレーヤーを構成する</a><br/>スタジオで<strong>プレイヤー</strong>を使用するモジュール<strong>プラグイン</strong>セクションには、構成オプションを提供するためのインターフェースがあります。</p>
+            <p><a href="#Configure_player_with_options">オプションを使用してプレーヤーを構成する</a><br />
+              スタジオで<strong>プレイヤー</strong>を使用するモジュール<strong>プラグイン</strong>セクションには、構成オプションを提供するためのインターフェースがあります。</p>
           </li>
           <li>
-            <p><a href="#Customizing_sharing_URLs">共有URLのカスタマイズ</a><br/>この実装は、コードを使用してソーシャルプラグインを追加します。</p>
+            <p><a href="#Customizing_sharing_URLs">共有 URL のカスタマイズ</a><br />
+              この実装は、コードを使用してソーシャルプラグインを追加します。</p>
           </li>
         </ul>
       </li>
       <li>ソーシャルを追加<a href="#Generate_meta_tags">メタタグ</a>プレーヤーのHTMLページに移動します。</li>
-      <li><a href="#Validate">検証</a> FaceBookおよびTwitterのHTMLページのメタタグ。</li>
+      <li><a href="#Validate"></a>  FacebookとTwitterのHTMLページ上のメタタグを検証します。</li>
     </ol>
-    <p>ブラウザで、BrightcoveプレーヤーでHTMLページを開き、プレーヤーのソーシャル共有アイコンを使用してビデオを共有します。</p>
-    <p>ページコード内にソーシャルメディアプラグインを実装することもできますが、これはより高度なソリューションです。このアプローチを使用して、カスタム共有URLを含めることができます。詳細については、<a href="#Customizing_sharing_URLs">共有URLのカスタマイズ</a>セクション。</p>
+    <p>ブラウザで Brightcove Player で HTML ページを開き、プレーヤーのソーシャル共有アイコンを使用して動画を共有します。</p>
+    <p>ページコード内にソーシャルメディアプラグインを実装することもできますが、これはより高度なソリューションです。このアプローチを使用して、カスタム共有 URL を含めることもできます。詳細については、<a href="#Customizing_sharing_URLs">共有URLのカスタマイズ</a>セクション。</p>
     <aside class="bcls-aside bcls-aside--tip">
       <p>ソーシャルプラットフォームに投稿するための他のオプションは次のとおりです。</p>
       <ul>
-        <li><a href="https://studio.support.brightcove.com/publish/publishing-brightcove-players-facebook-instant-articles.html">Facebook InstantArticlesでBrightcoveプレーヤーを公開する</a></li>
+        <li><a href="https://studio.support.brightcove.com/publish/publishing-brightcove-players-facebook-instant-articles.html">Brightcove Playerを Facebook インスタント記事で公開する</a> </li>
         <li><a href="https://social.support.brightcove.com/general/publishing-videos-social-media-platforms.html">ソーシャルメディアプラットフォームへのビデオの公開</a></li>
       </ul>
     </aside>
@@ -1146,229 +71,225 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <h2 id="Configure_player">プレーヤーを構成する</h2>
     <p>ソーシャル共有プラグインを追加するには、次の手順に従います。</p>
     <ol class="bcls-tasklist__restart">
-      <li><strong>PLAYERS モジュールを開き、新しいプレーヤーを作成するか、プラグインを追加するプレーヤーを見つけます。</strong></li>
+      <li>を開きます<strong>プレイヤー</strong>モジュールを作成し、新しいプレーヤーを作成するか、プラグインを追加するプレーヤーを見つけます。</li>
       <li>プレーヤーのリンクを選択して、プレイヤーのプロパティを開きます。</li>
       <li>選択する<strong>ソーシャル</strong>左側のナビゲーションメニューにあります。</li>
-      <li>次に、のチェックボックスを選択します<strong>共有を有効にする</strong>。</li>
-      <li>ビデオを共有したいソーシャルメディアプラットフォームを選択します。</li>
-      <li>プレーヤーを公開するには、[ <strong>パブリッシュと埋め込み] [&gt; 変更を公開</strong> ] を選択します。</li>
-      <li>開くダイアログを閉じるには、[ <strong>閉じる</strong> ] を選択します。</li>
+      <li>次に、[ <strong>共有を有効にする] のチェックボックスをオンにします</strong>。</li>
+      <li>動画を共有するソーシャルメディアプラットフォームを選択します。</li>
+      <li>プレーヤーを公開するには、[ <strong>公開と埋め込み] &gt; [変更を公開] を選択します</strong>。</li>
+      <li>開くダイアログを閉じるには、[ <strong>閉じる] を選択します</strong>。</li>
     </ol>
   </section>
   <section class="bcls-section">
     <h2 id="Configure_player_with_options">オプションでプレーヤーを構成する</h2>
-    <p>より高度な構成については、<a href="#Properties">プロパティ</a>プラグインを構成するためのオプションとして。これを行うには、次の手順を実行します。</p>
+    <p>より高度な設定のために、<a href="#Properties"></a>プラグインを構成するためのオプションとしてプロパティを使用することができます。これを行うには、次の手順を実行します。</p>
     <ol class="bcls-tasklist__restart">
-      <li><strong>PLAYERS モジュールを開き、新しいプレーヤーを作成するか、プラグインを追加するプレーヤーを見つけます。</strong></li>
+      <li>を開きます<strong>プレイヤー</strong>モジュールを作成し、新しいプレーヤーを作成するか、プラグインを追加するプレーヤーを見つけます。</li>
       <li>プレーヤーのリンクを選択して、プレイヤーのプロパティを開きます。</li>
-      <li>左側のナビゲーションメニューで [ <strong> Social </strong> ] を選択し、チェックボックスがオフになっていることを確認します。</li>
+      <li>左側のナビゲーションメニューで [ <strong>Social</strong> ] を選択し、チェックボックスがオフになっていることを確認します。</li>
       <li>左側のナビゲーションメニューで [ <strong>プラグイン</strong> ] を選択します。</li>
-      <li>次に選択<strong>プラグイン</strong> 3つのオプションから。
-        <figure class="bcls-figure"><img class="bcls-image" alt="プラグインを選択" src="//learning-services-media.brightcove.com/doc-assets/general/players-plugin-options.png"/></figure>
+      <li>から<strong>プラグインを追加する</strong>ドロップダウンメニューで、<strong>カスタムプラグイン</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" alt="Custom Plugin" src="/assets/images/plugins/social/custom-plugin.png" />
+        </figure>
       </li>
-      <li>から<strong>プラグインを追加する</strong>ドロップダウンメニューで、<strong>カスタムプラグイン</strong>。</li>
       <li>[ <strong>プラグイン名</strong> ] に、と入力します<code translate="No">social</code>。</li>
-      <li><strong>JavaScript </strong>の URL には、次のように入力します。
-        <pre>
-		<code class="language-json" translate="No">https://players.brightcove.net/videojs-social/3/videojs-social.min.js</code></pre>
+      <li><strong> JavaScript の</strong>  URL には、次のように入力します。
+        <pre><code class="language-json" translate="No">https://players.brightcove.net/videojs-social/3/videojs-social.min.js</code></pre>
       </li>
-      <li><strong>CSS </strong>の URL には、次のように入力します。
-        <pre>
-		<code class="language-json" translate="No">https://players.brightcove.net/videojs-social/3/videojs-social.css</code></pre>
+      <li><strong> CSS の</strong>  URL には、次のように入力します。
+        <pre><code class="language-json" translate="No">https://players.brightcove.net/videojs-social/3/videojs-social.css</code></pre>
       </li>
-      <li>[ <strong>オプション (JSON) </strong> ] テキストボックスに構成オプションを入力します。この例では、オプションは次のことを行います。
+      <li>[ <strong>オプション (JSON)] </strong>テキストボックスに構成オプションを入力します。この例では、オプションは次のことを行います。
         <ul>
-          <li>2-3行目は次のとおりです。動画の名前と説明を設定します。</li>
-          <li>4行目：ビデオプレーヤーとソーシャル共有メタタグを使用して、カスタムWebページのURLを定義します。</li>
-          <li>5〜6行目：Twitterの場合、これにより、ユーザーは5秒のオフセット後にビデオの表示を開始できます。</li>
+          <li>2-3行目の:動画の名前と説明を設定します。</li>
+          <li>4行目:動画プレーヤーとソーシャル共有メタタグを使用して、カスタム Web ページの URL を定義します。</li>
+          <li>5-6行目:Twitter の場合、ユーザーは 5 秒オフセット後にビデオの視聴を開始できます。</li>
           <li>
-            <p>7〜13行目：Facebook、Twitter、Tumblr、Pinterest、LinkedInのソーシャル共有を可能にします。</p>
+            <p>7～13行目:Facebook、Twitter、Tumblr、Pinterest、LinkedInのソーシャル共有を可能にします。</p>
           </li>
         </ul>
-        <pre class="line-numbers">
-	<code class="language-json" translate="No">{
-		"title": "Tiger",
-		"description": "Video of two tigers",
-		"url": "https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media.html",
-		"deeplinking": true,
-		"offset": "00:00:05",
-		"services": {
-			"facebook": true,
-			"twitter": true,
-			"tumblr": true,
-			"pinterest": true,
-			"linkedin": true
-		}
-	}</code></pre>
+        <pre class="line-numbers"><code class="language-json" translate="No">{
+  "title": "Tiger",
+  "description": "Video of two tigers",
+  "url": "https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media.html",
+  "deeplinking": true,
+  "offset": "00:00:05",
+  "services": {
+    "facebook": true,
+    "twitter": true,
+    "tumblr": true,
+    "pinterest": true,
+    "linkedin": true
+  }
+}</code></pre>
       </li>
       <!-- <li>Check to be sure your form appears similar to the following:
 		<figure class="bcls-figure"><img class="bcls-image" alt="" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/social-media-plugin/studio-configuration.png" /></figure>
 		</li> -->
-      <li>[<strong>保存</strong>]をクリックします。</li>
-      <li>プレーヤーを公開するには、[ <strong>パブリッシュと埋め込み] [&gt; 変更を公開</strong> ] をクリックします。</li>
-      <li>開くダイアログを閉じるには、[ <strong>閉じる</strong> ] をクリックします。</li>
+      <li>[ <strong>保存] をクリックします</strong>。</li>
+      <li>プレーヤーを公開するには、[ <strong>パブリッシュと埋め込み] &gt; [変更の公開] の順にクリックします</strong>。</li>
+      <li>開くダイアログを閉じるには、[ <strong>閉じる] をクリックします</strong>。</li>
     </ol>
   </section>
   <section class="bcls-section">
-    <h2 id="Properties">プロパティ</h2>
-    <p>一般的なプラグインの場合、<code translate="No">options </code>オブジェクトは、初期化をカスタマイズするためにプラグインにデータを渡すために使用されます。この場合、このオブジェクトで次のプロパティを使用できます。</p>
+    <h2 id="Properties">[プロパティ]</h2>
+    <p>一般に、プラグインの場合、<code translate="No">options </code>オブジェクトは初期化をカスタマイズするためにデータをプラグインに渡すために使用されます。この場合、このオブジェクトで次のプロパティを使用できます。</p>
     <h3>タイトル</h3>
     <ul>
-      <li>型:文字列</li>
-      <li>これは、動画が共有されたときに表示されるカスタムタイトルです。</li>
+      <li>タイプ:文字列</li>
+      <li>これは、動画を共有したときに表示されるカスタムタイトルです。</li>
     </ul>
     <h3>説明</h3>
     <ul>
       <li>型:文字列</li>
-      <li>これは、それをサポートするソーシャルサービスによって使用されるカスタムの説明です。</li>
+      <li>これは、それをサポートするソーシャルサービスによって使用されるカスタム説明です。</li>
     </ul>
     <h3>URL</h3>
     <ul>
       <li>型:文字列</li>
-      <li>これは、共有用のビデオとメタタグを含むカスタムWebページを指すURLです。を参照してください<a href="#Generate_meta_tags">メタタグ</a>ソーシャルメディアメタデータをプレーヤーページに追加する方法の詳細については、セクションを参照してください。</li>
+      <li>これは、あなたのビデオと共有するためのメタタグを持つカスタムWebページを指し示すURLです。<a href="#Generate_meta_tags">ソーシャルメディアメタデータをプレーヤーページに追加する方法については、</a>メタタグのセクションを参照してください。</li>
     </ul>
     <h3 id="embedcode">埋め込みコード</h3>
     <ul>
       <li>型:文字列</li>
-      <li>これは、ビデオを共有するためのBrightcove Playeriframe埋め込みコードです。これにより、の内容を完全に上書きできます<strong>埋め込みコード</strong>共有ダイアログにあるフィールド。
-        <figure class="bcls-figure"><img class="bcls-image" alt="ソーシャルメディア埋め込みコード" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/social-media-plugin/social-media-embedcode.png"/></figure>
+      <li>これは、動画を共有するためのBrightcove Playerの iframe 埋め込みコードです。これにより、の内容を完全に上書きできます<strong>埋め込みコード</strong>共有ダイアログにあるフィールド。
+        <figure class="bcls-figure"><img class="bcls-image" alt="Social Media Embed Code" src="/assets/images/plugins/social/social-media-embedcode.png" /></figure>
       </li>
       <li>このプロパティの値は、<a href="#getembedcode"> getEmbedCode（）</a>方法。</li>
     </ul>
-    <h3>removeEmbed</h3>
+    <h3>RemoveEmbed</h3>
     <ul>
-      <li>型:ブール値</li>
+      <li>タイプ:ブール</li>
       <li>デフォルト: <code translate="No">false </code></li>
-      <li>に設定されている場合<code translate="No">true</code>、iframe埋め込みコードをオフ（非表示）にします</li>
+      <li>に設定した場合<code translate="No">true</code>、iframe 埋め込みコードをオフ (非表示) します</li>
     </ul>
-    <h3>displayAfterVideo</h3>
+    <h3>ディスプレイアフタービデオ</h3>
     <ul>
       <li>型:ブール値</li>
-      <li>デフォルト: <code translate="No">false </code></li>
-      <li>ソーシャル画面を自動的に表示します<code translate="No">ended </code>イベント</li>
+      <li>デフォルト: <code translate="No">false </code>   </li>
+      <li><code translate="No">ended </code>イベントでソーシャル画面を自動的に表示します。</li>
     </ul>
     <h3>ディープリンク</h3>
     <ul>
       <li>型:ブール値</li>
-      <li>デフォルト: <code translate="No">false </code></li>
+      <li>デフォルト: <code translate="No">false </code>   </li>
       <li>
-        <p>これにより、共有ビデオのディープリンクが有効/無効になります。この機能により、ユーザーは特定のオフセットからビデオの視聴を開始できます。詳細については、<a href="https://studio.support.brightcove.com/publish/deep-linking.html">ディープリンク</a>資料。</p>
-        <aside class="bcls-aside bcls-aside--warning">注：ディープリンク機能は現在、Twitterでのみ機能します。</aside>
+        <p>共有動画のディープリンクを有効または無効にします。この機能を使用すると、ユーザーは特定のオフセットからビデオを見始めることができます。詳細については、<a href="https://studio.support.brightcove.com/publish/deep-linking.html">ディープリンク</a>資料。</p>
+        <aside class="bcls-aside bcls-aside--warning">注:ディープリンク機能は、現在 Twitter でのみ機能します。</aside>
       </li>
     </ul>
     <h3>offset</h3>
     <ul>
       <li>型:文字列</li>
-      <li>フォーマット：<code translate="No">00h00m00s </code></li>
-      <li>これは、<code translate="No">deeplinking </code>プロパティであり、ビデオの再生を開始するタイミングを定義します。1分5秒をオフセットするには、次のように記述します。<code translate="No">00h01m05s </code></li>
+      <li>フォーマット: <code translate="No">00h00m00s </code>   </li>
+      <li>これは、<code translate="No">deeplinking </code>プロパティと共に使用され、ビデオの再生を開始するタイミングを定義します。1分5秒をオフセットするには、次のように記述します。<code translate="No">00h01m05s </code>   </li>
     </ul>
     <h3>サービス</h3>
-    <p>このオブジェクトにすべてのサービスプロパティを含めます。サービスのサポートを有効または無効にするには、プロパティ値を削除するのではなく、trueまたはfalseに設定します。</p>
+    <p>このオブジェクトにすべてのサービスプロパティを含めます。サービスのサポートを有効または無効にするには、プロパティ値を削除するのではなく、true または false に設定します。</p>
     <ul>
       <li><code translate="No">facebook </code>
         <ul>
           <li>型:ブール値</li>
           <li>デフォルト: <code translate="No">true </code></li>
-          <li>これにより、Facebook共有アイコンが有効になります。</li>
+          <li>これにより、Facebook の共有アイコンが有効になります。</li>
         </ul>
       </li>
       <li><code translate="No">twitter </code>
         <ul>
           <li>型:ブール値</li>
-          <li>デフォルト: <code translate="No">true </code></li>
-          <li>これにより、Twitter共有アイコンが有効になります。</li>
+          <li>デフォルト: <code translate="No">true </code>   </li>
+          <li>これにより、Twitterの共有アイコンが有効になります。</li>
         </ul>
       </li>
       <li><code translate="No">tumblr </code>
         <ul>
           <li>型:ブール値</li>
-          <li>デフォルト: <code translate="No">true </code></li>
-          <li>これにより、Tumblr共有アイコンが有効になります。</li>
+          <li>デフォルト: <code translate="No">true </code>   </li>
+          <li>これにより、Tumblr 共有アイコンが有効になります。</li>
         </ul>
       </li>
       <li><code translate="No">pinterest </code>
         <ul>
           <li>型:ブール値</li>
-          <li>デフォルト: <code translate="No">true </code></li>
-          <li>これにより、Pinterest共有アイコンが有効になります。</li>
+          <li>デフォルト: <code translate="No">true </code>   </li>
+          <li>これにより、Pinterest 共有アイコンが有効になります。</li>
         </ul>
       </li>
       <li><code translate="No">linkedin </code>
         <ul>
           <li>型:ブール値</li>
-          <li>デフォルト: <code translate="No">true </code></li>
-          <li>これにより、LinkedInの共有アイコンが有効になります。</li>
+          <li>デフォルト: <code translate="No">true </code>   </li>
+          <li>これにより、LinkedIn 共有アイコンが有効になります。</li>
         </ul>
       </li>
     </ul>
     <h3>buttonParent</h3>
     <ul>
-      <li>タイプ：テキスト</li>
-      <li>デフォルト: <code translate="No">shelf </code></li>
-      <li>共有アイコンを配置する場所を決定します。に設定されている場合<strong>棚</strong>、デフォルトでは、共有アイコンがドックに表示されます。値がに設定されている場合<strong>controlBar</strong>、共有アイコンがコントロールバーに表示されます。</li>
+      <li>タイプ:テキスト</li>
+      <li>デフォルト: <code translate="No">shelf </code>   </li>
+      <li>共有アイコンの配置場所を指定します。<strong> shelf </strong>（デフォルト）に設定すると、共有アイコンがドックに表示されます。値が<strong>  ControlBar に設定されている場合</strong>、共有アイコンがコントロールバーに表示されます。</li>
     </ul>
     <p>例:</p>
-    <pre class="line-numbers">
-	<code class="language-json" translate="No">{
-		"services": {
-			"linkedin": true,
-			"pinterest": true,
-			"tumblr": true,
-			"twitter": true,
-			"facebook": true
-		},
-		"offset": "00:00:05",
-		"deeplinking": true,
-		"url": "https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media.html",
-		"description": "Video of two tigers",
-		<span class="bcls-highlight">"buttonParent": "controlBar",</span>
-		"title": "Tiger"
-	}</code></pre>
+    <pre class="line-numbers"><code class="language-json" translate="No">{
+  "services": {
+    "linkedin": true,
+    "pinterest": true,
+    "tumblr": true,
+    "twitter": true,
+    "facebook": true
+  },
+  "offset": "00:00:05",
+  "deeplinking": true,
+  "url": "https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media.html",
+  "description": "Video of two tigers",
+  <span class="bcls-highlight">"buttonParent": "controlBar",</span>
+  "title": "Tiger"
+}</code></pre>
   </section>
   <section class="bcls-section">
     <h2 id="Getter_and_setter_configuration_methods">ゲッターとセッターの構成方法</h2>
-    <p>構成オプションの設定と取得の両方に使用できる方法は多数あります。すべてのメソッドはに関連付けられています<strong>SocialOverlay</strong>コンポーネントは、<strong> videojs.ModalDialog</strong>クラス。(Information on this class can be found in the <a href="/general/implementing-modaldialog.html">Implementing the ModalDialog</a> document.)</p>
-    <p>ソーシャルプラグインが初期化されると、<strong> SocialOverlay</strong>コンポーネントはで利用可能になります<code translate="No">player.socialOverlay </code>。getterメソッドとsetterメソッドを使用するための一般的な形式は次のとおりです。</p>
-    <pre>
-	<code class="language-javascript" translate="No">player.socialOverlay.methodName()</code></pre>
-    <h3>setDirectLink（string）</h3>
+    <p>設定オプションの設定と取得の両方に使用できるメソッドは多数あります。すべてのメソッドはに関連付けられています<strong>SocialOverlay</strong>コンポーネントは、<strong> videojs.ModalDialog</strong>クラス。（このクラスに関する情報は、<a href="/general/implementing-modaldialog.html"></a>   ModalDialogの実装ドキュメントを参照してください）。</p>
+    <p>ソーシャルプラグインが初期化されると、<strong>  SocialOverlay </strong>コンポーネントのインスタンスがで利用可能になります<code translate="No">player.socialOverlay </code>。ゲッターメソッドとセッターメソッドを使用するための一般的な形式は次のとおりです。</p>
+    <pre><code class="language-javascript" translate="No">player.socialOverlay.methodName()</code></pre>
+    <h3>SetDirectLink (文字列)</h3>
     <ul>
-      <li>使用法: <code translate="No">player.socialOverlay.setDirectLink(string) </code></li>
-      <li>用途:ソーシャルオーバーレイで使用されるURLを更新します。値を空の文字列（ ''）に設定すると、URLがオンデマンドで決定されます。</li>
+      <li>使用法: <code translate="No">player.socialOverlay.setDirectLink(string) </code>   </li>
+      <li>目的:ソーシャルオーバーレイで使用される URL を更新します。値を空の文字列 (「) に設定すると、URL はオンデマンドで決定されます。</li>
     </ul>
-    <h3>getDirectLink（）</h3>
+    <h3>getDirectLink ()</h3>
     <ul>
-      <li>使用法: <code translate="No">player.socialOverlay.getDirectLink() </code></li>
-      <li>用途:ソーシャルオーバーレイで使用されるURLを返します。</li>
+      <li>使用法: <code translate="No">player.socialOverlay.getDirectLink() </code>   </li>
+      <li>用途:ソーシャルオーバーレイで使用される URL を返します。</li>
     </ul>
-    <h3>setEmbedCode（string）</h3>
+    <h3>SetembedCode (文字列)</h3>
     <ul>
-      <li>使用法: <code translate="No">player.socialOverlay.setEmbedCode(string) </code></li>
+      <li>使用法: <code translate="No">player.socialOverlay.setEmbedCode(string) </code>   </li>
       <li>用途:ソーシャルオーバーレイで使用される埋め込みコードを更新します。</li>
     </ul>
-    <h3 id="getembedcode">getEmbedCode（）</h3>
+    <h3 id="getembedcode">getembedCode ()</h3>
     <ul>
-      <li>使用法: <code translate="No">player.socialOverlay.getEmbedCode() </code></li>
+      <li>使用法: <code translate="No">player.socialOverlay.getEmbedCode() </code>   </li>
       <li>用途:ソーシャルオーバーレイで使用される埋め込みコードを取得します。</li>
     </ul>
   </section>
   <section class="bcls-section">
     <h2 id="SocialButton">SocialButton</h2>
-    <p>ソーシャルプラグインが初期化されると、<strong> SocialButton</strong>コンポーネントはで利用可能になります<code translate="No">player.socialButton </code>。このコンポーネントは、<strong> videojs.Button</strong>クラス。</p>
+    <p>ソーシャルプラグインが初期化されると、<strong>  SocialButton </strong>コンポーネントのインスタンスがで利用可能になります<code translate="No">player.socialButton </code>。このコンポーネントは、<strong>  VideoJS.Button </strong>クラスを拡張します。</p>
   </section>
   <section class="bcls-section">
-    <h2 id="Generate_meta_tags">メタタグを生成する</h2>
-    <p>前のセクションのソーシャル共有プラグインを使用するようにBrightcovePlayerを更新すると、HTMLページにソーシャルメタタグを追加する準備が整います。</p>
-    <p>これらのメタタグを使用すると、ソーシャル共有サイトで動画プレーヤーとサムネイルを投稿に埋め込むことができます。以下のフォームは、<span translate="No">CMS API</span>あなたの情報であなたのビデオデータを取得します。次に、特定のデータを使用してソーシャルメタタグを生成します。</p>
-    <p>Brightcove Playerを使用してソーシャルメディアメタタグをHTMLページに追加するには、次の手順に従います。</p>
+    <h2 id="Generate_meta_tags">メタタグの生成</h2>
+    <p>前のセクションのソーシャル共有プラグインを使用するように Brightcove Player を更新したら、HTML ページにソーシャルメタタグを追加する準備が整いました。</p>
+    <p>これらのメタタグを使用すると、ソーシャル共有サイトで動画プレーヤーとサムネイルを投稿に埋め込むことができます。以下のフォームは、<span translate="No"> CMS API</span>あなたの情報であなたのビデオデータを取得します。次に、特定のデータを使用してソーシャルメタタグを生成します。</p>
+    <p>Brightcove Playerで HTML ページにソーシャルメディアのメタタグを追加するには、次の手順に従います。</p>
     <ol class="bcls-tasklist__restart">
-      <li>以下のフォームにアカウント、プレーヤー、ビデオの情報を入力し、<strong>ソーシャルタグを生成する</strong>ボタン。</li>
+      <li>以下のフォームにアカウント、プレーヤー、動画の情報を入力し、[ <strong>ソーシャルタグを生成] </strong>ボタンを選択します。</li>
     </ol>
     <h4>データ入力</h4>
-    <aside class="bcls-aside bcls-aside--information">注
+    <aside class="bcls-aside bcls-aside--information">注意:
       <ul>
-        <li>すべてのフィールドは<strong>必須</strong>。独自の値を入力して、ビデオとプレーヤーのメタタグを取得します。</li>
-        <li>このフォームは、単一のビデオプレーヤー専用のコードを生成します。また、URLは変更される可能性があるため、メタタグを定期的に更新する必要があります。</li>
+        <li>すべてのフィールドは<strong>必須</strong>。独自の値を入力して、動画とプレーヤーのメタタグを取得します。</li>
+        <li>このフォームは、単一のビデオプレーヤーのためのコードを生成します。また、URL が変更される可能性があるため、メタタグを定期的に更新する必要があります。</li>
         <li>ポリシーキーを取得する方法の詳細については、<a href="/content-protection/policy-keys.html">ポリシーキー</a>資料。</li>
       </ul>
     </aside>
@@ -1379,18 +300,18 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
           <table>
             <tbody>
               <tr>
-                <td>サービスURL：</td>
+                <td>サービス URL:</td>
                 <td>https://edge.api.brightcove.com/playback/v1</td>
               </tr>
               <tr>
-                <td><span class="video-cloud-only">ビデオクラウド</span><span class="player-only">Brightcove プレーヤー</span>アカウント（発行者ID）：</td>
+                <td><span class="video-cloud-only">ビデオクラウド</span><span class="player-only">Brightcoveプレーヤー</span>アカウント（発行者ID）：</td>
                 <td><!-- <input id="accountID" class="required papi-request" type="text" size="60" value="1486906377" required> -->
-                  <input id="accountID" class="required papi-request" type="text" size="60" placeholder="あなたのアカウント ID " required="" />
+                  <input id="accountID" class="required papi-request" type="text" size="60" placeholder="your account id" required="" />
                   <!--Brightcove Learning Doc Samples--></td>
               </tr>
               <tr>
                 <td class="align-top no-wrap">ポリシーキー：</td>
-                <td><input id="policyKey" class="required papi-request" type="text" size="250" placeholder="ポリシーキー" required="" />
+                <td><input id="policyKey" class="required papi-request" type="text" size="250" placeholder="your policy key" required="" />
                   <p>&nbsp;</p></td>
               </tr>
             </tbody>
@@ -1398,7 +319,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         </div>
       </fieldset>
       <fieldset>
-        <legend>プレーヤー情報 </legend>
+        <legend>プレイヤー情報 </legend>
         <div id="playerInfo">
           <table>
             <tbody>
@@ -1415,7 +336,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
               <tr>
                 <td>プレイヤーID（プレイヤーモジュールから）：</td>
                 <td><!-- <input id="playerID" class="required papi-request" size="60" value="default" required /> -->
-                  <input id="playerID" class="required papi-request" size="60" placeholder="あなたのプレイヤーID" required="" /></td>
+                  <input id="playerID" class="required papi-request" size="60" placeholder="your player id" required="" /></td>
               </tr>
               <tr>
                 <td>プレーヤーの幅：</td>
@@ -1437,18 +358,18 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
               <tr>
                 <td>ビデオID（メディアモジュールから）：</td>
                 <td><!-- <input id="videoID" class="required papi-request" size="60" value="4779638563001" required /> -->
-                  <input id="videoID" class="required papi-request" size="60" placeholder="あなたのビデオID" required="" /></td>
+                  <input id="videoID" class="required papi-request" size="60" placeholder="your video id" required="" /></td>
               </tr>
             </tbody>
           </table>
           <p id="responseFrame">&nbsp;</p>
         </div>
-        <p><span id="generateButton" class="bcls-button">ソーシャルタグを生成する</span></p>
+        <p><span id="generateButton" class="bcls-button">ソーシャルタグの生成</span> </p>
       </fieldset>
     </div>
     &nbsp;
     <ol class="bcls-tasklist">
-      <li>を押します<strong>コードを選択します</strong>ボタン。次に、選択したコードをコピーして、<code translate="No">&lt;head&gt; </code> HTMLプレーヤーページのセクション。</li>
+      <li>[ <strong>コードを選択] </strong>ボタンを押します。次に、選択したコードをコピーして HTML <code translate="No">&lt;head&gt; </code>プレーヤーページのセクションに貼り付けます。</li>
     </ol>
     <h4>生成されたソーシャル共有メタタグ</h4>
     <!-- <fieldset>
@@ -1459,7 +380,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <div id="publishingCodeWrapper">
       <fieldset>
         <legend>メタデータコード </legend>
-        <p><span class="bcls-button" id="selectCode">コードを選択します</span>次に、それをコピーしてページに貼り付けます。</p>
+        <p><span class="bcls-button" id="selectCode"></span>コードを選択し、コピーしてページに貼り付けます。</p>
         <p>
           <textarea id="publishingCode" rows="15" cols="100"></textarea>
         </p>
@@ -1469,92 +390,91 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <ol class="bcls-tasklist">
       <li>変更を保存します。これで、プレーヤーとソーシャルメディア共有インターフェースを使用する準備が整いました。</li>
     </ol>
-    <aside class="bcls-aside bcls-aside--tip">HTMLプレーヤーページに安全なURL値を提供する必要があります（<code translate="No">&lt;meta property="og:video:secure_url" content=""/&gt; </code>）セキュアブラウジング（HTTPS）を使用するFacebookユーザー向け。</aside>
+    <aside class="bcls-aside bcls-aside--tip">セキュアブラウジング (HTTPS) を使用する Facebook ユーザーの HTML プレーヤーページ ( <code translate="No">&lt;meta property="og:video:secure_url" content=""/&gt; </code> ) にセキュア URL 値を提供する必要があります。</aside>
     <!-- script for the social meta tag generator form - calls playback api --> <script src="https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social.js">
 			</script></section>
   <section class="bcls-section">
     <h2 id="Sharing_on_Facebook">Facebookで共有する</h2>
-    <p>現時点では、FacebookのネイティブプレーヤーのみがFacebookのウォールでビデオを再生します。ビデオを共有してFacebookのウォールで再生したい場合は、BrightcoveSocialを使用できます。詳細については、<a href="https://social.support.brightcove.com/get-started/getting-started-brightcove-social.html"> BrightcoveSocial入門</a>資料。</p>
-    <p>Brightcove Playerは壁にリンクを作成し、新しいブラウザのタブまたはウィンドウでビデオとプレーヤーを開きます。ほとんどの人にとって、この動作は問題ないかもしれません。これを行うために、FacebookではOpen Graphを使用してビデオを定義できます（<strong> og</strong>）ページのHTMLページのメタタグ。使い方の詳細はこちら<strong>og</strong> Facebookのタグについては、<a href="//developers.facebook.com/docs/sharing/best-practices">ベストプラクティスの共有</a>資料。</p>
+    <p>現時点では、FacebookのネイティブプレーヤーだけがFacebookの壁でビデオを再生します。動画を共有して Facebook ウォールで再生したい場合は、ブライトコーブソーシャルを使用できます。詳細については、Brightcove Social <a href="https://social.support.brightcove.com/get-started/getting-started-brightcove-social.html"></a>の使用開始に関するドキュメントを参照してください。</p>
+    <p>Brightcove Player が壁にリンクを作成し、動画とプレーヤーを新しいブラウザタブまたはウィンドウで開きます。ほとんどの人にとって、この動作は問題ないかもしれません。これを行うには、Facebookでは、オープングラフを使用してビデオを定義することができます ( <strong>  OG </strong> ) あなたのページのHTMLページ内のメタタグ.Facebook で<strong>  OG </strong>タグを使用する方法の詳細については、<a href="//developers.facebook.com/docs/sharing/best-practices"></a>共有のベストプラクティスのドキュメントを参照してください。</p>
     <div class="video-cloud-only">
-      <p>プレーヤーとビデオへのリンクを共有するには、次の手順に従います。</p>
+      <p>プレーヤーと動画へのリンクを共有するには、次の手順に従います。</p>
       <ol class="bcls-tasklist__restart">
-        <li>Players モジュールで、[ <strong>ソーシャル共有</strong> ] セクションまで下にスクロールし、[ <strong>はい</strong> ] を選択して [共有を許可] をクリックします。</li>
+        <li>Players モジュールで、[ <strong>ソーシャル共有]</strong>セクションまでスクロールダウンし、[ <strong>はい</strong> ] を選択して共有を許可します。</li>
         <li>変更を保存し、プレーヤーを公開します。</li>
         <li>プレーヤーとビデオで HTML ページを作成します。</li>
-        <li>HTML <a href="#Generate_meta_tags">ページのソーシャルメタタグを生成し</a>、次のように更新します。
+        <li>HTML <a href="#Generate_meta_tags"></a>ページのソーシャルメタタグを生成し、次のように更新します。
           <ul>
-            <li>9〜11行目：サイト名、動画のタイトルを定義し、動画として入力します。</li>
-            <li>12行目：BrightcovePlayerを使用したビデオのURLを指します。</li>
+            <li>9〜11行目:あなたのサイト名、あなたのビデオのタイトル、ビデオとしてタイプを定義します。</li>
+            <li>12 行目では、Brightcove Player の動画の URL を指します。</li>
             <li>
               <p>13行目：動画のサムネイル画像を指しています。</p>
-              <aside class="bcls-aside bcls-aside--information">メディア URL の有効期限が切れるため、次のいずれかの操作を行うことをお勧めします。
+              <aside class="bcls-aside bcls-aside--information">メディア URL の有効期限が切れるため、次のいずれかを実行することをお勧めします。
                 <ul>
-                  <li>独自のサーバーでポスター画像をホストし、それらのURLを適切なメタタグで使用します。</li>
-                  <li>Playback API からメディア URL を取得し、適切なメタタグを毎日更新するサーバーサイドコードを実装します。</li>
+                  <li>自分のサーバーでポスター画像をホストし、それらのURLを適切なメタタグで使用します。</li>
+                  <li>サーバーサイドコードを実装して、Playback API からメディア URL を取得し、適切なメタタグを毎日更新します。</li>
                 </ul>
-                メディア URL の使用の詳細については、「<a href="https://apis.support.brightcove.com/cms/getting-started/best-practices-cms-and-playback-apis.html#using_media_urls">ベストプラクティス」を参照してください。CMS と再生 API </a>ドキュメント。</aside>
+                メディア URL の使用の詳細については、「<a href="https://apis.support.brightcove.com/cms/getting-started/best-practices-cms-and-playback-apis.html#using_media_urls">ベストプラクティス」を参照してください。CMS とプレイバック API</a>のドキュメント。</aside>
             </li>
             <li>14〜16行目：プレーヤーのサイズとともに、動画の説明を入力します。</li>
           </ul>
         </li>
       </ol>
-      <pre class="line-numbers" data-start="2">
-	<code class="language-html" translate="No">&lt;!DOCTYPE html&gt;
-		&lt;head&gt;
-			&lt;meta charset="utf-8"&gt;
-			&lt;meta name="apple-mobile-web-app-capable" content="yes" /&gt;
-			&lt;title&gt;Social Media Plugin&lt;/title&gt;
-			<span class="bcls-highlight">&lt;!-- Open Graph Sharing Metadata --&gt;
-			&lt;meta property="og:site_name" content="Brightcove"/&gt;
-			&lt;meta property="og:title" content="Social Media Plugin"/&gt;
-			&lt;meta property="og:type" content="video"/&gt;
-			&lt;meta property="og:url" content="https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media.html"/&gt;
-			&lt;meta property="og:image" content="https://solutions.brightcove.com/bcls/assets/images/Tiger_poster.png" /&gt;
-			&lt;meta property="og:description" content="Tiger"/&gt;
-			&lt;meta property="og:video:width" content="640"/&gt;
-			&lt;meta property="og:video:height" content="360"/&gt;</span>
-			&lt;!-- Twitter: card/meta-tags --&gt;
-			&lt;meta name="twitter:card" content="player"/&gt;
-			&lt;meta name="twitter:site" content="@username" /&gt;
-			&lt;meta name="twitter:title" content="Tiger"/&gt;
-			&lt;meta name="twitter:description" content="Tiger video"/&gt;
-			&lt;meta name="twitter:image" content="https://solutions.brightcove.com/bcls/assets/images/Tiger_poster.png"/&gt;
-			&lt;meta name="twitter:player" content="https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media.html"/&gt;
-			&lt;meta name="twitter:player:width" content="640"/&gt;
-			&lt;meta name="twitter:player:height" content="360"/&gt;
-			&lt;meta name="twitter:stream" content="https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media-twitter.html"/&gt;
-			&lt;meta name="twitter:player:stream:content_type" content="video/mp4" /&gt;
-			&lt;style&gt;
-				/* player dimensions */
-				iframe {
-					width: 640px;
-					height: 360px;
-				}
-			&lt;/style&gt;
-		&lt;/head&gt;
-		&lt;body&gt;
-			&lt;iframe src='https://players.brightcove.net/1752604059001/oVYJtofHRF_default/index.html?videoId=4172255216001' allowfullscreen webkitallowfullscreen mozallowfullscreen&gt;&lt;/iframe&gt;
-		&lt;/body&gt;</code></pre>
+      <pre class="line-numbers" data-start="2"><code class="language-html" translate="No">&lt;!DOCTYPE html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="apple-mobile-web-app-capable" content="yes" /&gt;
+    &lt;title&gt;Social Media Plugin&lt;/title&gt;
+    <span class="bcls-highlight">&lt;!-- Open Graph Sharing Metadata --&gt;
+    &lt;meta property="og:site_name" content="Brightcove"/&gt;
+    &lt;meta property="og:title" content="Social Media Plugin"/&gt;
+    &lt;meta property="og:type" content="video"/&gt;
+    &lt;meta property="og:url" content="https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media.html"/&gt;
+    &lt;meta property="og:image" content="https://solutions.brightcove.com/bcls/assets/images/Tiger_poster.png" /&gt;
+    &lt;meta property="og:description" content="Tiger"/&gt;
+    &lt;meta property="og:video:width" content="640"/&gt;
+    &lt;meta property="og:video:height" content="360"/&gt;</span>
+    &lt;!-- Twitter: card/meta-tags --&gt;
+    &lt;meta name="twitter:card" content="player"/&gt;
+    &lt;meta name="twitter:site" content="@username" /&gt;
+    &lt;meta name="twitter:title" content="Tiger"/&gt;
+    &lt;meta name="twitter:description" content="Tiger video"/&gt;
+    &lt;meta name="twitter:image" content="https://solutions.brightcove.com/bcls/assets/images/Tiger_poster.png"/&gt;
+    &lt;meta name="twitter:player" content="https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media.html"/&gt;
+    &lt;meta name="twitter:player:width" content="640"/&gt;
+    &lt;meta name="twitter:player:height" content="360"/&gt;
+    &lt;meta name="twitter:stream" content="https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media-twitter.html"/&gt;
+    &lt;meta name="twitter:player:stream:content_type" content="video/mp4" /&gt;
+    &lt;style&gt;
+      /* player dimensions */
+      iframe {
+        width: 640px;
+        height: 360px;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;iframe src='https://players.brightcove.net/1752604059001/oVYJtofHRF_default/index.html?videoId=4172255216001' allowfullscreen webkitallowfullscreen mozallowfullscreen&gt;&lt;/iframe&gt;
+  &lt;/body&gt;</code></pre>
     </div>
     <div class="player-only">
       <p>これを行うには、次の手順を実行します。</p>
       <ol class="bcls-tasklist__restart">
-        <li>Players モジュールで、[ <strong>ソーシャル共有</strong> ] セクションまで下にスクロールし、[ <strong>はい</strong> ] を選択して [共有を許可] をクリックします。</li>
+        <li>Players モジュールで、[ <strong>ソーシャル共有] </strong>セクションまで下にスクロールし、[ <strong>はい</strong> ] を選択して [共有を許可] をクリックします。</li>
         <li>変更を保存し、プレーヤーを公開します。</li>
         <li>プレーヤーとビデオで HTML ページを作成します。</li>
-        <li>HTML <a href="#Generate_meta_tags">ページのソーシャルメタタグを生成し</a>、次のように更新します。
+        <li>HTML <a href="#Generate_meta_tags"></a>ページのソーシャルメタタグを生成し、次のように更新します。
           <ul>
-            <li>92〜94行目：サイト名、動画のタイトルを定義し、動画として入力します。</li>
-            <li>95行目：動画のURLを指しています。</li>
+            <li>92-94行:あなたのサイト名、あなたのビデオのタイトル、およびビデオとしてタイプを定義します。</li>
+            <li>95行:動画の URL を指します。</li>
             <li>
               <p>96行目：動画のサムネイル画像を指しています。</p>
-              <aside class="bcls-aside bcls-aside--information">メディア URL の有効期限が切れるため、次のいずれかの操作を行うことをお勧めします。
+              <aside class="bcls-aside bcls-aside--information">メディア URL の有効期限が切れるため、次のいずれかを実行することをお勧めします。
                 <ul>
-                  <li>独自のサーバーでポスター画像をホストし、それらのURLを適切なメタタグで使用します。</li>
-                  <li>Playback API からメディア URL を取得し、適切なメタタグを毎日更新するサーバーサイドコードを実装します。</li>
+                  <li>自分のサーバーでポスター画像をホストし、それらのURLを適切なメタタグで使用します。</li>
+                  <li>サーバーサイドコードを実装して、Playback API からメディア URL を取得し、適切なメタタグを毎日更新します。</li>
                 </ul>
-                メディア URL の使用の詳細については、「<a href="https://apis.support.brightcove.com/cms/getting-started/best-practices-cms-and-playback-apis.html#using_media_urls">ベストプラクティス」を参照してください。CMS と再生 API </a>ドキュメント。</aside>
+                メディア URL の使用の詳細については、「<a href="https://apis.support.brightcove.com/cms/getting-started/best-practices-cms-and-playback-apis.html#using_media_urls">ベストプラクティス」を参照してください。CMS とプレイバック API</a>のドキュメント。</aside>
             </li>
             <li>97〜99行目：プレーヤーのサイズとともに、動画の説明を入力します。</li>
           </ul>
@@ -1595,92 +515,91 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 	</pre>
     </div>
     <ol class="bcls-tasklist">
-      <li><a href="#validate">検証セクションで説明されているように</a>、有効なメタタグがあることを確認してください。</li>
+      <li><a href="#validate"></a>検証セクションで説明されているように、有効なメタタグがあることを確認することを忘れないでください。</li>
     </ol>
-    <p>Facebookへの共有の詳細については、以下を参照してください。</p>
+    <p>Facebook への共有の詳細については、以下を参照してください。</p>
     <ul>
-      <li><a href="https://studio.support.brightcove.com/players/configuring-social-properties-player.html">プレーヤーのソーシャルプロパティの設定</a></li>
+      <li><a href="https://studio.support.brightcove.com/players/configuring-social-properties-player.html">プレーヤーのソーシャルプロパティの設定</a> </li>
     </ul>
     <!-- <aside class="bcls-aside bcls-aside--tip">Note: You do not need to use the <a href="#properties">embedCode</a> property when sharing a Smart Player to Facebook. All you need are the Open Graph (og) meta tags as described above.</aside> --></section>
   <section class="bcls-section">
-    <h2 id="Sharing_on_Twitter">Twitterで共有する</h2>
-    <p>Twitterで動画を共有する場合は、Twitterのメタタグを含める必要があります。</p>
-    <p>現在、Twitterは、ディープリンクを使用して指定された時点でビデオを開始できる唯一のソーシャルサイトです。この機能を使用したくない場合は、以下の例のプレーヤーURLからtimeパラメーターをオフのままにしてください。</p>
-    <p>ディープリンク機能を使用するには、で定義されているように、クエリ文字列に時間パラメータを追加する必要があります。<a href="https://studio.support.brightcove.com/publish/deep-linking.html">ディープリンク</a>資料。</p>
+    <h2 id="Sharing_on_Twitter">ツイッターでシェアする</h2>
+    <p>Twitterで動画を共有する場合は、Twitterメタタグを含める必要があります。</p>
+    <p>現在、Twitterはディープリンクを使用して特定の時点で動画を開始できる唯一のソーシャルサイトです。この機能を使いたくない場合は、以下の例では、プレーヤーの URL をオフにして time パラメーターのままにしてください。</p>
+    <p>ディープリンク機能を使用するには、<a href="https://studio.support.brightcove.com/publish/deep-linking.html"></a>ディープリンクドキュメントで定義されているように、クエリ文字列に時間パラメーターを追加する必要があります。</p>
     <div class="video-cloud-only">
-      <p>例を次に示します。</p>
+      <p>ここに例があります：</p>
       <ol class="bcls-tasklist__restart">
-        <li>Players モジュールで、[ <strong>ソーシャル共有</strong> ] セクションまで下にスクロールし、[ <strong>はい</strong> ] を選択して [共有を許可] をクリックします。</li>
+        <li>Players モジュールで、[ <strong>ソーシャル共有] </strong>セクションまで下にスクロールし、[ <strong>はい</strong> ] を選択して [共有を許可] をクリックします。</li>
         <li>変更を保存し、プレーヤーを公開します。</li>
         <li><a href="#Generate_meta_tags">ソーシャルメタタグを生成したら</a>、次のように更新します。
           <ul>
-            <li>64〜67行目：Twitterカードの種類を次のように定義します<code translate="No">player </code>、Twitterサイト、タイトルと説明。</li>
+            <li>64-67行:Twitterカードの種類を<code translate="No">player </code>、あなたのTwitterサイト、タイトルと説明として定義してください。</li>
             <li>
               <p>68行目：動画のサムネイル画像を指しています。</p>
-              <aside class="bcls-aside bcls-aside--information">メディア URL の有効期限が切れるため、次のいずれかの操作を行うことをお勧めします。
+              <aside class="bcls-aside bcls-aside--information">メディア URL の有効期限が切れるため、次のいずれかを実行することをお勧めします。
                 <ul>
-                  <li>独自のサーバーでポスター画像をホストし、それらのURLを適切なメタタグで使用します。</li>
-                  <li>Playback API からメディア URL を取得し、適切なメタタグを毎日更新するサーバーサイドコードを実装します。</li>
+                  <li>自分のサーバーでポスター画像をホストし、それらのURLを適切なメタタグで使用します。</li>
+                  <li>サーバーサイドコードを実装して、Playback API からメディア URL を取得し、適切なメタタグを毎日更新します。</li>
                 </ul>
-                メディア URL の使用の詳細については、「<a href="https://apis.support.brightcove.com/cms/getting-started/best-practices-cms-and-playback-apis.html#using_media_urls">ベストプラクティス」を参照してください。CMS と再生 API </a>ドキュメント。</aside>
+                メディア URL の使用の詳細については、「<a href="https://apis.support.brightcove.com/cms/getting-started/best-practices-cms-and-playback-apis.html#using_media_urls">ベストプラクティス」を参照してください。CMS とプレイバック API</a>のドキュメント。</aside>
             </li>
-            <li>69行目：BrightcoveプレーヤーのURLを指しています。クエリパラメータによってが定義され<code translate="No">videoId </code>、プレーヤーはビデオの 15 秒ポイントから自動的に再生を開始するように指示します。これは、Twitterで動画にディープリンクする方法です。</li>
-            <li>70〜71行目：プレーヤーの寸法を指定します。</li>
+            <li>69行目：Brightcove PlayerURLを指しています。クエリパラメータがを定義し<code translate="No">videoId </code>、ビデオの 15 秒のポイントから自動的に再生を開始するようにプレーヤーに指示します。これは、Twitterで動画にディープリンクする方法です。</li>
+            <li>70から71行:プレーヤーの寸法を提供します.</li>
             <li>72行目：BrightcovePlayerを使用したHTMLページのURLを指します。</li>
           </ul>
         </li>
       </ol>
-      <pre class="line-numbers" data-start="47">
-	<code class="language-html" translate="No">&lt;!DOCTYPE html&gt;
-		&lt;head&gt;
-			&lt;meta charset="utf-8"&gt;
-			&lt;meta name="apple-mobile-web-app-capable" content="yes" /&gt;
-			&lt;title&gt;Social Media Plugin - Deep Linking with Twitter&lt;/title&gt;
-			&lt;!-- Open Graph Sharing Metadata --&gt;
-			&lt;meta property="og:site_name" content="Brightcove"/&gt;
-			&lt;meta property="og:title" content="Social Media Plugin"/&gt;
-			&lt;meta property="og:description" content="Great Blue Heron"/&gt;
-			&lt;meta property="og:url" content="https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media-twitter.html"/&gt;
-			&lt;meta property="og:image" content="https://solutions.brightcove.com/bcls/assets/images/Great-Blue-Heron.png"/&gt;
-			&lt;meta property="og:type" content="video"/&gt;
-			&lt;meta property="og:video:width" content="640"/&gt;
-			&lt;meta property="og:video:height" content="360"/&gt;
-			<span class="bcls-highlight">&lt;!-- Twitter: card/meta-tags --&gt;
-			&lt;meta name="twitter:card" content="player"/&gt;
-			&lt;meta name="twitter:site" content="@username" /&gt;
-			&lt;meta name="twitter:title" content="Social Media Plugin"/&gt;
-			&lt;meta name="twitter:description" content="Great Blue Heron"/&gt;
-			&lt;meta name="twitter:image" content="https://solutions.brightcove.com/bcls/assets/images/Great-Blue-Heron.png"/&gt;
-			&lt;meta name="twitter:player" content="https://players.brightcove.net/1752604059001/2c7eac7c-181c-41d1-aae8-4a5107c05ee2_default/index.html?videoId=4172255216001#t=00h00m15s&amp;autoplay=true"/&gt;
-			&lt;meta name="twitter:player:width" content="640"/&gt;
-			&lt;meta name="twitter:player:height" content="360"/&gt;
-			&lt;meta name="twitter:stream" content="https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media-twitter.html"/&gt;
-			&lt;meta name="twitter:player:stream:content_type" content="video/mp4" /&gt;</span>
-		&lt;/head&gt;
-		&lt;body&gt;
-			&lt;iframe style='width: 640px;height: 360px;' src='https://players.brightcove.net/1752604059001/oVYJtofHRF_default/index.html?videoId=4172255216001' allowfullscreen webkitallowfullscreen mozallowfullscreen&gt;&lt;/iframe&gt;
-		&lt;/body&gt;</code></pre>
+      <pre class="line-numbers" data-start="47"><code class="language-html" translate="No">&lt;!DOCTYPE html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="apple-mobile-web-app-capable" content="yes" /&gt;
+    &lt;title&gt;Social Media Plugin - Deep Linking with Twitter&lt;/title&gt;
+    &lt;!-- Open Graph Sharing Metadata --&gt;
+    &lt;meta property="og:site_name" content="Brightcove"/&gt;
+    &lt;meta property="og:title" content="Social Media Plugin"/&gt;
+    &lt;meta property="og:description" content="Great Blue Heron"/&gt;
+    &lt;meta property="og:url" content="https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media-twitter.html"/&gt;
+    &lt;meta property="og:image" content="https://solutions.brightcove.com/bcls/assets/images/Great-Blue-Heron.png"/&gt;
+    &lt;meta property="og:type" content="video"/&gt;
+    &lt;meta property="og:video:width" content="640"/&gt;
+    &lt;meta property="og:video:height" content="360"/&gt;
+    <span class="bcls-highlight">&lt;!-- Twitter: card/meta-tags --&gt;
+    &lt;meta name="twitter:card" content="player"/&gt;
+    &lt;meta name="twitter:site" content="@username" /&gt;
+    &lt;meta name="twitter:title" content="Social Media Plugin"/&gt;
+    &lt;meta name="twitter:description" content="Great Blue Heron"/&gt;
+    &lt;meta name="twitter:image" content="https://solutions.brightcove.com/bcls/assets/images/Great-Blue-Heron.png"/&gt;
+    &lt;meta name="twitter:player" content="https://players.brightcove.net/1752604059001/2c7eac7c-181c-41d1-aae8-4a5107c05ee2_default/index.html?videoId=4172255216001#t=00h00m15s&amp;autoplay=true"/&gt;
+    &lt;meta name="twitter:player:width" content="640"/&gt;
+    &lt;meta name="twitter:player:height" content="360"/&gt;
+    &lt;meta name="twitter:stream" content="https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media-twitter.html"/&gt;
+    &lt;meta name="twitter:player:stream:content_type" content="video/mp4" /&gt;</span>
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;iframe style='width: 640px;height: 360px;' src='https://players.brightcove.net/1752604059001/oVYJtofHRF_default/index.html?videoId=4172255216001' allowfullscreen webkitallowfullscreen mozallowfullscreen&gt;&lt;/iframe&gt;
+  &lt;/body&gt;</code></pre>
     </div>
     <div class="player-only">
-      <p>例を次に示します。</p>
+      <p>例を挙げます。</p>
       <ol class="bcls-tasklist__restart">
-        <li>Players モジュールで、[ <strong>ソーシャル共有</strong> ] セクションまで下にスクロールし、[ <strong>はい</strong> ] を選択して [共有を許可] をクリックします。</li>
+        <li>Players モジュールで、[ <strong>ソーシャル共有] </strong>セクションまで下にスクロールし、[ <strong>はい</strong> ] を選択して [共有を許可] をクリックします。</li>
         <li>変更を保存し、プレーヤーを公開します。</li>
         <li><a href="#Generate_meta_tags">ソーシャルメタタグを生成したら</a>、次のように更新します。
           <ul>
-            <li>139〜142行目：Twitterカードの種類を次のように定義します<code translate="No">player </code>、Twitterサイト、タイトルと説明。</li>
+            <li>139～142 行目:Twitterカードの種類を<code translate="No">player </code>、Twitterサイト、タイトルと説明として定義しています。</li>
             <li>
               <p>143行目：動画のサムネイル画像を指しています。</p>
-              <aside class="bcls-aside bcls-aside--information">メディア URL の有効期限が切れるため、次のいずれかの操作を行うことをお勧めします。
+              <aside class="bcls-aside bcls-aside--information">メディア URL の有効期限が切れるため、次のいずれかを実行することをお勧めします。
                 <ul>
-                  <li>独自のサーバーでポスター画像をホストし、それらのURLを適切なメタタグで使用します。</li>
-                  <li>Playback API からメディア URL を取得し、適切なメタタグを毎日更新するサーバーサイドコードを実装します。</li>
+                  <li>自分のサーバーでポスター画像をホストし、それらのURLを適切なメタタグで使用します。</li>
+                  <li>サーバーサイドコードを実装して、Playback API からメディア URL を取得し、適切なメタタグを毎日更新します。</li>
                 </ul>
-                メディア URL の使用の詳細については、「<a href="https://apis.support.brightcove.com/cms/getting-started/best-practices-cms-and-playback-apis.html#using_media_urls">ベストプラクティス」を参照してください。CMS と再生 API </a>ドキュメント。</aside>
+                メディア URL の使用の詳細については、「<a href="https://apis.support.brightcove.com/cms/getting-started/best-practices-cms-and-playback-apis.html#using_media_urls">ベストプラクティス」を参照してください。CMS とプレイバック API</a>のドキュメント。</aside>
             </li>
-            <li>144行目：BrightcoveプレーヤーのURLを指しています。クエリパラメータによってが定義され<code translate="No">videoId </code>、プレーヤーはビデオの 15 秒ポイントから自動的に再生を開始するように指示します。これは、Twitterで動画にディープリンクする方法です。</li>
-            <li>145〜146行目：プレーヤーの寸法を指定します。</li>
-            <li>147行目：BrightcovePlayerを使用したHTMLページのURLを指します。</li>
+            <li>144行目：Brightcove PlayerURLを指しています。クエリパラメータによってが定義され<code translate="No">videoId </code>、プレーヤーはビデオの 15 秒ポイントから自動的に再生を開始するように指示します。これは、Twitterで動画にディープリンクする方法です。</li>
+            <li>145-146: プレーヤーの寸法を提供します.</li>
+            <li>147 行目:Brightcove Playerの HTML ページの URL を指します。</li>
           </ul>
         </li>
       </ol>
@@ -1717,122 +636,119 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 	&lt;/html&gt;</code></pre>
     </div>
     <ol class="bcls-tasklist">
-      <li><a href="#validate">検証セクションで説明されているように</a>、有効なメタタグがあることを確認してください。</li>
+      <li><a href="#validate"></a>検証セクションで説明されているように、有効なメタタグがあることを確認することを忘れないでください。</li>
     </ol>
-    <aside class="bcls-aside bcls-aside--information">を使用する必要はありません<a href="#properties">埋め込みコード</a> Twitterにプレーヤーを共有するときのプロパティ。必要なのは、上記のTwitterメタタグだけです。</aside>
+    <aside class="bcls-aside bcls-aside--information">プレイヤーを Twitter で共有する場合は、<a href="#properties"> EmbedCode</a>プロパティを使用する必要はありません。必要なのは、上記のTwitterメタタグだけです。</aside>
     <p>Twitterメタタグの構成の詳細については、以下を参照してください。</p>
     <ul>
-      <li><a href="https://studio.support.brightcove.com/general/sharing-videos-twitter-player-cards.html">Twitterプレイヤーカードに動画を共有する</a></li>
-      <li><a href="https://dev.twitter.com/cards/types/player">Twitter開発者向けドキュメント</a></li>
-      <li><a href="https://github.com/twitterdev/cards-player-samples/blob/master/player/page.html">GitHubのTwitterカードの例</a></li>
+      <li><a href="https://studio.support.brightcove.com/general/sharing-videos-twitter-player-cards.html"> Twitterプレイヤーカードに動画を共有する</a> </li>
+      <li><a href="https://dev.twitter.com/cards/types/player"> Twitter開発者向けドキュメント</a> </li>
+      <li><a href="https://github.com/twitterdev/cards-player-samples/blob/master/player/page.html"> GitHubでのTwitterカードの例</a> </li>
     </ul>
   </section>
   <section class="bcls-section">
-    <h2 id="Validate">検証</h2>
-    <p>手順に従ってページにメタタグを含めると、FacebookとTwitterの両方でページを検証できます。いずれかの検証プロセスでエラーが発生した場合は、必要に応じてプレーヤーの構成を更新してください。</p>
+    <h2 id="Validate">検証する</h2>
+    <p>あなたのページにメタタグを含めるための手順に従えば、FacebookとTwitterの両方のページを検証することができます。いずれかの検証プロセスでエラーが発生した場合は、必要に応じてプレーヤーの設定を更新します。</p>
     <h3>Facebook</h3>
-    <p>Facebookの場合は、<a href="https://developers.facebook.com/tools/debug/"> Facebookデバッガー</a>メタタグを含むページにURLを貼り付けて、<strong>デバッグ</strong>検証します。</p>
+    <p>Facebook の場合は、<a href="https://developers.facebook.com/tools/debug/">  Facebook </a>デバッガーに移動し、メタタグを含むページに URL を貼り付け、[ <strong>デバッグ] </strong>をクリックして検証します。</p>
     <h3>Twitter</h3>
-    <p>Twitterの場合は、<a href="https://cards-dev.twitter.com/validator">カードバリデーター</a>、メタタグを含むページにURLを貼り付けて、<strong>プレビューカード</strong>検証します。検証の追加の利点は、TwitterがWebサイトの検証を要求し、待機リストに登録されてTwitterカードが承認されることです。</p>
+    <p>Twitter の場合は、<a href="https://cards-dev.twitter.com/validator">カード検証ツールに移動し</a>、メタタグを含むページに URL を貼り付け、[ <strong>カードのプレビュー] </strong>をクリックして検証します。検証の追加の利点は、Twitterがあなたのウェブサイトを確認するように要求し、あなたはTwitterカードの承認を受けるために待機リストに行くことです。</p>
   </section>
   <section class="bcls-section">
-    <h2 id="Customizing_sharing_URLs">共有URLのカスタマイズ</h2>
-    <p>ソーシャルメディアプラグインのより高度な実装は、<strong>ページ内埋め込みコード</strong> Playersモジュールから。これにより、ページコード内から構成オプションを渡すことができます。これを行う理由の1つは、カスタムを提供することです<code translate="No">embedCode </code>ページ上のプレーヤーとは異なるプレーヤーを共有するための値。</p>
-    <p>カスタムコードを使用してプラグインを実装するには、次の手順に従います。</p>
+    <h2 id="Customizing_sharing_URLs">共有 URL のカスタマイズ</h2>
+    <p>ソーシャルメディアプラグインのより高度な実装は、<strong></strong>   Playersモジュールからインページ埋め込みコードを使用することです。これにより、ページコード内から設定オプションを渡すことができます。これを行う理由の1つは、<code translate="No">embedCode </code>ページ上のプレイヤーとは異なるプレーヤーを共有するためにカスタム値を提供することです。</p>
+    <p>カスタムコードを使用してプラグインを実装するには、次の手順を実行します。</p>
     <ol class="bcls-tasklist__restart">
-      <li><strong>PLAYERS モジュールを開き、新しいプレーヤーを作成するか、プラグインを追加するプレーヤーを見つけます。</strong></li>
+      <li>を開きます<strong>プレイヤー</strong>モジュールを作成し、新しいプレーヤーを作成するか、プラグインを追加するプレーヤーを見つけます。</li>
       <li>プレーヤーのリンクを選択して、プレイヤーのプロパティを開きます。</li>
-      <li>左側のナビゲーションメニューで [ <strong> Social </strong> ] を選択し、チェックボックスがオフになっていることを確認します。</li>
+      <li>左側のナビゲーションメニューで [ <strong>Social</strong> ] を選択し、チェックボックスがオフになっていることを確認します。</li>
       <li>左側のナビゲーションメニューで [ <strong>プラグイン</strong> ] を選択します。</li>
       <li>選択する<strong>スタイルシート</strong>を選択します<strong>スタイルシートを追加する</strong>ボタン。
-        <figure class="bcls-figure"><img class="bcls-image" alt="ソーシャルメディアスタイルシート" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/social-media-plugin/studio-stylesheet.png"/></figure>
+        <figure class="bcls-figure"><img class="bcls-image" alt="Social Media Stylesheet" src="/assets/images/plugins/social/studio-stylesheet.png" /></figure>
       </li>
       <li><strong>CSS の URL </strong>には、次のように入力します。
-        <pre>
-		<code class="language-json" translate="No">https://players.brightcove.net/videojs-social/3/videojs-social.css</code></pre>
+        <pre><code class="language-json" translate="No">https://players.brightcove.net/videojs-social/3/videojs-social.css</code>   </pre>
       </li>
-      <li>選択する<strong>スクリプト</strong>を選択します<strong>スクリプトを追加する</strong>ボタン。</li>
-      <li><strong>JavaScript の URL </strong>には、次のように入力します。
-        <pre>
-		<code class="language-json" translate="No">https://players.brightcove.net/videojs-social/3/videojs-social.min.js</code></pre>
+      <li>[ <strong>スクリプト] </strong>を選択し、[ <strong>スクリプトの追加</strong> ] ボタンを選択します。</li>
+      <li><strong> JavaScript の URL には</strong>、次のように入力します。
+        <pre><code class="language-json" translate="No">https://players.brightcove.net/videojs-social/3/videojs-social.min.js</code>   </pre>
       </li>
-      <li>[ <strong>保存</strong> ] を選択します。</li>
+      <li>[ <strong>保存] を選択します</strong>。</li>
       <li>変更をプレーヤーに公開します。</li>
     </ol>
-    <p>これで、プレーヤーにはソーシャルメディア共有機能のすべてのコードが含まれますが、プラグインが自動的に初期化されて共有ボタンが作成されることはありません。</p>
+    <p>これで、プレーヤーにソーシャルメディア共有機能のコードがすべて含まれていますが、プラグインが自動的に初期化され、共有ボタンが作成されることはありません。</p>
     <ol class="bcls-tasklist">
       <li>
-        <p>作業しているプレーヤーを関連付けて、<strong>高度な</strong> HTMLページにコードを記述します。ブラウザでページを実行する場合、共有ボタンがプレーヤーに表示されないことに注意してください。ソーシャルプラグインが初期化されると、それが行われます。</p>
+        <p>作業しているプレーヤーを関連付けて、<strong></strong>高度なコードを HTML ページにコピーします。ブラウザでページを実行する場合は、プレーヤーに共有ボタンが表示されないことに注意してください。ソーシャルプラグインが初期化されると、</p>
       </li>
     </ol>
     <div class="video-cloud-only">
       <ol class="bcls-tasklist">
-        <li>HTML ページコードに、次のようにJavaScriptコードを追加します。
+        <li>HTML ページコードに、次のようにして JavaScript コードを追加します。
           <ul>
-            <li>23〜24行目：プレーヤーへの参照を取得します。</li>
-            <li>25〜40行目：ソーシャル共有プラグインのオプションを設定します。詳細については、「<a href="#properties">プロパティ</a>」セクションを参照してください。</li>
-            <li>28行目：共有URLを設定します。</li>
+            <li>23-24行線:プレーヤーへの参照を取得します。</li>
+            <li>25～40行目です:ソーシャル共有プラグインのオプションを設定します。詳細については、「<a href="#properties">プロパティ」</a>セクションを参照してください。</li>
+            <li>28行目です:共有 URL を設定します。</li>
             <li>
               <p>41行目:特定のオプションでソーシャルプラグインを初期化します。</p>
             </li>
           </ul>
         </li>
       </ol>
-      <pre class="line-numbers">
-	<code class="language-html" translate="No">&lt;!DOCTYPE html&gt;
-	&lt;head&gt;
-			&lt;meta charset="utf-8"&gt;
-			&lt;meta name="apple-mobile-web-app-capable" content="yes" /&gt;
-			&lt;title&gt;Social Media Plugin&lt;/title&gt;
-	&lt;/head&gt;
-	
-	&lt;body&gt;
-		&lt;video-js id="myPlayerID"
-			data-video-id="5977793284001"
-			data-account="1752604059001"
-			data-player="vQgKqFD0n"
-			data-embed="default"
-			data-application-id
-			class="video-js"
-			controls
-			width="720"
-			height="405"&gt;&lt;/video-js&gt;
-		&lt;script src="//players.brightcove.net/1752604059001/vQgKqFD0n_default/index.min.js"&gt;&lt;/script&gt;
-	
-		&lt;script type="text/javascript"&gt;
-				videojs.getPlayer('myPlayerID').ready(function() {
-					var myPlayer = this,
-					options = {
-						"title": "Tiger",
-						"description": "Video of two tigers",
-						"url": "https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media.html",
-						"embedCode": "&lt;iframe src='http://bcove.me/niqx01er'&gt;",
-						"deeplinking": true,
-						"offset": "00:00:05",
-						"services": {
-							"facebook": true,
-							"twitter": true,
-							"tumblr": true,
-							"pinterest": true,
-							"linkedin": true
-						}
-					};
-					myPlayer.social(options);
-				});
-			&lt;/script&gt;
-	
-	&lt;/body&gt;
-	&lt;/html&gt;</code></pre>
+      <pre class="line-numbers"><code class="language-html" translate="No">&lt;!DOCTYPE html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="apple-mobile-web-app-capable" content="yes" /&gt;
+    &lt;title&gt;Social Media Plugin&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;video-js id="myPlayerID"
+    data-video-id="5977793284001"
+    data-account="1752604059001"
+    data-player="vQgKqFD0n"
+    data-embed="default"
+    data-application-id
+    class="video-js"
+    controls
+    width="720"
+    height="405"&gt;&lt;/video-js&gt;
+  &lt;script src="//players.brightcove.net/1752604059001/vQgKqFD0n_default/index.min.js"&gt;&lt;/script&gt;
+
+  &lt;script type="text/javascript"&gt;
+      videojs.getPlayer('myPlayerID').ready(function() {
+        var myPlayer = this,
+        options = {
+          "title": "Tiger",
+          "description": "Video of two tigers",
+          "url": "https://solutions.brightcove.com/bcls/brightcove-player/social-plugin/social-media.html",
+          "embedCode": "&lt;iframe src='http://bcove.me/niqx01er'&gt;",
+          "deeplinking": true,
+          "offset": "00:00:05",
+          "services": {
+            "facebook": true,
+            "twitter": true,
+            "tumblr": true,
+            "pinterest": true,
+            "linkedin": true
+          }
+        };
+        myPlayer.social(options);
+      });
+    &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
     </div>
     <div class="player-only">
       <ol class="bcls-tasklist">
-        <li>HTML ページコードに、次のようにJavaScriptコードを追加します。
+        <li>HTML ページコードに、次のようにして JavaScript コードを追加します。
           <ul>
-            <li>147行目：プレーヤーへの参照を取得します。</li>
-            <li>149-164行目：ソーシャル共有プラグインのオプションを設定します。詳細については、「<a href="#properties">プロパティ</a>」セクションを参照してください。</li>
-            <li>153行目：スマートプレーヤーを使用するように共有URLを設定します。このプロパティを使用して、共有URLを任意のBrightcoveプレーヤーまたはスマートプレーヤーに設定できます。</li>
+            <li>147号線:プレーヤーへの参照を取得します。</li>
+            <li>149～164行目:ソーシャル共有プラグインのオプションを設定します。詳細については、「<a href="#properties">プロパティ」</a>セクションを参照してください。</li>
+            <li>153号線:スマートプレーヤーを使用するように共有 URL を設定します。このプロパティを使用して、共有 URL を任意の Brightcove Player またはスマートプレーヤーに設定できます。</li>
             <li>
-              <p>166行目：特定のオプションでソーシャルプラグインを初期化します。</p>
+              <p>166号線:特定のオプションでソーシャルプラグインを初期化します。</p>
             </li>
           </ul>
         </li>
@@ -1884,246 +800,89 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     </div>
     <ol class="bcls-tasklist">
       <li>
-        <p>プレーヤーにソーシャル共有ボタンが表示されます。コントロールバーで共有アイコンを探します。</p>
-        <figure class="bcls-figure"><img class="bcls-image" alt="ソーシャルメディアアイコン" src="//learning-services-media.brightcove.com/doc-assets/player-development/player-customization/social-media-plugin/social-player-icon.png"/></figure>
+        <p>プレーヤーに [ソーシャル共有] ボタンが表示されるはずです。コントロールバーで共有アイコンを探します。</p>
+        <figure class="bcls-figure"><img class="bcls-image" alt="Social Media Icon" src="/assets/images/plugins/social/social-player-icon.png" /></figure>
       </li>
       <li>これで、ソーシャルメタタグをプレーヤーページに追加する準備が整いました。を参照してください<a href="#Generate_meta_tags">メタタグ</a>これらのタグを生成するセクション。</li>
     </ol>
     <aside class="bcls-aside bcls-aside--information">
-      <p>ソーシャルプラグインが初期化されるまでソーシャル共有ボタンはプレーヤーに表示されないため、プレーヤーがTwitterに直接埋め込まれている場合、ソーシャルボタンは表示されません。共有ボタンを表示するには、次のいずれかを実行できます。</p>
+      <p>ソーシャルプラグインが初期化されるまでソーシャル共有ボタンはプレーヤーに表示されないため、プレーヤーがTwitterに直接埋め込まれている場合、ソーシャルボタンは表示されません。共有ボタンを表示するには、次のいずれかの操作を行います。</p>
       <ul>
-        <li>メタ（og / twitter）タグを、埋め込みシナリオ用に構成された別のプレーヤーにポイントします。</li>
+        <li>メタタグ（og/twitter）タグを埋め込みシナリオ用に構成された別のプレイヤーにポイントします。</li>
         <li>ソーシャルプラグインが埋め込まれていることを検出したときに、オプションなしでソーシャルプラグインを初期化する追加のスクリプトを含めます。</li>
       </ul>
     </aside>
   </section>
   <section class="bcls-section">
     <h2 id="Custom_services">カスタムサービス</h2>
-    <p>プラグインには、6つの人気のソーシャルメディアプラットフォームのサポートが組み込まれていますが、カスタムサービスを使用して他のプラットフォームを追加することもできます。これを行うには、<code translate="No">options.customServices </code>オブジェクト。このオブジェクトは、カスタムサービスオブジェクトの配列です。構成の簡単な例を示し、次に例の詳細を示します。</p>
-    <p>次の例では、3つのボタンを追加します。XingとWhatsAppの最初と2番目のボタン。WhatsAppボタンはモバイルでのみ表示されます。これらの2つの例では、アイコンにFont Awesomeを使用しています。これは、プレーヤーがすでにフォントを使用しているページにページ内に埋め込まれている場合に便利ですが、他のスタイルを使用することもできます。3つ目は、FacebookのフィードAPIを使用したFacebook共有ボタンです。これにより、FacebookアプリIDを帰属に含めることができます。これを使用するときは、通常のFacebookボタンを無効にすることをお勧めします。</p>
-    <pre class="line-numbers">
-	<code class="language-javascript" translate="No">[{
-		className: 'fa fa-xing',
-		title: 'Xing',
-		hrefTemplate: 'https://www.xing.com/spi/shares/new?url=',
-		bgColor: '#026466'
-	},
-	{
-		className: 'fa fa-whatsapp',
-		title: 'WhatsApp',
-		hrefTemplate: 'https://api.whatsapp.com/send?phone=&amp;text=title%20',
-		bgColor: '#25d366',
-		mobileOnly: true
-	},
-	{
-		classSuffix: 'facebook',
-		title: 'Facebook',
-		hrefTemplate: 'https://www.facebook.com/dialog/feed?app_id=123456789&amp;caption=&amp;display=page&amp;link='
-	}]</code></pre>
+    <p>このプラグインは、6つの人気のあるソーシャルメディアプラットフォームのサポートを内蔵していますが、カスタムサービスを使用して他のプラットフォームを追加することもできます。これを行うには、<code translate="No">options.customServices </code>オブジェクトを設定します。このオブジェクトは、カスタムサービスオブジェクトの配列です。短い設定例が示され、次に例の詳細が示されています。</p>
+    <p>次の例では、3 つのボタンを追加します。XingとWhatsAppの最初のボタンと2番目のボタン。WhatsApp ボタンは、モバイルでのみ表示されます。これら 2 つの例は、アイコンに Font Awesome を使用しています。これは、プレイヤーが既にフォントを使用しているページのインページ埋め込みで、他のスタイルが使用できる場合に便利です。3つ目は、FacebookのフィードAPIを使用するFacebookの共有ボタンで、FacebookアプリIDをアトリビューションに含めることができます。これを使用するときは、通常のFacebookボタンを無効にすることをお勧めします。</p>
+    <pre class="line-numbers"><code class="language-javascript" translate="No">[{
+  className: 'fa fa-xing',
+  title: 'Xing',
+  hrefTemplate: 'https://www.xing.com/spi/shares/new?url={{url}}',
+  bgColor: '#026466'
+},
+{
+  className: 'fa fa-whatsapp',
+  title: 'WhatsApp',
+  hrefTemplate: 'https://api.whatsapp.com/send?phone=&amp;text=title%20{{url}}',
+  bgColor: '#25d366',
+  mobileOnly: true
+},
+{
+  classSuffix: 'facebook',
+  title: 'Facebook',
+  hrefTemplate: 'https://www.facebook.com/dialog/feed?app_id=123456789&amp;caption={{title}}&amp;display=page&amp;link={{url}}'
+}]</code></pre>
     <h3>以下は、カスタムサービスオブジェクトのプロパティを定義します。</h3>
-    <h4>customService.title</h4>
+    <h4>CustomService.tit</h4>
     <ul>
       <li>型:文字列</li>
       <li>共有先のタイトル。</li>
     </ul>
-    <h4>customService.className</h4>
+    <h4>CustomService.className</h4>
     <ul>
       <li>型:文字列</li>
-      <li>ボタンに追加するクラスまたはスペースで区切られたクラスのリスト。</li>
+      <li>ボタンに追加するクラスのクラスまたはスペース区切りのリスト。</li>
     </ul>
-    <h4>customService.classSuffix</h4>
+    <h4>CustomService.classSu</h4>
     <ul>
       <li>型:文字列</li>
-      <li>接尾辞はに追加されます<code translate="No">vjs-icon- </code>ボタンのクラスを生成します。次の場合にのみ使用されます<code translate="No">className </code>指定されていません。Video.jsフォントには追加のソーシャル宛先アイコンが含まれていないため、標準の宛先の1つを置き換える場合にのみ役立ちます。</li>
+      <li>サフィックスは、<code translate="No">vjs-icon- </code>ボタンのクラスを生成するために付加されます。<code translate="No">className </code>が指定されていない場合にのみ使用されます。Video.js フォントには追加のソーシャル宛先アイコンが含まれていないため、標準の宛先の 1 つを置き換える場合にのみ便利です。</li>
     </ul>
-    <h4>customService.hrefTemplate</h4>
+    <h4>カスタムサービス.hrefTemplate</h4>
     <ul>
       <li>型:文字列</li>
-      <li>マクロを含む可能性のある共有URLを生成するためのstingテンプレート<code translate="No"> </code>、<code translate="No"> </code>、<code translate="No"> </code>そして<code translate="No"> </code>。代わりに使用できます<code translate="No">customService.href </code>関数を指定できない場合。たとえば、JSON文字列でオプションをPlayer ManagementAPIに提供します。</li>
+      <li>共有 URL を生成する sting テンプレート。これにはマクロ<code translate="No">{{url}} </code>、<code translate="No">{{poster}} </code>、<code translate="No">{{title}} </code>と<code translate="No">{{description}} </code>。<code translate="No">customService.href </code>関数を指定できない場所 (JSON 文字列内のオプションを Player Management API に提供するなど) の代わりに使うことができます。</li>
     </ul>
-    <h4>customService.href</h4>
+    <h4>customservice.href</h4>
     <ul>
       <li>型:文字列</li>
-      <li>共有URLを生成する関数。オブジェクトを取得して文字列を返す必要があります。特に指定がない限り、これはから生成されます<code translate="No">hrefTemplate </code>。</li>
+      <li>共有URLを生成する関数。オブジェクトを取り、文字列を返す必要があります。指定しない限り、これはから生成されます<code translate="No">hrefTemplate </code>。</li>
     </ul>
-    <h4>customService.bgColor</h4>
+    <h4>CustomService.bgColor</h4>
     <ul>
       <li>型:文字列</li>
-      <li>背景色要素スタイルとして適用されるオプションのCSS色値。ボタンがCSSでスタイル設定されている場合は必須ではありませんが、特にアイコンが既存のスタイルシートでスタイル設定される場合に便利です。</li>
+      <li>背景色の要素スタイルとして適用されるオプションの CSS カラー値。ボタンが CSS によってスタイル設定されている場合は、必須ではありませんが、特に既存のスタイルシートによってアイコンがスタイルされる場合に便利です。</li>
     </ul>
-    <h4>customService.mobileOnly</h4>
+    <h4>customservice.mobileOnly</h4>
     <ul>
       <li>型:ブール値</li>
       <li>デフォルト:false</li>
-      <li>場合<code translate="No">true </code>、ボタンはAndroidとiOSでのみ表示されます。</li>
+      <li>の場合<code translate="No">true </code>、ボタンはAndroidとiOSにのみ表示されます。</li>
     </ul>
   </section>
   <section class="bcls-section">
     <h2 id="Known_issues">既知の問題</h2>
-    <h4>エンドスクリーンに簡単な説明はありません</h4>
-    <p>ビデオの<strong>簡単な説明</strong>動画の再生中に共有ボタンをクリックするとが表示されます。共有情報を含むエンドスクリーンでは、<strong>簡単な説明</strong>は表示されません。これは設計どおりです。</p>
-    <h4>ボタンのキーボードナビゲーション-Firefoxfor OS X</h4>
-    <p>Firefox for OSXには、テキストボックスをタブで移動し、要素のみを一覧表示するデフォルトのタブ動作があります。ソーシャルプラグインのボタンはリンク要素であるため、チェックボックスをオンにしない限り、キーボードを使用してボタンをナビゲートすることはできません。<strong>すべてのコントロール</strong>下<strong>システム環境設定&gt;キーボード&gt;ショートカット</strong>。</p>
+    <h4>エンドスクリーンに短い説明はありません</h4>
+    <p>ビデオの再生中に共有ボタンをクリックすると、<strong></strong>ビデオの簡単な説明が表示されます。共有情報を含むエンド画面では、<strong></strong>短い説明は表示されません。これは設計通りです。</p>
+    <h4>ボタンのキーボードナビゲーション-OS X 版 Firefox</h4>
+    <p>OSX 用 Firefox は、テキストボックスを介してタブ移動するためのデフォルトのタブ動作があり、要素のみをリストします。ソーシャルプラグインのボタンはリンク要素であるため、[ <strong>システム環境設定] &gt; [キーボード] &gt; [ショートカット] </strong>の下にある [ <strong>すべてのコントロール] チェックボックスをオンにしない限り、キーボードを使用して移動することはできません</strong>。</p>
   </section>
   <section class="bcls-section">
     <h2 id="Changelog">更新履歴</h2>
-    <p><a href="/plugins/changelog/social-sharing-plugin-changelog.html">更新履歴はこちらをご覧ください</a>。</p>
+    <p><a href="http://players.brightcove.net/release-notes/brightcove-player-social/index.html">Social プラグインのリリースノートを参照してください</a>。</p>
+    <p>過去のリリースノートについては、ここの<a href="/plugins/changelog/social-sharing-plugin-changelog.html"> changelog を参照してください</a>。</p>
   </section>
 </article>
-
-<!-- complete bootstrap layout -->
-    </div>
-    <div class="col-sm-2 right-side-bar">
-      
-      <nav class="right-side-nav" id="right_side_nav">
-        <h6 class="toc">ページコンテンツ</h6>
-        <ul id="in_page_nav" class="list-none"></ul>
-      </nav>
-      
-    </div>
-  </div>
-</div>
-
-<hr>
-<footer class="bcls-footer" role="contentinfo">  <div class="row">
-    <div class="region region-footer-top-center col-md-12">
-      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
-
-        <h2>Brightcove サポート</h2>
-
-        <ul class="menu">
-          <li>
-            <a href="https://status.brightcove.com">システムステータス</a>
-          </li>
-          <li>
-            <a href="https://supportportal.brightcove.com/s/login/?">サポートへのお問い合わせ</a>
-          </li>
-          <li>
-            <a href="https://support.brightcove.com/">ドキュメンテーション</a>
-          </li>
-        </ul>
-
-      </nav>
-      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
-
-        <h2>トレーニング</h2>
-
-        <ul class="menu">
-          <li>
-            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">オンラインコース</a>
-          </li>
-          <li>
-            <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
-          </li>
-          <li>
-            <a href="https://university.brightcove.com/">Brightcove University</a>
-          </li>
-        </ul>
-
-      </nav>
-      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
-
-        <h2>Brightcove</h2>
-
-        <ul class="menu">
-          <li>
-            <a href="https://www.brightcove.com">Brightcove.com</a>
-          </li>
-          <li>
-            <a href="https://supportportal.brightcove.com/s/login/?">お問合せ</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-  <div class="row">
-    <div class="region region-footer-bottom-center col-md-12">
-      <div class="bcls-copyright footer-menu">
-        <table>
-          <tr>
-            <td>
-              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. All rights reserved.</div>
-            </td>
-            <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
-            <td>
-              <div class="gf-links-cols footer-menu">
-                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
-</footer>
-
-</div>
-</div>
-<script>
-      
-  var searchBox = sajari.init({
-    mode: "search-box",
-    project: "1588255093746585379", // Set this to your project.
-    collection: "brightcove-documenation", // Set this to your collection.
-    instantPipeline: "autocomplete", // Pipeline used as you type
-    inputPlaceholder: "Search", // Input element placeholder
-    maxSuggestions: 5, // Maximum number of suggestions to show
-    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
-  });
-  
-    searchBox("sub", "pipeline.search-sent", function (_, query) {
-      window.location = "/search.html?q=" + encodeURIComponent(query.q);
-    });
-  
-
-</script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
-  
-  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
-  
-  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
-  <script src="/assets/js/sites_nav.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
-  <script src="/assets/js/feedback.js"></script>
-  
-  <script src="/assets/js/sajari-search-foot.js"></script>
-  
-  <!-- <script src="/assets/js/sajari-index.js"></script> -->
-  <style>
-    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
-      background-color: lightblue;
-    }
-    div.sj-tabs__tab {
-      margin-top: 3rem;
-      margin-left: .3rem;
-      border-top-left-radius: .4rem;
-      border-top-right-radius: .4rem;
-      background-color:#e8e8e8;
-    }
-
-    div.sj-tabs__tab.sj-tabs__tab--selected {
-      border-bottom-color: crimson;
-      background-color: #f8f8f8;
-    }
-
-    p.sj-results__result__description.css-p9jvyt {
-      font-size: 1rem;
-    }
-
-    .sj-result__text.css-31l7gp h3 {
-      color: navy;
-      font-size: 1.4rem;
-    }
-    </style>
-
-</body>
-
-</html>
