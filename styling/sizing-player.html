@@ -10,7 +10,7 @@ parent: 'Styling &amp; Appearance'
     <p>動画とプレーヤーのサイズを決める際には、次の 2 つの重要な概念があります。</p>
     <ul>
       <li>
-        <p>アスペクト比 — プレーヤーの作成時にカールステートメントで設定されるメディアの幅と高さのプロパティで、アスペクト比とも呼ばれる固有のビデオサイズを定義します。</p>
+        <p>アスペクト比 — プレーヤーの作成時にcurlステートメントで設定されるメディアの幅と高さのプロパティで、アスペクト比とも呼ばれる固有のビデオサイズを定義します。</p>
       </li>
       <li>プレーヤーサイズ — CSS または HTML コードで設定されるプレーヤーの幅と高さのプロパティで、プレーヤーのサイズを制御します。プレーヤーのサイズを変更すると、コントロールが正しく配置されるように、固有のビデオサイズが使用されます。</li>
     </ul>
@@ -18,7 +18,7 @@ parent: 'Styling &amp; Appearance'
   <section class="bcls-section">
     <h2 id="setaspectratio">アスペクト比の設定</h2>
     <p>ビデオのアスペクト比は、幅と高さの関係です。従来のテレビは 4:3 のアスペクト比を使用し、ワイドスクリーンは 16:9 のアスペクト比を使用します。</p>
-    <p>プレーヤーを作成するときに、Studioを使用してビデオの幅と高さを指定できます。使用<strong translate="No">プレイヤー</strong>モジュール、<strong>プレイヤー情報</strong>セクション。</p>
+    <p>プレーヤーを作成するときに、Studioを使用してビデオの幅と高さを指定できます。使用<strong translate="No">Player</strong>モジュールの<strong>プレイヤー情報</strong>セクションを使用します。</p>
     <aside class="bcls-aside bcls-aside--tip">注:ビデオのアスペクト比を決定するには、高さを幅で割るだけです。たとえば、高さ 360 ピクセル、幅が 640 ピクセルのビデオの比率は.5625（360/640 = .5625）であり、16:9（9/16 = .5625）になります。</aside>
     <figure class="bcls-figure"><img class="bcls-image" alt="sizing-studio-aspect-ratio" src="/assets/images/styling/sizing-player/sizing-studio-aspect-ratio.png" /></figure>
     <p>ビデオのアスペクト比は同じままで、プレーヤーのサイズが変更されると、プレーヤーのコントロールが正しく配置されます。</p>
@@ -33,13 +33,13 @@ parent: 'Styling &amp; Appearance'
   </section>
   <section class="bcls-section">
     <h2 id="setplayersize">プレーヤーサイズを設定する</h2>
-    <p>プレーヤーのサイズは、Studioを使用して設定できます。使用<strong>プレイヤー</strong>モジュール、<strong>プレイヤー情報</strong>セクション。</p>
+    <p>プレーヤーのサイズは、Studioを使用して設定できます。使用<strong>プレイヤー</strong>モジュールの<strong>プレイヤー情報</strong>セクションを使用します。</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="sizing player in studio" src="/assets/images/styling/sizing-player/sizing-studio-size.png" /></figure>
     <p>次のセクションで詳しく説明するように、CSSを使用してプレーヤーのサイズを設定することもできます。</p>
   </section>
   <section class="bcls-section">
     <h2 id="useiframe">iframeを使う</h2>
-    <p>iframe実装の場合、プレーヤーのサイズは、<code translate="No">width</code>そして<code translate="No">height</code>の属性<code translate="No">iframe</code>素子。これにはいくつかの方法があります。</p>
+    <p>iframe実装の場合、プレーヤーのサイズは、<code translate="No">iframe</code>要素の<code translate="No">width</code>と<code translate="No">height</code>の属性を指定することで設定できます。これにはいくつかの方法があります。</p>
     <ul>
       <li>
         <p><code translate="No">iframe</code>要素に属性を追加する</p>
@@ -51,9 +51,9 @@ parent: 'Styling &amp; Appearance'
         <p><code translate="No">id</code>属性で CSS を使う</p>
       </li>
     </ul>
-    <aside class="bcls-aside bcls-aside--information">注:By / styleing /もの-sizing-brightcove-player.html設定する<code translate="No">width</code>そして<code translate="No">height</code>属性を使用して、サイズが固定されたプレーヤーを作成します。レスポンシブサイジングプレーヤーを作成するには、Brightcove Player <a href="/styling/responsive-sizing-brightcove-player.html"></a>のレスポンシブサイジングドキュメントを参照してください。</aside>
+    <aside class="bcls-aside bcls-aside--information">注:By / styleing /responsive-sizing-brightcove-player.htmlに<code translate="No">width</code>と<code translate="No">height</code>属性を設定することにより、サイズが固定されたプレーヤーを作成します。レスポンシブサイジングプレーヤーを作成するには、Brightcove Player <a href="/styling/responsive-sizing-brightcove-player.html"></a>のレスポンシブサイジングドキュメントを参照してください。</aside>
     <h3><code translate="No">iframe</code>要素に属性を追加する</h3>
-    <p><code translate="No">width</code><code translate="No">height</code><code translate="No">iframe</code>要素に属性と属性を追加して設定します。</p>
+    <p><code translate="No">width</code><code translate="No">、height</code>の属性を<code translate="No">iframe</code>要素に追加して設定します。</p>
     <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;!doctype html&gt;
 &lt;html&gt;
@@ -70,9 +70,9 @@ parent: 'Styling &amp; Appearance'
 
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-    <aside class="bcls-aside bcls-aside--tip">iframe またはページ内埋め込みプレーヤーの実装のいずれかで、<code translate="No">width</code><code translate="No">height</code>および/または属性をインラインで使用する場合単位はピクセルです。含めることができます<code translate="No">px</code>番号の後ですが、技術的には適切なHTML構文ではありません。<a href="#Using_percentages">パーセンテージ値の使用方法については、このドキュメントの「パーセンテージの使用」</a>セクションを参照してください。</aside>
+    <aside class="bcls-aside bcls-aside--tip"><code translate="No">width</code>や<code translate="No">height</code>の属性をiframe またはページ内埋め込みプレーヤーの実装とインラインで使用する場合、単位はピクセルです。数値の後に<code translate="No">px</code>を含めることができますが、技術的には適切なHTML構文ではありません。<a href="#Using_percentages">パーセンテージ値の使用方法については、このドキュメントの「パーセンテージの使用」</a>セクションを参照してください。</aside>
     <h3><code translate="No">iframe</code>要素で CSS を使う</h3>
-    <p>CSS で、<code translate="No">width</code><code translate="No">height</code><code translate="No">iframe</code>要素の属性と属性を設定します。</p>
+    <p>CSS で、<code translate="No">iframe</code>要素の<code translate="No">width</code>と<code translate="No">height</code>の属性を設定します。</p>
     <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;!doctype html&gt;
 &lt;html&gt;
@@ -97,7 +97,7 @@ parent: 'Styling &amp; Appearance'
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
     <h3><code translate="No">id</code>属性で CSS を使用する</h3>
-    <p>CSS では、<code translate="No">id</code><code translate="No">iframe</code>要素に追加されたを参照します。この方法は、<code translate="No">iframe</code>ページに複数の要素がある場合に便利です。</p>
+    <p>CSS では、<code translate="No">iframe</code>要素に追加された<code translate="No">id</code>を参照します。この方法は、<code translate="No">iframe</code>ページに複数の要素がある場合に便利です。</p>
     <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;!doctype html&gt;
 &lt;html&gt;
@@ -125,15 +125,15 @@ parent: 'Styling &amp; Appearance'
   </section>
   <section class="bcls-section">
     <h2 id="useembedinpage">埋め込み_in_pageを使う</h2>
-    <p>embed_in_page実装の場合、プレーヤーのサイズは、<code translate="No">width</code>およびの高さ属性<code translate="No">video</code>素子。これを行うにはいくつかの方法があります。</p>
+    <p>embed_in_page実装の場合、プレーヤーのサイズは、<code translate="No">video</code>要素の<code translate="No">width</code>およびのheight属性を指定することで設定できます。これを行うにはいくつかの方法があります。</p>
     <ul>
       <li><code translate="No">video</code>要素に属性を追加する</li>
       <li>CSS をクラス属性とともに使用する</li>
       <li><code translate="No">id</code>属性で CSS を使う</li>
     </ul>
-    <aside class="bcls-aside bcls-aside--information">注:を設定することにより<code translate="No">width</code>そして<code translate="No">height</code>属性を使用して、サイズが固定されたプレーヤーを作成します。レスポンシブサイジングプレーヤーを作成するには、Brightcove Player <a href="/styling/responsive-sizing-brightcove-player.html"></a>のレスポンシブサイジングドキュメントを参照してください。</aside>
+    <aside class="bcls-aside bcls-aside--information">注:<code translate="No">width</code>と<code translate="No">height</code>属性を設定することにより、サイズが固定されたプレーヤーを作成します。レスポンシブサイジングプレーヤーを作成するには、Brightcove Player <a href="/styling/responsive-sizing-brightcove-player.html"></a>のレスポンシブサイジングに関するドキュメントを参照してください。</aside>
     <h3><code translate="No">video</code>要素に属性を追加する</h3>
-    <p><code translate="No">width</code><code translate="No">height</code><code translate="No">video</code>要素に属性と属性を追加して設定します。</p>
+    <p><code translate="No">video</code>要素に<code translate="No">width</code>と<code translate="No">height</code>属性を追加して設定します。</p>
     <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;!doctype html&gt;
 &lt;html&gt;
@@ -187,7 +187,7 @@ parent: 'Styling &amp; Appearance'
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
     <h3><code translate="No">id</code>属性で CSS を使用する</h3>
-    <p>CSS では、<code translate="No">id</code><code translate="No">video</code>要素に追加されたを参照します。この方法は、<code translate="No">video</code>ページに複数の要素がある場合に便利です。</p>
+    <p>CSS では、<code translate="No">video</code>要素に追加された<code translate="No">id</code>を参照します。この方法は、<code translate="No">video</code>ページに複数の要素がある場合に便利です。</p>
     <pre class="line-numbers">
 <code class="language-html" translate="No">&lt;!doctype html&gt;
 &lt;html&gt;
@@ -220,7 +220,7 @@ parent: 'Styling &amp; Appearance'
   </section>
   <section class="bcls-section">
     <h2 id="Using_percentages">パーセンテージを使用する</h2>
-    <p>Brightcove Playerの<code translate="No">height</code><code translate="No">width</code><code translate="No">iframe</code><code translate="No">video</code>またはタグの場合、<strong>これらの属性はピクセル単位でのみ測定されます</strong>。実際、<code translate="No">height</code><code translate="No">width</code>属性と属性の単位はまったく入力しません（<code translate="No">px</code>ですが、技術的には無効なHTMLです）：</p>
+    <p>Brightcove Playerの<code translate="No">iframe</code>または<code translate="No">video</code>タグで<code translate="No">height</code>や<code translate="No">width</code>属性を使用する場合、<strong>これらの属性はピクセル単位でのみ測定されます</strong>。実際、<code translate="No">height</code>と<code translate="No">width</code>属性の単位はまったく入力しません（<code translate="No">px</code>ですが、技術的には無効なHTMLです）：</p>
     <pre class="line-numbers">
 <code class="language-html" translate="No">width="480"</code></pre>
     <p>パーセンテージを使用することができ、これは2つの異なる方法でCSSを使用して達成することができます。</p>
