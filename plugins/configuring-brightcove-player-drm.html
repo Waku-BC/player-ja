@@ -1,6 +1,6 @@
 ---
 title: DRM 用の Brightcove Player
-description: 'の設定このトピックでは、Brightcove Player がデジタル著作権管理 (DRM) を実装する方法を学習します。このドキュメントでは、まず DRM プラグインの実装方法について説明し、次にプラグインの詳細と実装方法を示します。'
+description: 'このトピックでは、Brightcove Player がデジタル著作権管理 (DRM) を実装する方法を学習します。このドキュメントでは、まず DRM プラグインの実装方法について説明し、次にプラグインの詳細と実装方法を示します。'
 parent: Plugins
 ---
  <h1>{{ page.title }}</h1>
@@ -17,8 +17,8 @@ parent: Plugins
     <p>DRM を Brightcove Player で使用するには、次の条件を満たす必要があります。</p>
     <ul>
       <li>DRM 対応コンテンツを生成</li>
-      <li>DRM プラグインを使用できるように Brightcove Player を有効にする</li>
-      <li>場合によっては、ライセンスサーバーを使用するようにDRMプラグインを構成します</li>
+      <li>Brightcove Player でDRM プラグインを有効にする</li>
+      <li>場合によっては、ライセンスサーバーを使用するようにDRMプラグインを設定します</li>
     </ul>
     <aside class="bcls-aside bcls-aside--tip">注意:
       <ol>
@@ -63,10 +63,10 @@ parent: Plugins
     </div>
   </section>
   <section class="bcls-section">
-    <h2 id="Implement_using_Players_module">プレーヤーモジュールを使用して実装する</h2>
+    <h2 id="Implement_using_Players_module">Playerモジュールを使用して実装する</h2>
     <p>Studio で DRM プラグインを実装し、アカウント設定に基づいて DRM を有効にするには、次の手順を実行します。</p>
     <ol class="bcls-tasklist">
-      <li>を開きます<strong>プレイヤー</strong>モジュールを作成し、新しいプレーヤーを作成するか、DRM機能を追加するプレーヤーを見つけます。</li>
+      <li><strong>Player</strong>モジュールを開き、新しいプレーヤーを作成するか、DRM機能を追加するプレーヤーを探します。</li>
       <li>プレーヤーのリンクをクリックして、プレイヤーのプロパティを開きます。</li>
       <li>左側のナビゲーションメニューで [ <strong>再生</strong> ] をクリックします。</li>
       <li>次に、<strong> DRMを有効にする</strong>チェックボックス。
@@ -86,17 +86,17 @@ parent: Plugins
     <h2 id="DRM_plugin_architecture">DRMプラグインのアーキテクチャ</h2>
     <p>DRMプラグイン（<strong>  videojs-drm </strong>）は、2つのプラグインのラッパーです。</p>
     <ul>
-      <li>videojs-シルバーライト</li>
+      <li>videojs-sliverlight</li>
       <li>videojs-contrib-eme</li>
     </ul>
     <p><strong></strong>  videojs-drmプラグインバージョン5は、プレーヤーの内蔵DASH再生機能を使用しています。これは、<strong></strong>組み込みのvideojs-contrib-hlsプラグインの次のバージョンであり、名前が変更されたバージョンであるVHSを利用しています。</p>
-    <p>プレイヤー6.26.0の時点で、プレイヤーはダッシュマルチピリオドをサポートしています。以前のバージョンのプレーヤーでは、ダッシュマルチピリオドにはシャカプレーヤーが必要です。</p>
+    <p>プレイヤー6.26.0の時点で、プレイヤーはダッシュマルチピリオドをサポートしています。以前のバージョンのプレーヤーでは、ダッシュマルチピリオドにはshakaプレーヤーが必要です。</p>
     <p>バージョン 4 と同様に、Shaka Player を DASH 再生に使用する場合は、<strong>  videojs-drm </strong>バージョン 5 スクリプトとともに次のスクリプトを含めることができます。</p>
     <pre>
     <code class="language-html" translate="No">https://players.brightcove.net/videojs-shaka/1/videojs-shaka.js</code></pre>
     &nbsp;
     <p><strong></strong>  videojs-silverlightプラグインは、特定のInternet Explorerのブラウザでダッシュコンテンツを再生することができます。</p>
-    <p>ザ・<strong>videojs-contrib-eme</strong>プラグインは、FairPlayHLSコンテンツの再生を可能にします。</p>
+    <p><strong>videojs-contrib-eme</strong>プラグインは、FairPlayHLSコンテンツの再生を可能にします。</p>
     <aside class="bcls-aside bcls-aside--information">
       <p>注意:</p>
       <ul>
@@ -108,7 +108,7 @@ parent: Plugins
     <h2 id="Playback_technologies_used">使用される再生テクノロジー</h2>
     <p>Brightcove Player は、ブラウザーごとに異なる DRM 再生テクノロジーを利用しています。Brightcove Playerで使用される DRM テクノロジーについて詳しく説明します。</p>
     <ul>
-      <li><strong>フェアプレイ</strong> :アップルのDRMシステム</li>
+      <li><strong> Fairplay </strong> :アップルのDRMシステム</li>
       <li><strong> PlayReady </strong> :マイクロソフトのDRMシステム</li>
       <li><strong> Widevine </strong> :グーグルのDRMシステム</li>
     </ul>
@@ -138,24 +138,24 @@ parent: Plugins
         </tr>
         <tr>
           <td>Internet Explorer<sup>2</sup></td>
-          <td>PlayReadyでダッシュ</td>
-          <td>シルバーライト</td>
-          <td>MPEG-ダッシュ</td>
+          <td>PlayReadyでDASH</td>
+          <td>Silverlight</td>
+          <td>MPEG-DASH</td>
         </tr>
         <tr>
-          <td>エッジ</td>
+          <td>Edge</td>
           <td>PlayReadyでDASH</td>
           <td>ネイティブ/EME</td>
-          <td>MPEG-ダッシュ</td>
+          <td>MPEG-DASH</td>
         </tr>
         <tr>
-          <td>サファリ</td>
+          <td>Safari</td>
           <td>HLS with FairPlay</td>
           <td>ネイティブ HLS</td>
           <td>HLS</td>
         </tr>
         <tr>
-          <td>Firefoxの</td>
+          <td>Firefox</td>
           <td>Dash with Widevine</td>
           <td>ネイティブ/EME</td>
           <td>MPEG-DASH</td>
@@ -172,7 +172,7 @@ parent: Plugins
       <ol class="bcls-tasklist__restart">
         <li>アカウントを DRM 対応にする場合は、アカウントマネージャーにお問い合わせください。その後、適切なライセンスキーと取り込みプロファイルを使用してアカウントを構成し、DRM で保護されたコンテンツの作成を有効にできます。</li>
         <li>
-          <p>DRM で保護されたコンテンツを生成します。新しいコンテンツをアップロードするか、既存のコンテンツを DRM として再エンコードするかを選択できます。これは、を選択することによって行われます<strong>取り込みプロファイル</strong>それはあなたの望む暗号化技術を生み出します。</p>
+          <p>DRM で保護されたコンテンツを生成します。新しいコンテンツをアップロードするか、既存のコンテンツを DRM として再エンコードするかを選択できます。これは、希望する暗号化技術を生成する<strong>取り込みプロファイル</strong>を選択することで実行されます。</p>
           <aside class="bcls-aside bcls-aside--information">詳細については、「DRM <a href="https://apis.support.brightcove.com/dynamic-ingest/ingest-guides/ingesting-content-drm.html">を使用したコンテンツの取り込み」</a>ドキュメントを参照してください。</aside>
         </li>
       </ol>
@@ -427,7 +427,7 @@ parent: Plugins
   </section>
   <section class="bcls-section">
     <h2 id="Supporting_other_DRM_providers">他の DRM プロバイダのサポート</h2>
-    <p>プラグインは、顧客が他の DRM プロバイダのサポートを実装できるようにするパスを実装しました。Fairplay はライセンス情報を取得するために必要なカスタムロジックを必要とするため、これは主に Fairplay にとって便利です。<code translate="No">vendor.name </code><code translate="No">keySystems </code>特定のソースでに追加すると、このロジックの利用が試行され、必要な証明書とライセンス情報が含まれます。Azure の例を次に示します。</p>
+    <p>このプラグインは、お客様が他の DRM プロバイダのサポートを実装できるようなパスを実装しています。Fairplay はライセンス情報を取得するために必要なカスタムロジックを必要とするため、これは主に Fairplay にとって便利です。指定されたソースの<code translate="No">keySystems </code>に<code translate="No">vendor.name </code>を追加すると、このロジックを利用し、必要な証明書とライセンス情報が含めようとします。Azure の例を次に示します。</p>
     <pre class="line-numbers">
     <code class="language-javascript" translate="No">player.ready(function(){
       player.eme();
@@ -508,8 +508,8 @@ parent: Plugins
   <section class="bcls-section">
     <h2 id="Known_issues">既知の問題</h2>
     <ul>
-      <li>ザ・<strong>デフォルト（自動表示）</strong>のキャプション設定&nbsp;<strong>メディア</strong>モジュールの<strong>テキストトラック</strong>セクションは、DRMおよびマニフェスト内のキャプションと組み合わせて使用する場合はサポートされません。マニフェスト内キャプションは、ブライトコーブ製品のダイナミックデリバリーや SSAIなどで使用されます。この問題の回避策は、高度な Brightcove Player <code translate="No">&lt;track&gt;</code>実装でタグを使用することです。詳細については、「<a href="/general/adding-captions-videos-programmatically.html">プログラムによるビデオへのキャプションの追加」</a>を参照してください。<code translate="No">default</code><code translate="No">&lt;track&gt;</code>タグとともに属性を使用する必要があることに注意してください。</li>
-      <li><strong> DRM アセットとクロム</strong> :DRM プラグインで標準 (iframe) プレーヤー実装を使用する場合、<code translate="No">allow="encrypted-media" </code>は Chrome で DRM アセットを再生できるようにする必要があります。
+      <li><strong>Media</strong>モジュールの<strong>テキストトラック</strong>セクションの、<strong>デフォルト（自動表示）</strong>のキャプション設定&nbsp;は、DRMおよびマニフェスト内のキャプションと組み合わせて使用した場合、サポートされません。マニフェスト内キャプションは、ブライトコーブ製品のDynamic Deliveryや SSAIなどで使用されます。この問題の回避策は、高度な Brightcove Player <code translate="No">&lt;track&gt;</code>実装でタグを使用することです。詳細については、「<a href="/general/adding-captions-videos-programmatically.html">プログラムによるビデオへのキャプションの追加」</a>を参照してください。<code translate="No">default</code><code translate="No">&lt;track&gt;</code>タグとともに属性を使用する必要があることに注意してください。</li>
+      <li><strong> DRM アセットとChrome</strong> :DRM プラグインで標準 (iframe) プレーヤー実装を使用する場合、ChromeでDRM アセットを再生できるようにするために<code translate="No">allow="encrypted-media" </code>が必要です。
         <pre class="line-numbers">
     <code class="language-html" translate="No">&lt;iframe src="https://players.brightcove.net/123456789/BydO6uuuu_default/index.html?videoId=5783262319001"
     allowfullscreen
@@ -518,7 +518,7 @@ parent: Plugins
     width="640" height="360"
     <span class="bcls-highlight">allow="encrypted-media"</span>&gt;&lt;/iframe&gt;</code></pre>
       </li>
-      <li><strong>シルバーライト/IE11のための特別なイベント</strong> :ほとんどの場合、プログラムでプレーヤーと対話したい場合は、<code translate="No">ready </code><code translate="No">loadedmetadata </code>&nbsp;イベントまたはイベントを待つディスパッチされます。ただし、IE11 で Silverlight 技術を使用し、DRM コンテンツを再生するときに、プログラムでプレーヤーと対話したい場合は、<code translate="No">canplay </code>イベントを待つ必要があります。</li>
+      <li><strong>Silverlight/IE11のための特別なイベント</strong> :ほとんどの場合、プログラムでプレーヤーと対話する場合は、<code translate="No">ready </code>または<code translate="No">loadedmetadata </code>&nbsp;イベントのいずれかがディスパッチされルのを待つことになります。ただし、IE11 で Silverlight 技術を使用し、DRM コンテンツを再生するときに、プログラムでプレーヤーと対話したい場合は、<code translate="No">canplay </code>イベントを待つ必要があります。</li>
       <li>iOSでは、必要なDRMブラウザAPI (EME) を提供するのはサファリのみで、WebViews は現在 EME をサポートしていません。したがって、フェアプレイ DRM は Safari でのみ動作します。</li>
     </ul>
   </section>
